@@ -8,10 +8,12 @@ module.exports = {
   siteMetadata: {
     title: `sake log`,
     author: `sake`,
+    siteUrl: `https://sake-log.website/`,
   },
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-less`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
