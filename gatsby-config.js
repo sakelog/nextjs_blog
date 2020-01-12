@@ -19,7 +19,23 @@ module.exports = {
         path: `${__dirname}/content/post/`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          }
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
   ],
 }
