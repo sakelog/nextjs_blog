@@ -13,7 +13,7 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "push": "git push origin master",
-    "deploy": "npm build && npm push"
+    "deploy": "npm run build && npm run push"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
