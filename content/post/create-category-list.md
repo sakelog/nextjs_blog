@@ -14,7 +14,7 @@ tags : ["Gatsby"]
 
 各カテゴリーのページ作成を、gatsby-node.jsで設定してあげます。
 
-```javascript:title=gatsby-node.js
+```jsx:title=gatsby-node.js
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -74,7 +74,7 @@ exports.createPages = ({ graphql, actions }) => {
 
 src/componentsに「header-cat-list.js」を作成します。
 
-```javascript:title=header-cat-list.js
+```jsx:title=header-cat-list.js
 import React from "react"
 import { useStaticQuery,graphql,Link } from "gatsby"
 
