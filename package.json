@@ -11,7 +11,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "push": "git push origin master",
+    "deploy": "npm build && npm push"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
@@ -32,6 +34,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "gatsby-remark-code-titles": "^1.1.0",
     "prettier": "^1.19.1"
   },
   "repository": {

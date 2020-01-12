@@ -15,7 +15,7 @@ export default ({ data }) => (
     </p>
     <p>このサイトは下記のような技術で作られています。</p>
     <ul>
-      <li>静的HTMLジェネレータ：gatsby</li>
+      <li>静的HTMLジェネレータ：GatsbyJS</li>
       <li>CSSフレームワーク：Bootstrap</li>
     </ul>
 
@@ -32,6 +32,13 @@ export default ({ data }) => (
       </a>
       で100点を出すこと。
     </p>
+    <h3>保有資格</h3>
+    <ul>
+      <li>基本情報技術者</li>
+      <li>応用情報技術者</li>
+      <li>Oracle認定Java Bronze SE 7/8</li>
+      <li>OracleマスターBronze 12c</li>
+    </ul>
   </Layout>
 )
 

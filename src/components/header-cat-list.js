@@ -1,7 +1,8 @@
 import React from "react"
 import { useStaticQuery,graphql,Link } from "gatsby"
 
-const _ = require("lodash")
+// Utilities
+import kebabCase from "lodash/kebabCase"
 
 export default () => {
     const data = useStaticQuery(
@@ -16,12 +17,11 @@ export default () => {
         `
     )
     const categorys = data.allMarkdownRemark.group
-    console.log(categorys[0].fieldValue)
     return(
         <ul className="navbar-nav">{
             categorys.map( (category) =>
                 <li key={category.fieldValue} className="nav-item">
-                    <Link to={`/category/${_.kebabCase(category.fieldValue)}/`} className="nav-link">
+                    <Link to={`/category/${kebabCase(category.fieldValue)}/`} className="nav-link">
                         {category.fieldValue}
                     </Link>
                 </li>
