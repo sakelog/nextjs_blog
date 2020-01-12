@@ -1,11 +1,12 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const _ = require("lodash")
+
 // Template
 const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
-const blogPostListTemplate = path.resolve(`./src/templates/blog-list.js`)
-const tagTemplate = path.resolve(`./src/templates/tags.js`)
-const categoryTemplate = path.resolve(`./src/templates/category.js`)
+const blogPostListTemplate = path.resolve(`./src/templates/blog-list.jsx`)
+const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
+const categoryTemplate = path.resolve(`./src/templates/category.jsx`)
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -44,11 +45,13 @@ exports.createPages = ({ graphql, actions }) => {
         tagsGroup: allMarkdownRemark(limit: 2000) {
           group(field: frontmatter___tags) {
             fieldValue
+            totalCount
           }
         }
         categoryGroup: allMarkdownRemark(limit: 2000) {
           group(field: frontmatter___category) {
             fieldValue
+            totalCount
           }
         }
       }
@@ -95,25 +98,45 @@ exports.createPages = ({ graphql, actions }) => {
   
     // Create Tags pages
     const tags = result.data.tagsGroup.group
+
     tags.forEach(tag => {
-      createPage({
-        path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
-        component: tagTemplate,
-        context: {
-          tag: tag.fieldValue,
-        },
+      const tagPerPage = 6;
+      const tagnumPages = Math.ceil(tag.totalCount / tagPerPage);
+      const tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
+      Array.from({length: tagnumPages}).forEach((_,i) => {
+        createPage({
+          path: i === 0 ? tagPathBase : `${tagPathBase}/${i + 1}`,
+          component: tagTemplate,
+          context: {
+            limit: tagPerPage,
+            skip: i * tagPerPage,
+            tag: tag.fieldValue,
+            numPages: tagnumPages,
+            currentPage: i + 1,
+          },
+        })
       })
     })
 
     // Create Category Pages
     const categorys = result.data.categoryGroup.group
-    categorys.forEach(category =>{
-      createPage({
-        path: `/category/${_.kebabCase(category.fieldValue)}/`,
-        component: categoryTemplate,
-        context: {
-          category: category.fieldValue,
-        }
+
+    categorys.forEach(category => {
+      const categoryPerPage = 6;
+      const categorynumPages = Math.ceil(category.totalCount / categoryPerPage);
+      const categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
+      Array.from({length: categorynumPages}).forEach((_,i) => {
+        createPage({
+          path: i === 0 ? categoryPathBase : `${categoryPathBase}/${i + 1}`,
+          component: categoryTemplate,
+          context: {
+            limit: categoryPerPage,
+            skip: i * categoryPerPage,
+            category: category.fieldValue,
+            numPages: categorynumPages,
+            currentPage: i + 1,
+          },
+        })
       })
     })
   })

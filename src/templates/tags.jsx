@@ -2,12 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
 import Head from "../components/head"
+import Pagination from "../components/pagination"
 
 import { Link, graphql } from "gatsby"
 const Tags = ({ pageContext, data }) => {
-  const {tag} = pageContext
+  const {tag, currentPage, numPages} = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `タグ：${tag}`
+
   return (
     <Layout>
       <Head 
@@ -16,23 +18,19 @@ const Tags = ({ pageContext, data }) => {
       />
       <h1 className="text-center"><span>{tagHeader}</span></h1>
       <p>投稿：{totalCount}件</p>
-      <div className="row row-cols-2 row-cols-md-3 my-2">
         {edges.map(({ node }) => {
           const { slug } = node.fields
           const title = node.frontmatter.title || node.fields.slug
+          const description = node.frontmatter.description || node.excerpt
           return (
-            <div key={slug} className="col mb-3">
-              <div className="card">
-                <div className="card-body">
-                  <h2 className="card-title">{title}</h2>
-                  <p className="card-subtitle text-muted">投稿日：{node.frontmatter.date}</p>
-                  <Link to={slug} className="card-link">記事を読む</Link>
-                </div>
-              </div>
+            <div key={slug} className="border-bottom pt-3 px-2">
+                <small>投稿日：{node.frontmatter.date}</small>
+                <Link to={slug}><h2>{title}</h2></Link>
+                <p>{description}</p>
             </div>
           )
         })}
-      </div>
+      <Pagination numPages={numPages} currentPage={currentPage} />
       <Link to="/tags">タグ一覧</Link>
     </Layout>
   )
@@ -40,6 +38,8 @@ const Tags = ({ pageContext, data }) => {
 Tags.propTypes = {
   pageContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    numPages: PropTypes.number.isRequired,
   }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
@@ -77,6 +77,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
+            description
           }
         }
       }
