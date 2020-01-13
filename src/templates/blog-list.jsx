@@ -46,7 +46,7 @@ export default class BlogList extends React.Component {
                     </li>
                     {tag_list}
                   </ul>
-                  <p className="lead">{description}</p>
+                  <p>{description}</p>
                 </div>
               )
               })}

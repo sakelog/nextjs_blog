@@ -3,7 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const _ = require("lodash")
 
 // Template
-const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
 const blogPostListTemplate = path.resolve(`./src/templates/blog-list.jsx`)
 const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
 const categoryTemplate = path.resolve(`./src/templates/category.jsx`)

@@ -35,6 +35,7 @@ class BlogPostTemplate extends React.Component {
             <h4 className="cats"><span className="badge badge-primary">{post.frontmatter.category}</span></h4>
           </Link>
           <p className="text-muted">投稿日：{post.frontmatter.date}</p>
+          <hr />
 
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
