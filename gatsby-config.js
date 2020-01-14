@@ -21,6 +21,7 @@ module.exports = {
         path: `${__dirname}/content/post/`,
       },
     },
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -35,7 +36,14 @@ module.exports = {
               showLineNumbers: true,
               noInlineHighlight: false,
             },
-          }
+          },
+          {
+            resolve:`gatsby-remark-images`,
+            options: {
+              maxWidth: 400,
+            },
+          },
+          `gatsby-remark-responsive-iframe`,
         ],
       },
     },

@@ -44,26 +44,32 @@ class BlogPostTemplate extends React.Component {
         </div>
         <hr />
         <nav>
-        <ul className="list-inline d-flex justify-content-between">
-            <li className="list-inline-item">
+        <div className="row">
+            <div className="col-sm mx-3">
                 {prev && (
-                  <span>前：
-                    <Link to={prev.fields.slug} rel="prev">
-                      {prev.frontmatter.title}
-                    </Link>
-                  </span>
+                  <div className="d-flex justify-content-start row">
+                    <div>前：</div>
+                    <div className="col-10">
+                      <Link to={prev.fields.slug} rel="prev">
+                        {prev.frontmatter.title}
+                      </Link>
+                    </div>
+                  </div>
                 )}
-              </li>
-              <li className="list-inline-item">
+              </div>
+              <div className="col-sm mx-3">
                 {next && (
-                  <span>
-                    <Link to={next.fields.slug} rel="next">
-                      {next.frontmatter.title} 
-                    </Link>
-                  ：次</span>
+                  <div className="d-flex justify-content-end row">
+                    <div className="col-10 text-right">
+                      <Link to={next.fields.slug} rel="next">
+                        {next.frontmatter.title} 
+                      </Link>
+                    </div>
+                    <div>：次</div>
+                  </div>
                 )}
-              </li>
-          </ul>
+              </div>
+          </div>
         </nav>
       </Layout>
     )
