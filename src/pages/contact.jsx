@@ -12,7 +12,7 @@ export default() => (
         description="sake logについてのお問い合わせはこちらから"
     />
         <h1>{pageTitle}</h1>
-        <form name="contact" method="POST" nelify>
+        <form name="contact" method="POST" data-netlify="true">
         <div className="form-group">
                  <label htmlFor="contactName">お名前</label>
                  <input type="text" className="form-control" id="contactName" name="name" placeholder="サンプル 花子" />
