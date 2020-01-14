@@ -1,23 +1,22 @@
 import React from "react"
 import Layout from "../components/layout"
+import Head from "../components/head"
+
+const pageTitle = "プライバシーポリシー"
 
 export default () => (
   <Layout>
-    <h1 className="uk-article-title">プライバシーポリシー</h1>
-    <p className="uk-article-meta">作成日：2020/1/10</p>
-    <p className="uk-article-meta">更新日：2020/1/10</p>
+    <Head
+        title={pageTitle}
+        description="sake logのプライバシーポリシーです。"
+    />
+    <h1>{pageTitle}</h1>
+    <p className="text-muted">作成日：2020/1/10</p>
+    <p className="text-muted">更新日：2020/01/14</p>
     <h2>当サイトに掲載されている広告について</h2>
     <p>
       当サイトでは、第三者配信の広告サービス（
-      <a href="http://www.google.com/adsense/start/">Googleアドセンス</a>、
-      <a href="http://www.a8.net/">A8.net</a>、
-      <a
-        href="https://www.valuecommerce.ne.jp/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        バリューコマース
-      </a>
+      <a href="http://www.google.com/adsense/start/">Googleアドセンス</a>
       ）を利用しています。
     </p>
     <p>

@@ -2,9 +2,17 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
+import Head from "../components/head"
+
+const pageTitle = "このサイトについて"
+
 export default ({ data }) => (
   <Layout>
-    <h1 className="uk-article-title">このサイトについて</h1>
+    <Head
+        title={pageTitle}
+        description="sake logについての説明です。"
+    />
+    <h1 className="uk-article-title">{pageTitle}</h1>
     <h2>{data.site.siteMetadata.title}</h2>
     <p>
       当サイト「{data.site.siteMetadata.title}

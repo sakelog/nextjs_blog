@@ -26,6 +26,9 @@ export default class Header extends React.Component {
             <li className="nav-item">
               <Link to="/privacy/" className="nav-link">プライバシーポリシー</Link>
             </li>
+            <li className="nav-item">
+              <Link to="/contact/" className="nav-link">お問い合わせ</Link>
+            </li>
           </ul>
         </div>
       </nav>
