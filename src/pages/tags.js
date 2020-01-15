@@ -18,11 +18,11 @@ const TagsPage = ({
     />
     <div>
       <h1 className="text-center">全タグ一覧</h1>
-      <ul>
+      <ul className="list-unstyled">
         {group.map(tag => (
-          <li key={tag.fieldValue}>
+          <li key={tag.fieldValue} className="d-inline-block border border-primary rounded m-2 p-1">
             <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
+              #{tag.fieldValue} ({tag.totalCount})
             </Link>
           </li>
         ))}

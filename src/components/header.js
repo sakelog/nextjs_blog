@@ -21,6 +21,9 @@ export default class Header extends React.Component {
           <HeaderCatList />
           <ul className="navbar-nav">
             <li className="nav-item">
+              <Link to="/tags/" className="nav-link">タグ一覧</Link>
+            </li>
+            <li className="nav-item">
               <Link to="/about_this_site/" className="nav-link">このサイトについて</Link>
             </li>
             <li className="nav-item">
