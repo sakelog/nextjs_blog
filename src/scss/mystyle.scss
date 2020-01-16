@@ -1,0 +1,84 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans+JP:400,700&display=swap');
+$primary: #164a84;
+$link-color:#007bbb;
+$white: #ffffff;
+$navbar-dark-color: rgba($white, .7) ;
+$navbar-dark-hover-color: rgba($white, .85) !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Helvetica Neue', Verdana, 'Noto Sans JP', Meiryo, 'Yu Gothic', YuGothic, sans-serif;
+$small-font-size: 90%;
+$card-height: 100%;
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+.cats
+{
+    font-size: 1rem;
+    margin: 0;
+}
+.gatsby-code-title {
+    background: #666666;
+    color: #ffffff;
+    margin-bottom: -0.65em;
+    padding: 0.7rem 1.05rem;
+    font-size: 0.8em;
+    line-height: 0.2;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    display: table;
+  }
+
+.gatsby-highlight-code-line {
+    background-color:#545454;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid #c1e4e9;
+  }
+
+.gatsby-highlight-code-line:before,
+.gatsby-highlight-code-line[data-end]:after {
+	background-color: hsl(215, 15%, 59%); /* #8794A6 */
+	border-radius: 999px;
+	box-shadow: 0 1px white;
+	color: hsl(24, 20%, 95%); /* #F5F2F0 */
+	content: attr(data-start);
+	font: bold 65%/1.5 sans-serif;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	position: absolute;
+	text-align: center;
+	text-shadow: none;
+	top: .4em;
+	vertical-align: .3em;
+}
+
+.gatsby-highlight-code-line[data-end]:after {
+	bottom: .4em;
+	content: attr(data-end);
+	top: auto;
+}
+/*===========================================*
+**  記事本文
+**===========================================*/
+.Article {
+  blockquote {
+    margin: 1em;
+    padding: 1em;
+    border-left: #c1e4e9 3px solid;
+    max-width: calc(100%-4em);
+  }
+  th {
+    border-bottom: 1px solid;
+    text-align: center;
+  }
+  th,td {
+    padding: 0.5em 1em;
+  }
+  table {
+    margin: 2em 0;
+    border-collapse:  collapse;
+  }
+}

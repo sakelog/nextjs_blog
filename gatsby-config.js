@@ -99,6 +99,7 @@ module.exports = {
             },
           },
           `gatsby-remark-responsive-iframe`,
+          `gatsby-remark-copy-images`,
         ],
       },
     },
