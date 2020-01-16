@@ -34,7 +34,7 @@ $card-height: 100%;
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
-    border-left: 0.25em solid #ff7f50;
+    border-left: 0.25em solid #c1e4e9;
   }
 
 .gatsby-highlight-code-line:before,
@@ -59,4 +59,26 @@ $card-height: 100%;
 	bottom: .4em;
 	content: attr(data-end);
 	top: auto;
+}
+/*===========================================*
+**  記事本文
+**===========================================*/
+.Article {
+  blockquote {
+    margin: 1em;
+    padding: 1em;
+    border-left: #c1e4e9 3px solid;
+    max-width: calc(100%-4em);
+  }
+  th {
+    border-bottom: 1px solid;
+    text-align: center;
+  }
+  th,td {
+    padding: 0.5em 1em;
+  }
+  table {
+    margin: 2em 0;
+    border-collapse:  collapse;
+  }
 }

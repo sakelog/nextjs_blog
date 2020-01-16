@@ -28,7 +28,7 @@ const BlogPost = ({pageContext, data}) => {
       title={post.frontmatter.title}
       description={post.frontmatter.description}
     />
-      <div>
+      <div className="Article">
         <h1>{post.frontmatter.title}</h1>
         <Link to={categoryPath} className="badge badge-primary my-2">
           <h4 className="cats">{post.frontmatter.category}</h4>
@@ -76,8 +76,8 @@ const BlogPost = ({pageContext, data}) => {
 
 BlogPost.propTypes = {
   pageContext: PropTypes.shape({
-    prev: PropTypes.element.isRequired,
-    next: PropTypes.element.isRequired,
+    prev: PropTypes.object,
+    next: PropTypes.object,
   }),
 }
 
