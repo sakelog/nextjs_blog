@@ -5,6 +5,7 @@ const _ = require("lodash")
 // Template
 const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
 const blogPostListTemplate = path.resolve(`./src/templates/blog-list.jsx`)
+const pageTemplate = path.resolve(`./src/templates/page.jsx`)
 const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
 const categoryTemplate = path.resolve(`./src/templates/category.jsx`)
 
@@ -12,6 +13,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
+    const parent = getNode(node.parent)
+
+    createNodeField({
+      node,
+      name: 'collection',
+      value: parent.sourceInstanceName,
+    })
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
@@ -28,6 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
     `
       {
         postsRemark: allMarkdownRemark(
+          filter: {fields: {collection: {eq: "post"}}}
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 2000
         ) {
@@ -42,13 +51,34 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
-        tagsGroup: allMarkdownRemark(limit: 2000) {
+        pageRemark: allMarkdownRemark(
+          filter: {fields: {collection: {eq: "page"}}}
+          limit: 2000
+        ){
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+        tagsGroup: allMarkdownRemark(
+          filter: { fields: { collection : { eq : "post" } }}
+          limit: 2000
+          ) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
           }
         }
-        categoryGroup: allMarkdownRemark(limit: 2000) {
+        categoryGroup: allMarkdownRemark(
+          limit: 2000
+          filter: { fields: { collection : { eq : "post" } }}
+          ) {
           group(field: frontmatter___category) {
             fieldValue
             totalCount
@@ -80,8 +110,8 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     // Create blog post list pages
-    const postsPerPage = 6;
-    const numPages = Math.ceil(posts.length / postsPerPage);
+    const postsPerPage = 4
+    const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
@@ -91,19 +121,33 @@ exports.createPages = ({ graphql, actions }) => {
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
-          currentPage: i + 1
+          currentPage: i + 1,
         },
       })
     })
-  
+
+    // Create pages.
+    const pages = result.data.pageRemark.edges
+
+    pages.forEach((page) => {
+
+      createPage({
+        path: page.node.fields.slug,
+        component: pageTemplate,
+        context: {
+          slug: page.node.fields.slug,
+        },
+      })
+    })
+
     // Create Tags pages
     const tags = result.data.tagsGroup.group
 
     tags.forEach(tag => {
-      const tagPerPage = 6;
-      const tagnumPages = Math.ceil(tag.totalCount / tagPerPage);
+      const tagPerPage = 6
+      const tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
       const tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
-      Array.from({length: tagnumPages}).forEach((_,i) => {
+      Array.from({ length: tagnumPages }).forEach((_, i) => {
         createPage({
           path: i === 0 ? tagPathBase : `${tagPathBase}/${i + 1}`,
           component: tagTemplate,
@@ -122,10 +166,10 @@ exports.createPages = ({ graphql, actions }) => {
     const categorys = result.data.categoryGroup.group
 
     categorys.forEach(category => {
-      const categoryPerPage = 6;
-      const categorynumPages = Math.ceil(category.totalCount / categoryPerPage);
+      const categoryPerPage = 6
+      const categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
       const categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
-      Array.from({length: categorynumPages}).forEach((_,i) => {
+      Array.from({ length: categorynumPages }).forEach((_, i) => {
         createPage({
           path: i === 0 ? categoryPathBase : `${categoryPathBase}/${i + 1}`,
           component: categoryTemplate,

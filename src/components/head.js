@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
- 
-export default (props) => {
+
+export default props => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -14,18 +14,22 @@ export default (props) => {
       }
     `
   )
-  return(
+  return (
     <Helmet
-        htmlAttributes={{
-            lang: 'ja',
-        }}
-        title={ (props.title ? props.title + ' | ' : '') + data.site.siteMetadata.title }
-        meta={[
-            {
-                name: 'description',
-                content: props.description || 'WEB系の技術を中心にした技術メモ置き場です。WordPress・Gatsby・UIkitなどなど。'
-            }
-        ]}   
+      htmlAttributes={{
+        lang: "ja",
+      }}
+      title={
+        (props.title ? props.title + " | " : "") + data.site.siteMetadata.title
+      }
+      meta={[
+        {
+          name: "description",
+          content:
+            props.description ||
+            "WEB系の技術を中心にした技術メモ置き場です。WordPress・Gatsby・UIkitなどなど。",
+        },
+      ]}
     />
   )
 }

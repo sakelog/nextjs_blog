@@ -1,26 +1,29 @@
 import React from "react"
 import PropTypes from "prop-types"
-// Utilities
-import kebabCase from "lodash/kebabCase"
+import { Link, graphql } from "gatsby"
+
 // Components
 import Layout from "../components/layout"
 import Head from "../components/head"
-import { Link, graphql } from "gatsby"
+
+// Utilities
+import kebabCase from "lodash/kebabCase"
+
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
   },
 }) => (
-    <Layout>
-    <Head
-        title="タグ一覧ページ"
-        description="全タグの一覧ページです"
-    />
+  <Layout>
+    <Head title="タグ一覧ページ" description="全タグの一覧ページです" />
     <div>
       <h1 className="text-center">全タグ一覧</h1>
       <ul className="list-unstyled">
         {group.map(tag => (
-          <li key={tag.fieldValue} className="d-inline-block border border-primary rounded m-2 p-1">
+          <li
+            key={tag.fieldValue}
+            className="d-inline-block border border-primary rounded m-2 p-1"
+          >
             <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
               #{tag.fieldValue} ({tag.totalCount})
             </Link>
@@ -45,7 +48,10 @@ TagsPage.propTypes = {
 export default TagsPage
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(limit: 2000) {
+    allMarkdownRemark(
+      filter: {fields: {collection: {eq: "post"}}}
+      limit: 2000
+      ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

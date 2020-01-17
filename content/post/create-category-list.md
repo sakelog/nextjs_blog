@@ -3,7 +3,7 @@ title: "メニューにカテゴリー一覧を追加"
 date: "2020-01-13 01:43:18"
 description: "ヘッダーのメニュー部分にカテゴリー一覧を自動で設定するようにしました。Gatsbyでの設定方法を記載します。"
 category: "技術"
-tags : ["Gatsby"]
+tags: ["Gatsby"]
 ---
 
 ブログをやっていると、記事カテゴリーの一覧ほしくなりますよね。
@@ -12,7 +12,7 @@ tags : ["Gatsby"]
 
 ## 前提条件：各カテゴリーページの設定
 
-各カテゴリーのページ作成を、gatsby-node.jsで設定してあげます。
+各カテゴリーのページ作成を、gatsby-node.js で設定してあげます。
 
 ```jsx:title=gatsby-node.js
 exports.createPages = ({ graphql, actions }) => {
@@ -72,56 +72,59 @@ exports.createPages = ({ graphql, actions }) => {
 
 ## カテゴリー一覧の作成
 
-src/componentsに「header-cat-list.js」を作成します。
+src/components に「header-cat-list.js」を作成します。
 
 ```jsx:title=header-cat-list.js
 import React from "react"
-import { useStaticQuery,graphql,Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
 
 export default () => {
-    const data = useStaticQuery(
-        graphql`
-        query {
-            allMarkdownRemark(limit: 2000) {
-                group(field: frontmatter___category) {
-                    fieldValue
-                }
-            }
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___category) {
+            fieldValue
+          }
         }
-        `
-    )
-    const categorys = data.allMarkdownRemark.group
-    return(
-        <ul className="navbar-nav">{
-            categorys.map( (category) =>
-                <li key={category.fieldValue} className="nav-item">
-                    <Link to={`/category/${kebabCase(category.fieldValue)}/`} className="nav-link">
-                        {category.fieldValue}
-                    </Link>
-                </li>
-            )
-        }</ul>
-    )
+      }
+    `
+  )
+  const categorys = data.allMarkdownRemark.group
+  return (
+    <ul className="navbar-nav">
+      {categorys.map(category => (
+        <li key={category.fieldValue} className="nav-item">
+          <Link
+            to={`/category/${kebabCase(category.fieldValue)}/`}
+            className="nav-link"
+          >
+            {category.fieldValue}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
 }
 ```
 
-※ClassNameはBootstrapの絡みです。
+※ClassName は Bootstrap の絡みです。
 
-後は、これを読み込みたいところでimportして組み込む。
+後は、これを読み込みたいところで import して組み込む。
 
 ## ハマったこと
 
-ちょっとハマったのは、graphqlの情報の取得方法。
+ちょっとハマったのは、graphql の情報の取得方法。
 
 公式のチュートリアルに、[タグ一覧ページの作り方](https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/)というのがあって、これを応用すればいいじゃん！と思ったのですが……。
 
-単純にタグ→カテゴリーに置き換えるだけだと、**Cannot read property 'allMarkdownRemark' of undefined**の表示が出てしまう。
+単純にタグ → カテゴリーに置き換えるだけだと、**Cannot read property 'allMarkdownRemark' of undefined**の表示が出てしまう。
 
-なんじゃらほい？ってことで調べると、こういう書き方はpageでしか使えないぜってことらしい。
+なんじゃらほい？ってことで調べると、こういう書き方は page でしか使えないぜってことらしい。
 
 参考：[TypeError: Cannot read property 'allMarkdownRemark' of undefined #13233](https://github.com/gatsbyjs/gatsby/issues/13233)
 
-というわけで、staticQueryを使うことで解決。
+というわけで、staticQuery を使うことで解決。

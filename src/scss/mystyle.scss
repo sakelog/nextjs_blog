@@ -6,6 +6,7 @@ $white: #ffffff;
 $navbar-dark-color: rgba($white, .7) ;
 $navbar-dark-hover-color: rgba($white, .85) !default;
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Helvetica Neue', Verdana, 'Noto Sans JP', Meiryo, 'Yu Gothic', YuGothic, sans-serif;
+$enable-responsive-font-sizes: true;
 $small-font-size: 90%;
 $card-height: 100%;
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
@@ -60,25 +61,4 @@ $card-height: 100%;
 	content: attr(data-end);
 	top: auto;
 }
-/*===========================================*
-**  記事本文
-**===========================================*/
-.Article {
-  blockquote {
-    margin: 1em;
-    padding: 1em;
-    border-left: #c1e4e9 3px solid;
-    max-width: calc(100%-4em);
-  }
-  th {
-    border-bottom: 1px solid;
-    text-align: center;
-  }
-  th,td {
-    padding: 0.5em 1em;
-  }
-  table {
-    margin: 2em 0;
-    border-collapse:  collapse;
-  }
-}
+@import "article"

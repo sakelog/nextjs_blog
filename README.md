@@ -1,6 +1,6 @@
 # sake_log
 
-gatsby使用サイト
+gatsby 使用サイト
 
 =======
 

@@ -6,30 +6,34 @@ import Pagination from "../components/pagination"
 
 import { Link, graphql } from "gatsby"
 const Tags = ({ pageContext, data }) => {
-  const {tag, currentPage, numPages} = pageContext
+  const { tag, currentPage, numPages } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `タグ：${tag}`
 
   return (
     <Layout>
-      <Head 
-        title= {tagHeader}
-        description= {`「${tag}」についての一覧ページです`}
+      <Head
+        title={tagHeader}
+        description={`「${tag}」についての一覧ページです`}
       />
-      <h1 className="text-center"><span>{tagHeader}</span></h1>
+      <h1 className="text-center">
+        <span>{tagHeader}</span>
+      </h1>
       <p>投稿：{totalCount}件</p>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const title = node.frontmatter.title || node.fields.slug
-          const description = node.frontmatter.description || node.excerpt
-          return (
-            <div key={slug} className="border-bottom pt-3 px-2">
-                <small>投稿日：{node.frontmatter.date}</small>
-                <Link to={slug}><h2>{title}</h2></Link>
-                <p>{description}</p>
-            </div>
-          )
-        })}
+      {edges.map(({ node }) => {
+        const { slug } = node.fields
+        const title = node.frontmatter.title || node.fields.slug
+        const description = node.frontmatter.description || node.excerpt
+        return (
+          <div key={slug} className="border-bottom pt-3 px-2">
+            <small>{node.frontmatter.date}</small>
+            <Link to={slug}>
+              <h2>{title}</h2>
+            </Link>
+            <p>{description}</p>
+          </div>
+        )
+      })}
       <Pagination numPages={numPages} currentPage={currentPage} />
       <Link to="/tags">タグ一覧</Link>
     </Layout>
@@ -76,7 +80,7 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
-            date
+            date(formatString: "YYYY/MM/DD")
             description
           }
         }

@@ -11,24 +11,28 @@ const Category = ({ pageContext, data }) => {
   const categoryHeader = `カテゴリー：${category}`
   return (
     <Layout>
-      <Head 
-        title= {categoryHeader}
-        description= {`「${category}」についての一覧ページです`}
+      <Head
+        title={categoryHeader}
+        description={`「${category}」についての一覧ページです`}
       />
-      <h1 className="text-center"><span>{categoryHeader}</span></h1>
+      <h1 className="text-center">
+        <span>{categoryHeader}</span>
+      </h1>
       <p>投稿：{totalCount}件</p>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const title = node.frontmatter.title || node.fields.slug
-          const description = node.frontmatter.description || node.excerpt
-          return (
-            <div key={slug} className="border-bottom pt-3 px-2">
-                <small>投稿日：{node.frontmatter.date}</small>
-                <Link to={slug}><h2>{title}</h2></Link>
-                <p>{description}</p>
-            </div>
-          )
-        })}
+      {edges.map(({ node }) => {
+        const { slug } = node.fields
+        const title = node.frontmatter.title || node.fields.slug
+        const description = node.frontmatter.description || node.excerpt
+        return (
+          <div key={slug} className="border-bottom pt-3 px-2">
+            <small>{node.frontmatter.date}</small>
+            <Link to={slug}>
+              <h2>{title}</h2>
+            </Link>
+            <p>{description}</p>
+          </div>
+        )
+      })}
       <Pagination numPages={numPages} currentPage={currentPage} />
     </Layout>
   )
@@ -74,7 +78,7 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
-            date
+            date(formatString: "YYYY/MM/DD")
             description
           }
         }

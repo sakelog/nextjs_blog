@@ -3,10 +3,10 @@ title: "Gatsby・タグ投稿一覧にページ遷移をつける"
 date: "2020-01-13 09:42:24"
 description: "Gatsbyのタグ投稿一覧にページ遷移を実装したので、その方法を解説します。"
 category: "技術"
-tags : ["Gatsby"]
+tags: ["Gatsby"]
 ---
 
-結論から言うと、Gatsbyのタグ投稿一覧ページにページ遷移を実装するには、 `totalCount` を使うと良いです。
+結論から言うと、Gatsby のタグ投稿一覧ページにページ遷移を実装するには、 `totalCount` を使うと良いです。
 
 ## 前提条件
 
@@ -16,9 +16,9 @@ tags : ["Gatsby"]
 
 この情報を元に、基本的なタグ投稿一覧ページを作成済み、という前提でお話します。
 
-## gatsby-node.jsでtotalCountの取得
+## gatsby-node.js で totalCount の取得
 
-gatsby-node.jsのgraphql記述部分をいじって、各タグのtotalCountを取得します。
+gatsby-node.js の graphql 記述部分をいじって、各タグの totalCount を取得します。
 
 ```jsx{21}:title=gatsby-node.js
   const result = await graphql(`
@@ -48,38 +48,38 @@ gatsby-node.jsのgraphql記述部分をいじって、各タグのtotalCountを�
     `
 ```
 
-## gatsby-node.jsでページ作成時に複数ページ作成する
+## gatsby-node.js でページ作成時に複数ページ作成する
 
 ```jsx{6-7,9,11,14-15,17-18}:title=gatsby-node.js
-    // Create Tags pages
-    const tags = result.data.tagsGroup.group
-    const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
+// Create Tags pages
+const tags = result.data.tagsGroup.group
+const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
 
-    tags.forEach(tag => {
-      const tagPerPage = 6;
-      const tagnumPages = Math.ceil(tag.totalCount / tagPerPage);
-      const tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
-      Array.from({length: tagnumPages}).forEach((_,i) => {
-        createPage({
-          path: i === 0 ? tagPathBase : `${tagPathBase}/${i + 1}`,
-          component: tagTemplate,
-          context: {
-            limit: tagPerPage,
-            skip: i * tagPerPage,
-            tag: tag.fieldValue,
-            numPages: tagnumPages,
-            currentPage: i + 1,
-          },
-        })
-      })
+tags.forEach(tag => {
+  const tagPerPage = 6
+  const tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
+  const tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
+  Array.from({ length: tagnumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? tagPathBase : `${tagPathBase}/${i + 1}`,
+      component: tagTemplate,
+      context: {
+        limit: tagPerPage,
+        skip: i * tagPerPage,
+        tag: tag.fieldValue,
+        numPages: tagnumPages,
+        currentPage: i + 1,
+      },
     })
+  })
+})
 ```
 
 ## タグ投稿一覧ページでページ情報を読み取る
 
 あとは、タグ情報一覧ページでページ情報を読み取ってあげます。
 
-src/templates/tags.jsを修正。
+src/templates/tags.js を修正。
 
 ```jsx{9,33,41-42}:title=tags.js
 import React from "react"
@@ -90,30 +90,34 @@ import Pagination from "../components/pagination"
 
 import { Link, graphql } from "gatsby"
 const Tags = ({ pageContext, data }) => {
-  const {tag, currentPage, numPages} = pageContext
+  const { tag, currentPage, numPages } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `タグ：${tag}`
 
   return (
     <Layout>
-      <Head 
-        title= {tagHeader}
-        description= {`「${tag}」についての一覧ページです`}
+      <Head
+        title={tagHeader}
+        description={`「${tag}」についての一覧ページです`}
       />
-      <h1 className="text-center"><span>{tagHeader}</span></h1>
+      <h1 className="text-center">
+        <span>{tagHeader}</span>
+      </h1>
       <p>投稿：{totalCount}件</p>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const title = node.frontmatter.title || node.fields.slug
-          const description = node.frontmatter.description || node.excerpt
-          return (
-            <div key={slug} className="border-bottom pt-3 px-2">
-                <small>投稿日：{node.frontmatter.date}</small>
-                <Link to={slug}><h2>{title}</h2></Link>
-                <p>{description}</p>
-            </div>
-          )
-        })}
+      {edges.map(({ node }) => {
+        const { slug } = node.fields
+        const title = node.frontmatter.title || node.fields.slug
+        const description = node.frontmatter.description || node.excerpt
+        return (
+          <div key={slug} className="border-bottom pt-3 px-2">
+            <small>投稿日：{node.frontmatter.date}</small>
+            <Link to={slug}>
+              <h2>{title}</h2>
+            </Link>
+            <p>{description}</p>
+          </div>
+        )
+      })}
       <Pagination numPages={numPages} currentPage={currentPage} />
       <Link to="/tags">タグ一覧</Link>
     </Layout>
@@ -176,4 +180,4 @@ export const pageQuery = graphql`
 
 意外とタグ一覧ページのページ遷移について説明しているサイトがなかったので、今回記事にまとめました。
 
-ポイントは**totalCountでタグに紐づく投稿数を取得**ですので、是非活用してみてください。
+ポイントは**totalCount でタグに紐づく投稿数を取得**ですので、是非活用してみてください。
