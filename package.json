@@ -5,54 +5,48 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "push": "git push origin master",
-    "deploy": "npm run build && npm run push"
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "gatsby": "^2.18.21",
-    "gatsby-plugin-google-analytics": "^2.1.32",
-    "gatsby-plugin-less": "^3.0.18",
+    "gatsby": "^2.18.24",
+    "gatsby-plugin-google-analytics": "^2.1.33",
     "gatsby-plugin-lodash": "^3.1.19",
     "gatsby-plugin-manifest": "^2.2.37",
-    "gatsby-plugin-offline": "^3.0.31",
+    "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sass": "^2.1.27",
     "gatsby-plugin-sharp": "^2.3.13",
-    "gatsby-plugin-sitemap": "^2.2.25",
-    "gatsby-remark-copy-images": "^0.2.1",
+    "gatsby-plugin-sitemap": "^2.2.26",
     "gatsby-remark-images": "^3.1.42",
     "gatsby-remark-prismjs": "^3.3.30",
     "gatsby-remark-responsive-iframe": "^2.2.31",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-remark": "^2.6.48",
     "jquery": "^3.4.1",
-    "less": "^3.10.3",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "popper.js": "^1.16.0",
-    "prismjs": "^1.18.0",
+    "prismjs": "^1.19.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-icons": "^3.8.0"
+    "react-icons": "^3.8.0",
+    "rehype-react": "^4.0.1",
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
-    "gatsby-remark-code-titles": "^1.1.0",
-    "prettier": "^1.19.1"
+    "gatsby-remark-code-titles": "^1.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/ksakiko/sake_log"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/ksakiko/sake_log/issues"
   }
 }
