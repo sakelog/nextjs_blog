@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 import PropTypes from "prop-types"
 
@@ -17,7 +17,7 @@ const BlogList = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <Head
+      <SEO
         title={pageTitle}
         description={`${SiteTitle}の記事一覧ページ：${currentPage}`}
       />

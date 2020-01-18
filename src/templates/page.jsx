@@ -4,7 +4,7 @@ import rehypeReact from "rehype-react"
 
 // Components
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 
 // component再定義
 export const renderAst = new rehypeReact({
@@ -37,7 +37,7 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <Head
+      <SEO
         title={page.frontmatter.title}
         description={description}
       />

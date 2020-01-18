@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import Pagination from "../components/pagination"
 
@@ -11,7 +11,7 @@ const Category = ({ pageContext, data }) => {
   const categoryHeader = `カテゴリー：${category}`
   return (
     <Layout>
-      <Head
+      <SEO
         title={categoryHeader}
         description={`「${category}」についての一覧ページです`}
       />

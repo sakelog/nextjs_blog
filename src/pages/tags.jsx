@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 
 // Components
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
@@ -15,7 +15,7 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <Head title="タグ一覧ページ" description="全タグの一覧ページです" />
+    <SEO title="タグ一覧ページ" description="全タグの一覧ページです" />
     <div>
       <h1 className="text-center">全タグ一覧</h1>
       <ul className="list-unstyled">

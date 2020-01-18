@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 
 // Components
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 import PrevNext from "../components/prev-next"
 
 // Utilities
@@ -55,7 +55,7 @@ const BlogPost = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <Head
+      <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
       />

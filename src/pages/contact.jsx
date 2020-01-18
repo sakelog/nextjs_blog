@@ -1,13 +1,13 @@
 import React from "react"
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 import { Link } from "gatsby"
 
 const pageTitle = "お問い合わせ"
 
 export default () => (
   <Layout>
-    <Head
+    <SEO
       title={pageTitle}
       description="sake logについてのお問い合わせはこちらから"
     />

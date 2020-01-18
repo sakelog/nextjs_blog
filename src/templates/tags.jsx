@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
-import Head from "../components/head"
+import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 
 import { Link, graphql } from "gatsby"
@@ -12,7 +12,7 @@ const Tags = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <Head
+      <SEO
         title={tagHeader}
         description={`「${tag}」についての一覧ページです`}
       />
