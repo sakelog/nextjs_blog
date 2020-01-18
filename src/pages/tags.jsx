@@ -5,6 +5,7 @@ import { Link, graphql } from "gatsby"
 // Components
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BackToTopPage from "../components/back-to-top-page"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
@@ -22,15 +23,16 @@ const TagsPage = ({
         {group.map(tag => (
           <li
             key={tag.fieldValue}
-            className="d-inline-block border border-primary rounded m-2 p-1"
+            className="d-inline-block m-1"
           >
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} className="btn btn-outline-primary">
               #{tag.fieldValue} ({tag.totalCount})
             </Link>
           </li>
         ))}
       </ul>
     </div>
+    <BackToTopPage />    
   </Layout>
 )
 TagsPage.propTypes = {

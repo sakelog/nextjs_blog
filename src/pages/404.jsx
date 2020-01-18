@@ -1,8 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
 
+// Components
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BackToTopPage from "../components/back-to-top-page"
 
 const notFoundPage = () => {
     return(
@@ -13,7 +14,7 @@ const notFoundPage = () => {
             </div>
             <p>お探しのページは見つかりませんでした。</p>
             <hr />
-            <Link to="/">トップに戻る</Link>
+            <BackToTopPage />
         </Layout>
     )
 }

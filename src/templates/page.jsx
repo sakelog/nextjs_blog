@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import RenderAst from "../components/renderAst"
+import BackToTopPage from "../components/back-to-top-page"
 
 const Page = ({ data }) => {
   const page = data.markdownRemark
@@ -24,6 +25,7 @@ const Page = ({ data }) => {
         <div><RenderAst{...page.htmlAst} /></div>
 
       </div>
+      <BackToTopPage />
     </Layout>
   )
 }

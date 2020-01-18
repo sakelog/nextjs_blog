@@ -1,9 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
 
 // Components
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BackToTopPage from "../components/back-to-top-page"
 
 const pageTitle = "お問い合わせ"
 
@@ -17,8 +17,7 @@ export default () => (
     <div className="alert alert-success" role="alert">
       <h2 className="alert-heading">送信成功</h2>
       <p>お問い合わせ内容は送信されました。確認後、返信させていただきます。</p>
-      <hr />
-      <p className="mb-0"><Link to="/">サイトトップに戻る</Link></p>
     </div>
+    <BackToTopPage />
   </Layout>
 )

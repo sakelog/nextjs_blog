@@ -1,10 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Link, graphql } from "gatsby"
+
+// Components
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Pagination from "../components/pagination"
+import BackToTopPage from "../components/back-to-top-page"
 
-import { Link, graphql } from "gatsby"
 const Tags = ({ pageContext, data }) => {
   const { tag, currentPage, numPages } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
@@ -36,6 +39,7 @@ const Tags = ({ pageContext, data }) => {
       })}
       <Pagination numPages={numPages} currentPage={currentPage} />
       <Link to="/tags">タグ一覧</Link>
+      <BackToTopPage />
     </Layout>
   )
 }

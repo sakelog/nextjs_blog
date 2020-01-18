@@ -1,9 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Link, graphql } from "gatsby"
+
+// Components
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Link, graphql } from "gatsby"
 import Pagination from "../components/pagination"
+import BackToTopPage from "../components/back-to-top-page"
 
 const Category = ({ pageContext, data }) => {
   const { category, currentPage, numPages } = pageContext
@@ -34,6 +37,7 @@ const Category = ({ pageContext, data }) => {
         )
       })}
       <Pagination numPages={numPages} currentPage={currentPage} />
+      <BackToTopPage />
     </Layout>
   )
 }

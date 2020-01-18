@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import RenderAst from "../components/renderAst"
 import PrevNext from "../components/prev-next"
 import Bio from "../components/bio"
+import BackToTopPage from "../components/back-to-top-page"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
@@ -56,6 +57,7 @@ const BlogPost = ({ pageContext, data }) => {
       <Bio />
       <hr />
       <PrevNext prev={prev} next={next} />
+      <BackToTopPage />
     </Layout>
   )
 }
