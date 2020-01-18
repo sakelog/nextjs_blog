@@ -14,12 +14,13 @@ const BlogList = ({ pageContext, data }) => {
   const SiteTitle = data.site.siteMetadata.title
 
   const pageTitle = currentPage === 1 ? null : "記事一覧"
+  const description = currentPage === 1 ? null : `${SiteTitle}の記事一覧ページ：${currentPage}`
 
   return (
     <Layout>
       <SEO
         title={pageTitle}
-        description={`${SiteTitle}の記事一覧ページ：${currentPage}`}
+        description={description}
       />
       <h2>{pageTitle}</h2>
       {posts.map(({ node }) => {
