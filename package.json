@@ -23,6 +23,7 @@
     "gatsby-plugin-sass": "^2.1.27",
     "gatsby-plugin-sharp": "^2.3.13",
     "gatsby-plugin-sitemap": "^2.2.26",
+    "gatsby-remark-autolink-headers": "^2.1.23",
     "gatsby-remark-copy-images": "^0.2.1",
     "gatsby-remark-images": "^3.1.42",
     "gatsby-remark-prismjs": "^3.3.30",

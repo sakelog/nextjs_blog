@@ -110,6 +110,8 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // Table of Content
+          `gatsby-remark-autolink-headers`,
           // Syntax Highlight
           `gatsby-remark-code-titles`,
           {

@@ -41,6 +41,11 @@ const BlogPost = ({ pageContext, data }) => {
         </Link>
         <hr />
 
+        <div className="tableOfContents p-4 mx-auto my-4">
+          <h2 className="text-center">目次</h2>
+          <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+        </div>
+
         <div><RenderAst{...post.htmlAst} /></div>
 
         <ul className="list-inline">
@@ -75,6 +80,7 @@ export const pageQuery = graphql`
         tags
         description
       }
+      tableOfContents
     }
   }
 `
