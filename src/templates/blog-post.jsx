@@ -7,12 +7,10 @@ import PropTypes from "prop-types"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PrevNext from "../components/prev-next"
+import Bio from "../components/bio"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
-
-// Icons
-import { FiClock } from "react-icons/fi"
 
 // component再定義
 export const renderAst = new rehypeReact({
@@ -60,14 +58,11 @@ const BlogPost = ({ pageContext, data }) => {
         description={post.frontmatter.description}
       />
       <div className="Article">
+        <small>{post.frontmatter.date}</small>
         <h1>{post.frontmatter.title}</h1>
         <Link to={categoryPath} className="badge badge-primary my-2">
           <h4 className="cats">{post.frontmatter.category}</h4>
         </Link>
-        <p className="text-muted">
-          <FiClock />
-          投稿日：{post.frontmatter.date}
-        </p>
         <hr />
 
         <div>{renderAst(post.htmlAst)}</div>
@@ -77,6 +72,7 @@ const BlogPost = ({ pageContext, data }) => {
           {tag_list}
         </ul>
       </div>
+      <Bio />
       <hr />
       <PrevNext prev={prev} next={next} />
     </Layout>

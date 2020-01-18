@@ -81,7 +81,15 @@ module.exports = {
       },
     },
     // image
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `post`,
+        path: `${__dirname}/src/img/`,
+      },
+    },
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     // createPage
     {
       resolve: `gatsby-source-filesystem`,
