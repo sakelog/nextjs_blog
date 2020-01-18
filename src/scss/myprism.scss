@@ -1,0 +1,78 @@
+@import '../../node_modules/prismjs/themes/prism-tomorrow.css';
+@import '../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
+.gatsby-highlight {
+    background-color: #2d2d2d;
+    margin: 0.5em 0;
+    padding: 1em;
+    overflow: auto;
+  }
+  .gatsby-highlight pre[class*="language-"] {
+    //background-color: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: initial;
+    float: left;
+    min-width: 100%;
+  }
+.gatsby-highlight-code-line {
+    background-color: #545454;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid #c1e4e9;
+  }
+
+  .gatsby-highlight pre[class*="language-"].line-numbers {
+    padding-left: 2.8em;
+  }
+  .gatsby-code-title {
+    background: #666666;
+    color: #ffffff;
+    margin-bottom: -0.65em;
+    padding: 0.7rem 1.05rem;
+    font-size: 0.8em;
+    line-height: 0.2;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    display: table;
+  }
+/*
+
+
+.gatsby-highlight-code-line {
+    background-color:#545454;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid #c1e4e9;
+  }
+
+.gatsby-highlight-code-line:before,
+.gatsby-highlight-code-line[data-end]:after {
+	background-color: hsl(215, 15%, 59%);
+	border-radius: 999px;
+	box-shadow: 0 1px white;
+	color: hsl(24, 20%, 95%);
+	content: attr(data-start);
+	font: bold 65%/1.5 sans-serif;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	position: absolute;
+	text-align: center;
+	text-shadow: none;
+	top: .4em;
+	vertical-align: .3em;
+}
+
+.gatsby-highlight-code-line[data-end]:after {
+	bottom: .4em;
+	content: attr(data-end);
+	top: auto;
+}
+*/

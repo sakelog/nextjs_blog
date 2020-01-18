@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans+JP:400,700&display=swap');
+$primary: #164a84;
+$link-color:#007bbb;
+$white: #ffffff;
+$navbar-dark-color: rgba($white, .7) ;
+$navbar-dark-hover-color: rgba($white, .85) !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Helvetica Neue', Verdana, 'Noto Sans JP', Meiryo, 'Yu Gothic', YuGothic, sans-serif;
+$enable-responsive-font-sizes: true;
+$small-font-size: 90%;
+$card-height: 100%;
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

@@ -81,7 +81,7 @@ tags.forEach(tag => {
 
 src/templates/tags.js を修正。
 
-```jsx{9,33,41-42}:title=tags.js
+```jsx{9,37,45-46}:title=tags.js
 import React from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"

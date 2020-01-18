@@ -101,6 +101,7 @@ export const pageQuery = graphql`
         date(formatString: "YYYY/MM/DD")
         category
         tags
+        description
       }
     }
   }
