@@ -122,6 +122,8 @@ module.exports = {
             },
           },
           `gatsby-remark-responsive-iframe`,
+          // path
+          `gatsby-remark-copy-images`,
         ],
       },
     },
