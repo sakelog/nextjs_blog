@@ -1,6 +1,5 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 const SEO = ({ title , description }) => {
@@ -62,11 +61,6 @@ const SEO = ({ title , description }) => {
       defer={false}
     />
   )  
-}
-
-SEO.prototype = {
-  title: PropTypes.string,
-  description: PropTypes.string
 }
 
 export default SEO
