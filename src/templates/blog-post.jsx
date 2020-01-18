@@ -1,40 +1,16 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import rehypeReact from "rehype-react"
 import PropTypes from "prop-types"
 
 // Components
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import RenderAst from "../components/renderAst"
 import PrevNext from "../components/prev-next"
 import Bio from "../components/bio"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
-
-// component再定義
-export const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: {
-    h2: props => {
-      return (
-        <h2 className="text-primary p-2 my-4" {...props}>
-          {}
-        </h2>
-      )
-    },
-    table: props => {
-      return (
-        <div className="scroll">
-          <table className="table" {...props}></table>
-        </div>
-      )
-    },
-    blockquote: props => {
-      return <blockquote className="blockquote" {...props}></blockquote>
-    },
-  },
-}).Compiler
 
 const BlogPost = ({ pageContext, data }) => {
   const post = data.markdownRemark
@@ -65,7 +41,7 @@ const BlogPost = ({ pageContext, data }) => {
         </Link>
         <hr />
 
-        <div>{renderAst(post.htmlAst)}</div>
+        <div><RenderAst{...post.htmlAst} /></div>
 
         <ul className="list-inline">
           <li className="list-inline-item">タグ：</li>

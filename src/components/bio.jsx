@@ -27,7 +27,7 @@ const Bio = () => {
                 <div>
                     <p className="h3">sake</p>
                     <p>システムエンジニア。普段はホスト系のお仕事してます。</p>
-                    <Link to="about_this_site" className="btn btn-primary">プロフィール</Link>
+                    <Link to="/about_this_site/" className="btn btn-primary">プロフィール</Link>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
     overflow: auto;
   }
   .gatsby-highlight pre[class*="language-"] {
-    //background-color: transparent;
+    background-color: transparent;
     margin: 0;
     padding: 0;
     overflow: initial;
@@ -39,40 +39,3 @@
     border-radius: 8px 8px 0 0;
     display: table;
   }
-/*
-
-
-.gatsby-highlight-code-line {
-    background-color:#545454;
-    display: block;
-    margin-right: -1em;
-    margin-left: -1em;
-    padding-right: 1em;
-    padding-left: 0.75em;
-    border-left: 0.25em solid #c1e4e9;
-  }
-
-.gatsby-highlight-code-line:before,
-.gatsby-highlight-code-line[data-end]:after {
-	background-color: hsl(215, 15%, 59%);
-	border-radius: 999px;
-	box-shadow: 0 1px white;
-	color: hsl(24, 20%, 95%);
-	content: attr(data-start);
-	font: bold 65%/1.5 sans-serif;
-	left: .6em;
-	min-width: 1em;
-	padding: 0 .5em;
-	position: absolute;
-	text-align: center;
-	text-shadow: none;
-	top: .4em;
-	vertical-align: .3em;
-}
-
-.gatsby-highlight-code-line[data-end]:after {
-	bottom: .4em;
-	content: attr(data-end);
-	top: auto;
-}
-*/
