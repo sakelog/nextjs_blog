@@ -23,6 +23,12 @@ module.exports = {
         trackingId: "UA-156013841-1",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-5013956882447566`
+      },
+    },
     // develop
     `gatsby-plugin-lodash`,
     //PWA
