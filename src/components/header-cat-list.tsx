@@ -1,4 +1,5 @@
-import React from "react"
+import * as React from "react"
+
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 // Utilities
@@ -17,11 +18,10 @@ const HeaderCatList = () => {
     `
   )
   const categorys = data.allMarkdownRemark.group
- return(
+  return(
   <div>
-    {categorys.map(category => (
+    {categorys.map((category: { fieldValue: {} }) => (
         <Link
-          key={category.fieldValue}
           to={`/category/${kebabCase(category.fieldValue)}/`}
           className="btn btn-outline-light mx-1"
         >
@@ -29,7 +29,7 @@ const HeaderCatList = () => {
         </Link>
     ))}
   </div>
- )
+  )
 }
 
 export default HeaderCatList

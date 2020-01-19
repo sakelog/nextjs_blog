@@ -31,6 +31,7 @@ module.exports = {
     },
     // develop
     `gatsby-plugin-lodash`,
+    `gatsby-plugin-typescript`,
     //PWA
     `gatsby-plugin-offline`,
     {
