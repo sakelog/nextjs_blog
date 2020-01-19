@@ -142,14 +142,14 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Tags pages
     const tags = result.data.tagsGroup.group
+    const tagPerPage = 6
 
     tags.forEach(tag => {
-      const tagPerPage = 6
-      const tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
-      const tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
+      var tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
+      var tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
       Array.from({ length: tagnumPages }).forEach((_, i) => {
         createPage({
-          path: i === 0 ? tagPathBase : `${tagPathBase}/${i + 1}`,
+          path: i === 0 ? tagPathBase : tagPathBase + (i + 1),
           component: tagTemplate,
           context: {
             limit: tagPerPage,
@@ -157,6 +157,7 @@ exports.createPages = ({ graphql, actions }) => {
             tag: tag.fieldValue,
             numPages: tagnumPages,
             currentPage: i + 1,
+            pathBase: tagPathBase
           },
         })
       })
@@ -164,14 +165,15 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Category Pages
     const categorys = result.data.categoryGroup.group
+    const categoryPerPage = 6
 
     categorys.forEach(category => {
-      const categoryPerPage = 6
-      const categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
-      const categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
+      var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
+      var categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
       Array.from({ length: categorynumPages }).forEach((_, i) => {
+        console.log(i*categoryPerPage)
         createPage({
-          path: i === 0 ? categoryPathBase : `${categoryPathBase}/${i + 1}`,
+          path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
           component: categoryTemplate,
           context: {
             limit: categoryPerPage,
@@ -179,9 +181,11 @@ exports.createPages = ({ graphql, actions }) => {
             category: category.fieldValue,
             numPages: categorynumPages,
             currentPage: i + 1,
+            pathBase: categoryPathBase
           },
         })
       })
     })
+
   })
 }

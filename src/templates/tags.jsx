@@ -9,7 +9,7 @@ import Pagination from "../components/pagination"
 import BackToTopPage from "../components/back-to-top-page"
 
 const Tags = ({ pageContext, data }) => {
-  const { tag, currentPage, numPages } = pageContext
+  const { tag, currentPage, numPages, pathBase } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `タグ：${tag}`
 
@@ -37,7 +37,7 @@ const Tags = ({ pageContext, data }) => {
           </div>
         )
       })}
-      <Pagination numPages={numPages} currentPage={currentPage} />
+      <Pagination numPages={numPages} currentPage={currentPage} pathBase={pathBase} />
       <Link to="/tags">タグ一覧</Link>
       <BackToTopPage />
     </Layout>
@@ -48,6 +48,7 @@ Tags.propTypes = {
     tag: PropTypes.string.isRequired,
     currentPage: PropTypes.number.isRequired,
     numPages: PropTypes.number.isRequired,
+    pathBase: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
@@ -69,11 +70,12 @@ Tags.propTypes = {
 }
 export default Tags
 export const pageQuery = graphql`
-  query($tag: String) {
+  query($tag: String, $limit: Int!, $skip: Int!) {
     allMarkdownRemark(
-      limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       edges {

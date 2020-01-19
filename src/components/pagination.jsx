@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Pagination = ({ numPages, currentPage }) => {
+const Pagination = ({ numPages, currentPage, pathBase }) => {
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString()
-  const nextPage = (currentPage + 1).toString()
+  const prevPage = currentPage - 1 === 1 ? pathBase : pathBase + (currentPage - 1).toString()
+  const nextPage = pathBase + (currentPage + 1).toString()
 
   const prevText = "前へ"
   const nextText = "次へ"
@@ -37,7 +37,7 @@ const Pagination = ({ numPages, currentPage }) => {
               </li>
             ) : (
               <li key={`pagination-number${i + 1}`} className="page-item">
-                <Link to={`/${i === 0 ? "" : i + 1}`} className="page-link">
+                <Link to={pathBase + (i === 0 ? "" : i + 1)} className="page-link">
                   {i + 1}
                 </Link>
               </li>

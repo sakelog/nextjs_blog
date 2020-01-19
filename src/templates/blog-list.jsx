@@ -58,7 +58,7 @@ const BlogList = ({ pageContext, data }) => {
           </div>
         )
       })}
-      <Pagination numPages={numPages} currentPage={currentPage} />
+      <Pagination numPages={numPages} currentPage={currentPage} pathBase="/" />
     </Layout>
   )
 }
