@@ -21,8 +21,8 @@ components: {
     },
     table: props => {
     return (
-        <div className="scroll">
-        <table className="table" {...props}></table>
+        <div className="table-responsive">
+            <table className="table table-bordered" {...props}></table>
         </div>
     )
     },

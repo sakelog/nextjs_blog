@@ -25,16 +25,3 @@
     }
   }
   
-  @media screen and (max-width: 768px) {
-    .Article{
-        .scroll {
-            overflow: auto;
-            overflow-y: hidden;
-        }
-        table {
-            width: 100%;
-            min-width: 768px;
-        }
-    }
-  }
-  
