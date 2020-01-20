@@ -1,5 +1,5 @@
-import React from "react"
-import rehypeReact from "rehype-react"
+import * as React from "react"
+const rehypeReact = require("rehype-react")
 
 // component再定義
 const RenderAst = new rehypeReact({

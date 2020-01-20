@@ -19,10 +19,10 @@ const BlogList = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={pageTitle}
-        description={description}
-      />
+      {SEO
+        (pageTitle,
+        description)
+      }
       <h2>{pageTitle}</h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug

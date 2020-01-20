@@ -30,10 +30,10 @@ const BlogPost = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-      />
+      {SEO
+        (post.frontmatter.title,
+        post.frontmatter.description)
+      }
       <div className="Article">
         <small>{post.frontmatter.date}</small>
         <h1>{post.frontmatter.title}</h1>

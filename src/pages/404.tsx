@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 
 // Components
 import Layout from "../components/layout"
@@ -8,7 +8,7 @@ import BackToTopPage from "../components/back-to-top-page"
 const notFoundPage = () => {
     return(
         <Layout>
-            <SEO title={null} description={null} />
+            {SEO(null,null)}
             <div>
                 <h1 className="text-center">404 Not Found.</h1>
             </div>

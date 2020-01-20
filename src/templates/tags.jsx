@@ -15,10 +15,10 @@ const Tags = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={tagHeader}
-        description={`「${tag}」についての一覧ページです`}
-      />
+      {SEO
+        (tagHeader,
+        `「${tag}」についての一覧ページです`)
+      }
       <h1 className="text-center">
         <span>{tagHeader}</span>
       </h1>

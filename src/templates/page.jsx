@@ -14,10 +14,10 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={page.frontmatter.title}
-        description={description}
-      />
+      {SEO
+        (page.frontmatter.title,
+        description)
+      }
       <div className="Article">
         <h1>{page.frontmatter.title}</h1>
         <hr />

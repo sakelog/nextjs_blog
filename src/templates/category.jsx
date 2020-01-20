@@ -14,10 +14,10 @@ const Category = ({ pageContext, data }) => {
   const categoryHeader = `カテゴリー：${category}`
   return (
     <Layout>
-      <SEO
-        title={categoryHeader}
-        description={`「${category}」についての一覧ページです`}
-      />
+      {SEO
+        (categoryHeader,
+        `「${category}」についての一覧ページです`)
+      }
       <h1 className="text-center">
         <span>{categoryHeader}</span>
       </h1>

@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 
 // Components
 import Layout from "../components/layout"
@@ -10,10 +10,10 @@ const pageTitle = "お問い合わせ"
 
 export default () => (
   <Layout>
-    <SEO
-      title={pageTitle}
-      description="sake logについてのお問い合わせはこちらから"
-    />
+    {SEO
+      (pageTitle,
+      "sake logについてのお問い合わせはこちらから")
+    }
     <h1>{pageTitle}</h1>
     <ContactForm />
     <BackToTopPage />
