@@ -1,10 +1,14 @@
 ---
-title: "【WordPress】自作テーマ作成に最低限必要なファイル"
-date: "2020-01-19 18:04:32"
-description: "WordPressで自作テーマを作るのに最低限必要なファイルをご紹介します。これから自作テーマを作る方は参考にしてください。"
-category: "技術"
-tags: ["WordPress"]
+title: '【WordPress】自作テーマ作成に最低限必要なファイル'
+date: '2020-01-19 18:04:32'
+update: '2020-01-26 02:26:52'
+description: 'WordPressで自作テーマを作るのに最低限必要なファイルをご紹介します。これから自作テーマを作る方は参考にしてください。'
+category: '技術'
+tags: ['WordPress']
 ---
+
+[[note | 2020-01-26]]
+| style.cssについて追記しました。
 
 個人的に WordPress を勉強するのに一番適しているのは自作テーマを作ることだと思います。
 
@@ -16,7 +20,7 @@ tags: ["WordPress"]
 
 WordPress 公式にテーマファイルの階層についての図があるので、これを参考に、洗い出しをします。このファイルを作成すると、このページとして扱うよ～という一覧ですね。
 
-![wp-template-hierarchy](img/2020-01-19/wp-template-hierarchy.jpg "WordPressテンプレート階層")
+![wp-template-hierarchy](img/2020-01-19/wp-template-hierarchy.jpg 'WordPressテンプレート階層')
 
 [テンプレート階層 - WordPress Codex 日本語版](http://wpdocs.osdn.jp/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E9%9A%8E%E5%B1%A4)
 
@@ -28,6 +32,7 @@ WordPress 公式にテーマファイルの階層についての図があるの�
 
 | 必要なファイル | ざっくり説明                                                                          |
 | -------------- | ------------------------------------------------------------------------------------- |
+| style.css      | テーマ情報をまとめたファイル                                                          |
 | index.php      | 各一覧ページ                                                                          |
 | singular.php   | 各投稿や固定ページの表示                                                              |
 | header.php     | ヘッダー（サイトのトップ）部分。`<html>`、`<head>`～`</head>`、`<body>`も合わせて記述 |
@@ -40,6 +45,34 @@ WordPress 公式にテーマファイルの階層についての図があるの�
 sidebar.php 以下はその機能を使わないのであればなくても動きます。
 
 ## 各ファイルの解説
+
+### style.css
+
+テーマの情報を設定するのに使います。
+
+このファイルがないと、テーマ選択画面で作ったテーマを表示することができません。
+
+こんな感じで記載します。
+
+```css:title=style.css
+/*
+Theme Name: simple-wp-theme
+Text Domain: simple-wp-theme
+Version: 1.0
+Description: WordPress自作テーマ
+Author: sake
+License: GNU General Public License v3.0
+*/
+```
+
+| 項目        | 説明                       |
+| ----------- | -------------------------- |
+| Theme Name  | テーマの名前               |
+| Text Domain | テーマ名のテキストドメイン |
+| Version     | テーマのバージョン         |
+| Description | テーマの説明               |
+| Author      | テーマ作成者名             |
+| License     | テーマのライセンス         |
 
 ### index.php
 
@@ -216,7 +249,7 @@ searchform.php の内容は`<?php get_search_form(); ?>`で読込。
 
 コメントの送信フォームやコメント一覧の表示に使います。
 
-comments.phpの内容は`<?php comments_template(); ?>`で読込。
+comments.php の内容は`<?php comments_template(); ?>`で読込。
 
 こちらも特にこだわりがなければデフォルトのコメント用テンプレートが読み込まれます。
 
@@ -226,10 +259,10 @@ comments.phpの内容は`<?php comments_template(); ?>`で読込。
 
 `<?php get_template_part(); ?>`で作ったパーツを読み込めます。
 
-例えば、hogehoge.phpというパーツを作成した場合、`<?php get_template_part('hogehoge'); ?>`で作った内容を読み込みできます。
+例えば、hogehoge.php というパーツを作成した場合、`<?php get_template_part('hogehoge'); ?>`で作った内容を読み込みできます。
 
 ## まとめ
 
-今回はWordPressの自作テーマを作るのに最低限必要なファイルというテーマでまとめてみました。
+今回は WordPress の自作テーマを作るのに最低限必要なファイルというテーマでまとめてみました。
 
 とにかくさくっと動くテーマが作りたいぜっていうときに参考にしていただければと思います。

@@ -26,5 +26,25 @@
         content: none;
       }
     }
+
+    .note {
+      background: #ffffe5;
+      padding: 0.5em;
+      margin: 1em 0;
+      border-radius: 5px;
+      
+      .custom-block-heading {
+        font-weight: 700;
+        font-size: 1.2em;
+      }
+
+      &.danger {
+        background: #ffe5f2;
+
+        .custom-block-heading {
+          color: #c53d43;
+        }
+      }
+    }
   }
   

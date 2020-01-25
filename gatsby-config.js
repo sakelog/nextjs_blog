@@ -131,6 +131,22 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
+          // style
+          {
+            resolve: 'gatsby-remark-custom-blocks',
+            options: {
+              blocks: {
+                note: { 
+                  classes: 'note',
+                  title: 'optional',
+                },
+                danger: { 
+                  classes: 'note danger',
+                  title: 'optional',
+               },
+              },
+            },
+          },
           // responsive
           {
             resolve: `gatsby-remark-images`,
