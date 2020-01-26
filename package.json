@@ -12,8 +12,6 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@babel/core": "^7.8.3",
-    "@types/react": "^16.9.17",
     "bootstrap": "^4.4.1",
     "gatsby": "^2.18.25",
     "gatsby-image": "^2.2.39",
@@ -50,11 +48,11 @@
     "webpack": "^4.41.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
     "@types/lodash": "^4.14.149",
+    "@types/react": "^16.9.19",
     "@types/react-helmet": "^5.0.15",
-    "@types/rehype-react": "^3.1.0",
-    "gatsby-remark-code-titles": "^1.1.0",
-    "gatsby-remark-custom-blocks": "^2.1.24"
+    "@types/rehype-react": "^3.1.0"
   },
   "repository": {
     "type": "git",
