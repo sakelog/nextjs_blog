@@ -1,20 +1,23 @@
 ---
-title: "メニューにカテゴリー一覧を追加"
+title: "Gatsbyで作ったブログカスタマイズ！カテゴリー一覧を追加する方法"
 date: "2020-01-13 01:43:18"
-description: "ヘッダーのメニュー部分にカテゴリー一覧を自動で設定するようにしました。Gatsbyでの設定方法を記載します。"
+update: "2020-01-28 11:03:34"
+description: "Gatsbyで作ったブログのヘッダーメニュー部分にカテゴリー一覧を自動で追加するようにカスタマイズしました。実際に書いたコードを共有します"
 category: "技術"
 tags: ["Gatsby"]
 ---
 
-ブログをやっていると、記事カテゴリーの一覧ほしくなりますよね。
+ブログをやっていると、記事カテゴリーの一覧を表示したくなります。
+
 後々ジャンルが変わることも考えられるので、できれば自動で取得したい。
-今回、自動でカテゴリー一覧を取得するように設定したので、実装方法を記載していきます。
+
+今回、Gatsbyで作ったブログ（このサイト）で自動でカテゴリー一覧を取得するように設定したので、実装方法をお伝えします。
 
 ## 前提条件：各カテゴリーページの設定
 
 各カテゴリーのページ作成を、gatsby-node.js で設定してあげます。
 
-```jsx:title=gatsby-node.js
+```js:title=gatsby-node.js
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -72,20 +75,21 @@ exports.createPages = ({ graphql, actions }) => {
 
 ## カテゴリー一覧の作成
 
-src/components に「header-cat-list.js」を作成します。
+src/components に「header-cat-list.tsx」を作成します。
 
-```jsx:title=header-cat-list.js
-import React from "react"
+```tsx:title=header-cat-list.tsx
+import * as React from "react"
+
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 // Utilities
-import kebabCase from "lodash/kebabCase"
+import { kebabCase } from "lodash"
 
-export default () => {
+const HeaderCatList = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        allMarkdownRemark(limit: 2000) {
+        allMarkdownRemark(limit: 100) {
           group(field: frontmatter___category) {
             fieldValue
           }
@@ -94,26 +98,47 @@ export default () => {
     `
   )
   const categorys = data.allMarkdownRemark.group
-  return (
-    <ul className="navbar-nav">
-      {categorys.map(category => (
-        <li key={category.fieldValue} className="nav-item">
-          <Link
-            to={`/category/${kebabCase(category.fieldValue)}/`}
-            className="nav-link"
-          >
-            {category.fieldValue}
-          </Link>
-        </li>
-      ))}
-    </ul>
+  return(
+  <div>
+    {categorys.map((category: { fieldValue: string },index:number) => (
+        <Link
+          key={index}
+          to={`/category/${kebabCase(category.fieldValue)}/`}
+          className="btn btn-outline-light mx-1"
+        >
+          {category.fieldValue}
+        </Link>
+    ))}
+  </div>
   )
 }
+
+export default HeaderCatList
 ```
 
 ※ClassName は Bootstrap の絡みです。
 
-後は、これを読み込みたいところで import して組み込む。
+後は、作ったコンポーネントを読み込みたいところでimport して組み込む。
+
+今回はヘッダーで読み込みたいので、例えばsrc/componentにheader.tsxを作成してあげて、こんな感じで読み込みます。
+
+```tsx:title=header.tsx
+import * as React from "react"
+
+import { Link, graphql, useStaticQuery } from "gatsby"
+
+//Components
+import HeaderCatList from "./header-cat-list"
+
+…中略…
+
+<div className="collapse navbar-collapse" id="nav-menu">
+  <HeaderCatList />
+  …中略…
+</div>
+
+…省略…
+```
 
 ## ハマったこと
 
@@ -127,4 +152,8 @@ export default () => {
 
 参考：[TypeError: Cannot read property 'allMarkdownRemark' of undefined #13233](https://github.com/gatsbyjs/gatsby/issues/13233)
 
-というわけで、staticQuery を使うことで解決。
+というわけで、staticQuery を使うことで解決しました。
+
+まだstaticQueryと普通のquery（export const～queryという書き方）の使い分けが理解しきれていないので、今後の課題ですね。
+
+今回はここまで。
