@@ -4,7 +4,7 @@ date: "2020-01-13 09:42:24"
 update: "2020-01-19 18:12:57"
 description: "Gatsbyのタグ投稿一覧にページ遷移を実装したので、その方法を解説します。"
 category: "技術"
-tags: ["Gatsby"]
+tags: ["GatsbyJS"]
 ---
 
 [[danger | 2020/1/19追記]]

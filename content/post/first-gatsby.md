@@ -3,7 +3,7 @@ title: "GatsbyJSでブログを作ってみた"
 date: "2020-01-12 18:02:48"
 description: "静的サイトジェネレータGatsbyJSを使ってブログを作成しました。気づいた点などを記録します。"
 category: "技術"
-tags: ["Gatsby"]
+tags: ["GatsbyJS"]
 ---
 
 今回、GatsbyJS という「静的サイトジェネレータ」を使ってブログサイト（このサイト）を構築してみました。

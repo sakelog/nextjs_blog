@@ -3,7 +3,7 @@ title: "【Gatsby】シンタックスハイライトのためのいい感じの
 date: "2020-01-18 18:24:30"
 description: "技術ブログなら必須？コードシンタックスハイライト機能。GatsbyJSでのCSS設定で苦労したので、CSS設定等をシェアします。"
 category: "技術"
-tags: ["Gatsby","PrismJS","CSS","SCSS","Markdown"]
+tags: ["GatsbyJS","Prism.js","CSS","SCSS","Markdown"]
 ---
 
 技術ブログなら必須？コードシンタックスハイライト機能。
