@@ -2,7 +2,7 @@ import * as React from "react"
 import Header from "./header"
 import Footer from "./footer"
 
-const Layout = ({children}) => {
+const Layout = ({children}:any) => {
   return(
     <div className="d-flex flex-column min-vh-100">
     <Header />

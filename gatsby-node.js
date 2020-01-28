@@ -5,7 +5,7 @@ const _ = require("lodash")
 // Template
 const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
 const blogPostListTemplate = path.resolve(`./src/templates/blog-list.jsx`)
-const pageTemplate = path.resolve(`./src/templates/page.jsx`)
+const pageTemplate = path.resolve(`./src/templates/page.tsx`)
 const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
 const categoryTemplate = path.resolve(`./src/templates/category.jsx`)
 
@@ -171,7 +171,6 @@ exports.createPages = ({ graphql, actions }) => {
       var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
       var categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
       Array.from({ length: categorynumPages }).forEach((_, i) => {
-        console.log(i*categoryPerPage)
         createPage({
           path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
           component: categoryTemplate,

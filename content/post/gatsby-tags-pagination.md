@@ -79,7 +79,6 @@ exports.createPages = ({ graphql, actions }) => {
       var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
       var categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
       Array.from({ length: categorynumPages }).forEach((_, i) => {
-        console.log(i*categoryPerPage)
         createPage({
           path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
           component: categoryTemplate,
@@ -128,7 +127,7 @@ frontmatterのcategoryに紐づく記事の総数をtotalCountで取得します
 
 記事数に応じて、作成されるページのパスを分割してあげます。
 
-```js{3,6,11}:title=gatsby-node.js
+```js{3,6,10}:title=gatsby-node.js
     // Create Category Pages
     const categorys = result.data.categoryGroup.group
     const categoryPerPage = 6
@@ -137,7 +136,6 @@ frontmatterのcategoryに紐づく記事の総数をtotalCountで取得します
       var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
       var categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
       Array.from({ length: categorynumPages }).forEach((_, i) => {
-        console.log(i*categoryPerPage)
         createPage({
           path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
           component: categoryTemplate,

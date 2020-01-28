@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import { graphql } from "gatsby"
 
 // Components
@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import RenderAst from "../components/renderAst"
 import BackToTopPage from "../components/back-to-top-page"
 
-const Page = ({ data }) => {
+const Page = ({ data }:any) => {
   const page = data.markdownRemark
 
   const description = page.frontmatter.description || page.excerpt
@@ -38,7 +38,6 @@ export const pageQuery = graphql`
       htmlAst
       frontmatter {
         title
-        date(formatString: "YYYY/MM/DD")
         description
       }
       excerpt
