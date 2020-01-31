@@ -2,6 +2,16 @@
 **  記事本文
 **===========================================*/
 .Article {
+    h2 {
+      background: $primary;
+      color: #ffffff;
+      padding: 0.5em 0.25em;
+      margin: 1em 0;
+    }
+    h3 {
+      color: $primary;
+      margin: 1em 0;
+    }
     blockquote {
       margin: 1em;
       padding: 1em;

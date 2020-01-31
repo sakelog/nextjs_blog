@@ -5,28 +5,14 @@ const rehypeReact = require("rehype-react")
 const RenderAst = new rehypeReact({
 createElement: React.createElement,
 components: {
-    h2: props => {
-    return (
-        <h2 className="text-primary p-2 my-4" {...props}>
-        {}
-        </h2>
-    )
-    },
-    h3: props => {
-        return (
-            <h3 className="p-2 mt-4 mb-2" {...props}>
-            {}
-            </h3>
-        )
-    },
-    table: props => {
+    table: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLTableElement> & React.TableHTMLAttributes<HTMLTableElement>) => {
     return (
         <div className="table-responsive">
             <table className="table table-bordered" {...props}></table>
         </div>
     )
     },
-    blockquote: props => {
+    blockquote: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLElement> & React.BlockquoteHTMLAttributes<HTMLElement>) => {
     return <blockquote className="blockquote" {...props}></blockquote>
     },
 },

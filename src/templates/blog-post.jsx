@@ -36,10 +36,10 @@ const BlogPost = ({ pageContext, data }) => {
       }
       <div className="Article">
         <small>{post.frontmatter.date}</small>
-        <h1>{post.frontmatter.title}</h1>
-        <Link to={categoryPath} className="badge badge-primary my-2">
+        <Link to={categoryPath} className="badge badge-primary ml-2">
           <h4 className="cats">{post.frontmatter.category}</h4>
         </Link>
+        <h1>{post.frontmatter.title}</h1>
         <hr />
 
         <div className="tableOfContents p-4 mx-auto my-4">
