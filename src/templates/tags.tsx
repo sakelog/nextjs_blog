@@ -1,6 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
+import * as React from "react"
 import { Link, graphql } from "gatsby"
+
+import { TempTagsQuery } from "../../types/graphql-types"
 
 // Components
 import Layout from "../components/layout"
@@ -8,7 +9,17 @@ import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 import BackToTopPage from "../components/back-to-top-page"
 
-const Tags = ({ pageContext, data }) => {
+interface TagsType {
+  pageContext:{
+    tag:{},
+    currentPage: number,
+    numPages: number,
+    pathBase: string,
+  },
+  data: TempTagsQuery,
+}
+
+const Tags = ({ pageContext, data }:TagsType) => {
   const { tag, currentPage, numPages, pathBase } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `タグ：${tag}`
@@ -43,34 +54,11 @@ const Tags = ({ pageContext, data }) => {
     </Layout>
   )
 }
-Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-    currentPage: PropTypes.number.isRequired,
-    numPages: PropTypes.number.isRequired,
-    pathBase: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
-}
+
 export default Tags
+
 export const pageQuery = graphql`
-  query($tag: String, $limit: Int!, $skip: Int!) {
+  query TempTags($tag: String, $limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

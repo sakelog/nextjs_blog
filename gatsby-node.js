@@ -3,11 +3,11 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const _ = require("lodash")
 
 // Template
-const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
-const blogPostListTemplate = path.resolve(`./src/templates/blog-list.jsx`)
+const blogPostTemplate = path.resolve(`./src/templates/blog-post.tsx`)
+const blogPostListTemplate = path.resolve(`./src/templates/blog-list.tsx`)
 const pageTemplate = path.resolve(`./src/templates/page.tsx`)
-const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
-const categoryTemplate = path.resolve(`./src/templates/category.jsx`)
+const tagTemplate = path.resolve(`./src/templates/tags.tsx`)
+const categoryTemplate = path.resolve(`./src/templates/category.tsx`)
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions

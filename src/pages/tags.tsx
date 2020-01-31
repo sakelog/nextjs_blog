@@ -57,7 +57,7 @@ interface TagsPageProps {
 export default TagsPage
 
 export const pageQuery = graphql`
-  query {
+  query PagesTags{
     allMarkdownRemark(
       filter: {fields: {collection: {eq: "post"}}}
       limit: 2000

@@ -8,7 +8,7 @@ import HeaderCatList from "./header-cat-list"
 const Header = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      query Compheader{
         site {
           siteMetadata {
             title

@@ -1,14 +1,23 @@
-import React from "react"
+import * as React from "react"
 import { graphql, Link } from "gatsby"
+
+import { TempblogListQuery } from "../../types/graphql-types"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Pagination from "../components/pagination"
-import PropTypes from "prop-types"
 
 const _ = require("lodash")
 
-const BlogList = ({ pageContext, data }) => {
+interface BlogListType {
+  pageContext:{
+    currentPage:number,
+    numPages:number,
+  },
+  data:TempblogListQuery
+}
+
+const BlogList = ({ pageContext, data }:BlogListType) => {
   const posts = data.allMarkdownRemark.edges
   const { currentPage, numPages } = pageContext
 
@@ -24,7 +33,7 @@ const BlogList = ({ pageContext, data }) => {
         description)
       }
       <h2>{pageTitle}</h2>
-      {posts.map(({ node }) => {
+      {posts.map(({node}) => {
         const title = node.frontmatter.title || node.fields.slug
         const description = node.frontmatter.description || node.excerpt
         const categoryPath = `/category/${_.kebabCase(
@@ -32,8 +41,8 @@ const BlogList = ({ pageContext, data }) => {
         )}/`
 
         const Tags = node.frontmatter.tags
-        const tag_list = Tags.map(tag => (
-          <li key={tag} className="list-inline-item">
+        const tag_list = Tags.map((tag: {},index:number) => (
+          <li key={index} className="list-inline-item">
             <Link to={`/tags/${_.kebabCase(tag)}/`}>
               <h5 className="cats">#{tag}</h5>
             </Link>
@@ -63,16 +72,9 @@ const BlogList = ({ pageContext, data }) => {
   )
 }
 
-BlogList.propTypes = {
-  pageContext: PropTypes.shape({
-    currentPage: PropTypes.number.isRequired,
-    numPages: PropTypes.number.isRequired,
-  }),
-}
-
 export default BlogList
-export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+export const pageQuery = graphql`
+  query TempblogList($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -92,7 +94,7 @@ export const blogListQuery = graphql`
           excerpt
           frontmatter {
             title
-            date(formatString: "YYYY/MM/DD")
+            date(formatString: "YYYY年MM月DD日")
             description
             category
             tags

@@ -1,6 +1,6 @@
-import React from "react"
+import * as React from "react"
 import { graphql, Link } from "gatsby"
-import PropTypes from "prop-types"
+import { TempBlogPostQuery } from "../../types/graphql-types"
 
 // Components
 import Layout from "../components/layout"
@@ -11,17 +11,39 @@ import Bio from "../components/bio"
 import BackToTopPage from "../components/back-to-top-page"
 
 // Utilities
-import kebabCase from "lodash/kebabCase"
+const kebabCase = require("lodash/kebabCase")
 
-const BlogPost = ({ pageContext, data }) => {
+interface BlogPostTypes {
+  pageContext:{
+    prev?:{
+      fields:{
+        slug:string,
+      },
+      frontmatter:{
+        title:string,
+      },
+    },
+    next?:{
+      fields:{
+        slug:string,
+      },
+      frontmatter:{
+        title:string,
+      },
+    }
+  },
+  data:TempBlogPostQuery
+}
+
+const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
   const post = data.markdownRemark
   const { prev, next } = pageContext
 
   const categoryPath = `/category/${kebabCase(post.frontmatter.category)}/`
 
   const Tags = post.frontmatter.tags
-  const tag_list = Tags.map(tag => (
-    <li key={tag} className="list-inline-item">
+  const tag_list = Tags.map((tag: {},index:number) => (
+    <li key={index} className="list-inline-item">
       <Link to={`/tags/${kebabCase(tag)}/`}>
         <h5 className="cats">#{tag}</h5>
       </Link>
@@ -62,22 +84,15 @@ const BlogPost = ({ pageContext, data }) => {
   )
 }
 
-BlogPost.propTypes = {
-  pageContext: PropTypes.shape({
-    prev: PropTypes.object,
-    next: PropTypes.object,
-  }),
-}
-
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query TempBlogPost($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
       frontmatter {
         title
-        date(formatString: "YYYY/MM/DD")
+        date(formatString: "YYYY年MM月DD日")
         category
         tags
         description

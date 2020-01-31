@@ -8,7 +8,7 @@ import { GoMarkGithub } from "react-icons/go";
 const Footer = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      query Compfooter{
         site {
           siteMetadata {
             title

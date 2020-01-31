@@ -1,7 +1,26 @@
-import React from "react"
-import { Link } from "gatsby"
+import * as React from "react"
+import { Link, GatsbyNode, GatsbyGraphQLObjectType } from "gatsby"
 
-const PrevNext = ({ prev, next }) => {
+interface PrevNextType {
+  prev?:{
+    fields:{
+      slug:string,
+    },
+    frontmatter:{
+      title:string,
+    },
+  },
+  next?:{
+    fields:{
+      slug:string,
+    },
+    frontmatter:{
+      title:string,
+    },
+  }
+}
+
+const PrevNext = ({ prev, next }:PrevNextType) => {
   return (
     <nav>
       <div className="row">

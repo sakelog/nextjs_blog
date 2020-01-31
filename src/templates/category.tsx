@@ -1,6 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
+import * as React from "react"
+//import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
+
+import { TempCategoryQuery } from "../../types/graphql-types"
 
 // Components
 import Layout from "../components/layout"
@@ -8,7 +10,17 @@ import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 import BackToTopPage from "../components/back-to-top-page"
 
-const Category = ({ pageContext, data }) => {
+interface Props {
+  pageContext: {
+    category: string,
+    currentPage: number,
+    numPages: number,
+    pathBase: string,
+  },
+  data: TempCategoryQuery
+}
+
+const Category = ({ pageContext, data }:Props) => {
   const { category, currentPage, numPages, pathBase } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const categoryHeader = `カテゴリー：${category}`
@@ -41,6 +53,7 @@ const Category = ({ pageContext, data }) => {
     </Layout>
   )
 }
+/*
 Category.propTypes = {
   pageContext: PropTypes.shape({
     category: PropTypes.string.isRequired,
@@ -66,9 +79,12 @@ Category.propTypes = {
     }),
   }),
 }
+*/
+
 export default Category
+
 export const pageQuery = graphql`
-  query($category: String!, $limit: Int!, $skip: Int!) {
+  query TempCategory($category: String!, $limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { category: { in: [$category] } } }

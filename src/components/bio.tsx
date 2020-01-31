@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 const Bio = () => {
     const data = useStaticQuery(
         graphql`
-        query {
+        query Compbio{
             profileImg: file(relativePath: { eq: "profile.png" }) {
                 childImageSharp {
                     fluid(maxWidth: 200) {

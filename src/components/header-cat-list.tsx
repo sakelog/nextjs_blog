@@ -8,7 +8,7 @@ import { kebabCase } from "lodash"
 const HeaderCatList = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      query CompheaderCatList{
         allMarkdownRemark(limit: 100) {
           group(field: frontmatter___category) {
             fieldValue

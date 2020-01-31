@@ -1,13 +1,13 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-interface PProps {
+interface PaginationProps {
   numPages:number,
   currentPage:number,
   pathBase?:string,
 }
 
-const Pagination = ({ numPages, currentPage, pathBase }:PProps) => {
+const Pagination = ({ numPages, currentPage, pathBase }:PaginationProps) => {
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage = currentPage - 1 === 1 ? pathBase : pathBase + (currentPage - 1).toString()
