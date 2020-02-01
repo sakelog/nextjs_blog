@@ -92,7 +92,7 @@ export const pageQuery = graphql`
       htmlAst
       frontmatter {
         title
-        date(formatString: "YYYY年MM月DD日")
+        date(formatString: "YYYY年M月D日")
         category
         tags
         description

@@ -158,6 +158,7 @@ module.exports = {
           `gatsby-remark-copy-images`,
           // link
           `gatsby-remark-external-links`,
+          `gatsby-plugin-catch-links`,
         ],
       },
     },
