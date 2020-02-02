@@ -1,6 +1,7 @@
 import * as React from "react"
-
 import { Link, graphql } from "gatsby"
+
+import { PagesTagsQuery } from "../../types/graphql-types"
 
 // Components
 import Layout from "../components/layout"
@@ -10,11 +11,20 @@ import BackToTopPage from "../components/back-to-top-page"
 // Utilities
 import { kebabCase } from "lodash"
 
-const TagsPage : React.Component<TagsPageProps> = ({
-    data: {
-    allMarkdownRemark: { group },
-  },
-}:any)  => {
+type Props = {
+  data : PagesTagsQuery
+}
+
+const TagsPage = ({
+  data:{
+    allMarkdownRemark:
+    {group}
+}}:Props)  => {
+
+var sortedGroup = group.sort(function(a,b){
+  return b.totalCount - a.totalCount
+})
+
   return(
     <Layout>
       {SEO
@@ -24,7 +34,7 @@ const TagsPage : React.Component<TagsPageProps> = ({
       <h1 className="text-center">全タグ一覧</h1>
       <div>
         <ul className="list-unstyled">
-          {group.map((tag:any, index:number) => (
+          {sortedGroup.map((tag:any, index:number) => (
             <li
               key={index}
               className="d-inline-block m-1"
@@ -39,19 +49,6 @@ const TagsPage : React.Component<TagsPageProps> = ({
       <BackToTopPage />  
     </Layout>
   )
-}
-
-interface TagsPageProps {
-  data : {
-    allMarkdownRemark: {
-      group: {
-        tag: {
-          fieldValue: string,
-          totalCount: number,
-        }
-      }
-    }
-  }
 }
 
 export default TagsPage
