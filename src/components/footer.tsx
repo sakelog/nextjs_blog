@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 // Icons
 import { GoMarkGithub } from "react-icons/go";
+import { AiOutlineTwitter } from "react-icons/ai"
 
 
 const Footer = () => {
@@ -23,9 +24,12 @@ const Footer = () => {
     <div className="w-100 text-center">
       &copy;2020 {SiteTitle}
     </div>
-    <div className="flex-shrink-1 text-center px-4 footer-icon">
+    <div className="flex-shrink-1 d-flex justify-content-center px-4 footer-icon">
       <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github">
         <GoMarkGithub />
+      </a>
+      <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter" className="ml-2">
+        <AiOutlineTwitter />
       </a>
     </div>
   </footer>
