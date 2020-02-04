@@ -34,7 +34,7 @@ var sortedGroup = group.sort(function(a,b){
       <h1 className="text-center">全タグ一覧</h1>
       <div>
         <ul className="list-unstyled">
-          {sortedGroup.map((tag:any, index:number) => (
+          {sortedGroup.map((tag, index:number) => (
             <li
               key={index}
               className="d-inline-block m-1"
