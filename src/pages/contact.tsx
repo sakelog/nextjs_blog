@@ -12,7 +12,8 @@ export default () => (
   <Layout>
     {SEO
       (pageTitle,
-      "sake logについてのお問い合わせはこちらから")
+      "sake logについてのお問い合わせはこちらから",
+      false)
     }
     <h1>{pageTitle}</h1>
     <ContactForm />

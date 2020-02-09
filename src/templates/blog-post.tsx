@@ -54,7 +54,8 @@ const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
     <Layout>
       {SEO
         (post.frontmatter.title,
-        post.frontmatter.description)
+        post.frontmatter.description,
+        true)
       }
       <div className="Article">
         <small>{post.frontmatter.date}</small>

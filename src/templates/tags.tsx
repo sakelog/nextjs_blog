@@ -28,7 +28,8 @@ const Tags = ({ pageContext, data }:TagsType) => {
     <Layout>
       {SEO
         (tagHeader,
-        `「${tag}」についての一覧ページです`)
+        `「${tag}」についての一覧ページです`,
+        false)
       }
       <h1 className="text-center">
         <span>{tagHeader}</span>

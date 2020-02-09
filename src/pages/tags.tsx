@@ -29,7 +29,8 @@ var sortedGroup = group.sort(function(a,b){
     <Layout>
       {SEO
         ("タグ一覧ページ",
-        "全タグの一覧ページです")
+        "全タグの一覧ページです",
+        false)
       }
       <h1 className="text-center">全タグ一覧</h1>
       <div>

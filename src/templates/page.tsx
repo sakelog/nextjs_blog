@@ -22,7 +22,8 @@ const Page = ({ data }:Props) => {
     <Layout>
       {SEO
         (page.frontmatter.title,
-        description)
+        description,
+        false)
       }
       <div className="Article">
         <h1>{page.frontmatter.title}</h1>

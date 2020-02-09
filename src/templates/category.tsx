@@ -28,7 +28,8 @@ const Category = ({ pageContext, data }:Props) => {
     <Layout>
       {SEO
         (categoryHeader,
-        `「${category}」についての一覧ページです`)
+        `「${category}」についての一覧ページです`,
+        false)
       }
       <h1 className="text-center">
         <span>{categoryHeader}</span>

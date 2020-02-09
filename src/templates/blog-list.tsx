@@ -30,7 +30,8 @@ const BlogList = ({ pageContext, data }:BlogListType) => {
     <Layout>
       {SEO
         (pageTitle,
-        description)
+        description,
+        false)
       }
       <h2>{pageTitle}</h2>
       {posts.map(({node}) => {

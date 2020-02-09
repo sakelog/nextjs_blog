@@ -8,7 +8,7 @@ import BackToTopPage from "../components/back-to-top-page"
 const notFoundPage = () => {
     return(
         <Layout>
-            {SEO(null,null)}
+            {SEO(null,null,false)}
             <div>
                 <h1 className="text-center">404 Not Found.</h1>
             </div>
