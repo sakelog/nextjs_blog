@@ -1,0 +1,14 @@
+.d-flex {
+  display: flex;
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      &.flex#{$infix}-row{ flex-direction: row; }
+      &.flex#{$infix}-column{ flex-direction: column; }
+
+      &.justify-content-center{ justify-content: center; }
+      &.align-items-center{ align-items: center; }
+    }
+  }
+}

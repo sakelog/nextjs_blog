@@ -43,7 +43,7 @@ const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
 
   const Tags = post.frontmatter.tags
   const tag_list = Tags.map((tag: {},index:number) => (
-    <li key={index} className="list-inline-item">
+    <li key={index}>
       <Link to={`/tags/${kebabCase(tag)}/`}>
         <h5 className="cats">#{tag}</h5>
       </Link>
@@ -66,14 +66,14 @@ const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
         <hr />
 
         <div className="tableOfContents p-4 mx-auto my-4">
-          <h2 className="text-center">目次</h2>
+          <h2>目次</h2>
           <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
         </div>
 
         <div><RenderAst{...post.htmlAst} /></div>
 
-        <ul className="list-inline">
-          <li className="list-inline-item">タグ：</li>
+        <ul className="inline-list">
+          <li>タグ：</li>
           {tag_list}
         </ul>
       </div>

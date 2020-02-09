@@ -2,6 +2,7 @@
 **  記事本文
 **===========================================*/
 .Article {
+  margin: map-get($map:$spacers , $key:3 ) 0;
     h2 {
       background: $primary;
       color: #ffffff;
