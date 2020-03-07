@@ -1,7 +1,8 @@
 overwrite: true
 schema: "http://localhost:8000/___graphql"
 documents:
-  - "./src/**/*.{ts,tsx}"
+  - "./src/pages/*.{ts,tsx}"
+  - "./src/templates/*.{ts,tsx}"
 generates:
   types/graphql-types.ts:
     plugins:
