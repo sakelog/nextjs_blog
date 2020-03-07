@@ -41,7 +41,7 @@ const Tags = ({ pageContext, data }:TagsType) => {
         const description = node.frontmatter.description || node.excerpt
         return (
           <div key={slug} className="border-bottom pt-3 px-2">
-            <small>投稿日：{node.frontmatter.date}</small>
+            <small>{node.frontmatter.date}</small>
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
@@ -75,7 +75,7 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
-            date(formatString: "YYYY年M月D日")
+            date(formatString: "YYYY/MM/DD")
             description
           }
         }
