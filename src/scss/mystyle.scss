@@ -1,7 +1,15 @@
 @charset "utf-8";
+//@import "../../node_modules/normalize.css/normalize.css";
+
+@import "myvariable";
+@import "mixin";
+@import "utilities";
+
+@import "base";
+
+@import "components";
 @import "mybootstrap";
 @import "content";
-@import "myprism";
-@import "article";
-@import "tableOfContents";
-@import "bio"
+//@import "myprism";
+//@import "article";
+//@import "tableOfContents";

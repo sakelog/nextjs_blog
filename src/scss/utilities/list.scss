@@ -1,0 +1,9 @@
+.inline-list{
+  list-style: none;
+  padding-inline-start: 0;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    margin-left: $spacer * .5;
+  }
+}
