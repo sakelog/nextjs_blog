@@ -34,11 +34,11 @@ var sortedGroup = group.sort(function(a,b){
       }
       <h1 className="text-center">全タグ一覧</h1>
       <div>
-        <ul className="list-unstyled">
+        <ul className="inline-list">
           {sortedGroup.map((tag, index:number) => (
             <li
               key={index}
-              className="d-inline-block m-1"
+              className="m-1"
             >
               <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} className="btn btn-outline-primary">
                 #{tag.fieldValue} ({tag.totalCount})
