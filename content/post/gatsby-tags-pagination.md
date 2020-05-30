@@ -1,7 +1,7 @@
 ---
 title: "Gatsbyブログカスタマイズ。カテゴリー記事一覧をページ遷移させよう"
 date: "2020-01-13 09:42:24"
-update: "2020-01-28 11:57:15"
+update: "2020-05-30 16:18:32"
 description: "Gatsbyで作ったブログのカスタマイズ方法のご紹介です。今回はカテゴリー記事一覧ページをページ遷移させる方法のご紹介です。コードコピペで実装可能です。"
 category: "技術"
 tags: ["GatsbyJS"]
@@ -102,7 +102,7 @@ exports.createPages = ({ graphql, actions }) => {
 
 ### 各カテゴリーのtotalCount（総記事数）を取得する
 
-```js{13}:title=gatsby-node.js
+```js{12}:title=gatsby-node.js
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
