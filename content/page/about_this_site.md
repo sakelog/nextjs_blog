@@ -32,4 +32,5 @@ description: "sake logについての説明と、管理人の自己紹介です"
 - 基本情報技術者
 - 応用情報技術者
 - Oracle認定Java Bronze SE 7/8
+- Oracle認定Java Silver SE 8
 - OracleマスターBronze 12c
