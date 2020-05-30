@@ -1,0 +1,174 @@
+/* ************************************* */
+/* カエレバ、ヨメレバ、トマレバ */
+/* ************************************* */
+/* 基本style */
+.kaerebalink-box,
+.booklink-box,
+.tomarebalink-box{
+border: 3px double #ccc;
+padding: 3%;
+margin: 1em 0 2.5em;
+overflow: hidden;
+font-size: small;
+}
+.kaerebalink-box a,
+.booklink-box a,
+.tomarebalink-box a{
+text-decoration: none;
+color: initial;
+}
+.kaerebalink-box a[target="_blank"]::after,
+.booklink-box a[target="_blank"]::after,
+.tomarebalink-box a[target="_blank"]::after{
+content: none;
+}
+.kaerebalink-image,
+.booklink-image,
+.tomarebalink-image{
+max-width: 150px;
+text-align: center;
+margin: 10px auto!important;
+float: none!important;
+}
+.kaerebalink-name,
+.booklink-name,
+.tomarebalink-name{
+font-weight: bold;
+font-size: 120%;
+line-height: 1.8!important;
+margin-bottom: 10px!important;
+}
+.kaerebalink-name p:empty,
+.booklink-name p:empty,
+.tomarebalink-name p:empty{
+display: none;
+}
+.kaerebalink-powered-date,
+.booklink-powered-date,
+.tomarebalink-powered-date,
+.kaerebalink-detail,
+.booklink-detail,
+.tomarebalink-address{
+font-size: 10px!important;
+font-weight: normal;
+}
+.kaerebalink-link1,
+.booklink-link2,
+.tomarebalink-link1{
+overflow: hidden;
+}
+.kaerebalink-link1 div,
+.booklink-link2 div,
+.tomarebalink-link1 div{
+background-image: none!important;
+margin: 0!important;
+padding: 3px!important;
+display: inline-block!important;
+width: 48.5%;
+}
+.kaerebalink-link1 div a,
+.booklink-link2 div a,
+.tomarebalink-link1 div a{
+border-width: 2px;
+border-style: solid;
+font-size: 90%;
+font-weight: bold;
+border-radius: 5px;
+padding: 0.7em 0.3em;
+width: 100%;
+text-align: center;
+display: block;
+box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.kaerebalink-link1 div a:hover,
+.booklink-link2 div a:hover,
+.tomarebalink-link1 div a:hover{
+color: #fff;
+box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.15);
+transform:translate(-1px, -2px);
+}
+.kaerebalink-link1 div a:active,
+.booklink-link2 div a:active,
+.tomarebalink-link1 div a:active{
+transform:translate(0, 1px);
+}
+.kaerebalink-link1 div img,
+.booklink-link2 div img,
+.tomarebalink-link1 div img{
+display: none;
+}
+
+/* 画面幅768px以上の場合のstyle */
+@media only screen and (min-width: 768px) {
+.kaerebalink-image,
+.booklink-image,
+.tomarebalink-image{
+float: left!important;
+margin: 0 1.5em 0.5em 0!important;
+}
+.kaerebalink-link1 div,
+.booklink-link2 div,
+.tomarebalink-link1 div{
+width: 11em;
+}
+}
+
+
+/* ▼ボタンカラーここから▼ */
+.shoplinkamazon a{
+color: #e89713;
+}
+.shoplinkrakuten a{
+color: #d91414;
+}
+.shoplinkyahoo a{
+color: #691ed5;
+}
+.shoplinkjalan a{
+color: #ed5016;
+}
+.shoplinkjtb a{
+color: #e10b0b;
+}
+.shoplinkknt a{
+color: #0f75c2;
+}
+.shoplinkikyu a{
+color: #18b412;
+}
+.shoplinkrurubu a{
+color: #0f32a3;
+}
+.shoplinkamazon a:hover{
+background-color: #e89713;
+border-color: #e89713;
+}
+.shoplinkrakuten a:hover{
+background-color: #d91414;
+border-color: #d91414;
+}
+.shoplinkyahoo a:hover{
+background-color: #691ed5;
+border-color: #691ed5;
+}
+.shoplinkjalan a:hover{
+background-color: #ed5016;
+border-color: #ed5016;
+}
+.shoplinkjtb a:hover{
+background-color: #e10b0b;
+border-color: #e10b0b;
+}
+.shoplinkknt a:hover{
+background-color: #0f75c2;
+border-color: #0f75c2;
+}
+.shoplinkikyu a:hover{
+background-color: #18b412;
+border-color: #18b412;
+}
+.shoplinkrurubu a:hover{
+background-color: #0f32a3;
+border-color: #0f32a3;
+}
+/* ▲ボタンカラーここまで▲ */
