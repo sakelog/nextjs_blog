@@ -19,18 +19,25 @@ const Footer = () => {
     `
   )
   const SiteTitle = data.site.siteMetadata.title
+  const startDate = new Date(2020,0,12);
+  const startYear = startDate.getFullYear();
+  var now = new Date();
+  var nowYear = now.getFullYear();
+  var copytext = nowYear === startYear ? startYear + SiteTitle : startYear + "-" + nowYear + SiteTitle
   return(
-  <footer className="bg-light text-dark p-2 mt-auto d-flex flex-column flex-md-row">
-    <div className="w-100 text-center">
-      &copy;2020 {SiteTitle}
-    </div>
-    <div className="flex-shrink-1 d-flex justify-content-center px-4 footer-icon">
-      <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github">
-        <GoMarkGithub />
-      </a>
-      <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter" className="ml-2">
-        <AiOutlineTwitter />
-      </a>
+  <footer>
+    <div className="ft-wrapper">
+      <div className="ft-flex-item1">
+        &copy;{copytext}
+      </div>
+      <div className="ft-flex-item2">
+        <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github">
+          <GoMarkGithub />
+        </a>
+        <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter">
+          <AiOutlineTwitter />
+        </a>
+      </div>
     </div>
   </footer>
   )
