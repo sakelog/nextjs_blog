@@ -1,0 +1,13 @@
+.sl-btn-line{
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 0.6rem;
+    padding: 0.4rem;
+    text-decoration: none;
+    &:hover{
+        background: #000000;
+        color: #ffffff;
+        text-decoration: none;
+    }
+}

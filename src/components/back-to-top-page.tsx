@@ -4,8 +4,8 @@ import { Link } from "gatsby"
 
 const BackToTopPage = () => {
   return(
-    <div className="d-flex justify-content-center">
-      <Link to="/" className="btn btn-outline-dark btn-lg my-3">
+    <div className="grid-center">
+      <Link to="/" className="sl-btn-line">
         記事一覧
       </Link>
     </div>
