@@ -1,0 +1,18 @@
+/*===========================================
+** 前・次
+**===========================================*/
+.pagination-pn {
+    background: $primary-light;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    position: relative;
+    span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        -webkit-transform: translateY(-50%) translateX(-50%);
+        color: #ffffff;
+    }
+}

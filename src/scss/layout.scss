@@ -4,9 +4,15 @@ $sl-light-gray: #f8f9fa;
     flex-direction: column;
     min-height: 100vh;
 }
+/*===========================================
+** 記事エリア
+**===========================================*/
 .sl-container {
     padding: 1rem 2rem;
 }
+/*===========================================
+** フッター
+**===========================================*/
 footer {
     margin-top: auto;
     background: $sl-light-gray;
