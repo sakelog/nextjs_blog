@@ -22,29 +22,33 @@ interface PrevNextType {
 
 const PrevNext = ({ prev, next }:PrevNextType) => {
   return (
-    <nav>
+    <nav className="container">
       <div className="row">
-        <div className="col-sm mx-3">
+        <div className="col-1">
           {prev && (
-            <div className="d-flex justify-content-start row">
-              <div>前：</div>
-              <div className="col-10">
-                <Link to={prev.fields.slug} rel="prev">
-                  {prev.frontmatter.title}
-                </Link>
-              </div>
+            <div className="pagination-pn">
+              <span>前</span>
             </div>
           )}
         </div>
-        <div className="col-sm mx-3">
+        <div className="col-4">
+          {prev && (
+            <Link to={prev.fields.slug} rel="prev">
+              {prev.frontmatter.title}
+            </Link>
+          )}
+        </div>
+        <div className="col-4">
           {next && (
-            <div className="d-flex justify-content-end row">
-              <div className="col-10 text-right">
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title}
-                </Link>
-              </div>
-              <div>：次</div>
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title}
+            </Link>
+          )}
+        </div>
+        <div className="col-1">
+          {next && (
+            <div className="pagination-pn">
+              <span>次</span>
             </div>
           )}
         </div>
