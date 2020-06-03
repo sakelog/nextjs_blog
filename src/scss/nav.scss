@@ -1,0 +1,44 @@
+/*=====================================
+** ナビゲーションバー
+**=====================================*/
+.sl-nav-bar{
+    background: $sl-primary-lighter;
+    overflow: hidden;
+
+    .sl-nav-title-wrapper {
+        background: $primary;
+        position: relative;
+        min-height: 6rem;
+
+        .sl-nav-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 2.4rem;
+
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover{
+                background: $sl-primary-light;
+            }
+        }
+    }
+
+    .sl-nav-menu {
+        padding: 1rem 3rem;
+        a {
+            color: $sl-dark-gray;
+            font-weight: bold;
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
+}

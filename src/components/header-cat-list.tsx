@@ -19,15 +19,17 @@ const HeaderCatList = () => {
   )
   const categorys = data.allMarkdownRemark.group
   return(
-  <div>
+  <div className="grid-4">
     {categorys.map((category: { fieldValue: string },index:number) => (
-        <Link
-          key={index}
-          to={`/category/${kebabCase(category.fieldValue)}/`}
-          className="btn btn-outline-light mx-1"
-        >
-          {category.fieldValue}
-        </Link>
+        <div className="col">
+          <Link
+            key={index}
+            to={`/category/${kebabCase(category.fieldValue)}/`}
+            className=""
+          >
+            {category.fieldValue}
+          </Link>
+        </div>
     ))}
   </div>
   )

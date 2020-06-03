@@ -1,0 +1,56 @@
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: $sl-font-default;
+    font-size:1.6rem;
+    letter-spacing: 0.08rem;
+    line-height: 1.8;
+    @include sl-mq(sm){
+        font-size: 1.4rem;
+        letter-spacing: 0.06rem;
+    }
+}
+p {
+    margin: 1rem auto;
+}
+ul,ol {
+    margin: 1rem;
+    padding-left: 4rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+    li {
+        padding-left: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        line-height: 2;
+    }
+}
+h1 {
+    font-size: 3.6rem;
+    font-weight: normal;
+    margin: 3.2rem auto;
+}
+h2 {
+    font-size: 2.4rem;
+    font-weight: normal;
+    margin: 2.0rem auto;
+}
+h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 1.4rem auto;
+}
+
+a{
+    color: $sl-primary-light;
+    &:hover {
+        color: $sl-dark-gray;
+        text-decoration: none;
+    }
+    &:active {
+        color: $primary;
+    }
+}

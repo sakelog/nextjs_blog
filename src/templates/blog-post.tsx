@@ -13,6 +13,9 @@ import BackToTopPage from "../components/back-to-top-page"
 // Utilities
 const kebabCase = require("lodash/kebabCase")
 
+// Icon
+import { FiTag } from 'react-icons/fi';
+
 interface BlogPostTypes {
   pageContext:{
     prev?:{
@@ -43,7 +46,7 @@ const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
 
   const Tags = post.frontmatter.tags
   const tag_list = Tags.map((tag: {},index:number) => (
-    <li key={index} className="list-inline-item">
+    <li key={index} className="">
       <Link to={`/tags/${kebabCase(tag)}/`}>
         <h5 className="cats">#{tag}</h5>
       </Link>
@@ -72,8 +75,9 @@ const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
 
         <div><RenderAst{...post.htmlAst} /></div>
 
-        <ul className="list-inline">
-          <li className="list-inline-item">タグ：</li>
+        <ul className="sl-inline-list">
+          <li><FiTag /></li>
+          <li className="">タグ：</li>
           {tag_list}
         </ul>
       </div>

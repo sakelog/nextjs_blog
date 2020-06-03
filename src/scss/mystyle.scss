@@ -2,15 +2,20 @@
 @import "normalize";
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @import "myvariable";
+@import "basis";
 @import "utility";
 @import "../../node_modules/gridlex/src/gridlex.scss";
 @import "layout";
-@import "mybootstrap";
+//@import "mybootstrap";
+
+//@import "content";
+//@import "article";
+
 @import "pagination";
-@import "content";
-@import "myprism";
-@import "article";
 @import "button";
-@import "tableOfContents";
+@import "nav";
+
+//@import "tableOfContents";
 @import "bio";
+@import "myprism";
 @import "yomereba";
