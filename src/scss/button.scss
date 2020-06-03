@@ -1,13 +1,30 @@
+.sl-btn{
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+    margin: 0.6rem 0.2rem;
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: none;
+    }
+}
+.sl-btn-primary{
+    background: $primary;
+    color: $sl-light-gray;
+
+    &:hover{
+        background: $sl-primary-light;
+        color: #ffffff;
+    }
+}
 .sl-btn-line{
     border-width: 2px;
     border-style: solid;
-    border-color: #000000;
-    border-radius: 0.6rem;
-    padding: 0.4rem;
-    text-decoration: none;
+    border-color: $sl-dark-gray;
+    color: $sl-dark-gray;
+
     &:hover{
-        background: #000000;
+        background: $sl-dark-gray;
         color: #ffffff;
-        text-decoration: none;
     }
 }

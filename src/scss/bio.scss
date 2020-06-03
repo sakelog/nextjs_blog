@@ -1,7 +1,16 @@
-.bio {
-    background: #fefff5;
-    .bio-img {
-        width: 100%;
-        max-width: 200px;
+/*=====================================
+** プロフィール
+**=====================================*/
+.sl-bio-wrapper{
+    margin: 4rem auto;
+}
+.sl-bio {
+    background: #ffffff;
+    border-radius: 2rem;
+    filter: drop-shadow(0 0 0.4rem rgba(0,0,0,.1));
+    .sl-bio-title {
+        font-size: 1.6rem;
+        font-family: $sl-font-hw;
+        color: $sl-dark-gray;
     }
 }
