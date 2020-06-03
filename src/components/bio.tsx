@@ -39,15 +39,17 @@ const Bio = () => {
                     <div className="col-12">
                         <p>システムエンジニア。普段はホスト系のお仕事してます。</p>
                     </div>
-                    <div className="col_sm-3">
-                        <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github" className="sl-icon">
-                        <GoMarkGithub />
-                        </a>
-                    </div>
-                    <div className="col_sm-3">
-                        <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter" className="sl-icon">
-                        <AiOutlineTwitter />
-                        </a>
+                    <div className="grid-3 col-12">
+                        <div className="col">
+                            <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github" className="sl-icon">
+                            <GoMarkGithub />
+                            </a>
+                        </div>
+                        <div className="col">
+                            <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter" className="sl-icon">
+                            <AiOutlineTwitter />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

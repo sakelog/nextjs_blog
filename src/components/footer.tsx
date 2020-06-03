@@ -26,11 +26,11 @@ const Footer = () => {
   var copytext = nowYear === startYear ? startYear + SiteTitle : startYear + "-" + nowYear + SiteTitle
   return(
   <footer>
-    <div className="grid-spaceBetween-middle">
-      <div className="col-9 sl-align-center">
+    <div className="grid-spaceAround-middle">
+      <div className="col-9_sm-12">
         &copy;{copytext}
       </div>
-      <div className="grid col-2">
+      <div className="grid-center col-2_sm-12">
         <div className="col">
           <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github" className="sl-icon">
             <GoMarkGithub />
