@@ -13,6 +13,9 @@ ul,ol {
         li {
             display: inline-block;
             margin: auto 0.6rem;
+            @include sl-mq(sm){
+                margin: auto 0.2rem;
+            }
         }
     }
 }
