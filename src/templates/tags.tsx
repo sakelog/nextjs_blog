@@ -31,7 +31,7 @@ const Tags = ({ pageContext, data }:TagsType) => {
         `「${tag}」についての一覧ページです`,
         false)
       }
-      <h1 className="text-center">
+      <h1 className="sl-align-center">
         <span>{tagHeader}</span>
       </h1>
       <p>投稿：{totalCount}件</p>
@@ -40,7 +40,7 @@ const Tags = ({ pageContext, data }:TagsType) => {
         const title = node.frontmatter.title || node.fields.slug
         const description = node.frontmatter.description || node.excerpt
         return (
-          <div key={slug} className="border-bottom pt-3 px-2">
+          <div key={slug} className="sl-border-bottom">
             <small>{node.frontmatter.date}</small>
             <Link to={slug}>
               <h2>{title}</h2>

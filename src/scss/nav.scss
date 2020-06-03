@@ -2,7 +2,7 @@
 ** ナビゲーションバー
 **=====================================*/
 .sl-nav-bar{
-    background: $sl-primary-lighter;
+    background: $sl-light-gray;
     overflow: hidden;
 
     .sl-nav-title-wrapper {
@@ -32,13 +32,5 @@
 
     .sl-nav-menu {
         padding: 1rem 3rem;
-        a {
-            color: $sl-dark-gray;
-            font-weight: bold;
-
-            &:hover {
-                color: #ffffff;
-            }
-        }
     }
 }

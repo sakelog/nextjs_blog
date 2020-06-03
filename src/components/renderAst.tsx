@@ -7,8 +7,8 @@ createElement: React.createElement,
 components: {
     table: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLTableElement> & React.TableHTMLAttributes<HTMLTableElement>) => {
     return (
-        <div className="table-responsive">
-            <table className="table table-bordered" {...props}></table>
+        <div className="sl-responsive-table">
+            <table {...props}></table>
         </div>
     )
     },

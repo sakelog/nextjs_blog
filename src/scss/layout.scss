@@ -27,6 +27,26 @@ footer {
 .sl-icon {
     font-size: 3.0rem;
 }
+/*=====================================
+** カテゴリー表示
+**=====================================*/
+.sl-cat-badge{
+    border: 2px solid $primary;
+    color: $primary;
+    text-decoration: none;
+    padding: 1rem;
+    margin: auto 2rem;
+
+    &:hover{
+        background: $primary;
+        color: #ffffff;
+    }
+
+    h3,h4{
+        display: inline-block;
+    }
+}
+
   /*===================================
   ** カテゴリー・タグ表示
   **===================================*/

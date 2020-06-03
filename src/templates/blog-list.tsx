@@ -51,15 +51,15 @@ const BlogList = ({ pageContext, data }:BlogListType) => {
         ))
 
         return (
-          <div key={node.fields.slug} className="border-bottom pt-3 px-2">
+          <div key={node.fields.slug} className="sl-border-bottom">
             <small>{node.frontmatter.date}</small>
-            <h3>
+            <h2>
               <Link to={node.fields.slug}>{title}</Link>
-            </h3>
-            <ul className="list-inline my-2">
-              <li className="list-inline-item">
-                <Link to={categoryPath} className="badge badge-primary">
-                  <h4 className="cats">{node.frontmatter.category}</h4>
+            </h2>
+            <ul className="sl-inline-list">
+              <li>
+                <Link to={categoryPath} className="sl-cat-badge">
+                  <h3>{node.frontmatter.category}</h3>
                 </Link>
               </li>
               {tag_list}
