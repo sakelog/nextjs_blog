@@ -27,7 +27,7 @@ const PrevNext = ({ prev, next }:PrevNextType) => {
         <div className="col-6_sm-12 grid">
           <div className="col-2">
             {prev && (
-              <div className="pagination-pn">
+              <div className="sl-prevnext">
                 <span>前</span>
               </div>
             )}
@@ -50,7 +50,7 @@ const PrevNext = ({ prev, next }:PrevNextType) => {
           </div>
           <div className="col-2">
             {next && (
-              <div className="pagination-pn">
+              <div className="sl-prevnext">
                 <span>次</span>
               </div>
             )}

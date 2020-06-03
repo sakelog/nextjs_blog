@@ -1,0 +1,13 @@
+/*=====================================
+** 位置指定
+**=====================================*/
+.sl-align-center{
+    text-align: center;
+}
+.sl-center{
+    position: relative;
+    div{
+        position: absolute;
+        right: 50%;
+    }
+}

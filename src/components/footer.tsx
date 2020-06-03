@@ -26,17 +26,21 @@ const Footer = () => {
   var copytext = nowYear === startYear ? startYear + SiteTitle : startYear + "-" + nowYear + SiteTitle
   return(
   <footer>
-    <div className="ft-wrapper">
-      <div className="ft-flex-item1">
+    <div className="grid-spaceBetween-middle">
+      <div className="col-9 sl-align-center">
         &copy;{copytext}
       </div>
-      <div className="ft-flex-item2">
-        <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github">
-          <GoMarkGithub />
-        </a>
-        <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter">
-          <AiOutlineTwitter />
-        </a>
+      <div className="grid col-2">
+        <div className="col">
+          <a href="https://github.com/sakelog" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Github" className="sl-icon">
+            <GoMarkGithub />
+          </a>
+        </div>
+        <div className="col">
+          <a href="https://twitter.com/sake_engineer" target="_blank" rel="noopener noreferrer" role="presentation" aria-label="Twitter" className="sl-icon">
+            <AiOutlineTwitter />
+          </a>
+        </div>
       </div>
     </div>
   </footer>

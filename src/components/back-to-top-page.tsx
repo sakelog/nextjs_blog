@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 const BackToTopPage = () => {
   return(
     <div className="grid-center">
-      <Link to="/" className="sl-btn-line">
+      <Link to="/" className="sl-btn sl-btn-line">
         記事一覧
       </Link>
     </div>
