@@ -1,16 +1,23 @@
 .sl-btn{
     border-radius: 0.6rem;
-    padding: 1rem;
+    padding: 1rem 3rem;
     margin: 1rem 0.4rem;
     text-decoration: none;
 
     &:hover{
         text-decoration: none;
     }
+
+    outline: none;
 }
 .sl-btn-primary{
     background: $primary;
     color: $sl-light-gray;
+    border: none;
+    
+    &::focus{
+        outline: none;
+    }
 
     &:hover{
         background: $sl-primary-light;

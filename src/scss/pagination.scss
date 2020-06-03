@@ -2,7 +2,7 @@
 ** 前・次
 **===========================================*/
 .sl-prevnext {
-    background: $sl-primary-light;
+    background: $sl-primary-lighter;
     border-radius: 50%;
     width: 2em;
     height: 2em;
@@ -13,6 +13,6 @@
         left: 50%;
         transform: translateY(-50%) translateX(-50%);
         -webkit-transform: translateY(-50%) translateX(-50%);
-        color: #ffffff;
+        color: $sl-dark-gray;
     }
 }

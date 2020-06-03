@@ -62,15 +62,17 @@ const BlogPost = ({ pageContext, data }:BlogPostTypes) => {
       }
       <div className="Article">
         <small>{post.frontmatter.date}</small>
-        <Link to={categoryPath} className="badge badge-primary ml-2">
+        <Link to={categoryPath} className="sl-cat-badge">
           <h4 className="cats">{post.frontmatter.category}</h4>
         </Link>
         <h1>{post.frontmatter.title}</h1>
         <hr />
 
-        <div className="tableOfContents p-4 mx-auto my-4">
-          <h2 className="text-center">目次</h2>
-          <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+        <div className="grid-center">
+          <div className="col-6_sm-12 tableOfContents">
+            <h2 className="text-center">目次</h2>
+            <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+          </div>
         </div>
 
         <div><RenderAst{...post.htmlAst} /></div>

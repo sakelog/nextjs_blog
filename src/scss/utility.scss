@@ -4,13 +4,6 @@
 .sl-align-center{
     text-align: center;
 }
-//.sl-center{
-//    position: relative;
-//    div{
-//        position: absolute;
-//        right: 50%;
-//    }
-//}
 /*=====================================
 ** リスト
 **=====================================*/
@@ -19,6 +12,15 @@ ul,ol {
         padding-left: 1rem;
         li {
             display: inline-block;
+            margin: auto 0.6rem;
         }
     }
+}
+/*=====================================
+** ボーダー
+**=====================================*/
+.sl-border-bottom {
+    border-bottom: 1px solid $sl-gray;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
 }

@@ -16,15 +16,15 @@ p {
 }
 ul,ol {
     margin: 1rem;
-    padding-left: 4rem;
+    padding-left: 2rem;
     padding-right: 1rem;
     padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 
     li {
-        padding-left: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-left: 0.2rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
         line-height: 2;
     }
 }
@@ -32,6 +32,7 @@ h1 {
     font-size: 3.6rem;
     font-weight: normal;
     margin: 3.2rem auto;
+    text-align: center;
 }
 h2 {
     font-size: 2.4rem;
@@ -46,6 +47,7 @@ h3 {
 
 a{
     color: $sl-primary-light;
+    font-weight: bold;
     &:hover {
         color: $sl-dark-gray;
         text-decoration: none;
@@ -53,4 +55,8 @@ a{
     &:active {
         color: $primary;
     }
+}
+
+hr {
+    border-top: 1px solid $sl-gray;
 }

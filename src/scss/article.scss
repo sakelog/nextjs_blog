@@ -2,43 +2,52 @@
 **  記事本文
 **===========================================*/
 .Article {
-    h2 {
-      background: $primary;
-      color: #ffffff;
-      padding: 0.5em 0.25em;
-      margin: 1em 0;
+  h2 {
+    background: $sl-primary-lighter;
+    color: #000000;
+    padding: 0.5em;
+  }
+  blockquote {
+    margin: 1em;
+    padding: 1em;
+    border-left: $sl-primary-lighter 3px solid;
+    max-width: calc(100%-4em);
+  }
+  a[target="_blank"]{
+    padding-right: 0.375rem;
+
+    &::after {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: url(/img/external-link.svg) no-repeat 0 0;
+      background-size: 20px 20px;
+      content: "";
+      position: relative;
+      top: 0.15625rem;
+      left: 0.125rem;
     }
-    h3 {
-      color: $primary;
-      margin: 1em 0;
+    &.gatsby-resp-image-link::after {
+      content: none;
     }
-    blockquote {
-      margin: 1em;
-      padding: 1em;
-      border-left: #c1e4e9 3px solid;
-      max-width: calc(100%-4em);
-    }
-    a[target="_blank"]{
-      padding-right: 0.375rem;
-  
-      &::after {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background: url(/img/external-link.svg) no-repeat 0 0;
-        background-size: 20px 20px;
-        content: "";
-        position: relative;
-        top: 0.15625rem;
-        left: 0.125rem;
+  }
+
+  .sl-responsive-table {
+    table {
+      min-width: 640px;
+      margin: 0 10px 50px;
+      td{
+        border-top: solid 1px $sl-gray;
+        padding: 1rem 2rem;
       }
-      &.gatsby-resp-image-link::after {
-        content: none;
-      }
     }
+    @include sl-mq(sm) {
+      overflow-x: auto;
+    }
+  }
 
     .note {
-      background: #ffffe5;
+      background: $sl-note;
       padding: 0.5em;
       margin: 1em 0;
       border-radius: 5px;
@@ -49,7 +58,7 @@
       }
 
       &.danger {
-        background: #ffe5f2;
+        background: $sl-danger;
 
         .custom-block-heading {
           color: #c53d43;
