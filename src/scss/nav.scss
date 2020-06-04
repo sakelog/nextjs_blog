@@ -1,7 +1,7 @@
 /*=====================================
 ** ナビゲーションバー
 **=====================================*/
-.sl-nav-bar {
+#sl-nav-bar {
   background: $sl-light-gray;
   position: sticky;
   top: 0;
@@ -23,6 +23,8 @@
       color: #ffffff;
       text-decoration: none;
       font-size: 2.4rem;
+      font-family: $sl-font-logo;
+      font-weight: normal;
 
       width: 100%;
       height: 100%;
@@ -37,7 +39,6 @@
   }
 
   .sl-nav-menu {
-    //padding: 1rem 3rem;
 
     #nav-drawer {
       position: relative;
@@ -75,14 +76,26 @@
         }
       }
 
+      #nav-close {
+        display: none;
+        opacity: 0;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        transition: .3s ease-in-out;
+      }
+
       #nav-content {
         opacity: 0;
         overflow: hidden;
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         top: 100%;
         left: 0;
-        width: 100%;
+        width: calc(100% - 6rem);
         height: auto;
         background: $sl-light-gray;
         transition: 0.3s ease-in-out;
@@ -91,6 +104,10 @@
       #nav-input:checked{
         &~ #nav-content {
           opacity: 1;
+        }
+        &~ #nav-close {
+          display: block;
+          opacity: .5;
         }
       }
     }

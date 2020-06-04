@@ -22,7 +22,7 @@ const Header = () => {
   const SiteTitle = data.site.siteMetadata.title
   return(
     <nav
-      className="sl-nav-bar"
+      id="sl-nav-bar"
       role="navigation"
       aria-label="main navigation"
     >
@@ -42,6 +42,7 @@ const Header = () => {
                 <span><FiPlus /></span>
               </label>
             </div>
+            <label className="nav-unshown" id="nav-close" htmlFor="nav-input"></label>
 
             <div id="nav-content">
               <HeaderCatList />
