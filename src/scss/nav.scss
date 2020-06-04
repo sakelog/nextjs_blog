@@ -1,36 +1,92 @@
 /*=====================================
 ** ナビゲーションバー
 **=====================================*/
-.sl-nav-bar{
-    background: $sl-light-gray;
-    overflow: hidden;
+.sl-nav-bar {
+  background: $sl-light-gray;
+  //overflow: hidden;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 
-    .sl-nav-title-wrapper {
-        background: $primary;
+  .sl-nav-title-wrapper {
+    background: $primary;
+    position: relative;
+    min-height: 6rem;
+
+    .sl-nav-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 2.4rem;
+
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background: $sl-primary-light;
+      }
+    }
+  }
+
+  .sl-nav-menu {
+    //padding: 1rem 3rem;
+
+    #nav-drawer {
+      position: relative;
+    }
+    .nav-unshown {
+      display: none;
+    }
+    @include sl-mq(sm) {
+      .nav-open-wrapper {
+        text-align: center;
+        padding: 2rem;
+      }
+      #nav-open {
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        background: $sl-primary-light;
+        border-radius: 50%;
         position: relative;
-        min-height: 6rem;
 
-        .sl-nav-title {
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 2.4rem;
-
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            &:hover{
-                background: $sl-primary-light;
-            }
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%);
+          -webkit-transform: translateY(-50%) translateX(-50%);
+          color: #ffffff;
+          font-size: 2rem;
         }
-    }
+      }
 
-    .sl-nav-menu {
-        padding: 1rem 3rem;
+      #nav-content {
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: $sl-light-gray;
+        transition: 0.3s ease-in-out;
+        padding: 3rem;
+      }
+      #nav-input:checked{
+        &~ #nav-content {
+          opacity: 1;
+        }
+      }
     }
+  }
 }
