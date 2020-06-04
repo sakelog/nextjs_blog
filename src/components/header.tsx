@@ -45,6 +45,7 @@ const Header = () => {
 
             <div id="nav-content">
               <HeaderCatList />
+              <hr />
               <div className="grid-4-spaceBetween">
                 <div className="col_sm-12">
                   <Link to="/tags/" className="nav-link">

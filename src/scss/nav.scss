@@ -3,13 +3,13 @@
 **=====================================*/
 .sl-nav-bar {
   background: $sl-light-gray;
-  //overflow: hidden;
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   padding: 0;
   margin: 0;
+  z-index: 9999;
 
   .sl-nav-title-wrapper {
     background: $primary;
@@ -45,6 +45,12 @@
     .nav-unshown {
       display: none;
     }
+
+    #nav-content {
+      padding: 0.6rem 3rem;
+      font-size: 1.4rem;
+    }
+  
     @include sl-mq(sm) {
       .nav-open-wrapper {
         text-align: center;
