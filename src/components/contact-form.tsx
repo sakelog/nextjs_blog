@@ -51,7 +51,7 @@ const ContactForm = () => {
               に沿って対応します。
             </p>
             <p>プライバシーポリシーに同意の上、送信をお願いします。</p>
-            <div className="col-4">
+            <div className="col-4_sm-12">
               <button type="submit" className="sl-btn sl-btn sl-btn-primary">
               送信
               </button>

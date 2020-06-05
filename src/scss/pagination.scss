@@ -2,17 +2,60 @@
 ** 前・次
 **===========================================*/
 .sl-prevnext {
-    background: $sl-primary-lighter;
-    border-radius: 50%;
-    width: 2em;
-    height: 2em;
-    position: relative;
-    span{
+  background: $sl-primary-lighter;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  position: relative;
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    color: $sl-gray-dark;
+  }
+}
+/*=====================================
+** ペジネーション
+**=====================================*/
+.sl-pagination {
+  .sl-inline-list {
+    li {
+      border: 1px solid $sl-primary;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      position: relative;
+
+      a,
+      span {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        -webkit-transform: translateY(-50%) translateX(-50%);
-        color: $sl-gray-dark;
+        transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        width: 2.8rem;
+        height: 2.8rem;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 1.6rem;
+        text-decoration: none;
+      }
+
+      &.sl-page-current {
+        background: $sl-primary;
+        color: $sl-white;
+      }
+      &.sl-page-link {
+        background: $sl-primary-lighter;
+        a {
+          color: $sl-primary;
+          &:hover {
+              color: $sl-gray-dark;
+          }
+        }
+      }
     }
+  }
 }

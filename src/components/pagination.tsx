@@ -17,10 +17,10 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
   const prevText = '前へ'
   const nextText = '次へ'
   return (
-    <nav>
+    <nav className="sl-pagination">
       {numPages !== 1 && (
-        <div className="grid-3-middle">
-          <div className="col_sm-12 sl-align-center">
+        <div className="grid-3-middle_sm-1">
+          <div className="col sl-pagination-prev sl-align-center">
             {!isFirst ? (
               <Link to={prevPage} className="" rel="prev">
                 {prevText}
@@ -30,21 +30,21 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
             )}
           </div>
 
-          <div className="col_sm-12">
+          <div className="col sl-align-center">
             <ul className="sl-inline-list">
               {Array.from({ length: numPages }, (_, i) =>
                 i + 1 === currentPage ? (
                   <li
                     key={`pagination-number${i + 1}`}
-                    className="page-item active"
+                    className="sl-page-current"
                   >
-                    <span className="page-link">{i + 1}</span>
+                    <span className="">{i + 1}</span>
                   </li>
                 ) : (
-                  <li key={`pagination-number${i + 1}`} className="page-item">
+                  <li key={`pagination-number${i + 1}`} className="sl-page-link">
                     <Link
                       to={pathBase + (i === 0 ? '' : i + 1)}
-                      className="page-link"
+                      className=""
                     >
                       {i + 1}
                     </Link>
@@ -54,7 +54,7 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
             </ul>
           </div>
 
-          <div className="col?sm-12 sl-align-center">
+          <div className="col sl-pagination-next sl-align-center">
             {!isLast ? (
               <Link to={nextPage} rel="next" className="">
                 {nextText}
