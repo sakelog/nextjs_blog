@@ -34,15 +34,15 @@ const Header = () => {
         </div>
         <div className="col-10_md-12 sl-nav-menu">
 
-          <div id="nav-drawer">
+          <div className="sl-nav-drawer">
 
-            <input id="nav-input" type="checkbox" className="nav-unshown" />
+            <input id="nav-input" type="checkbox" className="sl-display-none" />
             <div className="nav-open-wrapper">
-              <label id="nav-open" className="nav-unshown" htmlFor="nav-input">
+              <label id="nav-open" className="sl-display-none" htmlFor="nav-input">
                 <span><FiPlus /></span>
               </label>
             </div>
-            <label className="nav-unshown" id="nav-close" htmlFor="nav-input"></label>
+            <label className="sl-display-none" id="nav-close" htmlFor="nav-input"></label>
 
             <div id="nav-content">
               <HeaderCatList />
