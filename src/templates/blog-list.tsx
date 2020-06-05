@@ -1,40 +1,37 @@
-import * as React from "react"
-import { graphql, Link } from "gatsby"
+import * as React from 'react'
+import { graphql, Link } from 'gatsby'
 
-import { TempblogListQuery } from "../../types/graphql-types"
+import { TempblogListQuery } from '../../types/graphql-types'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Pagination from "../components/pagination"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Pagination from '../components/pagination'
 
-const _ = require("lodash")
+const _ = require('lodash')
 
 interface BlogListType {
-  pageContext:{
-    currentPage:number,
-    numPages:number,
-  },
-  data:TempblogListQuery
+  pageContext: {
+    currentPage: number
+    numPages: number
+  }
+  data: TempblogListQuery
 }
 
-const BlogList = ({ pageContext, data }:BlogListType) => {
+const BlogList = ({ pageContext, data }: BlogListType) => {
   const posts = data.allMarkdownRemark.edges
   const { currentPage, numPages } = pageContext
 
   const SiteTitle = data.site.siteMetadata.title
 
-  const pageTitle = currentPage === 1 ? null : "記事一覧"
-  const description = currentPage === 1 ? null : `${SiteTitle}の記事一覧ページ：${currentPage}`
+  const pageTitle = currentPage === 1 ? null : '記事一覧'
+  const description =
+    currentPage === 1 ? null : `${SiteTitle}の記事一覧ページ：${currentPage}`
 
   return (
     <Layout>
-      {SEO
-        (pageTitle,
-        description,
-        false)
-      }
+      {SEO(pageTitle, description, false)}
       <h2>{pageTitle}</h2>
-      {posts.map(({node}) => {
+      {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         const description = node.frontmatter.description || node.excerpt
         const categoryPath = `/category/${_.kebabCase(
@@ -42,7 +39,7 @@ const BlogList = ({ pageContext, data }:BlogListType) => {
         )}/`
 
         const Tags = node.frontmatter.tags
-        const tag_list = Tags.map((tag: {},index:number) => (
+        const tag_list = Tags.map((tag: {}, index: number) => (
           <li key={index} className="list-inline-item">
             <Link to={`/tags/${_.kebabCase(tag)}/`}>
               <h5 className="cats">#{tag}</h5>
@@ -56,14 +53,10 @@ const BlogList = ({ pageContext, data }:BlogListType) => {
             <h2>
               <Link to={node.fields.slug}>{title}</Link>
             </h2>
-            <ul className="sl-inline-list">
-              <li>
-                <Link to={categoryPath} className="sl-cat-badge">
-                  <h3>{node.frontmatter.category}</h3>
-                </Link>
-              </li>
-              {tag_list}
-            </ul>
+            <Link to={categoryPath} className="sl-cat-badge">
+              <h3>{node.frontmatter.category}</h3>
+            </Link>
+            <ul className="sl-inline-list">{tag_list}</ul>
             <p>{description}</p>
           </div>
         )
@@ -80,9 +73,9 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
-    }  
+    }
     allMarkdownRemark(
-      filter: {fields: {collection: {eq: "post"}}}
+      filter: { fields: { collection: { eq: "post" } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

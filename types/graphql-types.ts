@@ -3422,7 +3422,7 @@ export type TempTagsQuery = (
           & Pick<MarkdownRemarkFields, 'slug'>
         )>, frontmatter?: Maybe<(
           { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'description'>
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'category' | 'description'>
         )> }
       ) }
     )> }
