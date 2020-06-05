@@ -22,7 +22,7 @@ const Header = () => {
   const SiteTitle = data.site.siteMetadata.title
   return(
     <nav
-      id="sl-nav-bar"
+      className="sl-nav-bar"
       role="navigation"
       aria-label="main navigation"
     >
