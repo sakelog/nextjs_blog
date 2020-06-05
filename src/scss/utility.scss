@@ -11,6 +11,21 @@
     text-align: center;
 }
 /*=====================================
+** flexbox
+**=====================================*/
+.sl-display-flex {
+    display: flex;
+}
+.sl-flex-justify-center {
+    justify-content: center;
+}
+.sl-flex-justify-between {
+    justify-content: space-between;
+}
+.sl-flex-justify-around {
+    justify-content: space-around;
+}
+/*=====================================
 ** リスト
 **=====================================*/
 ul,ol {

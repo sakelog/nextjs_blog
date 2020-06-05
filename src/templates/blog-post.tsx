@@ -14,7 +14,7 @@ import BackToTopPage from '../components/back-to-top-page'
 const kebabCase = require('lodash/kebabCase')
 
 // Icon
-import { FiTag } from 'react-icons/fi'
+import { FiTag,FiCalendar } from 'react-icons/fi'
 
 interface BlogPostTypes {
   pageContext: {
@@ -61,7 +61,7 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
         <Link to={categoryPath} className="sl-cat-badge">
           <h4>{post.frontmatter.category}</h4>
         </Link>
-        <small>{post.frontmatter.date}</small>
+        <small className="sl-date"><FiCalendar />{post.frontmatter.date}</small>
         <hr />
 
         <div className="grid-center">
