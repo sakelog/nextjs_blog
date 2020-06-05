@@ -6,13 +6,14 @@ body {
     font-size:1.6rem;
     letter-spacing: 0.08rem;
     line-height: 1.8;
+    color: $sl-font-color;
     @include sl-mq(sm){
         font-size: 1.4rem;
         letter-spacing: 0.06rem;
     }
 }
 p {
-    margin: 1rem auto;
+    margin: 1.8rem auto;
 }
 ul,ol {
     margin: 1rem;
@@ -55,11 +56,11 @@ a{
     color: $sl-primary-light;
     font-weight: bold;
     &:hover {
-        color: $sl-dark-gray;
+        color: $sl-primary-lighter;
         text-decoration: none;
     }
     &:active {
-        color: $primary;
+        color: $sl-primary;
     }
 }
 

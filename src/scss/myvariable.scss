@@ -1,14 +1,18 @@
 /*=====================================
 ** テーマカラー
 **=====================================*/
-$primary: #164a84;
-$sl-primary-light: #336eb1;
-$sl-primary-lighter: #e4eaf0;
+$sl-primary: #54917f;
+$sl-primary-light: lighten($sl-primary, 12%);
+$sl-primary-lighter: lighten($sl-primary-light, 24%);
 $sl-gray: #dddddd;
-$sl-light-gray: #fafaf8;
-$sl-dark-gray: #343536;
+$sl-gray-light: lighten($sl-gray, 12%);
+$sl-gray-dark: darken($sl-gray, 48%);
+$sl-gray-darker: darken($sl-gray-dark, 18%);
+$sl-white: #ffffff;
 $sl-note: #ffffe5;
 $sl-danger: #ffe5f2;
+
+$sl-font-color: $sl-gray-darker;
 
 /*=====================================
 ** フォント

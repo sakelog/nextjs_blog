@@ -11,8 +11,8 @@
     outline: none;
 }
 .sl-btn-primary{
-    background: $primary;
-    color: $sl-light-gray;
+    background: $sl-primary;
+    color: $sl-gray-light;
     border: none;
     
     &::focus{
@@ -21,17 +21,17 @@
 
     &:hover{
         background: $sl-primary-light;
-        color: #ffffff;
+        color: $sl-white;
     }
 }
 .sl-btn-line{
     border-width: 2px;
     border-style: solid;
-    border-color: $sl-dark-gray;
-    color: $sl-dark-gray;
+    border-color: $sl-gray-dark;
+    color: $sl-gray-dark;
 
     &:hover{
-        background: $sl-dark-gray;
+        background: $sl-gray-dark;
         color: #ffffff;
     }
 }
