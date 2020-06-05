@@ -38,7 +38,7 @@ const Header = () => {
 
             <input id="nav-input" type="checkbox" className="sl-display-none" />
             <div className="nav-open-wrapper">
-              <label id="nav-open" className="sl-display-none" htmlFor="nav-input">
+              <label className="sl-nav-open sl-display-none" htmlFor="nav-input">
                 <span><FiPlus /></span>
               </label>
             </div>
