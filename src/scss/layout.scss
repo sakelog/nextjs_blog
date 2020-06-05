@@ -23,6 +23,10 @@ footer {
     background: $sl-gray-light;
     padding: 1em 0 0.2em;
     overflow: hidden;
+
+    .sl-inline-list {
+        margin: 0 auto;
+    }
 }
 /*=====================================
 ** アイコン
@@ -48,4 +52,10 @@ footer {
     h3,h4{
         display: inline-block;
     }
+}
+/*=====================================
+** 日付表示
+**=====================================*/
+.sl-date {
+    vertical-align: middle;
 }
