@@ -9,6 +9,8 @@ import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 import BackToTopPage from "../components/back-to-top-page"
 
+const _ = require('lodash')
+
 interface TagsType {
   pageContext:{
     tag:{},
@@ -39,11 +41,17 @@ const Tags = ({ pageContext, data }:TagsType) => {
         const { slug } = node.fields
         const title = node.frontmatter.title || node.fields.slug
         const description = node.frontmatter.description || node.excerpt
+        const categoryPath = `/category/${_.kebabCase(
+          node.frontmatter.category
+        )}/`
         return (
           <div key={slug} className="sl-border-bottom">
             <small>{node.frontmatter.date}</small>
             <Link to={slug}>
               <h2>{title}</h2>
+            </Link>
+            <Link to={categoryPath} className="sl-cat-badge">
+              <h3>{node.frontmatter.category}</h3>
             </Link>
             <p>{description}</p>
           </div>
@@ -76,6 +84,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date(formatString: "YYYY年M月D日")
+            category
             description
           }
         }

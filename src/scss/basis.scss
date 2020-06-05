@@ -17,6 +17,9 @@ p {
 }
 ul,ol {
     margin: 1rem;
+    @include sl-mq(sm) {
+        margin: 0.6rem;
+    }
     padding-left: 2rem;
     padding-right: 1rem;
     padding-top: 1rem;
