@@ -10,6 +10,7 @@
   padding: 0;
   margin: 0;
   z-index: 9999;
+  border-bottom: 1px solid $sl-primary-lighter;
   @include sl-mq(sm){
     filter: drop-shadow(0 1rem 4rem rgba(0,0,0,.2));
   }
@@ -93,8 +94,6 @@
       }
 
       .sl-nav-content {
-        display: none;
-        opacity: 0;
         overflow: hidden;
         position: absolute;
         z-index: 2;
@@ -104,11 +103,14 @@
         height: auto;
         transition: 0.3s ease-in-out;
         padding: 3rem;
+        transform: translateY(-200%);
+        -webkit-transform: translateY(-200%);
+        z-index: -1;
       }
       #nav-input:checked {
         & ~ .sl-nav-content {
-          display: block;
-          opacity: 1;
+          transform: translateY(0);
+          -webkit-transform: translateY(0);
         }
       }
     }
