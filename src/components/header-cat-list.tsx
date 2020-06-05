@@ -21,11 +21,9 @@ const HeaderCatList = () => {
   return(
   <div className="grid-4">
     {categorys.map((category: { fieldValue: string },index:number) => (
-        <div className="col">
+        <div className="col" key={index}>
           <Link
-            key={index}
             to={`/category/${kebabCase(category.fieldValue)}/`}
-            className=""
           >
             {category.fieldValue}
           </Link>
