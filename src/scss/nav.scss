@@ -36,45 +36,61 @@
         background: $sl-primary-light;
       }
     }
-  }
 
-  .sl-nav-menu {
-
-    .sl-nav-drawer {
-      position: relative;
-    }
-
-    #nav-content {
-      padding: 0.6rem 3rem;
-      font-size: 1.4rem;
-    }
-  
     @include sl-mq(sm) {
-      .nav-open-wrapper {
-        text-align: center;
-        padding: 2rem;
-      }
-      
       .sl-nav-open {
         display: inline-block;
         width: 4rem;
         height: 4rem;
-        background: $sl-primary-light;
+        background: $sl-primary-lighter;
         border-radius: 50%;
-        position: relative;
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        filter: drop-shadow(4rem 4rem 2rem rgba(0,0,0,.4));
 
         span {
           position: absolute;
           top: 50%;
           left: 50%;
+          width: 3rem;
+          height: 3rem;
+          text-align: center;
+          vertical-align: middle;
           transform: translateY(-50%) translateX(-50%);
           -webkit-transform: translateY(-50%) translateX(-50%);
-          color: $sl-white;
+          color: $sl-gray-dark;
           font-size: 2rem;
         }
       }
+    }
 
-      #nav-close {
+    @include sl-mq(xs) {
+      .sl-nav-open {
+        display: none;
+      }
+    }
+  }
+
+  .sl-nav-menu {
+    .sl-nav-drawer {
+      position: relative;
+    }
+
+    .sl-nav-content {
+      padding: 0.6rem 3rem;
+      font-size: 1.4rem;
+    }
+
+    @include sl-mq(sm) {
+      .sl-nav-open-wrapper {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .sl-nav-close {
         display: none;
         opacity: 0;
         position: fixed;
@@ -83,11 +99,11 @@
         width: 100%;
         height: 100%;
         background: black;
-        transition: .3s ease-in-out;
+        transition: 0.3s ease-in-out;
       }
 
-      #nav-content {
-        display:none;
+      .sl-nav-content {
+        display: none;
         opacity: 0;
         overflow: hidden;
         position: absolute;
@@ -100,14 +116,14 @@
         transition: 0.3s ease-in-out;
         padding: 3rem;
       }
-      #nav-input:checked{
-        &~ #nav-content {
+      #nav-input:checked {
+        & ~ .sl-nav-content {
           display: block;
           opacity: 1;
         }
-        &~ #nav-close {
+        & ~ .sl-nav-close {
           display: block;
-          opacity: .5;
+          opacity: 0.5;
         }
       }
     }

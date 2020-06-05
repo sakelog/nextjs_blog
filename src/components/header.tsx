@@ -1,16 +1,16 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from 'gatsby'
 
 //Components
-import HeaderCatList from "./header-cat-list"
+import HeaderCatList from './header-cat-list'
 
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus } from 'react-icons/fi'
 
 const Header = () => {
   const data = useStaticQuery(
     graphql`
-      query Compheader{
+      query Compheader {
         site {
           siteMetadata {
             title
@@ -20,31 +20,29 @@ const Header = () => {
     `
   )
   const SiteTitle = data.site.siteMetadata.title
-  return(
-    <nav
-      className="sl-nav-bar"
-      role="navigation"
-      aria-label="main navigation"
-    >
+  return (
+    <nav className="sl-nav-bar" role="navigation" aria-label="main navigation">
       <div className="grid-noGutter">
         <div className="col-2_md-12 sl-nav-title-wrapper">
           <Link to="/" className="sl-nav-title">
             <span>{SiteTitle}</span>
           </Link>
+
+          <label className="sl-nav-open sl-display-none" htmlFor="nav-input">
+            <span>
+              <FiPlus />
+            </span>
+          </label>
         </div>
         <div className="col-10_md-12 sl-nav-menu">
-
           <div className="sl-nav-drawer">
-
             <input id="nav-input" type="checkbox" className="sl-display-none" />
-            <div className="nav-open-wrapper">
-              <label className="sl-nav-open sl-display-none" htmlFor="nav-input">
-                <span><FiPlus /></span>
-              </label>
-            </div>
-            <label className="sl-display-none" id="nav-close" htmlFor="nav-input"></label>
+            <label
+              className="sl-nav-close sl-display-none"
+              htmlFor="nav-input"
+            ></label>
 
-            <div id="nav-content">
+            <div className="sl-nav-content">
               <HeaderCatList />
               <hr />
               <div className="grid-4-spaceBetween">
@@ -69,11 +67,8 @@ const Header = () => {
                   </Link>
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </nav>
