@@ -34,10 +34,10 @@ $sl-font-logo: 'Fredericka the Great', cursive;
 ** ブレークポイント
 **=====================================*/
 $sl-breakpoints: (
-    'xs': 'screen and (max-width: 36em)',
-    'sm': 'screen and (max-width: 48em)',
-    'md': 'screen and (max-width: 64em)',
-    'lg': 'screen and (max-width: 80em)',
+    'xs': 'screen and (max-width: 24rem)',
+    'sm': 'screen and (max-width: 48rem)',
+    'md': 'screen and (max-width: 64rem)',
+    'lg': 'screen and (max-width: 80rem)',
 ) !default;
 
 @mixin sl-mq($sl-breakpoint) {
