@@ -89,6 +89,7 @@
       }
 
       #nav-content {
+        display:none;
         opacity: 0;
         overflow: hidden;
         position: absolute;
@@ -103,6 +104,7 @@
       }
       #nav-input:checked{
         &~ #nav-content {
+          display: block;
           opacity: 1;
         }
         &~ #nav-close {
