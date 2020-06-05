@@ -40,7 +40,7 @@ module.exports = {
         short_name: "sake log",
         start_url: "/?source=homescreen",
         background_color: "#333",
-        theme_color: "#164a84",
+        theme_color: "#54917f",
         display: "minimal-ui",
         icons: [
           {

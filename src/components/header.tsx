@@ -37,10 +37,6 @@ const Header = () => {
         <div className="col-10_md-12 sl-nav-menu">
           <div className="sl-nav-drawer">
             <input id="nav-input" type="checkbox" className="sl-display-none" />
-            <label
-              className="sl-nav-close sl-display-none"
-              htmlFor="nav-input"
-            ></label>
 
             <div className="sl-nav-content">
               <HeaderCatList />
