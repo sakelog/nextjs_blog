@@ -68,10 +68,6 @@
           color: $sl-gray-dark;
           font-size: 2rem;
         }
-
-        @include sl-mq(xs) {
-          display: none;
-        }
       }
     }
   }
@@ -88,11 +84,6 @@
     }
 
     @include sl-mq(sm) {
-      .sl-nav-open-wrapper {
-        text-align: center;
-        padding: 2rem;
-      }
-
       .sl-nav-content {
         overflow: hidden;
         position: absolute;
