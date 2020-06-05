@@ -17,7 +17,7 @@
 **=====================================*/
 footer {
     margin-top: auto;
-    background: $sl-light-gray;
+    background: $sl-gray-light;
     padding: 1em 0 0.2em;
     overflow: hidden;
 }
@@ -31,27 +31,18 @@ footer {
 ** カテゴリー表示
 **=====================================*/
 .sl-cat-badge{
-    border: 2px solid $primary;
-    color: $primary;
+    border: 2px solid $sl-primary;
+    color: $sl-primary;
     text-decoration: none;
     padding: 1rem;
     margin: auto 2rem;
 
     &:hover{
-        background: $primary;
-        color: #ffffff;
+        background: $sl-primary;
+        color: $sl-white;
     }
 
     h3,h4{
         display: inline-block;
     }
 }
-
-  /*===================================
-  ** カテゴリー・タグ表示
-  **===================================*/
-  //.cats {
-  //  font-size: 1rem;
-  //  margin: 0;
-  //  color: #cccccc;
-  //}
