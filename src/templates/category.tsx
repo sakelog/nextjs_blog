@@ -41,7 +41,7 @@ const Category = ({ pageContext, data }:Props) => {
         const description = node.frontmatter.description || node.excerpt
         return (
           <div key={slug} className="sl-border-bottom">
-            <small>投稿日：{node.frontmatter.date}</small>
+            <small>{node.frontmatter.date}</small>
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
