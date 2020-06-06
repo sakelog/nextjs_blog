@@ -15,9 +15,6 @@ components: {
     blockquote: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLElement> & React.BlockquoteHTMLAttributes<HTMLElement>) => {
     return <blockquote className="blockquote" {...props}></blockquote>
     },
-    img: (props: JSX.IntrinsicAttributes  & React.ImgHTMLAttributes<HTMLElement>) => {
-        return <img loading="lazy" {...props} />
-    },
 },
 }).Compiler
 
