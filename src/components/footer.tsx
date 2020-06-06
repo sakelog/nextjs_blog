@@ -1,9 +1,12 @@
 import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
+// Component
+import SocialIcon from "./social-icon"
+
 // Icons
-import { GoMarkGithub } from 'react-icons/go'
-import { AiOutlineTwitter } from 'react-icons/ai'
+//import { GoMarkGithub } from 'react-icons/go'
+//import { AiOutlineTwitter } from 'react-icons/ai'
 
 const Footer = () => {
   const data = useStaticQuery(
@@ -33,32 +36,7 @@ const Footer = () => {
           <p>&copy;{copytext}</p>
         </div>
         <div className="col-2_sm-12 sl-align-center">
-          <ul className="sl-inline-list">
-            <li>
-              <a
-                href="https://github.com/sakelog"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="presentation"
-                aria-label="Github"
-                className="sl-icon"
-              >
-                <GoMarkGithub />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/sake_engineer"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="presentation"
-                aria-label="Twitter"
-                className="sl-icon"
-              >
-                <AiOutlineTwitter />
-              </a>
-            </li>
-          </ul>
+          <SocialIcon />
         </div>
       </div>
     </footer>

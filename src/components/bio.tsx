@@ -3,9 +3,8 @@ import * as React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-// Icons
-import { GoMarkGithub } from 'react-icons/go'
-import { AiOutlineTwitter } from 'react-icons/ai'
+// Component
+import SocialIcon from './social-icon'
 
 const Bio = () => {
   const data = useStaticQuery(
@@ -48,32 +47,7 @@ const Bio = () => {
           <Link to="/about_this_site/" className="sl-btn sl-btn-primary">
             プロフィール
           </Link>
-          <ul className="sl-inline-list">
-            <li>
-              <a
-                href="https://github.com/sakelog"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="presentation"
-                aria-label="Github"
-                className="sl-icon"
-              >
-                <GoMarkGithub />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/sake_engineer"
-                target="_blank"
-                rel="noopener noreferrer"
-                role="presentation"
-                aria-label="Twitter"
-                className="sl-icon"
-              >
-                <AiOutlineTwitter />
-              </a>
-            </li>
-          </ul>
+          <SocialIcon />
         </div>
       </div>
     </div>
