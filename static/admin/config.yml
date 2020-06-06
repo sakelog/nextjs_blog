@@ -3,23 +3,20 @@ backend:
   repo: sakelog/sake_log
   branch: master
 publish_mode: editorial_workflow
-media_folder: content/post/img
-public_folder: /img
+media_folder: 'content/post/img/upload'
+public_folder: '/img/upload'
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/post"
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/post'
     create: true
-    slug: "{{fields.slug}}"
+    slug: '{{fields.slug}}'
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {labl: "Update", name: "update", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "string"}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - label: "Body",
-        name: "body",
-        widget: "markdown"
-        allow_add: "true"
-        field: {label: "Tag", name: "tag", widget: "string"}
+      - { label: 'Slug', name: 'slug', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { labl: 'Update', name: 'update', default: '', widget: 'datetime', required: false }
+      - { label: 'Description', name: 'description', widget: 'text',required: false }
+      - { label: 'Category', name: 'category', widget: 'string' }
+      - { label: 'Tags', name: 'tags', widget: 'list', allow_add: 'true' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
