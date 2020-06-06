@@ -16,4 +16,5 @@ collections:
       - {labl: "Update", name: "update", widget: "datetime"}
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Category", name: "category", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "string[]"}
+      - {label: "Tags", name: "tags", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
