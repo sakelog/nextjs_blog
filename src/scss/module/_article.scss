@@ -1,16 +1,23 @@
+@use './article/tableOfContents';
+@use './article/bio';
+@use './article/prism';
+@use './article/yomereba';
+
+@use '../var/var' as var;
+
 /*===========================================*
 **  記事本文
 **===========================================*/
 .Article {
   h2 {
-    background: $sl-primary-lighter;
+    background: var.$sl-primary-lighter;
     color: #000000;
     padding: 0.5em;
   }
   blockquote {
     margin: 1em;
     padding: 1em;
-    border-left: $sl-primary-lighter 3px solid;
+    border-left: var.$sl-primary-lighter 3px solid;
     max-width: calc(100%-4em);
   }
   a[target="_blank"]{
@@ -37,17 +44,17 @@
       min-width: 64rem;
       margin: 2rem 1rem;
       td{
-        border-top: solid 1px $sl-gray;
+        border-top: solid 1px var.$sl-gray;
         padding: 1rem 2rem;
       }
     }
-    @include sl-mq(sm) {
+    @include var.sl-mq(sm) {
       overflow-x: auto;
     }
   }
 
     .note {
-      background: $sl-note;
+      background: var.$sl-note;
       padding: 0.5em;
       margin: 1em 0;
       border-radius: 5px;
@@ -58,7 +65,7 @@
       }
 
       &.danger {
-        background: $sl-danger;
+        background: var.$sl-danger;
 
         .custom-block-heading {
           color: #c53d43;

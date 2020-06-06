@@ -1,3 +1,5 @@
+@use '../../var/var' as var;
+
 /*=====================================
 ** プロフィール
 **=====================================*/
@@ -5,13 +7,13 @@
     margin: 4rem auto;
 }
 .sl-bio {
-    background: $sl-gray-light;
+    background: var.$sl-gray-light;
     border-radius: 0.8rem;
     filter: drop-shadow(0 0 0.4rem rgba(0,0,0,.1));
     .sl-bio-title {
         font-size: 3.0rem;
-        font-family: $sl-font-hw;
-        color: $sl-gray-dark;
+        font-family: var.$sl-font-hw;
+        color: var.$sl-gray-dark;
         margin: 0 auto;
     }
 }

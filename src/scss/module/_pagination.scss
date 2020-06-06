@@ -1,8 +1,10 @@
+@use '../var/var' as var;
+
 /*===========================================
 ** 前・次
 **===========================================*/
 .sl-prevnext {
-  background: $sl-primary-lighter;
+  background: var.$sl-primary-lighter;
   border-radius: 50%;
   width: 2em;
   height: 2em;
@@ -13,7 +15,7 @@
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     -webkit-transform: translateY(-50%) translateX(-50%);
-    color: $sl-gray-dark;
+    color: var.$sl-gray-dark;
   }
 }
 /*=====================================
@@ -22,7 +24,7 @@
 .sl-pagination {
   .sl-inline-list {
     li {
-      border: 1px solid $sl-primary;
+      border: 1px solid var.$sl-primary;
       border-radius: 50%;
       width: 3rem;
       height: 3rem;
@@ -41,23 +43,21 @@
         height: 100%;
         font-size: 1.6rem;
         text-decoration: none;
-        //border: 1px solid $sl-primary;
-        //border-radius: 50%;
       }
 
       &.sl-page-current {
-        background: $sl-primary;
-        color: $sl-white;
+        background: var.$sl-primary;
+        color: var.$sl-white;
       }
       &.sl-page-link {
-        background: $sl-gray-light;
+        background: var.$sl-gray-light;
          &:hover {
-           background: $sl-primary-lighter;
+           background: var.$sl-primary-lighter;
          }
         a {
-          color: $sl-primary;
+          color: var.$sl-primary;
           &:hover {
-              color: $sl-gray-dark;
+              color: var.$sl-gray-dark;
           }
         }
       }

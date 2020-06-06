@@ -1,0 +1,11 @@
+@use '../var/var.scss' as var;
+
+/*=====================================
+** 記事エリア
+**=====================================*/
+.sl-container {
+  padding: 2rem 4rem;
+  @include var.sl-mq(xs) {
+      padding: 2rem 1rem;
+  }
+}
