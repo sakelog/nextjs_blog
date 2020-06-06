@@ -1,9 +1,9 @@
-@use './article/tableOfContents';
-@use './article/bio';
-@use './article/prism';
-@use './article/yomereba';
+@forward 'tableOfContents';
+@forward 'bio';
+@forward 'prism';
+@forward 'yomereba';
 
-@use '../var/var' as var;
+@use '../../var/var' as var;
 
 /*===========================================*
 **  記事本文
