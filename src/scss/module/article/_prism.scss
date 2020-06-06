@@ -24,11 +24,12 @@ $prism-theme-highlight: rgba(var.$sl-accent, 0.2);
 .gatsby-code-title {
   background: $prism-theme-background;
   opacity: 0.8;
-  color: var.$sl-white;
+  color: var.$sl-gray-dark;
   font-size: 1.2rem;
   padding: 0.4rem 1.4rem;
   border-radius: 8px 8px 0 0;
   display: table;
+  margin-bottom: -2rem;
 }
 .gatsby-highlight-code-line {
   background-color: $prism-theme-highlight;
