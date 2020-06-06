@@ -6,10 +6,9 @@ $prism-theme-highlight: rgba($sl-accent, 0.2);
 
 .gatsby-highlight {
   background-color: $prism-theme-background;
-  margin: 0;
+  margin: 2rem 0;
   padding: 1rem;
   overflow: auto;
-  //font-size: 1.4rem;
 }
 .gatsby-highlight [class*='language-'] {
   background-color: transparent;
