@@ -48,7 +48,6 @@
     "react-helmet": "^6.0.0",
     "react-icons": "^3.10.0",
     "rehype-react": "^5.0.1",
-    "simplegrid": "^1.0.2",
     "typescript": "^3.9.3",
     "webpack": "^4.43.0"
   },

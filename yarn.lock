@@ -14548,11 +14548,6 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simplegrid@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/simplegrid/-/simplegrid-1.0.2.tgz#363312fbd5b1cd0725d9bbeba69583b398d4751a"
-  integrity sha1-NjMS+9WxzQcl2bvrppWDs5jUdRo=
-
 single-trailing-newline@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/single-trailing-newline/-/single-trailing-newline-1.0.0.tgz#81f0ad2ad645181945c80952a5c1414992ee9664"
