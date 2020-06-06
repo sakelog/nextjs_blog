@@ -2,16 +2,16 @@
 @import '../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 $prism-theme-background: #f5f2f0;
-$prism-theme-highlight: rgba($sl-accent, .2);
+$prism-theme-highlight: rgba($sl-accent, 0.2);
 
 .gatsby-highlight {
   background-color: $prism-theme-background;
   margin: 0;
   padding: 1rem;
   overflow: auto;
-  font-size: 1.4rem;
+  //font-size: 1.4rem;
 }
-.gatsby-highlight pre[class*="language-"] {
+.gatsby-highlight [class*='language-'] {
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@ $prism-theme-highlight: rgba($sl-accent, .2);
 .gatsby-code-title {
   background: $prism-theme-background;
   opacity: 0.8;
-  color: #ffffff;
+  color: $sl-white;
   font-size: 1.2rem;
   padding: 0.4rem 1.4rem;
   border-radius: 8px 8px 0 0;
