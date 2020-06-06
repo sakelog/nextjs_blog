@@ -20,7 +20,9 @@
   .sl-nav-title-wrapper {
     background: var.$sl-primary;
     position: relative;
-    min-height: 6rem;
+    @include var.sl-mq(md) {
+      min-height: 6rem;
+    }
 
     .sl-nav-title {
       position: absolute;
@@ -80,13 +82,18 @@
     }
 
     .sl-nav-content {
-      padding: 0.6rem 3rem;
+      padding: 0rem 3rem;
       font-size: 1.4rem;
       background: var.$sl-gray-light;
+
+      hr {
+        margin: 0 -1rem;
+      }
     }
 
     @include var.sl-mq(sm) {
       .sl-nav-content {
+        padding: 0.6rem 3rem;
         overflow: hidden;
         position: absolute;
         z-index: 2;
