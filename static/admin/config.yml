@@ -3,7 +3,8 @@ backend:
   repo: sakelog/sake_log
   branch: master
 publish_mode: editorial_workflow
-media_folder: "img/uploads"
+media_folder: static
+public_folder: ./img
 collections:
   - name: "blog"
     label: "Blog"
