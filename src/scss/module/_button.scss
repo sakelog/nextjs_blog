@@ -1,3 +1,5 @@
+@use '../var/var.scss' as var;
+
 .sl-btn{
     border-radius: 0.6rem;
     padding: 1rem 3rem;
@@ -11,8 +13,8 @@
     outline: none;
 }
 .sl-btn-primary{
-    background: $sl-primary;
-    color: $sl-gray-light;
+    background: var.$sl-primary;
+    color: var.$sl-gray-light;
     border: none;
     
     &::focus{
@@ -20,18 +22,18 @@
     }
 
     &:hover{
-        background: $sl-primary-light;
-        color: $sl-white;
+        background: var.$sl-primary-light;
+        color: var.$sl-white;
     }
 }
 .sl-btn-line{
     border-width: 2px;
     border-style: solid;
-    border-color: $sl-gray-dark;
-    color: $sl-gray-dark;
+    border-color: var.$sl-gray-dark;
+    color: var.$sl-gray-dark;
 
     &:hover{
-        background: $sl-gray-dark;
+        background: var.$sl-gray-dark;
         color: #ffffff;
     }
 }

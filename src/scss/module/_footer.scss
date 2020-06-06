@@ -1,0 +1,15 @@
+@use '../var/var' as var;
+
+/*=====================================
+** フッター
+**=====================================*/
+footer {
+  margin-top: auto;
+  background: var.$sl-gray-light;
+  padding: 1em 0 0.2em;
+  overflow: hidden;
+
+  .sl-inline-list {
+      margin: 0 auto;
+  }
+}

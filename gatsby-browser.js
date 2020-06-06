@@ -1,2 +1,2 @@
-import "./src/scss/mystyle.scss"
+import './src/css/mystyle.css'
 //require("bootstrap")

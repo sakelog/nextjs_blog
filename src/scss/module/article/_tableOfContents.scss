@@ -1,0 +1,14 @@
+@use '../../var/var' as var;
+
+/**====================================
+** 目次
+**=====================================*/
+.tableOfContents {
+    border: 1px solid var.$sl-primary-lighter;
+    padding: 0;
+    margin: 3rem auto;
+
+    h2 {
+        margin: 0;
+    }
+}

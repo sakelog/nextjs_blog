@@ -1,8 +1,10 @@
+@use '../var/var' as var;
+
 /*=====================================
 ** ナビゲーションバー
 **=====================================*/
 .sl-nav-bar {
-  background: $sl-gray-light;
+  background: var.$sl-gray-light;
   position: sticky;
   top: 0;
   left: 0;
@@ -10,13 +12,13 @@
   padding: 0;
   margin: 0;
   z-index: 9999;
-  border-bottom: 1px solid $sl-primary-lighter;
-  @include sl-mq(sm){
+  border-bottom: 1px solid var.$sl-primary-lighter;
+  @include var.sl-mq(sm){
     filter: drop-shadow(0 1rem 4rem rgba(0,0,0,.2));
   }
 
   .sl-nav-title-wrapper {
-    background: $sl-primary;
+    background: var.$sl-primary;
     position: relative;
     min-height: 6rem;
 
@@ -24,10 +26,10 @@
       position: absolute;
       top: 0;
       left: 0;
-      color: $sl-white;
+      color: var.$sl-white;
       text-decoration: none;
       font-size: 2.4rem;
-      font-family: $sl-font-logo;
+      font-family: var.$sl-font-logo;
       font-weight: normal;
 
       width: 100%;
@@ -37,16 +39,16 @@
       align-items: center;
 
       &:hover {
-        background: $sl-primary-light;
+        background: var.$sl-primary-light;
       }
     }
 
-    @include sl-mq(sm) {
+    @include var.sl-mq(sm) {
       .sl-nav-open {
         display: inline-block;
         width: 4rem;
         height: 4rem;
-        background: $sl-primary-lighter;
+        background: var.$sl-primary-lighter;
         border-radius: 50%;
         position: absolute;
         top: 50%;
@@ -65,7 +67,7 @@
           vertical-align: middle;
           transform: translateY(-50%) translateX(-50%);
           -webkit-transform: translateY(-50%) translateX(-50%);
-          color: $sl-gray-dark;
+          color: var.$sl-gray-dark;
           font-size: 2rem;
         }
       }
@@ -80,10 +82,10 @@
     .sl-nav-content {
       padding: 0.6rem 3rem;
       font-size: 1.4rem;
-      background: $sl-gray-light;
+      background: var.$sl-gray-light;
     }
 
-    @include sl-mq(sm) {
+    @include var.sl-mq(sm) {
       .sl-nav-content {
         overflow: hidden;
         position: absolute;

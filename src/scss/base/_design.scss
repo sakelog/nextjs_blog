@@ -1,0 +1,22 @@
+@use '../../../node_modules/gridlex/src/gridlex.scss';
+
+@use '../module/icon';
+@use '../module/cat-badge';
+@use '../module/date';
+@use '../module/button';
+
+@use '../module/container';
+@use '../module/nav';
+@use '../module/footer';
+@use '../module/article';
+@use '../module/contact';
+@use '../module/pagination';
+
+/*=====================================
+** 画面全体
+**=====================================*/
+.sl-wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

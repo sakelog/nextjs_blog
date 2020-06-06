@@ -1,0 +1,21 @@
+@use '../var/var' as var;
+
+/*=====================================
+** カテゴリー表示
+**=====================================*/
+.sl-cat-badge{
+  border: 2px solid var.$sl-primary;
+  color: var.$sl-primary;
+  text-decoration: none;
+  padding: 1rem;
+  margin: auto 2rem;
+
+  &:hover{
+      background: var.$sl-primary;
+      color: var.$sl-white;
+  }
+
+  h3,h4{
+      display: inline-block;
+  }
+}

@@ -1,0 +1,15 @@
+/*=====================================
+** ブレークポイント
+**=====================================*/
+$sl-breakpoints: (
+  'xs': 'screen and (max-width: 36rem)',
+  'sm': 'screen and (max-width: 48rem)',
+  'md': 'screen and (max-width: 64rem)',
+  'lg': 'screen and (max-width: 80rem)',
+) !default;
+
+@mixin sl-mq($sl-breakpoint) {
+  @media #{map-get($sl-breakpoints, $sl-breakpoint)} {
+    @content;
+  }
+}

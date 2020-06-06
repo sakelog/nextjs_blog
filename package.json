@@ -6,11 +6,13 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
     "push": "git push origin master",
     "clean": "gatsby clean",
-    "gql-codegen": "graphql-codegen --config codegen.yml"
+    "gql-codegen": "graphql-codegen --config codegen.yml",
+    "sass": "sass ./src/scss/mystyle.scss ./src/css/mystyle.css --style compressed",
+    "sass-watch":  "sass ./src/scss/mystyle.scss ./src/css/mystyle.css --style compressed --watch",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
   },
   "dependencies": {
     "gatsby": "^2.23.1",

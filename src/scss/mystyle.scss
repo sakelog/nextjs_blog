@@ -1,23 +1,5 @@
 @charset "utf-8";
-@import "normalize";
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-@import "myvariable";
-@import "basis";
-@import "utility";
-@import "../../node_modules/gridlex/src/gridlex.scss";
-@import "layout";
-//@import "mybootstrap";
-
-//@import "content";
-@import "article";
-
-@import "pagination";
-@import "button";
-@import "nav";
-
-@import "tableOfContents";
-@import "bio";
-@import "contact";
-@import "myprism";
-@import "yomereba";
+@use './base/normalize';
+@use './base/basis';
+@use './base/utility';
+@use './base/design';
