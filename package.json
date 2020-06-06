@@ -10,7 +10,7 @@
     "clean": "gatsby clean",
     "gql-codegen": "graphql-codegen --config codegen.yml",
     "sass": "sass ./src/scss/mystyle.scss ./src/css/mystyle.css --style compressed",
-    "sass-watch":  "sass ./src/scss/mystyle.scss ./src/css/mystyle.css --style compressed --watch",
+    "sass-watch": "sass ./src/scss/mystyle.scss ./src/css/mystyle.css --style compressed --watch",
     "build": "gatsby build",
     "serve": "gatsby serve"
   },
@@ -41,7 +41,6 @@
     "gatsby-transformer-sharp": "^2.5.4",
     "gridlex": "^2.7.1",
     "lodash": "^4.17.15",
-    "node-sass": "^4.14.1",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
