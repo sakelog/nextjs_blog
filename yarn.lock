@@ -11063,11 +11063,6 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-milligrid@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/milligrid/-/milligrid-1.1.1.tgz#a5372454102e3137dd24d7e0177572611a2edf88"
-  integrity sha512-9CHnNWtP8eUq0xAedLyg+05pw75b6yJzhRibr6PUQ2EpTgmMSyNqv6Pgmy2Cam+g7fUrmnV2v6s5Jcd3sVVqmA==
-
 mime-db@1.44.0, "mime-db@>= 1.43.0 < 2", mime-db@^1.28.0:
   version "1.44.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.44.0.tgz#fa11c5eb0aca1334b4233cb4d52f10c5a6272f92"
