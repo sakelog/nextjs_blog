@@ -19,7 +19,7 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
   return (
     <nav className="sl-pagination">
       {numPages !== 1 && (
-        <div className="grid-3-middle_sm-1">
+        <div className="grid-3-middle_md-1">
           <div className="col sl-pagination-prev sl-align-center">
             {!isFirst ? (
               <Link to={prevPage} className="" rel="prev">

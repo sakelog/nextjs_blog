@@ -20,9 +20,7 @@
   .sl-nav-title-wrapper {
     background: var.$sl-primary;
     position: relative;
-    @include var.sl-mq(md) {
-      height: 6rem;
-    }
+    min-height: 4rem;
 
     .sl-nav-title {
       position: absolute;

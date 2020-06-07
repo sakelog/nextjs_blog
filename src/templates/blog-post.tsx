@@ -65,7 +65,7 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
         <hr />
 
         <div className="grid-center">
-          <div className="col-6_sm-12 tableOfContents">
+          <div className="col-6_md-8_sm-12 tableOfContents">
             <h2 className="text-center">目次</h2>
             <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
           </div>

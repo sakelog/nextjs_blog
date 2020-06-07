@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "push": "git push origin master",
     "clean": "gatsby clean",
     "gql-codegen": "graphql-codegen --config codegen.yml",
