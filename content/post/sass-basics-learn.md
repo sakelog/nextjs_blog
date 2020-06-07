@@ -147,7 +147,7 @@ body {
 $primary-color: #0f7dd6;
 ```
 
-```scss:title=_style.scss
+```scss:title=style.scss
 @use 'var' as v;
 body {
 	color: v.$primary-color;
