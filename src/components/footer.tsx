@@ -32,10 +32,10 @@ const Footer = () => {
   return (
     <footer>
       <div className="grid-around">
-        <div className="col-10_sm-12 sl-align-center">
+        <div className="col-10_md-12 sl-align-center">
           <p>&copy;{copytext}</p>
         </div>
-        <div className="col-2_sm-12 sl-align-center">
+        <div className="col-2_md-12 sl-align-center">
           <SocialIcon />
         </div>
       </div>

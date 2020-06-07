@@ -5,13 +5,14 @@ html {
 }
 body {
     font-family: var.$sl-font-default;
-    font-size:1.6rem;
+    font-size:1.8rem;
     letter-spacing: 0.08rem;
     line-height: 1.8;
     color: var.$sl-font-color;
-    @include var.sl-mq(sm){
-        font-size: 1.4rem;
+    @include var.sl-mq(md){
+        font-size: 1.6rem;
         letter-spacing: 0.06rem;
+        line-height: 1.5;
     }
 }
 p {
