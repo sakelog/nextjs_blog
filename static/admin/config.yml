@@ -14,9 +14,17 @@ collections:
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
-      - { labl: 'Update', name: 'update', default: '', widget: 'datetime', required: false }
-      - { label: 'Description', name: 'description', widget: 'text',required: false }
+      - { label: 'Date', name: 'date', widget: 'datetime', dateFormat: 'YYYY-MM-DD', timeFormat: 'HH:mm:ss' }
+      - {
+          labl: 'Update',
+          name: 'update',
+          default: '',
+          widget: 'datetime',
+          dateFormat: 'YYYY-MM-DD',
+          timeFormat: 'HH:mm:ss',
+          required: false,
+        }
+      - { label: 'Description', name: 'description', widget: 'text', required: false }
       - { label: 'Category', name: 'category', widget: 'string' }
       - { label: 'Tags', name: 'tags', widget: 'list', allow_add: 'true' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
@@ -28,7 +36,15 @@ collections:
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
-      - { labl: 'Update', name: 'update', default: '', widget: 'datetime', required: false }
-      - { label: 'Description', name: 'description', widget: 'text',required: false }
+      - { label: 'Date', name: 'date', widget: 'datetime', dateFormat: 'YYYY-MM-DD', timeFormat: 'HH:mm:ss' }
+      - {
+          labl: 'Update',
+          name: 'update',
+          default: '',
+          widget: 'datetime',
+          dateFormat: 'YYYY-MM-DD',
+          timeFormat: 'HH:mm:ss',
+          required: false,
+        }
+      - { label: 'Description', name: 'description', widget: 'text', required: false }
       - { label: 'Body', name: 'body', widget: 'markdown' }
