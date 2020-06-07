@@ -85,7 +85,7 @@ Wireless LAN adapter Wi-Fi:
 
 スマホやタブレットなど、つなぎたい端末からブラウザを起動します。
 
-PCのIPv4アドレスが100.64.1.xxだった場合、http://localhost:8000は次のように読み替えます。
+PCのIPv4アドレスが100.64.1.xxだった場合、`http://localhost:8000`は次のように読み替えます。
 
 ```text
 http://100.64.1.xx:8000
