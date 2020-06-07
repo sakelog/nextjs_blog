@@ -143,11 +143,11 @@ body {
 
 `as`で任意の名前空間をつけることも可能です。
 
-```scss:title=
+```scss:title=\_var.scss
 $primary-color: #0f7dd6;
 ```
 
-```scss:title=\_style.scss
+```scss:title=_style.scss
 @use 'var' as v;
 body {
 	color: v.$primary-color;
