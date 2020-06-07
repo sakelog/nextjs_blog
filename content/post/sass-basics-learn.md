@@ -124,7 +124,7 @@ Sassではタグをネストすることができます。
 
 ※.scssであれば、CSSファイルも読み込めます。
 
-```scss:\_base.scss
+```scss:title=\_base.scss
 $primary-color: #0f7dd6;
 
 body {
