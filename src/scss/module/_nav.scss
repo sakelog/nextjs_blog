@@ -21,7 +21,7 @@
     background: var.$sl-primary;
     position: relative;
     @include var.sl-mq(md) {
-      min-height: 6rem;
+      height: 6rem;
     }
 
     .sl-nav-title {
