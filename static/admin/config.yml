@@ -1,7 +1,5 @@
 backend:
-  name: github
-  repo: sakelog/sake_log
-  branch: master
+  name: git-gateway
 publish_mode: editorial_workflow
 media_folder: 'content/post/img/upload'
 public_folder: '/img/upload'

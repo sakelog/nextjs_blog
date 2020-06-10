@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import * as React from "react"
+import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
-import { escape } from 'lodash'
+import { escape } from "lodash"
 
-function SEO(title: string, description: string, imageFLG: boolean) {
+function SEO (title:string, description:string,imageFLG:boolean) {
   const data = useStaticQuery(
     graphql`
-      query CompSEO {
+      query CompSEO{
         site {
           siteMetadata {
             title
@@ -17,33 +17,27 @@ function SEO(title: string, description: string, imageFLG: boolean) {
       }
     `
   )
-  const metaTitle = (title ? title + ' | ' : '') + data.site.siteMetadata.title
-  const metaDescription =
-    description || 'WEB系の技術を中心にした技術メモ置き場です。WordPress・Gatsby・Bootstrapなどなど。'
-  const ogpImage =
-    imageFLG === true
-      ? 'https://res.cloudinary.com/cl1sakelog/image/upload/l_text:Sawarabi%20Gothic_50_bold:' +
-        escape(title) +
-        ',co_rgb:fff,w_700,c_fit/v1581204377/sakelog_ogp.png'
-      : data.site.siteMetadata.siteUrl + '/ogp.png'
-  const TwitterType = imageFLG === true ? 'summary_large_image' : 'summary'
+  const metaTitle = (title ? title + " | " : "") + data.site.siteMetadata.title 
+  const metaDescription = description ||  "WEB系の技術を中心にした技術メモ置き場です。WordPress・Gatsby・Bootstrapなどなど。"
+  const ogpImage = imageFLG === true?"https://res.cloudinary.com/cl1sakelog/image/upload/l_text:Sawarabi%20Gothic_50_bold:"+ escape(title) +",co_rgb:fff,w_700,c_fit/v1581204377/sakelog_ogp.png":data.site.siteMetadata.siteUrl + "/ogp.png"
+  const TwitterType = imageFLG === true?"summary_large_image":"summary"
   return (
     <Helmet
       htmlAttributes={{
-        lang: 'ja',
+        lang: "ja",
       }}
       title={metaTitle}
       meta={[
         {
-          name: 'description',
-          content: metaDescription,
+          name: "description",
+          content: metaDescription
         },
         {
-          property: 'og:title',
+          property: "og:title",
           content: metaTitle,
         },
         {
-          property: 'og:description',
+          property: "og:description",
           content: metaDescription,
         },
         {
@@ -68,10 +62,8 @@ function SEO(title: string, description: string, imageFLG: boolean) {
         },
       ]}
       defer={false}
-    >
-      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    </Helmet>
-  )
+    />
+  )  
 }
 
 export default SEO
