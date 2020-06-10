@@ -1,7 +1,7 @@
 ---
 slug: study-for-java-silver
 title: Oracle認定Java Silver合格！合格のためにやったことまとめ
-date: 2020-05-30T07:28:27.000Z
+date: 2020-05-30 16:28
 update: ""
 description: Oracle認定Java Silver試験に一発合格することができました。合格のために勉強したことをまとめます。
 category: 技術
