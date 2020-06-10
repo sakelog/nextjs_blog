@@ -24,7 +24,7 @@ Sassについて一言でまとめると、**記述が膨大になりがちなCS
 
 基本的にはSassファイルを直接読み込むのではなく、コンパイルしてCSSファイルに変換して読み込みます。
 
-![Sassを使っての開発全体イメージ](./img/upload/sass_basic_1.png "Sass_Basic_1.png")
+![Sassを使っての開発全体イメージ](/img/upload/sass_basic_1.png "Sass_Basic_1.png")
 
 ## 導入方法
 
