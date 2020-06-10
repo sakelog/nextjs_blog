@@ -1,7 +1,7 @@
 ---
 slug: Sass-basics-learn
 title: Sassの基本についてまとめてみた
-date: 2020-06-07T04:28:19.642Z
+date: 2020-06-07 13:28
 update: ""
 description: 使えるとCSSを効率的に記述できるSass。公式サイトのマニュアルを元に基本をまとめてみました。
 category: 技術
