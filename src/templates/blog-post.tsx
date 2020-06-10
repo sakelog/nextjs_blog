@@ -9,6 +9,7 @@ import RenderAst from '../components/renderAst'
 import PrevNext from '../components/prev-next'
 import Bio from '../components/bio'
 import BackToTopPage from '../components/back-to-top-page'
+import PostDate from '../components/post-date'
 
 // Utilities
 const kebabCase = require('lodash/kebabCase')
@@ -61,7 +62,7 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
         <Link to={categoryPath} className="sl-cat-badge">
           <h4>{post.frontmatter.category}</h4>
         </Link>
-        <small className="sl-date"><FiCalendar />{post.frontmatter.date}</small>
+        <PostDate postdate={post.frontmatter.date} update={post.frontmatter.update} />
         <hr />
 
         <div className="grid-center">
@@ -99,7 +100,8 @@ export const pageQuery = graphql`
       htmlAst
       frontmatter {
         title
-        date(formatString: "YYYY年M月D日")
+        date
+        update
         category
         tags
         description

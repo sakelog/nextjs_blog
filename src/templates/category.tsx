@@ -9,6 +9,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 import BackToTopPage from "../components/back-to-top-page"
+import PostDate from "../components/post-date"
 
 interface Props {
   pageContext: {
@@ -41,7 +42,7 @@ const Category = ({ pageContext, data }:Props) => {
         const description = node.frontmatter.description || node.excerpt
         return (
           <div key={slug} className="sl-border-bottom">
-            <small>{node.frontmatter.date}</small>
+            <PostDate postdate={node.frontmatter.date} update={node.frontmatter.update} />
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
@@ -74,7 +75,8 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
-            date(formatString: "YYYY年M月D日")
+            date
+            update
             description
           }
         }
