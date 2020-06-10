@@ -1,7 +1,7 @@
 ---
 slug: Sass-basics-learn
 title: Sassの基本についてまとめてみた
-date: 2020-06-07T04:28:19.642Z
+date: 2020-06-07 13:28
 update: ""
 description: 使えるとCSSを効率的に記述できるSass。公式サイトのマニュアルを元に基本をまとめてみました。
 category: 技術
@@ -24,7 +24,7 @@ Sassについて一言でまとめると、**記述が膨大になりがちなCS
 
 基本的にはSassファイルを直接読み込むのではなく、コンパイルしてCSSファイルに変換して読み込みます。
 
-![Sassを使っての開発全体イメージ](/img/upload/sass_basic_1.png "Sass_Basic_1.png")
+![Sassを使っての開発全体イメージ](img/upload/sass_basic_1.png "Sass_Basic_1.png")
 
 ## 導入方法
 
