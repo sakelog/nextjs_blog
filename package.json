@@ -13,7 +13,7 @@
     "sass-watch": "sass ./src/scss/mystyle.scss ./src/css/mystyle.css --style compressed --watch",
     "build": "gatsby build",
     "serve": "gatsby serve -H 0.0.0.0",
-    "lint:stylesheet":"stylelint --fix src/scss/**/*.scss"
+    "lint:stylesheet": "stylelint --fix src/scss/**/*.scss"
   },
   "dependencies": {
     "gatsby": "^2.23.1",
