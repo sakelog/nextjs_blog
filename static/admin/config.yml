@@ -3,50 +3,54 @@ backend:
 publish_mode: editorial_workflow
 media_folder: 'content/post/img/upload'
 public_folder: '/img/upload'
+locale: 'ja'
 collections:
   - name: 'post'
     label: 'Post'
     folder: 'content/post'
     create: true
-    extension: "md"
+    extension: 'md'
     slug: '{{fields.slug}}'
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { 
-        label: 'Date', 
-        name: 'date', 
-        widget: 'datetime', 
-        format: 'YYYY-MM-DD HH:mm', }
+      - { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD HH:mm' }
       - {
           label: 'Update',
           name: 'update',
           default: '',
           widget: 'datetime',
-          dateFormat: 'YYYY-MM-DD',
-          timeFormat: 'HH:mm:ss',
+          format: 'YYYY-MM-DD HH:mm',
           required: false,
         }
       - { label: 'Description', name: 'description', widget: 'text', required: false }
-      - { label: 'Category', name: 'category', widget: 'string' }
-      - { label: 'Tags', name: 'tags', widget: 'list', allow_add: 'true' }
+      - { label: 'Category', name: 'category', widget: 'string', default: '技術' }
+      - {
+          label: 'Tags',
+          name: 'tags',
+          widget: 'list',
+          allow_add: true,
+          minimize_collapsed: true,
+          summary: '{{fields.tag}}',
+          field: { label: Tag, name: tag, widget: 'string' },
+        }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'page'
-    label: 'page'
+    label: 'Page'
     folder: 'content/page'
     create: true
+    extension: 'md'
     slug: '{{fields.slug}}'
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime', dateFormat: 'YYYY-MM-DD', timeFormat: 'HH:mm:ss' }
+      - { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD HH:mm' }
       - {
           label: 'Update',
           name: 'update',
           default: '',
           widget: 'datetime',
-          dateFormat: 'YYYY-MM-DD',
-          timeFormat: 'HH:mm:ss',
+          format: 'YYYY-MM-DD HH:mm',
           required: false,
         }
       - { label: 'Description', name: 'description', widget: 'text', required: false }
