@@ -13,7 +13,11 @@ collections:
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime', dateFormat: 'YYYY-MM-DD', timeFormat: 'HH:mm:ss' }
+      - { 
+        label: 'Date', 
+        name: 'date', 
+        widget: 'datetime', 
+        format: 'YYYY-MM-DD HH:mm', }
       - {
           label: 'Update',
           name: 'update',
