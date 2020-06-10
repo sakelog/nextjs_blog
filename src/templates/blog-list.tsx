@@ -6,6 +6,7 @@ import { TempblogListQuery } from '../../types/graphql-types'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Pagination from '../components/pagination'
+import PostDate from '../components/post-date'
 
 const _ = require('lodash')
 
@@ -49,7 +50,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
 
         return (
           <div key={node.fields.slug} className="sl-border-bottom">
-            <small>{node.frontmatter.date}</small>
+            <PostDate postdate={node.frontmatter.date} update={node.frontmatter.update} />
             <h2>
               <Link to={node.fields.slug}>{title}</Link>
             </h2>
@@ -88,7 +89,8 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
-            date(formatString: "YYYY年M月D日")
+            date
+            update
             description
             category
             tags

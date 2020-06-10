@@ -110,7 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     // Create blog post list pages
-    const postsPerPage = 4
+    const postsPerPage = 5
     const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
@@ -142,7 +142,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Tags pages
     const tags = result.data.tagsGroup.group
-    const tagPerPage = 6
+    const tagPerPage = 10
 
     tags.forEach(tag => {
       var tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
@@ -165,7 +165,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Category Pages
     const categorys = result.data.categoryGroup.group
-    const categoryPerPage = 6
+    const categoryPerPage = 10
 
     categorys.forEach(category => {
       var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)

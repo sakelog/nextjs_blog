@@ -60,6 +60,7 @@
     "@types/react": "^16.9.35",
     "@types/react-helmet": "^6.0.0",
     "@types/rehype-react": "^4.0.0",
+    "moment": "^2.26.0",
     "netlify-cms": "^2.10.50",
     "prettier": "^2.0.5",
     "prettier-stylelint": "^0.4.2",
