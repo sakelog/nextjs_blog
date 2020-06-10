@@ -14,7 +14,12 @@ collections:
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD HH:mm' }
+      - {
+          label: 'Date',
+          name: 'date',
+          widget: 'datetime',
+          format: 'YYYY-MM-DD HH:mm',
+        }
       - {
           label: 'Update',
           name: 'update',
@@ -23,8 +28,20 @@ collections:
           format: 'YYYY-MM-DD HH:mm',
           required: false,
         }
-      - { label: 'Description', name: 'description', widget: 'text', required: false }
-      - { label: 'Category', name: 'category', widget: 'string', default: '技術' }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: false,
+        }
+      - {
+          label: 'Category',
+          name: 'category',
+          widget: 'relation',
+          collection: 'categorylist',
+          searchFields: 'name',
+          valueField: 'name',
+        }
       - {
           label: 'Tags',
           name: 'tags',
@@ -44,7 +61,12 @@ collections:
     fields:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD HH:mm' }
+      - {
+          label: 'Date',
+          name: 'date',
+          widget: 'datetime',
+          format: 'YYYY-MM-DD HH:mm',
+        }
       - {
           label: 'Update',
           name: 'update',
@@ -53,5 +75,19 @@ collections:
           format: 'YYYY-MM-DD HH:mm',
           required: false,
         }
-      - { label: 'Description', name: 'description', widget: 'text', required: false }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: false,
+        }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'categorylist'
+    label: 'Category'
+    identifier_field: name
+    create: true
+    extension: 'yml'
+    folder: 'content/category'
+    fields:
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text', required: false}
