@@ -122,6 +122,11 @@ index.htmlは公式サイト記載の内容をコピーして作ります。
 ### npmモジュールのインストール
 
 config.ymlを作成する前に、GatsbyJSのリポジトリにNetlify CMSのnpmモジュールをインストールします。
+```powershell
+npm install netlify-cms --save-dev
+```
+
+もしくは
 
 ```powershell
 yarn add netlify-cms --dev
