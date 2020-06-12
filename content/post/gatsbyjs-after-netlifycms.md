@@ -29,8 +29,6 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 |
 | 公式サイトでは他にもBitbucket・GitLabと連携する方法が記載されています。参考にしてください。
 
-## 
-
 ## Netlifyの認証機能を有効にする
 
 実際にNetlify CMSの設定に必要なファイルを作っていく前に、Netlify側で認証機能を有効にしましょう。
