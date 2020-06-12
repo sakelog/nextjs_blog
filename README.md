@@ -1,15 +1,26 @@
 # sake log
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e0983563-6bab-414f-8377-6bd02f6003fa/deploy-status)](https://app.netlify.com/sites/sake-log/deploys)
+## このrepositoryの概要
 
-## sake logとは
+GatsbyJSで作成しているブログ、[sake log](https://sake-log.website/)のソースコード部分のみ抽出しています。
 
-下記のような技術で作成しているブログサイトです。
+GatsbyJSでの開発の参考にしてください。
 
-- 静的サイトジェネレータ：GatsbyJS
-- CSSフレームワーク：BootStrap
-- 静的ホスティングサービス：Netlify
+## 使用する際の注意点
 
-[sake log](https://sake-log.website/)
+コンテンツ部分（記事やページ）は含めていません。
 
-GatsbyJSを使用している方の参考となれば、と思いソースを公開していますが、学習しながら開発を進めているため、ご了承ください。
+このソースコードをそのまま流用する場合は、ローカルリポジトリ直下に**content**というフォルダを作成してください。
+
+contentフォルダの下のpostフォルダの中身を記事、pageフォルダの中身を固定ページとして扱います。
+
+```text
+./
+├ content
+│　├ post
+│　└ page
+├ src
+・
+・
+・
+```
