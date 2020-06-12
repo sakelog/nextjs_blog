@@ -10,7 +10,6 @@ tags:
   - GatsbyJS
   - NetlifyCMS
 ---
-
 静的ジェネレータでサイトを作って維持していくと、その内、中身のコンテンツの管理が問題になると思います。
 
 コンテンツ管理問題を解決するためにはCMSの導入という手段があります。
@@ -25,8 +24,7 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 * 参考サイト：[Add to Your Site | Netlify CMS | Open-Source Content Management System](https://www.netlifycms.org/docs/add-to-your-site/)
 
-[[note]]
-| 今回はGitHub連携をしている前提での記事になります。
+[[note]] | 今回はGitHub連携をしている前提での記事になります。
 |
 | 公式サイトでは他にもBitbucket・GitLabと連携する方法が記載されています。参考にしてください。
 
@@ -34,10 +32,9 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 実際にNetlify CMSの設定に必要なファイルを作っていく前に、Netlify側で認証機能を有効にしましょう。
 
-[[note]]
-| ここでの作業はNetlify Identity widgetを使って認証する場合に必要です。
+[[note]] | ここでの作業はNetlify Identity widgetを使って認証する場合に必要です。
 |
-| Githubだけでログインできればいい！　という方は、ここは飛ばして、[config.ymlの作成方法](#config.ymlの作成方法)の[backendの指定](#backendの指定)のところを参考にしてください。
+|Githubだけでログインできればいい！　という方は、ここは飛ばして、[config.ymlの作成方法](#config.ymlの作成方法)の[backendの指定](#backendの指定)のところを参考にしてください。
 
 Netlifyにログインします。
 
@@ -96,9 +93,9 @@ GatsbyJSの場合は、**/static**フォルダの下に、Netlify CMS設定用�
 
 /staticフォルダの下に**admin**フォルダ、その下に**index.html**と**config.yml**を作成します。
 
-| ファイル名 | 説明                                       |
-| ---------- | ------------------------------------------ |
-| index.html | 管理ページを表示するのに必要なファイル     |
+| ファイル名      | 説明                    |
+| ---------- | --------------------- |
+| index.html | 管理ページを表示するのに必要なファイル   |
 | config.yml | 管理ページ内の設定をするのに必要なファイル |
 
 ## index.htmlの作成方法
@@ -336,15 +333,15 @@ collections:
 
 それぞれの項目の詳細は下記の通り。
 
-| 項目      | 説明                                                         |
-| --------- | ------------------------------------------------------------ |
-| name      | collectionの名前。他のcollectionからrelationで紐付けるときにも使う |
-| label     | 管理画面に表示する名前                                       |
+| 項目        | 説明                                                                                             |
+| --------- | ---------------------------------------------------------------------------------------------- |
+| name      | collectionの名前。他のcollectionからrelationで紐付けるときにも使う                                                |
+| label     | 管理画面に表示する名前                                                                                    |
 | folder    | collectionのファイルを格納するフォルダを指定。例えば、postのfolderを`content/post`で指定すると、content/postフォルダの中身をpostとして扱う |
-| create    | `true`にすると、管理画面上で新しいファイルが作成できる       |
-| extension | ファイルの保存形式。`yaml`、`toml`、`json`、`md`、`markdown`、`html`が指定できる |
-| slug      | ファイル名の指定                                             |
-| fields    | collectionの各ファイル編集ページに持たせるフィールド。詳しくは後述 |
+| create    | `true`にすると、管理画面上で新しいファイルが作成できる                                                                 |
+| extension | ファイルの保存形式。`yaml`、`toml`、`json`、`md`、`markdown`、`html`が指定できる                                    |
+| slug      | ファイル名の指定                                                                                       |
+| fields    | collectionの各ファイル編集ページに持たせるフィールド。詳しくは後述                                                         |
 
 詳しくは[Configuration Options | Netlify CMS | Open-Source Content Management System](https://www.netlifycms.org/docs/configuration-options/)を参照
 
@@ -398,12 +395,12 @@ fields部分を抜き出すとこんな感じになっています。
 
 基本的な項目は下記のとおりです。
 
-| 項目     | 説明                                                         |
-| -------- | ------------------------------------------------------------ |
-| label    | 管理画面上に表示するフィールド名                             |
+| 項目       | 説明                                     |
+| -------- | -------------------------------------- |
+| label    | 管理画面上に表示するフィールド名                       |
 | name     | フィールドの値を判別する名前。GraphQLで指定するfieldsと合わせる |
-| widget   | フィールドの種類を指定する                                   |
-| required | `false`を指定すると、入力を任意にできる。                    |
+| widget   | フィールドの種類を指定する                          |
+| required | `false`を指定すると、入力を任意にできる。               |
 
 widgetによって、何を指定しなければいけないかが変わります。
 
