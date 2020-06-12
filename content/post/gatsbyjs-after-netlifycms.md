@@ -245,7 +245,7 @@ backendを指定します。
 
 指定方法によって、認証の仕方が変わってきます。
 
-あとで説明するように、Netlify Identity widgetを使用する場合は、`name:git-gateway`を指定します。
+Netlify Identity widgetを使用する場合は、`name:git-gateway`を指定します。
 
 GitHubでログインできれば良い場合は、下記のように指定します。
 
@@ -265,7 +265,7 @@ publish_mode: editorial_workflow
 
 **editorial_workflow**を指定すると、下の画像のように、かんばん方式で記事の状態を管理できます。
 
-記事を公開できる状態になったら「」へステータスを移して公開しましょう。
+記事を公開できる状態になったら「準備完了」へステータスを移して公開しましょう。
 
 ![]()
 
