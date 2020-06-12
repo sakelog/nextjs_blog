@@ -24,10 +24,12 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 * 参考サイト：[Add to Your Site | Netlify CMS | Open-Source Content Management System](https://www.netlifycms.org/docs/add-to-your-site/)
 
-[[note]] 
-|今回はGitHub連携をしている前提での記事になります。
+[[note]]
+| 今回はGitHub連携をしている前提での記事になります。
 |
-|公式サイトでは他にもBitbucket・GitLabと連携する方法が記載されています。参考にしてください。
+| 公式サイトでは他にもBitbucket・GitLabと連携する方法が記載されています。参考にしてください。
+
+## 
 
 ## Netlifyの認証機能を有効にする
 
