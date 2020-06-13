@@ -24,9 +24,8 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 * 参考サイト：[Add to Your Site | Netlify CMS | Open-Source Content Management System](https://www.netlifycms.org/docs/add-to-your-site/)
 
-\[[note]]
-
-\| 今回はGitHub連携をしている前提での記事になります。
+[[note]]
+| 今回はGitHub連携をしている前提での記事になります。
 |
 | 公式サイトでは他にもBitbucket・GitLabと連携する方法が記載されています。参考にしてください。
 
@@ -34,11 +33,10 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 実際にNetlify CMSの設定に必要なファイルを作っていく前に、Netlify側で認証機能を有効にしましょう。
 
-\[[note]]
-
-\|ここでの作業はNetlify Identity widgetを使って認証する場合に必要です。
+[[note]]
+|ここでの作業はNetlify Identity widgetを使って認証する場合に必要です。
 |
-|Githubだけでログインできればいい！　という方は、ここは飛ばして、[config.ymlの作成方法](#config.ymlの作成方法)の[backendの指定](#backendの指定)のところを参考にしてください。
+|Githubだけでログインできればいい！　という方は、ここは飛ばして、[config.ymlの作成方法](#configymlの作成方法)の[backendの指定](#backendの指定)のところを参考にしてください。
 
 Netlifyにログインします。
 
