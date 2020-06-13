@@ -24,7 +24,8 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 * 参考サイト：[Add to Your Site | Netlify CMS | Open-Source Content Management System](https://www.netlifycms.org/docs/add-to-your-site/)
 
-\[[note]] | 今回はGitHub連携をしている前提での記事になります。
+[[note]]
+| 今回はGitHub連携をしている前提での記事になります。
 |
 | 公式サイトでは他にもBitbucket・GitLabと連携する方法が記載されています。参考にしてください。
 
@@ -32,7 +33,8 @@ GatsbyJSの場合、startarで簡単に導入できる**Netlify CMS**が有名�
 
 実際にNetlify CMSの設定に必要なファイルを作っていく前に、Netlify側で認証機能を有効にしましょう。
 
-\[[note]] |ここでの作業はNetlify Identity widgetを使って認証する場合に必要です。
+[[note]]
+|ここでの作業はNetlify Identity widgetを使って認証する場合に必要です。
 |
 |Githubだけでログインできればいい！　という方は、ここは飛ばして、[config.ymlの作成方法](#config.ymlの作成方法)の[backendの指定](#backendの指定)のところを参考にしてください。
 
@@ -42,13 +44,13 @@ Netlifyにログインします。
 
 NetlifyのSettings ＞ Identity ＞ Git Gatewayで、**Enable Git Gateway**をクリック。
 
-![]()
+![NetlifyでGit Gatewayの有効化](/img/upload/gatsbyjs_netlifycms_01.png "gatsbyjs_netlifycms_01.png")
 
 ### 招待した人しかログイン出来ないようにする
 
 **Registration Settings**のEdit settingsから、**Invite only**を選択しましょう。
 
-![]()
+![招待した人しか管理画面にログインできないようにする](/img/upload/gatsbyjs_netlifycms_02.png "gatsbyjs_netlifycms_02.png")
 
 **Netlify Identity widget**を埋め込みます。
 
@@ -60,7 +62,7 @@ Netlifyで、認証制にしたいサイトを選択 ＞ Settings ＞ Build & De
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 ```
 
-![]()
+![headタグ内にNetlify Identity Widgetのスニペットを追加する](/img/upload/gatsbyjs_netlifycms_03.png "gatsbyjs_netlifycms_03.png")
 
 ### CMSにログインするユーザーを招待する
 
@@ -70,13 +72,15 @@ Netlifyで、認証制にしたいサイトを選択 ＞ Identityから**Invite 
 
 メールが届くので、**Accept the Invite**をクリック
 
-![]()
+![届いたメールから招待を受ける](/img/upload/gatsbyjs_netlifycms_04.png "gatsbyjs_netlifycms_04.png")
 
 パスワードを入力してSign Up
 
-![]()
+![パスワードを入力してSign Up](/img/upload/gatsbyjs_netlifycms_05.png "gatsbyjs_netlifycms_05.png")
 
 ログインできました！
+
+![Netlifyログイン完了](/img/upload/gatsbyjs_netlifycms_06.png "gatsbyjs_netlifycms_06.png")
 
 次は、Netlify CMSの設定に必要なファイルを作っていきましょう。
 
@@ -266,7 +270,7 @@ publish_mode: editorial_workflow
 
 記事を公開できる状態になったら「準備完了」へステータスを移して公開しましょう。
 
-![]()
+![Netlify CMSのワークフロー画面 下書きの管理を行う](/img/upload/gatsbyjs_netlifycms_07.png "gatsbyjs_netlifycms_07.png")
 
 ### 画像フォルダの指定
 
