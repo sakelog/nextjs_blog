@@ -45,9 +45,9 @@
 
     @include var.sl-mq(sm) {
       .sl-nav-open {
-        display: inline-block;
-        width: 4rem;
-        height: 4rem;
+        display: flex;
+        width: 3rem;
+        height: 3rem;
         background: var.$sl-primary-lighter;
         border-radius: 50%;
         position: absolute;
@@ -56,20 +56,15 @@
         transform: translateY(-50%);
         -webkit-transform: translateY(-50%);
         filter: drop-shadow(2rem 2rem 4rem rgba(0,0,0,.4));
+        justify-content: center;
+        align-items: center;
 
         span {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 3rem;
-          height: 3rem;
-          text-align: center;
-          vertical-align: middle;
-          transform: translateY(-50%) translateX(-50%);
-          -webkit-transform: translateY(-50%) translateX(-50%);
+          display: flex;
+          align-items: center;
           color: var.$sl-gray-dark;
           font-size: 2rem;
-        }
+          }
       }
     }
   }
