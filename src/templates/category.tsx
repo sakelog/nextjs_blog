@@ -46,8 +46,8 @@ const Category = ({ pageContext, data }: Props) => {
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
-            <TagList Tags={node.frontmatter.tags} />
             <p>{description}</p>
+            <TagList Tags={node.frontmatter.tags} />
           </div>
         )
       })}

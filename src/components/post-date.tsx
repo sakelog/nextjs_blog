@@ -13,19 +13,15 @@ const PostDate = ({ postdate, update }: PostDateType) => {
   var validUpdateCheck = moment(update, 'YYYY年M月D日').isValid()
 
   return (
-    <ul className="sl-inline-list">
+    <ul className="sl-post-date-list">
       <li>
-        <small className="sl-date">
-          <FiCalendar />
-          {moment(postdate).format('YYYY年M月D日')}
-        </small>
+        <FiCalendar />
+        <span className="sl-date">{moment(postdate).format('YYYY年M月D日')}</span>
       </li>
       {validUpdateCheck === true && (
         <li>
-          <small className="sl-date">
-            <FiRefreshCw />
-            {moment(update).format('YYYY年M月D日')}
-          </small>
+          <FiRefreshCw />
+          <span className="sl-date">{moment(update).format('YYYY年M月D日')}</span>
         </li>
       )}
     </ul>

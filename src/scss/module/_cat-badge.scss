@@ -8,7 +8,7 @@
   color: var.$sl-primary;
   text-decoration: none;
   padding: 1rem;
-  margin: auto 2rem;
+  margin: 1rem 0;
 
   &:hover{
       background: var.$sl-primary;
@@ -17,5 +17,6 @@
 
   h3,h4{
       display: inline-block;
+      margin: inherit;
   }
 }

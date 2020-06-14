@@ -41,26 +41,17 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
           node.frontmatter.category
         )}/`
 
-        //const Tags = node.frontmatter.tags
-        //const tag_list = Tags.map((tag: {}, index: number) => (
-        //  <li key={index} className="list-inline-item">
-        //    <Link to={`/tags/${_.kebabCase(tag)}/`}>
-        //      <h5 className="cats">#{tag}</h5>
-        //    </Link>
-        //  </li>
-        //))
-
         return (
           <div key={node.fields.slug} className="sl-border-bottom">
             <PostDate postdate={node.frontmatter.date} update={node.frontmatter.update} />
             <h2>
               <Link to={node.fields.slug}>{title}</Link>
             </h2>
+            <p>{description}</p>
             <Link to={categoryPath} className="sl-cat-badge">
               <h3>{node.frontmatter.category}</h3>
             </Link>
             <TagList Tags={node.frontmatter.tags} />
-            <p>{description}</p>
           </div>
         )
       })}

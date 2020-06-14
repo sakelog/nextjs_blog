@@ -6,12 +6,17 @@
 .sl-tag-list {
   display: flex;
   flex-wrap: wrap;
+  margin: auto 2rem;
+  padding: 0;
 
   list-style: none;
   li {
-    margin: 0.4rem 0.6rem;
+    margin: 1rem 0.6rem;
+    &:first-of-type {
+      margin-left: 0;
+    }
     &.sl-tag-item {
-      font-size: small;
+      font-size: smaller;
 
       h5 {
         font-weight: normal;

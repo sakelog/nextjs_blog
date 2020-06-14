@@ -51,10 +51,10 @@ const Tags = ({ pageContext, data }:TagsType) => {
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
+            <p>{description}</p>
             <Link to={categoryPath} className="sl-cat-badge">
               <h3>{node.frontmatter.category}</h3>
             </Link>
-            <p>{description}</p>
           </div>
         )
       })}
