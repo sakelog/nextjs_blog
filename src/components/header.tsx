@@ -35,7 +35,7 @@ const Header = () => {
             className="sl-nav-open sl-display-none"
             onClick={() => setIsChecked(!isChecked)}
           >
-            <span>{isChecked ? <FiMinus /> : <FiPlus />}</span>
+            <span>{isChecked ? <FiMinus className="isCheked" /> : <FiPlus />}</span>
           </label>
         </div>
         <div className="col-10_md-12 sl-nav-menu">
