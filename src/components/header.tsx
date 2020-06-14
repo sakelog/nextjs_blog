@@ -25,6 +25,51 @@ const Header = () => {
 
   return (
     <nav className="sl-nav-bar" role="navigation" aria-label="main navigation">
+      <div className="sl-nav-title-wrapper">
+        <Link to="/" className="sl-nav-title">
+          <span>{SiteTitle}</span>
+        </Link>
+
+        <label
+          className="sl-nav-open sl-display-none"
+          onClick={() => setIsChecked(!isChecked)}
+        >
+          <span>
+            {isChecked ? <FiMinus className="isCheked" /> : <FiPlus />}
+          </span>
+        </label>
+      </div>
+
+      <div className="sl-nav-drawer">
+        <input
+          id="nav-input"
+          type="checkbox"
+          className="sl-display-none"
+          checked={isChecked}
+        />
+
+        <div className="sl-nav-content">
+          <HeaderCatList />
+          <hr />
+          <div className="sl-nav-pages">
+            <Link to="/tags/" className="nav-link">
+              #タグ一覧
+            </Link>
+            <Link to="/about_this_site/" className="nav-link">
+              このサイトについて
+            </Link>
+            <Link to="/privacy/" className="nav-link">
+              プライバシーポリシー
+            </Link>
+            <Link to="/contact/" className="nav-link">
+              お問い合わせ
+            </Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+    /*
+    <nav className="sl-nav-bar" role="navigation" aria-label="main navigation">
       <div className="grid-noGutter">
         <div className="col-2_md-12 sl-nav-title-wrapper">
           <Link to="/" className="sl-nav-title">
@@ -77,6 +122,7 @@ const Header = () => {
         </div>
       </div>
     </nav>
+  */
   )
 }
 
