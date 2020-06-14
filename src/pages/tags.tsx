@@ -1,52 +1,45 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import { PagesTagsQuery } from "../../types/graphql-types"
+import { PagesTagsQuery } from '../../types/graphql-types'
 
 // Components
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import BackToTopPage from "../components/back-to-top-page"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import BackToTopPage from '../components/back-to-top-page'
 
 // Utilities
-import { kebabCase } from "lodash"
+import { kebabCase } from 'lodash'
 
 type Props = {
-  data : PagesTagsQuery
+  data: PagesTagsQuery
 }
 
 const TagsPage = ({
-  data:{
-    allMarkdownRemark:
-    {group}
-}}:Props)  => {
+  data: {
+    allMarkdownRemark: { group },
+  },
+}: Props) => {
+  var sortedGroup = group.sort(function (a, b) {
+    return b.totalCount - a.totalCount
+  })
 
-var sortedGroup = group.sort(function(a,b){
-  return b.totalCount - a.totalCount
-})
-
-  return(
+  return (
     <Layout>
-      {SEO
-        ("タグ一覧ページ",
-        "全タグの一覧ページです",
-        false)
-      }
+      {SEO('タグ一覧ページ', '全タグの一覧ページです', false)}
       <h1 className="text-center">全タグ一覧</h1>
       <div>
-        <ul className="sl-inline-list">
-          {sortedGroup.map((tag, index:number) => (
-            <li
-              key={index}
-            >
+        <ul className="sl-tag-list">
+          {sortedGroup.map((tag, index: number) => (
+            <li key={index} className="sl-tag-item">
               <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} className="">
-                #{tag.fieldValue} ({tag.totalCount})
+                {tag.fieldValue} ({tag.totalCount})
               </Link>
             </li>
           ))}
         </ul>
       </div>
-      <BackToTopPage />  
+      <BackToTopPage />
     </Layout>
   )
 }
@@ -54,11 +47,11 @@ var sortedGroup = group.sort(function(a,b){
 export default TagsPage
 
 export const pageQuery = graphql`
-  query PagesTags{
+  query PagesTags {
     allMarkdownRemark(
-      filter: {fields: {collection: {eq: "post"}}}
+      filter: { fields: { collection: { eq: "post" } } }
       limit: 2000
-      ) {
+    ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

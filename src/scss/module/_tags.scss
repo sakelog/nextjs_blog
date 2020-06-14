@@ -1,0 +1,36 @@
+@use '../var/var' as var;
+
+/*=====================================
+** タグリスト
+**=====================================*/
+.sl-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style: none;
+  li {
+    margin: 0.4rem 0.6rem;
+    &.sl-tag-item {
+      font-size: small;
+
+      h5 {
+        font-weight: normal;
+      }
+
+      a {
+        display: inline-block;
+        background: var.$sl-primary-lighter;
+        color: var.$sl-gray-dark;
+        text-decoration: none;
+        padding: 0.2rem 0.6rem;
+        border-radius: 0.4rem;
+        font-weight: normal;
+
+        &:hover{
+          background: var.$sl-gray-dark;
+          color: var.$sl-white;
+        }
+      }
+    }
+  }
+}

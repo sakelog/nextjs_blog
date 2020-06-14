@@ -10,12 +10,13 @@ import PrevNext from '../components/prev-next'
 import Bio from '../components/bio'
 import BackToTopPage from '../components/back-to-top-page'
 import PostDate from '../components/post-date'
+import TagList from '../components/taglist'
 
 // Utilities
 const kebabCase = require('lodash/kebabCase')
 
 // Icon
-import { FiTag,FiCalendar } from 'react-icons/fi'
+import { FiTag } from 'react-icons/fi'
 
 interface BlogPostTypes {
   pageContext: {
@@ -45,15 +46,6 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
 
   const categoryPath = `/category/${kebabCase(post.frontmatter.category)}/`
 
-  const Tags = post.frontmatter.tags
-  const tag_list = Tags.map((tag: {}, index: number) => (
-    <li key={index} className="">
-      <Link to={`/tags/${kebabCase(tag)}/`}>
-        <h5 className="cats">#{tag}</h5>
-      </Link>
-    </li>
-  ))
-
   return (
     <Layout>
       {SEO(post.frontmatter.title, post.frontmatter.description, true)}
@@ -75,14 +67,7 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
         <div>
           <RenderAst {...post.htmlAst} />
         </div>
-
-        <ul className="sl-inline-list">
-          <li>
-            <FiTag />
-          </li>
-          <li className="">タグ：</li>
-          {tag_list}
-        </ul>
+        <TagList Tags={post.frontmatter.tags} />
       </div>
       <Bio />
       <hr />
