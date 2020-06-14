@@ -1,14 +1,14 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 // Utilities
-import { kebabCase } from "lodash"
+import { kebabCase } from 'lodash'
 
 const HeaderCatList = () => {
   const data = useStaticQuery(
     graphql`
-      query CompheaderCatList{
+      query CompheaderCatList {
         allMarkdownRemark(limit: 100) {
           group(field: frontmatter___category) {
             fieldValue
@@ -18,18 +18,14 @@ const HeaderCatList = () => {
     `
   )
   const categorys = data.allMarkdownRemark.group
-  return(
-  <div className="grid-4">
-    {categorys.map((category: { fieldValue: string },index:number) => (
-        <div className="col" key={index}>
-          <Link
-            to={`/category/${kebabCase(category.fieldValue)}/`}
-          >
-            {category.fieldValue}
-          </Link>
-        </div>
-    ))}
-  </div>
+  return (
+    <div className="sl-nav-cat">
+      {categorys.map((category: { fieldValue: string }, index: number) => (
+        <Link to={`/category/${kebabCase(category.fieldValue)}/`} key={index}>
+          {category.fieldValue}
+        </Link>
+      ))}
+    </div>
   )
 }
 

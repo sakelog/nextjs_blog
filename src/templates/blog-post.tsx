@@ -54,14 +54,15 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
         <Link to={categoryPath} className="sl-cat-badge">
           <h4>{post.frontmatter.category}</h4>
         </Link>
-        <PostDate postdate={post.frontmatter.date} update={post.frontmatter.update} />
+        <PostDate
+          postdate={post.frontmatter.date}
+          update={post.frontmatter.update}
+        />
         <hr />
 
-        <div className="grid-center">
-          <div className="col-6_md-8_sm-12 tableOfContents">
-            <h2 className="text-center">目次</h2>
-            <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
-          </div>
+        <div className="tableOfContents">
+          <h2 className="text-center">目次</h2>
+          <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
         </div>
 
         <div>
