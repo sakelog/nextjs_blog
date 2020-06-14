@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -689,10 +690,10 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkId = 'childMarkdownRemark___id',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
-  ChildMarkdownRemarkFrontmatterUpdate = 'childMarkdownRemark___frontmatter___update',
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
   ChildMarkdownRemarkFrontmatterCategory = 'childMarkdownRemark___frontmatter___category',
   ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
+  ChildMarkdownRemarkFrontmatterUpdate = 'childMarkdownRemark___frontmatter___update',
   ChildMarkdownRemarkFrontmatterSlug = 'childMarkdownRemark___frontmatter___slug',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
@@ -1491,10 +1492,10 @@ export enum MarkdownRemarkFieldsEnum {
   Id = 'id',
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
-  FrontmatterUpdate = 'frontmatter___update',
   FrontmatterDescription = 'frontmatter___description',
   FrontmatterCategory = 'frontmatter___category',
   FrontmatterTags = 'frontmatter___tags',
+  FrontmatterUpdate = 'frontmatter___update',
   FrontmatterSlug = 'frontmatter___slug',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
@@ -1628,10 +1629,10 @@ export type MarkdownRemarkFrontmatter = {
   __typename?: 'MarkdownRemarkFrontmatter';
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
-  update?: Maybe<Scalars['Date']>;
   description?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  update?: Maybe<Scalars['Date']>;
   slug?: Maybe<Scalars['String']>;
 };
 
@@ -1654,10 +1655,10 @@ export type MarkdownRemarkFrontmatterUpdateArgs = {
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
-  update?: Maybe<DateQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   category?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
+  update?: Maybe<DateQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -3214,7 +3215,7 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type PagesTagsQueryVariables = {};
+export type PagesTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type PagesTagsQuery = (
@@ -3228,10 +3229,10 @@ export type PagesTagsQuery = (
   ) }
 );
 
-export type TempblogListQueryVariables = {
+export type TempblogListQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
-};
+}>;
 
 
 export type TempblogListQuery = (
@@ -3261,9 +3262,9 @@ export type TempblogListQuery = (
   ) }
 );
 
-export type TempBlogPostQueryVariables = {
+export type TempBlogPostQueryVariables = Exact<{
   slug: Scalars['String'];
-};
+}>;
 
 
 export type TempBlogPostQuery = (
@@ -3278,11 +3279,11 @@ export type TempBlogPostQuery = (
   )> }
 );
 
-export type TempCategoryQueryVariables = {
+export type TempCategoryQueryVariables = Exact<{
   category: Scalars['String'];
   limit: Scalars['Int'];
   skip: Scalars['Int'];
-};
+}>;
 
 
 export type TempCategoryQuery = (
@@ -3307,9 +3308,9 @@ export type TempCategoryQuery = (
   ) }
 );
 
-export type TempPageQueryVariables = {
+export type TempPageQueryVariables = Exact<{
   slug: Scalars['String'];
-};
+}>;
 
 
 export type TempPageQuery = (
@@ -3324,11 +3325,11 @@ export type TempPageQuery = (
   )> }
 );
 
-export type TempTagsQueryVariables = {
+export type TempTagsQueryVariables = Exact<{
   tag?: Maybe<Scalars['String']>;
   limit: Scalars['Int'];
   skip: Scalars['Int'];
-};
+}>;
 
 
 export type TempTagsQuery = (

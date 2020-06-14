@@ -5,7 +5,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 //Components
 import HeaderCatList from './header-cat-list'
 
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiMinus } from 'react-icons/fi'
 
 const Header = () => {
   const data = useStaticQuery(
@@ -20,6 +20,9 @@ const Header = () => {
     `
   )
   const SiteTitle = data.site.siteMetadata.title
+
+  const [isChecked, setIsChecked] = React.useState(false)
+
   return (
     <nav className="sl-nav-bar" role="navigation" aria-label="main navigation">
       <div className="grid-noGutter">
@@ -28,15 +31,21 @@ const Header = () => {
             <span>{SiteTitle}</span>
           </Link>
 
-          <label className="sl-nav-open sl-display-none" htmlFor="nav-input">
-            <span>
-              <FiPlus />
-            </span>
+          <label
+            className="sl-nav-open sl-display-none"
+            onClick={() => setIsChecked(!isChecked)}
+          >
+            <span>{isChecked ? <FiMinus /> : <FiPlus />}</span>
           </label>
         </div>
         <div className="col-10_md-12 sl-nav-menu">
           <div className="sl-nav-drawer">
-            <input id="nav-input" type="checkbox" className="sl-display-none" />
+            <input
+              id="nav-input"
+              type="checkbox"
+              className="sl-display-none"
+              checked={isChecked}
+            />
 
             <div className="sl-nav-content">
               <HeaderCatList />
