@@ -12,7 +12,7 @@ const Bio = () => {
       query Compbio {
         profileImg: file(relativePath: { eq: "profile.png" }) {
           childImageSharp {
-            fluid(maxWidth: 200) {
+            fluid(maxWidth: 300, maxHeight: 300) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -21,34 +21,28 @@ const Bio = () => {
     `
   )
   return (
-    <div className="grid-center sl-bio-wrapper">
-      <div className="grid col-8_sm-10_xs-12 sl-bio">
-        <div className="col-4_sm-12">
-          <div className="grid-center sl-align-center">
-            <div className="col-12_sm-8">
-              <Link to="/about_this_site/">
-                <Img fluid={data.profileImg.childImageSharp.fluid} />
-              </Link>
-            </div>
-            <div className="col-12">
-              <p className="sl-bio-title">sake</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-8_sm-12">
-          <p>
-            現役システムエンジニア。
-            <br />
-            普段はホスト系のお仕事してます。
-            <br />
-            ブログでは主にWeb関係の技術について、勉強したことや実際にコーディングしてみた内容を発信していきます。
-          </p>
-          <Link to="/about_this_site/" className="sl-btn sl-btn-primary">
-            プロフィール
+    <div className="sl-bio">
+      <div className="sl-bio-image-sec">
+        <div className="sl-bio-image">
+          <Link to="/about_this_site/">
+            <Img fluid={data.profileImg.childImageSharp.fluid} />
           </Link>
-          <SocialIcon />
         </div>
+        <p className="sl-bio-title">sake</p>
+      </div>
+
+      <div className="sl-bio-description-sec">
+        <p>
+          現役システムエンジニア。
+          <br />
+          普段はホスト系のお仕事してます。
+          <br />
+          ブログでは主にWeb関係の技術について、勉強したことや実際にコーディングしてみた内容を発信していきます。
+        </p>
+        <Link to="/about_this_site/" className="sl-btn sl-btn-primary">
+          プロフィール
+        </Link>
+        <SocialIcon />
       </div>
     </div>
   )
