@@ -13,7 +13,8 @@
 }
 
 .sl-nav-bar {
-  background: var.$sl-gray-light;
+  display: flex;
+  flex-direction: row;
   position: sticky;
   top: 0;
   left: 0;
@@ -21,28 +22,33 @@
   padding: 0;
   margin: 0;
   z-index: 9999;
+  background: var.$sl-gray-light;
   border-bottom: 1px solid var.$sl-primary-lighter;
+  @include var.sl-mq(md) {
+    flex-direction: column;
+  }
   @include var.sl-mq(sm) {
     filter: drop-shadow(0 1rem 4rem rgba(0, 0, 0, 0.2));
   }
 
   .sl-nav-title-wrapper {
+    flex-basis: calc(100% / 6);
     background: var.$sl-primary;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 4rem;
+    position: relative;
 
     .sl-nav-title {
-      position: absolute;
-      top: 0;
-      left: 0;
       color: var.$sl-white;
       text-decoration: none;
       font-size: 2.4rem;
       font-family: var.$sl-font-logo;
       font-weight: normal;
-
       width: 100%;
       height: 100%;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -82,10 +88,10 @@
     }
   }
 
-  .sl-nav-menu {
-    .sl-nav-drawer {
-      position: relative;
-    }
+  .sl-nav-drawer {
+    width: calc(100% - 6rem);
+    padding: 0rem 3rem;
+    font-size: 1.4rem;
 
     .sl-nav-content {
       padding: 0rem 3rem;
@@ -94,6 +100,35 @@
 
       hr {
         margin: 0 -1rem;
+      }
+    }
+
+    .sl-nav-cat, .sl-nav-pages {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1rem auto;
+
+      a {
+        display: block;
+      }
+    }
+    .sl-nav-cat {
+      a {
+        width: 25%;
+
+        @include var.sl-mq(sm) {
+          width: 40%;
+        }
+      }
+    }
+    .sl-nav-pages {
+      a {
+        width: 25%;
+
+        @include var.sl-mq(sm) {
+          width: 100%;
+          margin: 1rem 0;
+        }
       }
     }
 
