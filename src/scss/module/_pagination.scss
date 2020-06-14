@@ -4,18 +4,45 @@
 ** 前・次
 **===========================================*/
 .sl-prevnext {
-  background: var.$sl-primary-lighter;
-  border-radius: 50%;
-  width: 2em;
-  height: 2em;
-  position: relative;
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    -webkit-transform: translateY(-50%) translateX(-50%);
-    color: var.$sl-gray-dark;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-wrap: wrap;
+
+  .sl-prevnext-item {
+    display: flex;
+    margin: 1rem 0;
+    width: 50%;
+    @include var.sl-mq(sm) {
+      width: 100%;
+    }
+
+    &.sl-prev {
+      .sl-prevnext-icon {
+        margin-right: 0.6rem;
+      }
+    }
+
+    &.sl-next {
+      justify-content: flex-end;
+
+      .sl-prevnext-icon {
+        margin-left: 0.6rem;
+      }
+    }
+    .sl-prevnext-icon {
+      background: var.$sl-primary-lighter;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        color: var.$sl-gray-dark;
+      }
+    }
   }
 }
 /*=====================================
@@ -51,13 +78,13 @@
       }
       &.sl-page-link {
         background: var.$sl-gray-light;
-         &:hover {
-           background: var.$sl-primary-lighter;
-         }
+        &:hover {
+          background: var.$sl-primary-lighter;
+        }
         a {
           color: var.$sl-primary;
           &:hover {
-              color: var.$sl-gray-dark;
+            color: var.$sl-gray-dark;
           }
         }
       }
