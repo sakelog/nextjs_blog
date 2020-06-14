@@ -2,11 +2,7 @@ import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 // Component
-import SocialIcon from "./social-icon"
-
-// Icons
-//import { GoMarkGithub } from 'react-icons/go'
-//import { AiOutlineTwitter } from 'react-icons/ai'
+import SocialIcon from './social-icon'
 
 const Footer = () => {
   const data = useStaticQuery(
@@ -31,13 +27,11 @@ const Footer = () => {
       : startYear + '-' + nowYear + SiteTitle
   return (
     <footer>
-      <div className="grid-around">
-        <div className="col-10_md-12 sl-align-center">
-          <p>&copy;{copytext}</p>
-        </div>
-        <div className="col-2_md-12 sl-align-center">
-          <SocialIcon />
-        </div>
+      <div className="sl-align-center">
+        <p>&copy;{copytext}</p>
+      </div>
+      <div className="sl-align-center">
+        <SocialIcon />
       </div>
     </footer>
   )
