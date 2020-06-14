@@ -3,6 +3,15 @@
 /*=====================================
 ** ナビゲーションバー
 **=====================================*/
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .sl-nav-bar {
   background: var.$sl-gray-light;
   position: sticky;
@@ -13,8 +22,8 @@
   margin: 0;
   z-index: 9999;
   border-bottom: 1px solid var.$sl-primary-lighter;
-  @include var.sl-mq(sm){
-    filter: drop-shadow(0 1rem 4rem rgba(0,0,0,.2));
+  @include var.sl-mq(sm) {
+    filter: drop-shadow(0 1rem 4rem rgba(0, 0, 0, 0.2));
   }
 
   .sl-nav-title-wrapper {
@@ -55,7 +64,7 @@
         right: 1rem;
         transform: translateY(-50%);
         -webkit-transform: translateY(-50%);
-        filter: drop-shadow(2rem 2rem 4rem rgba(0,0,0,.4));
+        filter: drop-shadow(2rem 2rem 4rem rgba(0, 0, 0, 0.4));
         justify-content: center;
         align-items: center;
 
@@ -64,7 +73,11 @@
           align-items: center;
           color: var.$sl-gray-dark;
           font-size: 2rem;
+
+          .isCheked {
+            animation: 0.5s ease-in-out 1 rotation;
           }
+        }
       }
     }
   }
