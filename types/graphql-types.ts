@@ -3301,7 +3301,7 @@ export type TempCategoryQuery = (
           & Pick<MarkdownRemarkFields, 'slug'>
         )>, frontmatter?: Maybe<(
           { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'description'>
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'tags' | 'description'>
         )> }
       ) }
     )> }

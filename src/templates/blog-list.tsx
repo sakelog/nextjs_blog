@@ -3,10 +3,12 @@ import { graphql, Link } from 'gatsby'
 
 import { TempblogListQuery } from '../../types/graphql-types'
 
+//Component
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Pagination from '../components/pagination'
 import PostDate from '../components/post-date'
+import TagList from '../components/taglist'
 
 const _ = require('lodash')
 
@@ -39,14 +41,14 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
           node.frontmatter.category
         )}/`
 
-        const Tags = node.frontmatter.tags
-        const tag_list = Tags.map((tag: {}, index: number) => (
-          <li key={index} className="list-inline-item">
-            <Link to={`/tags/${_.kebabCase(tag)}/`}>
-              <h5 className="cats">#{tag}</h5>
-            </Link>
-          </li>
-        ))
+        //const Tags = node.frontmatter.tags
+        //const tag_list = Tags.map((tag: {}, index: number) => (
+        //  <li key={index} className="list-inline-item">
+        //    <Link to={`/tags/${_.kebabCase(tag)}/`}>
+        //      <h5 className="cats">#{tag}</h5>
+        //    </Link>
+        //  </li>
+        //))
 
         return (
           <div key={node.fields.slug} className="sl-border-bottom">
@@ -57,7 +59,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
             <Link to={categoryPath} className="sl-cat-badge">
               <h3>{node.frontmatter.category}</h3>
             </Link>
-            <ul className="sl-inline-list">{tag_list}</ul>
+            <TagList Tags={node.frontmatter.tags} />
             <p>{description}</p>
           </div>
         )

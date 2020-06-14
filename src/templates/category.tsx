@@ -1,37 +1,34 @@
-import * as React from "react"
+import * as React from 'react'
 //import PropTypes from "prop-types"
-import { Link, graphql } from "gatsby"
+import { Link, graphql } from 'gatsby'
 
-import { TempCategoryQuery } from "../../types/graphql-types"
+import { TempCategoryQuery } from '../../types/graphql-types'
 
 // Components
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Pagination from "../components/pagination"
-import BackToTopPage from "../components/back-to-top-page"
-import PostDate from "../components/post-date"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Pagination from '../components/pagination'
+import BackToTopPage from '../components/back-to-top-page'
+import PostDate from '../components/post-date'
+import TagList from '../components/taglist'
 
 interface Props {
   pageContext: {
-    category: string,
-    currentPage: number,
-    numPages: number,
-    pathBase: string,
-  },
+    category: string
+    currentPage: number
+    numPages: number
+    pathBase: string
+  }
   data: TempCategoryQuery
 }
 
-const Category = ({ pageContext, data }:Props) => {
+const Category = ({ pageContext, data }: Props) => {
   const { category, currentPage, numPages, pathBase } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const categoryHeader = `カテゴリー：${category}`
   return (
     <Layout>
-      {SEO
-        (categoryHeader,
-        `「${category}」についての一覧ページです`,
-        false)
-      }
+      {SEO(categoryHeader, `「${category}」についての一覧ページです`, false)}
       <h1 className="sl-align-center">
         <span>{categoryHeader}</span>
       </h1>
@@ -42,15 +39,23 @@ const Category = ({ pageContext, data }:Props) => {
         const description = node.frontmatter.description || node.excerpt
         return (
           <div key={slug} className="sl-border-bottom">
-            <PostDate postdate={node.frontmatter.date} update={node.frontmatter.update} />
+            <PostDate
+              postdate={node.frontmatter.date}
+              update={node.frontmatter.update}
+            />
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
+            <TagList Tags={node.frontmatter.tags} />
             <p>{description}</p>
           </div>
         )
       })}
-      <Pagination numPages={numPages} currentPage={currentPage} pathBase={pathBase} />
+      <Pagination
+        numPages={numPages}
+        currentPage={currentPage}
+        pathBase={pathBase}
+      />
       <BackToTopPage />
     </Layout>
   )
@@ -77,6 +82,7 @@ export const pageQuery = graphql`
             title
             date
             update
+            tags
             description
           }
         }
