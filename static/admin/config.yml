@@ -39,7 +39,7 @@ collections:
           name: 'category',
           widget: 'relation',
           collection: 'categorylist',
-          searchFields: '{{name}}',
+          searchFields: ['name'],
           valueField: 'name',
         }
       - {
