@@ -3,13 +3,21 @@ import * as React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 // Utilities
-import { kebabCase } from 'lodash'
+const _ = require('lodash')
 
 const HeaderCatList = () => {
   const data = useStaticQuery(
     graphql`
       query CompheaderCatList {
-        allMarkdownRemark(limit: 100) {
+        cflCategory: allContentfulCategory(limit: 100) {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        categoryPostGroup: allMarkdownRemark(limit: 100) {
           group(field: frontmatter___category) {
             fieldValue
           }
@@ -17,16 +25,30 @@ const HeaderCatList = () => {
       }
     `
   )
-  const categorys = data.allMarkdownRemark.group
-  return (
-    <div className="sl-nav-cat">
-      {categorys.map((category: { fieldValue: string }, index: number) => (
-        <Link to={`/category/${kebabCase(category.fieldValue)}/`} key={index}>
-          {category.fieldValue}
-        </Link>
-      ))}
-    </div>
-  )
+  //const categorys = data.allMarkdownRemark.group
+  const categorys = data.cflCategory.edges
+  const categoryPostGroup = data.categoryPostGroup.group
+  var hasPostCategorys: { name: string; slug: string }[] = []
+  var i = 0
+
+  categorys.map((category: { node: { name: string; slug: string } }) => {
+    const categoryName = category.node.name
+    const categorySlug = category.node.slug
+    categoryPostGroup.forEach((categoryPosts: { fieldValue: string }) => {
+      if (categoryPosts.fieldValue === categoryName) {
+        hasPostCategorys[i] = {
+          name: categoryName,
+          slug: categorySlug,
+        }
+        i++
+      }
+    })
+  })
+  const categoryLinks = hasPostCategorys.map((hasPostCategory) => {
+    const categoryPath = `/category/${_.kebabCase(hasPostCategory.slug)}/`
+    return <Link to={categoryPath}>{hasPostCategory.name}</Link>
+  })
+  return <div className="sl-nav-cat">{categoryLinks}</div>
 }
 
 export default HeaderCatList

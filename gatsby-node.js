@@ -1,6 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const _ = require("lodash")
+const _ = require('lodash')
 
 // Template
 const blogPostTemplate = path.resolve(`./src/templates/blog-post.tsx`)
@@ -36,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
     `
       {
         postsRemark: allMarkdownRemark(
-          filter: {fields: {collection: {eq: "post"}}}
+          filter: { fields: { collection: { eq: "post" } } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 2000
         ) {
@@ -52,9 +52,9 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         pageRemark: allMarkdownRemark(
-          filter: {fields: {collection: {eq: "page"}}}
+          filter: { fields: { collection: { eq: "page" } } }
           limit: 2000
-        ){
+        ) {
           edges {
             node {
               fields {
@@ -67,9 +67,9 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
         tagsGroup: allMarkdownRemark(
-          filter: { fields: { collection : { eq : "post" } }}
+          filter: { fields: { collection: { eq: "post" } } }
           limit: 2000
-          ) {
+        ) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
@@ -77,16 +77,31 @@ exports.createPages = ({ graphql, actions }) => {
         }
         categoryGroup: allMarkdownRemark(
           limit: 2000
-          filter: { fields: { collection : { eq : "post" } }}
-          ) {
+          filter: { fields: { collection: { eq: "post" } } }
+        ) {
           group(field: frontmatter___category) {
             fieldValue
             totalCount
           }
         }
+
+        cflCategoryGroup: allContentfulCategory(limit: 2000) {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        categoryPost: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___category) {
+            totalCount
+            fieldValue
+          }
+        }
       }
     `
-  ).then(result => {
+  ).then((result) => {
     if (result.errors) {
       throw result.errors
     }
@@ -130,7 +145,6 @@ exports.createPages = ({ graphql, actions }) => {
     const pages = result.data.pageRemark.edges
 
     pages.forEach((page) => {
-
       createPage({
         path: page.node.fields.slug,
         component: pageTemplate,
@@ -144,7 +158,7 @@ exports.createPages = ({ graphql, actions }) => {
     const tags = result.data.tagsGroup.group
     const tagPerPage = 10
 
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
       var tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
       var tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
       Array.from({ length: tagnumPages }).forEach((_, i) => {
@@ -157,7 +171,7 @@ exports.createPages = ({ graphql, actions }) => {
             tag: tag.fieldValue,
             numPages: tagnumPages,
             currentPage: i + 1,
-            pathBase: tagPathBase
+            pathBase: tagPathBase,
           },
         })
       })
@@ -167,7 +181,7 @@ exports.createPages = ({ graphql, actions }) => {
     const categorys = result.data.categoryGroup.group
     const categoryPerPage = 10
 
-    categorys.forEach(category => {
+    categorys.forEach((category) => {
       var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
       var categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
       Array.from({ length: categorynumPages }).forEach((_, i) => {
@@ -180,11 +194,43 @@ exports.createPages = ({ graphql, actions }) => {
             category: category.fieldValue,
             numPages: categorynumPages,
             currentPage: i + 1,
-            pathBase: categoryPathBase
+            pathBase: categoryPathBase,
           },
         })
       })
     })
 
+    // Contentful CategoryPage
+    const cflCategorys = result.data.cflCategoryGroup.edges
+    const CategoryPostGroup = result.data.categoryPost.group
+    const cflCategoryPerPage = 10
+
+    cflCategorys.forEach((category) => {
+      CategoryPostGroup.forEach((categoryPosts) => {
+        var categorynumPages =
+          category.node.name === categoryPosts.fieldValue
+            ? Math.ceil(categoryPosts.totalCount / cflCategoryPerPage)
+            : null
+        var categoryPathBase =
+          category.node.name === categoryPosts.fieldValue
+            ? `/category/${_.kebabCase(category.node.slug)}/`
+            : null
+
+        Array.from({ length: categorynumPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
+            component: categoryTemplate,
+            context: {
+              limit: categoryPerPage,
+              skip: i * categoryPerPage,
+              category: category.node.name,
+              numPages: categorynumPages,
+              currentPage: i + 1,
+              pathBase: categoryPathBase,
+            },
+          })
+        })
+      })
+    })
   })
 }
