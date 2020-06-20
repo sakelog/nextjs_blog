@@ -20,12 +20,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: 'collection',
       value: parent.sourceInstanceName,
     })
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
+    if (parent.sourceInstanceName === 'post') {
+      const value = createFilePath({ node, getNode })
+      createNodeField({
+        name: `slug`,
+        node,
+        value,
+      })
+    }
   }
 }
 
@@ -86,6 +88,14 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
 
+        cflPages: allContentfulPage(limit: 2000) {
+          edges {
+            node {
+              slug
+              title
+            }
+          }
+        }
         cflCategoryGroup: allContentfulCategory(limit: 2000) {
           edges {
             node {
@@ -152,6 +162,19 @@ exports.createPages = ({ graphql, actions }) => {
         component: pageTemplate,
         context: {
           slug: page.node.fields.slug,
+        },
+      })
+    })
+
+    // Contentful Pages
+    const cflpages = result.data.cflPages.edges
+
+    cflpages.forEach((page) => {
+      createPage({
+        path: page.node.slug,
+        component: pageTemplate,
+        context: {
+          slug: page.node.slug,
         },
       })
     })
