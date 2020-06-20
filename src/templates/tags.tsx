@@ -27,6 +27,19 @@ const Tags = ({ pageContext, data }:TagsType) => {
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `タグ：${tag}`
 
+  const categorys = data.cflCategory.edges
+  const categorysInfo : {name: string, slug: string}[] = []
+  
+  categorys.map((category: { node: { name: string; slug: string } },idx:number) => {
+    const categoryName = category.node.name
+    const categorySlug = category.node.slug
+
+    categorysInfo[idx] = {
+      name: categoryName,
+      slug: categorySlug,
+    }
+  })
+
   return (
     <Layout>
       {SEO
@@ -41,10 +54,17 @@ const Tags = ({ pageContext, data }:TagsType) => {
       {edges.map(({ node }) => {
         const { slug } = node.fields
         const title = node.frontmatter.title || node.fields.slug
-        const description = node.frontmatter.description || node.excerpt
-        const categoryPath = `/category/${_.kebabCase(
-          node.frontmatter.category
-        )}/`
+        const description = node.frontmatter.description
+        const postCategoryName = node.frontmatter.category
+        var categoryPath : string
+        categorysInfo.forEach(categoryInfo => {
+          categoryPath = postCategoryName === categoryInfo.name ? (
+            `/category/${_.kebabCase(categoryInfo.slug)}/`
+           ) : null
+        })
+        //const categoryPath = `/category/${_.kebabCase(
+        //  node.frontmatter.category
+        //)}/`
         return (
           <div key={slug} className="sl-border-bottom">
             <PostDate postdate={node.frontmatter.date} update={node.frontmatter.update} />
@@ -53,7 +73,7 @@ const Tags = ({ pageContext, data }:TagsType) => {
             </Link>
             <p>{description}</p>
             <Link to={categoryPath} className="sl-cat-badge">
-              <h3>{node.frontmatter.category}</h3>
+              <h3>{postCategoryName}</h3>
             </Link>
           </div>
         )
@@ -89,6 +109,14 @@ export const pageQuery = graphql`
             category
             description
           }
+        }
+      }
+    }
+    cflCategory: allContentfulCategory{
+      edges {
+        node {
+          name
+          slug
         }
       }
     }

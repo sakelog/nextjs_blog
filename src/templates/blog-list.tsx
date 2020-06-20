@@ -29,6 +29,18 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
   const pageTitle = currentPage === 1 ? null : '記事一覧'
   const description =
     currentPage === 1 ? null : `${SiteTitle}の記事一覧ページ：${currentPage}`
+  const categorys = data.cflCategory.edges
+  const categorysInfo : {name: string, slug: string}[] = []
+  
+  categorys.map((category: { node: { name: string; slug: string } },idx:number) => {
+    const categoryName = category.node.name
+    const categorySlug = category.node.slug
+
+    categorysInfo[idx] = {
+      name: categoryName,
+      slug: categorySlug,
+    }
+  })
 
   return (
     <Layout>
@@ -36,10 +48,14 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
       <h2>{pageTitle}</h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
-        const description = node.frontmatter.description || node.excerpt
-        const categoryPath = `/category/${_.kebabCase(
-          node.frontmatter.category
-        )}/`
+        const description = node.frontmatter.description
+        const postCategoryName = node.frontmatter.category
+        var categoryPath : string
+        categorysInfo.forEach(categoryInfo => {
+          categoryPath = postCategoryName === categoryInfo.name ? (
+            `/category/${_.kebabCase(categoryInfo.slug)}/`
+           ) : null
+        })
 
         return (
           <div key={node.fields.slug} className="sl-border-bottom">
@@ -49,7 +65,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
             </h2>
             <p>{description}</p>
             <Link to={categoryPath} className="sl-cat-badge">
-              <h3>{node.frontmatter.category}</h3>
+              <h3>{postCategoryName}</h3>
             </Link>
             <TagList Tags={node.frontmatter.tags} />
           </div>
@@ -88,6 +104,14 @@ export const pageQuery = graphql`
             category
             tags
           }
+        }
+      }
+    }
+    cflCategory: allContentfulCategory{
+      edges {
+        node {
+          name
+          slug
         }
       }
     }
