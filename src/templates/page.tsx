@@ -1,36 +1,33 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from 'react'
+import { graphql } from 'gatsby'
 
-import { TempPageQuery } from "../../types/graphql-types"
+import { TempPageQuery } from '../../types/graphql-types'
 
 // Components
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import RenderAst from "../components/renderAst"
-import BackToTopPage from "../components/back-to-top-page"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import RenderAst from '../components/renderAst'
+import BackToTopPage from '../components/back-to-top-page'
 
 type Props = {
-  data:TempPageQuery
+  data: TempPageQuery
 }
 
-const Page = ({ data }:Props) => {
-  const page = data.markdownRemark
+const Page = ({ data }: Props) => {
+  const page = data.cflPage
 
-  const description = page.frontmatter.description || page.excerpt
+  const description = page.description
 
   return (
     <Layout>
-      {SEO
-        (page.frontmatter.title,
-        description,
-        false)
-      }
+      {SEO(page.title, description, false)}
       <div className="Article">
-        <h1>{page.frontmatter.title}</h1>
+        <h1>{page.title}</h1>
         <hr />
 
-        <div><RenderAst{...page.htmlAst} /></div>
-
+        <div>
+          <RenderAst {...page.body.childMarkdownRemark.htmlAst} />
+        </div>
       </div>
       <BackToTopPage />
     </Layout>
@@ -48,6 +45,15 @@ export const pageQuery = graphql`
         description
       }
       excerpt
+    }
+    cflPage: contentfulPage(slug: { eq: $slug }) {
+      title
+      body {
+        childMarkdownRemark {
+          htmlAst
+        }
+      }
+      description
     }
   }
 `
