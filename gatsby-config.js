@@ -122,6 +122,7 @@ module.exports = {
         path: `${__dirname}/content/post/`,
       },
     },
+    /*
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -129,6 +130,7 @@ module.exports = {
         path: `${__dirname}/content/page/`,
       },
     },
+    */
     // markdown
     {
       resolve: `gatsby-transformer-remark`,
