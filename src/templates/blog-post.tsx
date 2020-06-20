@@ -15,9 +15,6 @@ import TagList from '../components/taglist'
 // Utilities
 const kebabCase = require('lodash/kebabCase')
 
-// Icon
-import { FiTag } from 'react-icons/fi'
-
 interface BlogPostTypes {
   pageContext: {
     prev?: {
@@ -44,7 +41,15 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
   const post = data.markdownRemark
   const { prev, next } = pageContext
 
-  const categoryPath = `/category/${kebabCase(post.frontmatter.category)}/`
+
+  const category = data.cflCategory
+  const categoryName = category.name
+  const categorySlug = category.slug
+  const categoryInfo : {name: string, slug: string} = {
+    name: categoryName,
+    slug: categorySlug,
+  }
+  const categoryPath = `/category/${kebabCase(categoryInfo.slug)}/`
 
   return (
     <Layout>
@@ -52,7 +57,7 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
       <div className="Article">
         <h1>{post.frontmatter.title}</h1>
         <Link to={categoryPath} className="sl-cat-badge">
-          <h4>{post.frontmatter.category}</h4>
+          <h4>{categoryInfo.name}</h4>
         </Link>
         <PostDate
           postdate={post.frontmatter.date}
@@ -81,18 +86,21 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query TempBlogPost($slug: String!) {
+  query TempBlogPost($slug: String!, $category: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
       frontmatter {
         title
         date
         update
-        category
         tags
         description
       }
       tableOfContents
+    }
+    cflCategory: contentfulCategory(name: {eq: $category}) {
+      name
+      slug
     }
   }
 `

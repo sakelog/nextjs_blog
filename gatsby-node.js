@@ -47,6 +47,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                category
               }
             }
           }
@@ -118,6 +119,7 @@ exports.createPages = ({ graphql, actions }) => {
         component: blogPostTemplate,
         context: {
           slug: post.node.fields.slug,
+          category: post.node.frontmatter.category,
           prev,
           next,
         },
@@ -176,30 +178,6 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
     })
-
-    // Create Category Pages
-    const categorys = result.data.categoryGroup.group
-    const categoryPerPage = 10
-
-    categorys.forEach((category) => {
-      var categorynumPages = Math.ceil(category.totalCount / categoryPerPage)
-      var categoryPathBase = `/category/${_.kebabCase(category.fieldValue)}/`
-      Array.from({ length: categorynumPages }).forEach((_, i) => {
-        createPage({
-          path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
-          component: categoryTemplate,
-          context: {
-            limit: categoryPerPage,
-            skip: i * categoryPerPage,
-            category: category.fieldValue,
-            numPages: categorynumPages,
-            currentPage: i + 1,
-            pathBase: categoryPathBase,
-          },
-        })
-      })
-    })
-
     // Contentful CategoryPage
     const cflCategorys = result.data.cflCategoryGroup.edges
     const CategoryPostGroup = result.data.categoryPost.group
@@ -221,8 +199,8 @@ exports.createPages = ({ graphql, actions }) => {
             path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
             component: categoryTemplate,
             context: {
-              limit: categoryPerPage,
-              skip: i * categoryPerPage,
+              limit: cflCategoryPerPage,
+              skip: i * cflCategoryPerPage,
               category: category.node.name,
               numPages: categorynumPages,
               currentPage: i + 1,
