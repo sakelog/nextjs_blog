@@ -9,6 +9,11 @@ const HeaderCatList = () => {
   const data = useStaticQuery(
     graphql`
       query CompheaderCatList {
+        cflCategoryPostGroup: allContentfulPost(limit: 2000) {
+          group(field: category___name) {
+            fieldValue
+          }
+        }
         cflCategory: allContentfulCategory(limit: 100) {
           edges {
             node {
@@ -27,7 +32,7 @@ const HeaderCatList = () => {
   )
   //const categorys = data.allMarkdownRemark.group
   const categorys = data.cflCategory.edges
-  const categoryPostGroup = data.categoryPostGroup.group
+  const categoryPostGroup = data.cflCategoryPostGroup.group
   var hasPostCategorys: { name: string; slug: string }[] = []
   var i = 0
 
