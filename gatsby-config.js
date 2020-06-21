@@ -156,8 +156,6 @@ module.exports = {
               loading: 'lazy',
             },
           },
-
-          `gatsby-remark-responsive-iframe`,
           // link
           `gatsby-remark-external-links`,
           `gatsby-plugin-catch-links`,
