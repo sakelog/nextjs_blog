@@ -24,7 +24,7 @@ interface Props {
 
 const Category = ({ pageContext, data }: Props) => {
   const { category, currentPage, numPages, pathBase } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { edges, totalCount } = data.cflPosts
   const categoryHeader = `カテゴリー：${category}`
   return (
     <Layout>
@@ -34,20 +34,20 @@ const Category = ({ pageContext, data }: Props) => {
       </h1>
       <p>投稿：{totalCount}件</p>
       {edges.map(({ node }) => {
-        const { slug } = node.fields
-        const title = node.frontmatter.title || node.fields.slug
-        const description = node.frontmatter.description || node.excerpt
+        const slug = node.slug
+        const title = node.title || node.slug
+        const description = node.description
         return (
           <div key={slug} className="sl-border-bottom">
             <PostDate
-              postdate={node.frontmatter.date}
-              update={node.frontmatter.update}
+              postdate={node.date}
+              update={node.update}
             />
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
             <p>{description}</p>
-            <TagList Tags={node.frontmatter.tags} />
+            <TagList Tags={node.tags} />
           </div>
         )
       })}
@@ -65,26 +65,24 @@ export default Category
 
 export const pageQuery = graphql`
   query TempCategory($category: String!, $limit: Int!, $skip: Int!) {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { in: [$category] } } }
+    cflPosts :allContentfulPost(
+      sort: { fields: date, order: DESC }
+      filter: {category: {name: { eq: $category } } }
       limit: $limit
       skip: $skip
     ) {
       totalCount
       edges {
         node {
-          fields {
+          slug
+          title
+          date
+          update
+          tags {
+            name
             slug
           }
-          excerpt
-          frontmatter {
-            title
-            date
-            update
-            tags
-            description
-          }
+          description
         }
       }
     }

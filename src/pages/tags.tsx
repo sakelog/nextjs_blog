@@ -17,7 +17,7 @@ type Props = {
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    cflTagsPost: { group },
   },
 }: Props) => {
   var sortedGroup = group.sort(function (a, b) {
@@ -32,7 +32,7 @@ const TagsPage = ({
         <ul className="sl-tag-list">
           {sortedGroup.map((tag, index: number) => (
             <li key={index} className="sl-tag-item">
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} className="">
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
               </Link>
             </li>
@@ -48,11 +48,10 @@ export default TagsPage
 
 export const pageQuery = graphql`
   query PagesTags {
-    allMarkdownRemark(
-      filter: { fields: { collection: { eq: "post" } } }
+    cflTagsPost: allContentfulPost(
       limit: 2000
     ) {
-      group(field: frontmatter___tags) {
+      group(field: tags___name) {
         fieldValue
         totalCount
       }
