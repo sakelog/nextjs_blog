@@ -446,7 +446,7 @@ gatsby serve -H 0.0.0.0
 
 * 参考：[GatsbyJSのローカル環境をスマホやタブレットから確認する方法](./gatsbyjs-local-other-device)
 
-**http://localhost:9000/admin**を開いて反映されていることを確認しましょう。
+**<http://localhost:9000/admin>**を開いて反映されていることを確認しましょう。
 
 ## pushして反映させる
 
