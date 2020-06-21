@@ -22,11 +22,6 @@ const HeaderCatList = () => {
             }
           }
         }
-        categoryPostGroup: allMarkdownRemark(limit: 100) {
-          group(field: frontmatter___category) {
-            fieldValue
-          }
-        }
       }
     `
   )

@@ -1,5 +1,4 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const _ = require('lodash')
 
 // Template
@@ -9,91 +8,38 @@ const pageTemplate = path.resolve(`./src/templates/page.tsx`)
 const tagTemplate = path.resolve(`./src/templates/tags.tsx`)
 const categoryTemplate = path.resolve(`./src/templates/category.tsx`)
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const parent = getNode(node.parent)
-
-    createNodeField({
-      node,
-      name: 'collection',
-      value: parent.sourceInstanceName,
-    })
-    if (parent.sourceInstanceName === 'post') {
-      const value = createFilePath({ node, getNode })
-      createNodeField({
-        name: `slug`,
-        node,
-        value,
-      })
-    }
-  }
-}
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return graphql(
     `
       {
-        postsRemark: allMarkdownRemark(
-          filter: { fields: { collection: { eq: "post" } } }
-          sort: { fields: [frontmatter___date], order: DESC }
+        cflPosts: allContentfulPost(
           limit: 2000
-        ) {
+          sort: { fields: date, order: DESC }
+          ) {
           edges {
             node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                category
+              slug
+              title
+              category {
+                name
               }
             }
           }
         }
-        pageRemark: allMarkdownRemark(
-          filter: { fields: { collection: { eq: "page" } } }
-          limit: 2000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-        tagsGroup: allMarkdownRemark(
-          filter: { fields: { collection: { eq: "post" } } }
-          limit: 2000
-        ) {
-          group(field: frontmatter___tags) {
-            fieldValue
-            totalCount
-          }
-        }
-        categoryGroup: allMarkdownRemark(
-          limit: 2000
-          filter: { fields: { collection: { eq: "post" } } }
-        ) {
-          group(field: frontmatter___category) {
-            fieldValue
-            totalCount
-          }
-        }
-
         cflPages: allContentfulPage(limit: 2000) {
           edges {
             node {
               slug
               title
             }
+          }
+        }
+        cflTagsPost: allContentfulPost(limit: 2000) {
+          group(field: tags___name) {
+            totalCount
+            fieldValue
           }
         }
         cflCategoryGroup: allContentfulCategory(limit: 2000) {
@@ -104,8 +50,8 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
-        categoryPost: allMarkdownRemark(limit: 2000) {
-          group(field: frontmatter___category) {
+        cflCategoryPost: allContentfulPost(limit: 2000) {
+          group(field: category___name) {
             totalCount
             fieldValue
           }
@@ -117,51 +63,38 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors
     }
 
-    // Create blog posts pages.
-    const posts = result.data.postsRemark.edges
+    // Contentful Post
+    const cflPosts = result.data.cflPosts.edges
 
-    posts.forEach((post, index) => {
-      const prev = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+    cflPosts.forEach((post, index) => {
+      const prev = index === cflPosts.length - 1 ? null : cflPosts[index + 1].node
+      const next = index === 0 ? null : cflPosts[index - 1].node
 
       createPage({
-        path: post.node.fields.slug,
+        path: post.node.slug,
         component: blogPostTemplate,
         context: {
-          slug: post.node.fields.slug,
-          category: post.node.frontmatter.category,
+          slug: post.node.slug,
+          category: post.node.category.name,
           prev,
           next,
         },
       })
     })
 
-    // Create blog post list pages
-    const postsPerPage = 5
-    const numPages = Math.ceil(posts.length / postsPerPage)
+    // Contentful Post List
+    const cflPostsPerPage = 5
+    const cflNumPages = Math.ceil(cflPosts.length / cflPostsPerPage)
 
-    Array.from({ length: numPages }).forEach((_, i) => {
+    Array.from({ length: cflNumPages }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/` : `/${i + 1}`,
         component: blogPostListTemplate,
         context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numPages,
+          limit: cflPostsPerPage,
+          skip: i * cflPostsPerPage,
+          numPages: cflNumPages,
           currentPage: i + 1,
-        },
-      })
-    })
-
-    // Create pages.
-    const pages = result.data.pageRemark.edges
-
-    pages.forEach((page) => {
-      createPage({
-        path: page.node.fields.slug,
-        component: pageTemplate,
-        context: {
-          slug: page.node.fields.slug,
         },
       })
     })
@@ -178,36 +111,35 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
+    // Contentful TagsPage
+    const cflTags = result.data.cflTagsPost.group
+    const cflTagPerPage = 10
 
-    // Create Tags pages
-    const tags = result.data.tagsGroup.group
-    const tagPerPage = 10
-
-    tags.forEach((tag) => {
-      var tagnumPages = Math.ceil(tag.totalCount / tagPerPage)
-      var tagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
-      Array.from({ length: tagnumPages }).forEach((_, i) => {
+    cflTags.forEach((tag) => {
+      var cflTagnumPages = Math.ceil(tag.totalCount / cflTagPerPage)
+      var cflTagPathBase = `/tags/${_.kebabCase(tag.fieldValue)}/`
+      Array.from({ length: cflTagnumPages }).forEach((_, i) => {
         createPage({
-          path: i === 0 ? tagPathBase : tagPathBase + (i + 1),
+          path: i === 0 ? cflTagPathBase : cflTagPathBase + (i + 1),
           component: tagTemplate,
           context: {
-            limit: tagPerPage,
-            skip: i * tagPerPage,
+            limit: cflTagPerPage,
+            skip: i * cflTagPerPage,
             tag: tag.fieldValue,
-            numPages: tagnumPages,
+            numPages: cflTagnumPages,
             currentPage: i + 1,
-            pathBase: tagPathBase,
+            pathBase: cflTagPathBase,
           },
         })
       })
     })
     // Contentful CategoryPage
     const cflCategorys = result.data.cflCategoryGroup.edges
-    const CategoryPostGroup = result.data.categoryPost.group
+    const cflCategoryPostGroup = result.data.cflCategoryPost.group
     const cflCategoryPerPage = 10
 
     cflCategorys.forEach((category) => {
-      CategoryPostGroup.forEach((categoryPosts) => {
+      cflCategoryPostGroup.forEach((categoryPosts) => {
         var categorynumPages =
           category.node.name === categoryPosts.fieldValue
             ? Math.ceil(categoryPosts.totalCount / cflCategoryPerPage)

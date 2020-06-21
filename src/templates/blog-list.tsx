@@ -17,11 +17,11 @@ interface BlogListType {
     currentPage: number
     numPages: number
   }
-  data: TempblogListQuery
+    data: TempblogListQuery
 }
 
 const BlogList = ({ pageContext, data }: BlogListType) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.cfPosts.edges
   const { currentPage, numPages } = pageContext
 
   const SiteTitle = data.site.siteMetadata.title
@@ -29,45 +29,46 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
   const pageTitle = currentPage === 1 ? null : '記事一覧'
   const description =
     currentPage === 1 ? null : `${SiteTitle}の記事一覧ページ：${currentPage}`
-  const categorys = data.cflCategory.edges
-  const categorysInfo : {name: string, slug: string}[] = []
-  
-  categorys.map((category: { node: { name: string; slug: string } },idx:number) => {
-    const categoryName = category.node.name
-    const categorySlug = category.node.slug
 
-    categorysInfo[idx] = {
-      name: categoryName,
-      slug: categorySlug,
+  const categorys = data.cflCategory.edges
+  const categorysInfo: { name: string; slug: string }[] = []
+
+  categorys.map(
+    (category: { node: { name: string; slug: string } }, idx: number) => {
+      const categoryName = category.node.name
+      const categorySlug = category.node.slug
+
+      categorysInfo[idx] = {
+        name: categoryName,
+        slug: categorySlug,
+      }
     }
-  })
+  )
 
   return (
     <Layout>
       {SEO(pageTitle, description, false)}
       <h2>{pageTitle}</h2>
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        const description = node.frontmatter.description
-        const postCategoryName = node.frontmatter.category
-        var categoryPath : string
-        categorysInfo.forEach(categoryInfo => {
-          categoryPath = postCategoryName === categoryInfo.name ? (
-            `/category/${_.kebabCase(categoryInfo.slug)}/`
-           ) : null
-        })
+        const title = node.title || node.slug
+        const description = node.description
+        const postCategoryName = node.category.name
+        const categoryPath = `/category/${_.kebabCase(node.category.slug)}/`
 
         return (
-          <div key={node.fields.slug} className="sl-border-bottom">
-            <PostDate postdate={node.frontmatter.date} update={node.frontmatter.update} />
+          <div key={node.slug} className="sl-border-bottom">
+            <PostDate
+              postdate={node.date}
+              update={node.update}
+            />
             <h2>
-              <Link to={node.fields.slug}>{title}</Link>
+              <Link to={`/${node.slug}/`}>{title}</Link>
             </h2>
             <p>{description}</p>
             <Link to={categoryPath} className="sl-cat-badge">
               <h3>{postCategoryName}</h3>
             </Link>
-            <TagList Tags={node.frontmatter.tags} />
+            <TagList Tags={node.tags} />
           </div>
         )
       })}
@@ -84,30 +85,31 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
-      filter: { fields: { collection: { eq: "post" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
+    cfPosts: allContentfulPost(
+      limit: $limit,
+      skip: $skip,
+      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {
-          fields {
+          slug
+          title
+          date
+          update
+          description
+          category {
+            name
             slug
           }
-          excerpt
-          frontmatter {
-            title
-            date
-            update
-            description
-            category
-            tags
+          tags {
+            name
+            slug
           }
         }
       }
     }
-    cflCategory: allContentfulCategory{
+
+    cflCategory: allContentfulCategory {
       edges {
         node {
           name
