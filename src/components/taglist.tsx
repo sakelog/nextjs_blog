@@ -8,14 +8,14 @@ const kebabCase = require('lodash/kebabCase')
 import { FiTag } from 'react-icons/fi'
 
 interface TagListType {
-  Tags: string[]
+  Tags: {name?: string , slug?: string}[]
 }
 
 const TagList = ({Tags}:TagListType) => {
-  const tag_list = Tags.map((tag: {}, index: number) => (
+  const tag_list = Tags.map((tag, index: number) => (
     <li key={index} className="sl-tag-item">
-      <Link to={`/tags/${kebabCase(tag)}/`}>
-        <h5>{tag}</h5>
+      <Link to={`/tags/${kebabCase(tag.name)}/`}>
+        <h5>{tag.name}</h5>
       </Link>
     </li>
   ))

@@ -3,20 +3,12 @@ import { Link } from 'gatsby'
 
 interface PrevNextType {
   prev?: {
-    fields: {
-      slug: string
-    }
-    frontmatter: {
-      title: string
-    }
+    slug: string
+    title: string
   }
   next?: {
-    fields: {
-      slug: string
-    }
-    frontmatter: {
-      title: string
-    }
+    slug: string
+    title: string
   }
 }
 
@@ -31,15 +23,15 @@ const PrevNext = ({ prev, next }: PrevNextType) => {
             </div>
           )}
           {prev && (
-            <Link to={prev.fields.slug} rel="prev">
-              {prev.frontmatter.title}
+            <Link to={`/${prev.slug}/`} rel="prev">
+              {prev.title}
             </Link>
           )}
         </div>
         <div className="sl-prevnext-item sl-next">
           {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title}
+            <Link to={`/${next.slug}/`} rel="next">
+              {next.title}
             </Link>
           )}
           {next && (
