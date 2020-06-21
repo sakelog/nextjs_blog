@@ -63,7 +63,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
               update={node.update}
             />
             <h2>
-              <Link to={node.slug}>{title}</Link>
+              <Link to={`/${node.slug}/`}>{title}</Link>
             </h2>
             <p>{description}</p>
             <Link to={categoryPath} className="sl-cat-badge">
