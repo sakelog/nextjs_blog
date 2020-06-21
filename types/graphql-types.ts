@@ -343,13 +343,13 @@ export type ContentfulCategory = Node & {
   internal: Internal;
   name?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
+  post?: Maybe<Array<Maybe<ContentfulPost>>>;
   spaceId?: Maybe<Scalars['String']>;
   contentful_id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulCategorySys>;
   node_locale?: Maybe<Scalars['String']>;
-  post?: Maybe<Array<Maybe<ContentfulPost>>>;
 };
 
 
@@ -486,16 +486,6 @@ export enum ContentfulCategoryFieldsEnum {
   InternalType = 'internal___type',
   Name = 'name',
   Slug = 'slug',
-  SpaceId = 'spaceId',
-  ContentfulId = 'contentful_id',
-  CreatedAt = 'createdAt',
-  UpdatedAt = 'updatedAt',
-  SysRevision = 'sys___revision',
-  SysContentTypeSysType = 'sys___contentType___sys___type',
-  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
-  SysContentTypeSysId = 'sys___contentType___sys___id',
-  SysContentTypeSysContentfulId = 'sys___contentType___sys___contentful_id',
-  NodeLocale = 'node_locale',
   Post = 'post',
   PostId = 'post___id',
   PostParentId = 'post___parent___id',
@@ -555,12 +545,6 @@ export enum ContentfulCategoryFieldsEnum {
   PostCategoryInternalType = 'post___category___internal___type',
   PostCategoryName = 'post___category___name',
   PostCategorySlug = 'post___category___slug',
-  PostCategorySpaceId = 'post___category___spaceId',
-  PostCategoryContentfulId = 'post___category___contentful_id',
-  PostCategoryCreatedAt = 'post___category___createdAt',
-  PostCategoryUpdatedAt = 'post___category___updatedAt',
-  PostCategorySysRevision = 'post___category___sys___revision',
-  PostCategoryNodeLocale = 'post___category___node_locale',
   PostCategoryPost = 'post___category___post',
   PostCategoryPostId = 'post___category___post___id',
   PostCategoryPostChildren = 'post___category___post___children',
@@ -575,6 +559,12 @@ export enum ContentfulCategoryFieldsEnum {
   PostCategoryPostUpdatedAt = 'post___category___post___updatedAt',
   PostCategoryPostNodeLocale = 'post___category___post___node_locale',
   PostCategoryPostUpdate = 'post___category___post___update',
+  PostCategorySpaceId = 'post___category___spaceId',
+  PostCategoryContentfulId = 'post___category___contentful_id',
+  PostCategoryCreatedAt = 'post___category___createdAt',
+  PostCategoryUpdatedAt = 'post___category___updatedAt',
+  PostCategorySysRevision = 'post___category___sys___revision',
+  PostCategoryNodeLocale = 'post___category___node_locale',
   PostTags = 'post___tags',
   PostTagsId = 'post___tags___id',
   PostTagsParentId = 'post___tags___parent___id',
@@ -630,7 +620,6 @@ export enum ContentfulCategoryFieldsEnum {
   PostBodyChildMarkdownRemarkId = 'post___body___childMarkdownRemark___id',
   PostBodyChildMarkdownRemarkExcerpt = 'post___body___childMarkdownRemark___excerpt',
   PostBodyChildMarkdownRemarkRawMarkdownBody = 'post___body___childMarkdownRemark___rawMarkdownBody',
-  PostBodyChildMarkdownRemarkFileAbsolutePath = 'post___body___childMarkdownRemark___fileAbsolutePath',
   PostBodyChildMarkdownRemarkHtml = 'post___body___childMarkdownRemark___html',
   PostBodyChildMarkdownRemarkHtmlAst = 'post___body___childMarkdownRemark___htmlAst',
   PostBodyChildMarkdownRemarkExcerptAst = 'post___body___childMarkdownRemark___excerptAst',
@@ -663,14 +652,23 @@ export enum ContentfulCategoryFieldsEnum {
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkId = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___id',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkExcerpt = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___excerpt',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkRawMarkdownBody = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___rawMarkdownBody',
-  PostChildContentfulPostBodyTextNodeChildMarkdownRemarkFileAbsolutePath = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___fileAbsolutePath',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkHtml = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___html',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkHtmlAst = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___htmlAst',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkExcerptAst = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___excerptAst',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkHeadings = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___headings',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkTimeToRead = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___timeToRead',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkTableOfContents = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___tableOfContents',
-  PostChildContentfulPostBodyTextNodeChildMarkdownRemarkChildren = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___children'
+  PostChildContentfulPostBodyTextNodeChildMarkdownRemarkChildren = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___children',
+  SpaceId = 'spaceId',
+  ContentfulId = 'contentful_id',
+  CreatedAt = 'createdAt',
+  UpdatedAt = 'updatedAt',
+  SysRevision = 'sys___revision',
+  SysContentTypeSysType = 'sys___contentType___sys___type',
+  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
+  SysContentTypeSysId = 'sys___contentType___sys___id',
+  SysContentTypeSysContentfulId = 'sys___contentType___sys___contentful_id',
+  NodeLocale = 'node_locale'
 }
 
 export type ContentfulCategoryFilterInput = {
@@ -680,13 +678,13 @@ export type ContentfulCategoryFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  post?: Maybe<ContentfulPostFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulCategorySysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  post?: Maybe<ContentfulPostFilterListInput>;
 };
 
 export type ContentfulCategoryGroupConnection = {
@@ -1168,7 +1166,6 @@ export enum ContentfulGlobalMenuFieldsEnum {
   RefBodyChildMarkdownRemarkId = 'ref___body___childMarkdownRemark___id',
   RefBodyChildMarkdownRemarkExcerpt = 'ref___body___childMarkdownRemark___excerpt',
   RefBodyChildMarkdownRemarkRawMarkdownBody = 'ref___body___childMarkdownRemark___rawMarkdownBody',
-  RefBodyChildMarkdownRemarkFileAbsolutePath = 'ref___body___childMarkdownRemark___fileAbsolutePath',
   RefBodyChildMarkdownRemarkHtml = 'ref___body___childMarkdownRemark___html',
   RefBodyChildMarkdownRemarkHtmlAst = 'ref___body___childMarkdownRemark___htmlAst',
   RefBodyChildMarkdownRemarkExcerptAst = 'ref___body___childMarkdownRemark___excerptAst',
@@ -1238,7 +1235,6 @@ export enum ContentfulGlobalMenuFieldsEnum {
   RefChildContentfulPageBodyTextNodeChildMarkdownRemarkId = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___id',
   RefChildContentfulPageBodyTextNodeChildMarkdownRemarkExcerpt = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___excerpt',
   RefChildContentfulPageBodyTextNodeChildMarkdownRemarkRawMarkdownBody = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___rawMarkdownBody',
-  RefChildContentfulPageBodyTextNodeChildMarkdownRemarkFileAbsolutePath = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___fileAbsolutePath',
   RefChildContentfulPageBodyTextNodeChildMarkdownRemarkHtml = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___html',
   RefChildContentfulPageBodyTextNodeChildMarkdownRemarkHtmlAst = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___htmlAst',
   RefChildContentfulPageBodyTextNodeChildMarkdownRemarkExcerptAst = 'ref___childContentfulPageBodyTextNode___childMarkdownRemark___excerptAst',
@@ -1515,17 +1511,8 @@ export enum ContentfulPageBodyTextNodeFieldsEnum {
   Body = 'body',
   ChildMarkdownRemarkId = 'childMarkdownRemark___id',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
-  ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
-  ChildMarkdownRemarkFrontmatterUpdate = 'childMarkdownRemark___frontmatter___update',
-  ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
-  ChildMarkdownRemarkFrontmatterCategory = 'childMarkdownRemark___frontmatter___category',
-  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
-  ChildMarkdownRemarkFrontmatterSlug = 'childMarkdownRemark___frontmatter___slug',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
-  ChildMarkdownRemarkFieldsCollection = 'childMarkdownRemark___fields___collection',
-  ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
-  ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
   ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
@@ -1761,17 +1748,8 @@ export enum ContentfulPageFieldsEnum {
   BodyBody = 'body___body',
   BodyChildMarkdownRemarkId = 'body___childMarkdownRemark___id',
   BodyChildMarkdownRemarkFrontmatterTitle = 'body___childMarkdownRemark___frontmatter___title',
-  BodyChildMarkdownRemarkFrontmatterDate = 'body___childMarkdownRemark___frontmatter___date',
-  BodyChildMarkdownRemarkFrontmatterUpdate = 'body___childMarkdownRemark___frontmatter___update',
-  BodyChildMarkdownRemarkFrontmatterDescription = 'body___childMarkdownRemark___frontmatter___description',
-  BodyChildMarkdownRemarkFrontmatterCategory = 'body___childMarkdownRemark___frontmatter___category',
-  BodyChildMarkdownRemarkFrontmatterTags = 'body___childMarkdownRemark___frontmatter___tags',
-  BodyChildMarkdownRemarkFrontmatterSlug = 'body___childMarkdownRemark___frontmatter___slug',
   BodyChildMarkdownRemarkExcerpt = 'body___childMarkdownRemark___excerpt',
   BodyChildMarkdownRemarkRawMarkdownBody = 'body___childMarkdownRemark___rawMarkdownBody',
-  BodyChildMarkdownRemarkFieldsCollection = 'body___childMarkdownRemark___fields___collection',
-  BodyChildMarkdownRemarkFieldsSlug = 'body___childMarkdownRemark___fields___slug',
-  BodyChildMarkdownRemarkFileAbsolutePath = 'body___childMarkdownRemark___fileAbsolutePath',
   BodyChildMarkdownRemarkHtml = 'body___childMarkdownRemark___html',
   BodyChildMarkdownRemarkHtmlAst = 'body___childMarkdownRemark___htmlAst',
   BodyChildMarkdownRemarkExcerptAst = 'body___childMarkdownRemark___excerptAst',
@@ -1940,17 +1918,8 @@ export enum ContentfulPageFieldsEnum {
   ChildContentfulPageBodyTextNodeBody = 'childContentfulPageBodyTextNode___body',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkId = 'childContentfulPageBodyTextNode___childMarkdownRemark___id',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterTitle = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___title',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterDate = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___date',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterUpdate = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___update',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterDescription = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___description',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterCategory = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___category',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterTags = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___tags',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFrontmatterSlug = 'childContentfulPageBodyTextNode___childMarkdownRemark___frontmatter___slug',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkExcerpt = 'childContentfulPageBodyTextNode___childMarkdownRemark___excerpt',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkRawMarkdownBody = 'childContentfulPageBodyTextNode___childMarkdownRemark___rawMarkdownBody',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFieldsCollection = 'childContentfulPageBodyTextNode___childMarkdownRemark___fields___collection',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFieldsSlug = 'childContentfulPageBodyTextNode___childMarkdownRemark___fields___slug',
-  ChildContentfulPageBodyTextNodeChildMarkdownRemarkFileAbsolutePath = 'childContentfulPageBodyTextNode___childMarkdownRemark___fileAbsolutePath',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkHtml = 'childContentfulPageBodyTextNode___childMarkdownRemark___html',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkHtmlAst = 'childContentfulPageBodyTextNode___childMarkdownRemark___htmlAst',
   ChildContentfulPageBodyTextNodeChildMarkdownRemarkExcerptAst = 'childContentfulPageBodyTextNode___childMarkdownRemark___excerptAst',
@@ -2232,17 +2201,8 @@ export enum ContentfulPostBodyTextNodeFieldsEnum {
   Body = 'body',
   ChildMarkdownRemarkId = 'childMarkdownRemark___id',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
-  ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
-  ChildMarkdownRemarkFrontmatterUpdate = 'childMarkdownRemark___frontmatter___update',
-  ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
-  ChildMarkdownRemarkFrontmatterCategory = 'childMarkdownRemark___frontmatter___category',
-  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
-  ChildMarkdownRemarkFrontmatterSlug = 'childMarkdownRemark___frontmatter___slug',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
-  ChildMarkdownRemarkFieldsCollection = 'childMarkdownRemark___fields___collection',
-  ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
-  ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
   ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
@@ -2478,12 +2438,6 @@ export enum ContentfulPostFieldsEnum {
   CategoryInternalType = 'category___internal___type',
   CategoryName = 'category___name',
   CategorySlug = 'category___slug',
-  CategorySpaceId = 'category___spaceId',
-  CategoryContentfulId = 'category___contentful_id',
-  CategoryCreatedAt = 'category___createdAt',
-  CategoryUpdatedAt = 'category___updatedAt',
-  CategorySysRevision = 'category___sys___revision',
-  CategoryNodeLocale = 'category___node_locale',
   CategoryPost = 'category___post',
   CategoryPostId = 'category___post___id',
   CategoryPostParentId = 'category___post___parent___id',
@@ -2507,12 +2461,12 @@ export enum ContentfulPostFieldsEnum {
   CategoryPostCategoryChildren = 'category___post___category___children',
   CategoryPostCategoryName = 'category___post___category___name',
   CategoryPostCategorySlug = 'category___post___category___slug',
+  CategoryPostCategoryPost = 'category___post___category___post',
   CategoryPostCategorySpaceId = 'category___post___category___spaceId',
   CategoryPostCategoryContentfulId = 'category___post___category___contentful_id',
   CategoryPostCategoryCreatedAt = 'category___post___category___createdAt',
   CategoryPostCategoryUpdatedAt = 'category___post___category___updatedAt',
   CategoryPostCategoryNodeLocale = 'category___post___category___node_locale',
-  CategoryPostCategoryPost = 'category___post___category___post',
   CategoryPostTags = 'category___post___tags',
   CategoryPostTagsId = 'category___post___tags___id',
   CategoryPostTagsChildren = 'category___post___tags___children',
@@ -2537,6 +2491,12 @@ export enum ContentfulPostFieldsEnum {
   CategoryPostChildContentfulPostBodyTextNodeId = 'category___post___childContentfulPostBodyTextNode___id',
   CategoryPostChildContentfulPostBodyTextNodeChildren = 'category___post___childContentfulPostBodyTextNode___children',
   CategoryPostChildContentfulPostBodyTextNodeBody = 'category___post___childContentfulPostBodyTextNode___body',
+  CategorySpaceId = 'category___spaceId',
+  CategoryContentfulId = 'category___contentful_id',
+  CategoryCreatedAt = 'category___createdAt',
+  CategoryUpdatedAt = 'category___updatedAt',
+  CategorySysRevision = 'category___sys___revision',
+  CategoryNodeLocale = 'category___node_locale',
   Tags = 'tags',
   TagsId = 'tags___id',
   TagsParentId = 'tags___parent___id',
@@ -2601,12 +2561,12 @@ export enum ContentfulPostFieldsEnum {
   TagsPostCategoryChildren = 'tags___post___category___children',
   TagsPostCategoryName = 'tags___post___category___name',
   TagsPostCategorySlug = 'tags___post___category___slug',
+  TagsPostCategoryPost = 'tags___post___category___post',
   TagsPostCategorySpaceId = 'tags___post___category___spaceId',
   TagsPostCategoryContentfulId = 'tags___post___category___contentful_id',
   TagsPostCategoryCreatedAt = 'tags___post___category___createdAt',
   TagsPostCategoryUpdatedAt = 'tags___post___category___updatedAt',
   TagsPostCategoryNodeLocale = 'tags___post___category___node_locale',
-  TagsPostCategoryPost = 'tags___post___category___post',
   TagsPostTags = 'tags___post___tags',
   TagsPostTagsId = 'tags___post___tags___id',
   TagsPostTagsChildren = 'tags___post___tags___children',
@@ -2678,17 +2638,8 @@ export enum ContentfulPostFieldsEnum {
   BodyBody = 'body___body',
   BodyChildMarkdownRemarkId = 'body___childMarkdownRemark___id',
   BodyChildMarkdownRemarkFrontmatterTitle = 'body___childMarkdownRemark___frontmatter___title',
-  BodyChildMarkdownRemarkFrontmatterDate = 'body___childMarkdownRemark___frontmatter___date',
-  BodyChildMarkdownRemarkFrontmatterUpdate = 'body___childMarkdownRemark___frontmatter___update',
-  BodyChildMarkdownRemarkFrontmatterDescription = 'body___childMarkdownRemark___frontmatter___description',
-  BodyChildMarkdownRemarkFrontmatterCategory = 'body___childMarkdownRemark___frontmatter___category',
-  BodyChildMarkdownRemarkFrontmatterTags = 'body___childMarkdownRemark___frontmatter___tags',
-  BodyChildMarkdownRemarkFrontmatterSlug = 'body___childMarkdownRemark___frontmatter___slug',
   BodyChildMarkdownRemarkExcerpt = 'body___childMarkdownRemark___excerpt',
   BodyChildMarkdownRemarkRawMarkdownBody = 'body___childMarkdownRemark___rawMarkdownBody',
-  BodyChildMarkdownRemarkFieldsCollection = 'body___childMarkdownRemark___fields___collection',
-  BodyChildMarkdownRemarkFieldsSlug = 'body___childMarkdownRemark___fields___slug',
-  BodyChildMarkdownRemarkFileAbsolutePath = 'body___childMarkdownRemark___fileAbsolutePath',
   BodyChildMarkdownRemarkHtml = 'body___childMarkdownRemark___html',
   BodyChildMarkdownRemarkHtmlAst = 'body___childMarkdownRemark___htmlAst',
   BodyChildMarkdownRemarkExcerptAst = 'body___childMarkdownRemark___excerptAst',
@@ -2766,17 +2717,8 @@ export enum ContentfulPostFieldsEnum {
   ChildContentfulPostBodyTextNodeBody = 'childContentfulPostBodyTextNode___body',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkId = 'childContentfulPostBodyTextNode___childMarkdownRemark___id',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterTitle = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___title',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterDate = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___date',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterUpdate = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___update',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterDescription = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___description',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterCategory = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___category',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterTags = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___tags',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFrontmatterSlug = 'childContentfulPostBodyTextNode___childMarkdownRemark___frontmatter___slug',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkExcerpt = 'childContentfulPostBodyTextNode___childMarkdownRemark___excerpt',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkRawMarkdownBody = 'childContentfulPostBodyTextNode___childMarkdownRemark___rawMarkdownBody',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFieldsCollection = 'childContentfulPostBodyTextNode___childMarkdownRemark___fields___collection',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFieldsSlug = 'childContentfulPostBodyTextNode___childMarkdownRemark___fields___slug',
-  ChildContentfulPostBodyTextNodeChildMarkdownRemarkFileAbsolutePath = 'childContentfulPostBodyTextNode___childMarkdownRemark___fileAbsolutePath',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkHtml = 'childContentfulPostBodyTextNode___childMarkdownRemark___html',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkHtmlAst = 'childContentfulPostBodyTextNode___childMarkdownRemark___htmlAst',
   ChildContentfulPostBodyTextNodeChildMarkdownRemarkExcerptAst = 'childContentfulPostBodyTextNode___childMarkdownRemark___excerptAst',
@@ -3157,12 +3099,6 @@ export enum ContentfulTagsFieldsEnum {
   PostCategoryInternalType = 'post___category___internal___type',
   PostCategoryName = 'post___category___name',
   PostCategorySlug = 'post___category___slug',
-  PostCategorySpaceId = 'post___category___spaceId',
-  PostCategoryContentfulId = 'post___category___contentful_id',
-  PostCategoryCreatedAt = 'post___category___createdAt',
-  PostCategoryUpdatedAt = 'post___category___updatedAt',
-  PostCategorySysRevision = 'post___category___sys___revision',
-  PostCategoryNodeLocale = 'post___category___node_locale',
   PostCategoryPost = 'post___category___post',
   PostCategoryPostId = 'post___category___post___id',
   PostCategoryPostChildren = 'post___category___post___children',
@@ -3177,6 +3113,12 @@ export enum ContentfulTagsFieldsEnum {
   PostCategoryPostUpdatedAt = 'post___category___post___updatedAt',
   PostCategoryPostNodeLocale = 'post___category___post___node_locale',
   PostCategoryPostUpdate = 'post___category___post___update',
+  PostCategorySpaceId = 'post___category___spaceId',
+  PostCategoryContentfulId = 'post___category___contentful_id',
+  PostCategoryCreatedAt = 'post___category___createdAt',
+  PostCategoryUpdatedAt = 'post___category___updatedAt',
+  PostCategorySysRevision = 'post___category___sys___revision',
+  PostCategoryNodeLocale = 'post___category___node_locale',
   PostTags = 'post___tags',
   PostTagsId = 'post___tags___id',
   PostTagsParentId = 'post___tags___parent___id',
@@ -3232,7 +3174,6 @@ export enum ContentfulTagsFieldsEnum {
   PostBodyChildMarkdownRemarkId = 'post___body___childMarkdownRemark___id',
   PostBodyChildMarkdownRemarkExcerpt = 'post___body___childMarkdownRemark___excerpt',
   PostBodyChildMarkdownRemarkRawMarkdownBody = 'post___body___childMarkdownRemark___rawMarkdownBody',
-  PostBodyChildMarkdownRemarkFileAbsolutePath = 'post___body___childMarkdownRemark___fileAbsolutePath',
   PostBodyChildMarkdownRemarkHtml = 'post___body___childMarkdownRemark___html',
   PostBodyChildMarkdownRemarkHtmlAst = 'post___body___childMarkdownRemark___htmlAst',
   PostBodyChildMarkdownRemarkExcerptAst = 'post___body___childMarkdownRemark___excerptAst',
@@ -3265,7 +3206,6 @@ export enum ContentfulTagsFieldsEnum {
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkId = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___id',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkExcerpt = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___excerpt',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkRawMarkdownBody = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___rawMarkdownBody',
-  PostChildContentfulPostBodyTextNodeChildMarkdownRemarkFileAbsolutePath = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___fileAbsolutePath',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkHtml = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___html',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkHtmlAst = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___htmlAst',
   PostChildContentfulPostBodyTextNodeChildMarkdownRemarkExcerptAst = 'post___childContentfulPostBodyTextNode___childMarkdownRemark___excerptAst',
@@ -3402,8 +3342,6 @@ export type Directory = Node & {
   birthtime?: Maybe<Scalars['Date']>;
   /** @deprecated Use `birthTime` instead */
   birthtimeMs?: Maybe<Scalars['Float']>;
-  blksize?: Maybe<Scalars['Int']>;
-  blocks?: Maybe<Scalars['Int']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -3527,8 +3465,6 @@ export enum DirectoryFieldsEnum {
   Ctime = 'ctime',
   Birthtime = 'birthtime',
   BirthtimeMs = 'birthtimeMs',
-  Blksize = 'blksize',
-  Blocks = 'blocks',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -3649,8 +3585,6 @@ export type DirectoryFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>;
   birthtime?: Maybe<DateQueryOperatorInput>;
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3713,16 +3647,11 @@ export type File = Node & {
   birthtime?: Maybe<Scalars['Date']>;
   /** @deprecated Use `birthTime` instead */
   birthtimeMs?: Maybe<Scalars['Float']>;
-  blksize?: Maybe<Scalars['Int']>;
-  blocks?: Maybe<Scalars['Int']>;
-  /** Copy file to static directory and return public url to it */
-  publicURL?: Maybe<Scalars['String']>;
   childImageSharp?: Maybe<ImageSharp>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  childMarkdownRemark?: Maybe<MarkdownRemark>;
 };
 
 
@@ -3842,9 +3771,6 @@ export enum FileFieldsEnum {
   Ctime = 'ctime',
   Birthtime = 'birthtime',
   BirthtimeMs = 'birthtimeMs',
-  Blksize = 'blksize',
-  Blocks = 'blocks',
-  PublicUrl = 'publicURL',
   ChildImageSharpFixedBase64 = 'childImageSharp___fixed___base64',
   ChildImageSharpFixedTracedSvg = 'childImageSharp___fixed___tracedSVG',
   ChildImageSharpFixedAspectRatio = 'childImageSharp___fixed___aspectRatio',
@@ -4021,69 +3947,7 @@ export enum FileFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  ChildMarkdownRemarkId = 'childMarkdownRemark___id',
-  ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
-  ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
-  ChildMarkdownRemarkFrontmatterUpdate = 'childMarkdownRemark___frontmatter___update',
-  ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
-  ChildMarkdownRemarkFrontmatterCategory = 'childMarkdownRemark___frontmatter___category',
-  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
-  ChildMarkdownRemarkFrontmatterSlug = 'childMarkdownRemark___frontmatter___slug',
-  ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
-  ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
-  ChildMarkdownRemarkFieldsCollection = 'childMarkdownRemark___fields___collection',
-  ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
-  ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
-  ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
-  ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
-  ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
-  ChildMarkdownRemarkHeadings = 'childMarkdownRemark___headings',
-  ChildMarkdownRemarkHeadingsId = 'childMarkdownRemark___headings___id',
-  ChildMarkdownRemarkHeadingsValue = 'childMarkdownRemark___headings___value',
-  ChildMarkdownRemarkHeadingsDepth = 'childMarkdownRemark___headings___depth',
-  ChildMarkdownRemarkTimeToRead = 'childMarkdownRemark___timeToRead',
-  ChildMarkdownRemarkTableOfContents = 'childMarkdownRemark___tableOfContents',
-  ChildMarkdownRemarkWordCountParagraphs = 'childMarkdownRemark___wordCount___paragraphs',
-  ChildMarkdownRemarkWordCountSentences = 'childMarkdownRemark___wordCount___sentences',
-  ChildMarkdownRemarkWordCountWords = 'childMarkdownRemark___wordCount___words',
-  ChildMarkdownRemarkParentId = 'childMarkdownRemark___parent___id',
-  ChildMarkdownRemarkParentParentId = 'childMarkdownRemark___parent___parent___id',
-  ChildMarkdownRemarkParentParentChildren = 'childMarkdownRemark___parent___parent___children',
-  ChildMarkdownRemarkParentChildren = 'childMarkdownRemark___parent___children',
-  ChildMarkdownRemarkParentChildrenId = 'childMarkdownRemark___parent___children___id',
-  ChildMarkdownRemarkParentChildrenChildren = 'childMarkdownRemark___parent___children___children',
-  ChildMarkdownRemarkParentInternalContent = 'childMarkdownRemark___parent___internal___content',
-  ChildMarkdownRemarkParentInternalContentDigest = 'childMarkdownRemark___parent___internal___contentDigest',
-  ChildMarkdownRemarkParentInternalDescription = 'childMarkdownRemark___parent___internal___description',
-  ChildMarkdownRemarkParentInternalFieldOwners = 'childMarkdownRemark___parent___internal___fieldOwners',
-  ChildMarkdownRemarkParentInternalIgnoreType = 'childMarkdownRemark___parent___internal___ignoreType',
-  ChildMarkdownRemarkParentInternalMediaType = 'childMarkdownRemark___parent___internal___mediaType',
-  ChildMarkdownRemarkParentInternalOwner = 'childMarkdownRemark___parent___internal___owner',
-  ChildMarkdownRemarkParentInternalType = 'childMarkdownRemark___parent___internal___type',
-  ChildMarkdownRemarkChildren = 'childMarkdownRemark___children',
-  ChildMarkdownRemarkChildrenId = 'childMarkdownRemark___children___id',
-  ChildMarkdownRemarkChildrenParentId = 'childMarkdownRemark___children___parent___id',
-  ChildMarkdownRemarkChildrenParentChildren = 'childMarkdownRemark___children___parent___children',
-  ChildMarkdownRemarkChildrenChildren = 'childMarkdownRemark___children___children',
-  ChildMarkdownRemarkChildrenChildrenId = 'childMarkdownRemark___children___children___id',
-  ChildMarkdownRemarkChildrenChildrenChildren = 'childMarkdownRemark___children___children___children',
-  ChildMarkdownRemarkChildrenInternalContent = 'childMarkdownRemark___children___internal___content',
-  ChildMarkdownRemarkChildrenInternalContentDigest = 'childMarkdownRemark___children___internal___contentDigest',
-  ChildMarkdownRemarkChildrenInternalDescription = 'childMarkdownRemark___children___internal___description',
-  ChildMarkdownRemarkChildrenInternalFieldOwners = 'childMarkdownRemark___children___internal___fieldOwners',
-  ChildMarkdownRemarkChildrenInternalIgnoreType = 'childMarkdownRemark___children___internal___ignoreType',
-  ChildMarkdownRemarkChildrenInternalMediaType = 'childMarkdownRemark___children___internal___mediaType',
-  ChildMarkdownRemarkChildrenInternalOwner = 'childMarkdownRemark___children___internal___owner',
-  ChildMarkdownRemarkChildrenInternalType = 'childMarkdownRemark___children___internal___type',
-  ChildMarkdownRemarkInternalContent = 'childMarkdownRemark___internal___content',
-  ChildMarkdownRemarkInternalContentDigest = 'childMarkdownRemark___internal___contentDigest',
-  ChildMarkdownRemarkInternalDescription = 'childMarkdownRemark___internal___description',
-  ChildMarkdownRemarkInternalFieldOwners = 'childMarkdownRemark___internal___fieldOwners',
-  ChildMarkdownRemarkInternalIgnoreType = 'childMarkdownRemark___internal___ignoreType',
-  ChildMarkdownRemarkInternalMediaType = 'childMarkdownRemark___internal___mediaType',
-  ChildMarkdownRemarkInternalOwner = 'childMarkdownRemark___internal___owner',
-  ChildMarkdownRemarkInternalType = 'childMarkdownRemark___internal___type'
+  InternalType = 'internal___type'
 }
 
 export type FileFilterInput = {
@@ -4118,15 +3982,11 @@ export type FileFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>;
   birthtime?: Maybe<DateQueryOperatorInput>;
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  publicURL?: Maybe<StringQueryOperatorInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
 export type FileGroupConnection = {
@@ -4765,8 +4625,6 @@ export type MarkdownRemark = Node & {
   frontmatter?: Maybe<MarkdownRemarkFrontmatter>;
   excerpt?: Maybe<Scalars['String']>;
   rawMarkdownBody?: Maybe<Scalars['String']>;
-  fields?: Maybe<MarkdownRemarkFields>;
-  fileAbsolutePath?: Maybe<Scalars['String']>;
   html?: Maybe<Scalars['String']>;
   htmlAst?: Maybe<Scalars['JSON']>;
   excerptAst?: Maybe<Scalars['JSON']>;
@@ -4834,26 +4692,11 @@ export type MarkdownRemarkEdge = {
   previous?: Maybe<MarkdownRemark>;
 };
 
-export type MarkdownRemarkFields = {
-  __typename?: 'MarkdownRemarkFields';
-  collection?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-};
-
 export enum MarkdownRemarkFieldsEnum {
   Id = 'id',
   FrontmatterTitle = 'frontmatter___title',
-  FrontmatterDate = 'frontmatter___date',
-  FrontmatterUpdate = 'frontmatter___update',
-  FrontmatterDescription = 'frontmatter___description',
-  FrontmatterCategory = 'frontmatter___category',
-  FrontmatterTags = 'frontmatter___tags',
-  FrontmatterSlug = 'frontmatter___slug',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
-  FieldsCollection = 'fields___collection',
-  FieldsSlug = 'fields___slug',
-  FileAbsolutePath = 'fileAbsolutePath',
   Html = 'html',
   HtmlAst = 'htmlAst',
   ExcerptAst = 'excerptAst',
@@ -4953,18 +4796,11 @@ export enum MarkdownRemarkFieldsEnum {
   InternalType = 'internal___type'
 }
 
-export type MarkdownRemarkFieldsFilterInput = {
-  collection?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
 export type MarkdownRemarkFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<MarkdownRemarkFieldsFilterInput>;
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
   html?: Maybe<StringQueryOperatorInput>;
   htmlAst?: Maybe<JsonQueryOperatorInput>;
   excerptAst?: Maybe<JsonQueryOperatorInput>;
@@ -4980,30 +4816,10 @@ export type MarkdownRemarkFilterInput = {
 export type MarkdownRemarkFrontmatter = {
   __typename?: 'MarkdownRemarkFrontmatter';
   title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  update?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  category?: Maybe<Scalars['String']>;
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-export type MarkdownRemarkFrontmatterDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
 };
 
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  update?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  category?: Maybe<StringQueryOperatorInput>;
-  tags?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -5156,15 +4972,11 @@ export type QueryFileArgs = {
   ctime?: Maybe<DateQueryOperatorInput>;
   birthtime?: Maybe<DateQueryOperatorInput>;
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  publicURL?: Maybe<StringQueryOperatorInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
 
@@ -5208,8 +5020,6 @@ export type QueryDirectoryArgs = {
   ctime?: Maybe<DateQueryOperatorInput>;
   birthtime?: Maybe<DateQueryOperatorInput>;
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -5300,8 +5110,6 @@ export type QueryMarkdownRemarkArgs = {
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<MarkdownRemarkFieldsFilterInput>;
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
   html?: Maybe<StringQueryOperatorInput>;
   htmlAst?: Maybe<JsonQueryOperatorInput>;
   excerptAst?: Maybe<JsonQueryOperatorInput>;
@@ -5504,13 +5312,13 @@ export type QueryContentfulCategoryArgs = {
   internal?: Maybe<InternalFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  post?: Maybe<ContentfulPostFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulCategorySysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  post?: Maybe<ContentfulPostFilterListInput>;
 };
 
 
@@ -6211,7 +6019,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
   PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
-  PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsSpaceId = 'pluginCreator___pluginOptions___spaceId',
   PluginCreatorPluginOptionsAccessToken = 'pluginCreator___pluginOptions___accessToken',
   PluginCreatorPluginOptionsHost = 'pluginCreator___pluginOptions___host',
@@ -6221,11 +6028,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
   PluginCreatorPluginOptionsWithWebp = 'pluginCreator___pluginOptions___withWebp',
   PluginCreatorPluginOptionsLoading = 'pluginCreator___pluginOptions___loading',
-  PluginCreatorPluginOptionsWrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
-  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
-  PluginCreatorPluginOptionsLinkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
-  PluginCreatorPluginOptionsShowCaptions = 'pluginCreator___pluginOptions___showCaptions',
-  PluginCreatorPluginOptionsPathPrefix = 'pluginCreator___pluginOptions___pathPrefix',
+  PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
@@ -6430,11 +6233,6 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsPluginOptionsMaxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
   PluginOptionsPluginsPluginOptionsWithWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
   PluginOptionsPluginsPluginOptionsLoading = 'pluginOptions___plugins___pluginOptions___loading',
-  PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
-  PluginOptionsPluginsPluginOptionsBackgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
-  PluginOptionsPluginsPluginOptionsLinkImagesToOriginal = 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal',
-  PluginOptionsPluginsPluginOptionsShowCaptions = 'pluginOptions___plugins___pluginOptions___showCaptions',
-  PluginOptionsPluginsPluginOptionsPathPrefix = 'pluginOptions___plugins___pluginOptions___pathPrefix',
   PluginOptionsPluginsNodeApIs = 'pluginOptions___plugins___nodeAPIs',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
@@ -6455,7 +6253,6 @@ export enum SitePluginFieldsEnum {
   PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsLegacy = 'pluginOptions___legacy',
   PluginOptionsThemeColorInHead = 'pluginOptions___theme_color_in_head',
-  PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsSpaceId = 'pluginOptions___spaceId',
   PluginOptionsAccessToken = 'pluginOptions___accessToken',
   PluginOptionsHost = 'pluginOptions___host',
@@ -6469,11 +6266,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
   PluginOptionsWithWebp = 'pluginOptions___withWebp',
   PluginOptionsLoading = 'pluginOptions___loading',
-  PluginOptionsWrapperStyle = 'pluginOptions___wrapperStyle',
-  PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',
-  PluginOptionsLinkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
-  PluginOptionsShowCaptions = 'pluginOptions___showCaptions',
-  PluginOptionsPathPrefix = 'pluginOptions___pathPrefix',
+  PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
@@ -6611,7 +6404,6 @@ export type SitePluginPluginOptions = {
   include_favicon?: Maybe<Scalars['Boolean']>;
   legacy?: Maybe<Scalars['Boolean']>;
   theme_color_in_head?: Maybe<Scalars['Boolean']>;
-  path?: Maybe<Scalars['String']>;
   spaceId?: Maybe<Scalars['String']>;
   accessToken?: Maybe<Scalars['String']>;
   host?: Maybe<Scalars['String']>;
@@ -6622,11 +6414,7 @@ export type SitePluginPluginOptions = {
   maxWidth?: Maybe<Scalars['Int']>;
   withWebp?: Maybe<Scalars['Boolean']>;
   loading?: Maybe<Scalars['String']>;
-  wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
-  showCaptions?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
+  path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -6678,7 +6466,6 @@ export type SitePluginPluginOptionsFilterInput = {
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
   legacy?: Maybe<BooleanQueryOperatorInput>;
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
-  path?: Maybe<StringQueryOperatorInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   accessToken?: Maybe<StringQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
@@ -6689,11 +6476,7 @@ export type SitePluginPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
   loading?: Maybe<StringQueryOperatorInput>;
-  wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
-  showCaptions?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -6752,11 +6535,6 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   maxWidth?: Maybe<Scalars['Int']>;
   withWebp?: Maybe<Scalars['Boolean']>;
   loading?: Maybe<Scalars['String']>;
-  wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
-  showCaptions?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsBlocks = {
@@ -6800,11 +6578,6 @@ export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
   loading?: Maybe<StringQueryOperatorInput>;
-  wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
-  showCaptions?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -6872,48 +6645,6 @@ export type TempblogListQuery = (
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title'>
     )> }
-  )>, allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { edges: Array<(
-      { __typename?: 'MarkdownRemarkEdge' }
-      & { node: (
-        { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'excerpt'>
-        & { fields?: Maybe<(
-          { __typename?: 'MarkdownRemarkFields' }
-          & Pick<MarkdownRemarkFields, 'slug'>
-        )>, frontmatter?: Maybe<(
-          { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'description' | 'category' | 'tags'>
-        )> }
-      ) }
-    )> }
-  ), cflCategory: (
-    { __typename?: 'ContentfulCategoryConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulCategoryEdge' }
-      & { node: (
-        { __typename?: 'ContentfulCategory' }
-        & Pick<ContentfulCategory, 'name' | 'slug'>
-      ) }
-    )> }
-  ) }
-);
-
-export type TempblogList2QueryVariables = Exact<{
-  skip: Scalars['Int'];
-  limit: Scalars['Int'];
-}>;
-
-
-export type TempblogList2Query = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
   )>, cfPosts: (
     { __typename?: 'ContentfulPostConnection' }
     & { edges: Array<(
@@ -6950,27 +6681,6 @@ export type TempBlogPostQueryVariables = Exact<{
 
 export type TempBlogPostQuery = (
   { __typename?: 'Query' }
-  & { markdownRemark?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & Pick<MarkdownRemark, 'htmlAst' | 'tableOfContents'>
-    & { frontmatter?: Maybe<(
-      { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'tags' | 'description'>
-    )> }
-  )>, cflCategory?: Maybe<(
-    { __typename?: 'ContentfulCategory' }
-    & Pick<ContentfulCategory, 'name' | 'slug'>
-  )> }
-);
-
-export type TempBlogPost2QueryVariables = Exact<{
-  slug: Scalars['String'];
-  category: Scalars['String'];
-}>;
-
-
-export type TempBlogPost2Query = (
-  { __typename?: 'Query' }
   & { cflPost?: Maybe<(
     { __typename?: 'ContentfulPost' }
     & Pick<ContentfulPost, 'title' | 'date' | 'update' | 'description'>
@@ -7002,35 +6712,6 @@ export type TempCategoryQueryVariables = Exact<{
 
 export type TempCategoryQuery = (
   { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { edges: Array<(
-      { __typename?: 'MarkdownRemarkEdge' }
-      & { node: (
-        { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'excerpt'>
-        & { fields?: Maybe<(
-          { __typename?: 'MarkdownRemarkFields' }
-          & Pick<MarkdownRemarkFields, 'slug'>
-        )>, frontmatter?: Maybe<(
-          { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'tags' | 'description'>
-        )> }
-      ) }
-    )> }
-  ) }
-);
-
-export type TempCategory2QueryVariables = Exact<{
-  category: Scalars['String'];
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-}>;
-
-
-export type TempCategory2Query = (
-  { __typename?: 'Query' }
   & { cflPosts: (
     { __typename?: 'ContentfulPostConnection' }
     & Pick<ContentfulPostConnection, 'totalCount'>
@@ -7045,23 +6726,6 @@ export type TempCategory2Query = (
         )>>> }
       ) }
     )> }
-  ), allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { edges: Array<(
-      { __typename?: 'MarkdownRemarkEdge' }
-      & { node: (
-        { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'excerpt'>
-        & { fields?: Maybe<(
-          { __typename?: 'MarkdownRemarkFields' }
-          & Pick<MarkdownRemarkFields, 'slug'>
-        )>, frontmatter?: Maybe<(
-          { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'tags' | 'description'>
-        )> }
-      ) }
-    )> }
   ) }
 );
 
@@ -7072,14 +6736,7 @@ export type TempPageQueryVariables = Exact<{
 
 export type TempPageQuery = (
   { __typename?: 'Query' }
-  & { markdownRemark?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & Pick<MarkdownRemark, 'htmlAst' | 'excerpt'>
-    & { frontmatter?: Maybe<(
-      { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'title' | 'description'>
-    )> }
-  )>, cflPage?: Maybe<(
+  & { cflPage?: Maybe<(
     { __typename?: 'ContentfulPage' }
     & Pick<ContentfulPage, 'title' | 'description'>
     & { body?: Maybe<(
@@ -7100,44 +6757,6 @@ export type TempTagsQueryVariables = Exact<{
 
 
 export type TempTagsQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { edges: Array<(
-      { __typename?: 'MarkdownRemarkEdge' }
-      & { node: (
-        { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'excerpt'>
-        & { fields?: Maybe<(
-          { __typename?: 'MarkdownRemarkFields' }
-          & Pick<MarkdownRemarkFields, 'slug'>
-        )>, frontmatter?: Maybe<(
-          { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'update' | 'category' | 'description'>
-        )> }
-      ) }
-    )> }
-  ), cflCategory: (
-    { __typename?: 'ContentfulCategoryConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulCategoryEdge' }
-      & { node: (
-        { __typename?: 'ContentfulCategory' }
-        & Pick<ContentfulCategory, 'name' | 'slug'>
-      ) }
-    )> }
-  ) }
-);
-
-export type TempTags2QueryVariables = Exact<{
-  tag?: Maybe<Scalars['String']>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-}>;
-
-
-export type TempTags2Query = (
   { __typename?: 'Query' }
   & { cflPosts: (
     { __typename?: 'ContentfulPostConnection' }

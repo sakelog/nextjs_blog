@@ -38,14 +38,6 @@ export default Page
 
 export const pageQuery = graphql`
   query TempPage($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
-      frontmatter {
-        title
-        description
-      }
-      excerpt
-    }
     cflPage: contentfulPage(slug: { eq: $slug }) {
       title
       body {
