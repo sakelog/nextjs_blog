@@ -24,105 +24,60 @@ const Header = () => {
   const [isChecked, setIsChecked] = React.useState(false)
 
   return (
-    <nav className="sl-nav-bar" role="navigation" aria-label="main navigation">
-      <div className="sl-nav-title-wrapper">
-        <Link to="/" className="sl-nav-title">
-          <span>{SiteTitle}</span>
-        </Link>
-
-        <label
-          className="sl-nav-open sl-display-none"
-          onClick={() => setIsChecked(!isChecked)}
-        >
-          <span>
-            {isChecked ? <FiMinus className="isCheked" /> : <FiPlus />}
-          </span>
-        </label>
-      </div>
-
-      <div className="sl-nav-drawer">
-        <input
-          id="nav-input"
-          type="checkbox"
-          className="sl-display-none"
-          checked={isChecked}
-        />
-
-        <div className="sl-nav-content">
-          <HeaderCatList />
-          <hr />
-          <div className="sl-nav-pages">
-            <Link to="/tags/" className="nav-link">
-              #タグ一覧
-            </Link>
-            <Link to="/about_this_site/" className="nav-link">
-              このサイトについて
-            </Link>
-            <Link to="/privacy/" className="nav-link">
-              プライバシーポリシー
-            </Link>
-            <Link to="/contact/" className="nav-link">
-              お問い合わせ
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
-    /*
-    <nav className="sl-nav-bar" role="navigation" aria-label="main navigation">
-      <div className="grid-noGutter">
-        <div className="col-2_md-12 sl-nav-title-wrapper">
-          <Link to="/" className="sl-nav-title">
+    <header className="l-header">
+      <nav
+        className="l-header__nav"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="l-header__nav__title">
+          <Link to="/" className="l-header__nav__title__inner">
             <span>{SiteTitle}</span>
           </Link>
 
           <label
-            className="sl-nav-open sl-display-none"
+            className="l-header__nav__title__menubutton"
             onClick={() => setIsChecked(!isChecked)}
           >
-            <span>{isChecked ? <FiMinus className="isCheked" /> : <FiPlus />}</span>
+            <span>
+              {isChecked ? (
+                <FiMinus className="l-header__nav__title__menubutton__icon--cheked" />
+              ) : (
+                <FiPlus />
+              )}
+            </span>
           </label>
         </div>
-        <div className="col-10_md-12 sl-nav-menu">
-          <div className="sl-nav-drawer">
-            <input
-              id="nav-input"
-              type="checkbox"
-              className="sl-display-none"
-              checked={isChecked}
-            />
 
-            <div className="sl-nav-content">
-              <HeaderCatList />
-              <hr />
-              <div className="grid-4-spaceBetween">
-                <div className="col_sm-12">
-                  <Link to="/tags/" className="nav-link">
-                    #タグ一覧
-                  </Link>
-                </div>
-                <div className="col_sm-12">
-                  <Link to="/about_this_site/" className="nav-link">
-                    このサイトについて
-                  </Link>
-                </div>
-                <div className="col_sm-12">
-                  <Link to="/privacy/" className="nav-link">
-                    プライバシーポリシー
-                  </Link>
-                </div>
-                <div className="col_sm-12">
-                  <Link to="/contact/" className="nav-link">
-                    お問い合わせ
-                  </Link>
-                </div>
-              </div>
+        <div className="l-header__nav__drawer">
+          <input
+            id="l-header-nav__checkbox"
+            type="checkbox"
+            className="u-display--none is-checked"
+            checked={isChecked}
+          />
+
+          <div className="l-header__nav__drawer__content">
+            <HeaderCatList />
+            <hr />
+            <div className="l-header__nav__drawer__content__menu--pages">
+              <Link to="/tags/" className="nav-link">
+                #タグ一覧
+              </Link>
+              <Link to="/about_this_site/" className="nav-link">
+                このサイトについて
+              </Link>
+              <Link to="/privacy/" className="nav-link">
+                プライバシーポリシー
+              </Link>
+              <Link to="/contact/" className="nav-link">
+                お問い合わせ
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  */
+      </nav>
+    </header>
   )
 }
 
