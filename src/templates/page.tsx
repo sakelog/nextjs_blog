@@ -21,7 +21,7 @@ const Page = ({ data }: Props) => {
   return (
     <Layout>
       {SEO(page.title, description, false)}
-      <div className="Article">
+      <div className="p-article">
         <h1>{page.title}</h1>
         <hr />
 
