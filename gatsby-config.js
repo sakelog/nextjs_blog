@@ -147,15 +147,6 @@ module.exports = {
               },
             },
           },
-          // responsive
-          {
-            resolve: `gatsby-remark-images-contentful`,
-            options: {
-              maxWidth: 600,
-              withWebp: true,
-              loading: 'lazy',
-            },
-          },
           // link
           `gatsby-remark-external-links`,
           `gatsby-plugin-catch-links`,
