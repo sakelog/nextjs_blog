@@ -1,0 +1,21 @@
+.c-post-date {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 2rem 0;
+
+  .c-post-date__date-wrapper {
+    display: inline-flex;
+    align-items: center;
+    
+    &:first-of-type {
+      margin-right: 2rem;
+    }
+  }
+
+  .c-post-date__date {
+    font-size: small;
+    margin-left: 0.4rem;
+  }
+}
