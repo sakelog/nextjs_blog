@@ -15,7 +15,7 @@ export default () => (
       "sake logについてのお問い合わせはこちらから",
       false)
     }
-    <h1>{pageTitle}</h1>
+    <h1 className="u-align--center">{pageTitle}</h1>
     <ContactForm />
     <BackToTopPage />
   </Layout>

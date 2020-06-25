@@ -1,0 +1,48 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.c-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mq(lg) {
+    //width: 80%;
+    //margin: auto;
+  }
+  .c-form__item-wrapper {
+    margin: 1rem auto;
+
+    @include mq(lg) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  .c-form__label-wrapper {
+    @include mq(lg) {
+      margin-right: 1rem;
+    }
+  }
+  .c-form__label {
+    font-weight: bold;
+  }
+  .c-form__form-item-wrapper {
+    @include mq(lg) {
+      width: 70%;
+    }
+  }
+  .c-form__input {
+    border: 1px solid $gray;
+    border-radius: 0.6rem;
+    padding: 0.4rem 1rem;
+    width: 100%;
+  }
+  .c-form__textarea {
+    border: 1px solid $gray;
+    border-radius: 0.6rem;
+    padding: 0.4rem 1rem;
+    width: 100%;
+  }
+}
