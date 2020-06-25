@@ -1,0 +1,47 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.c-button {
+  border-radius: 0.6rem;
+  padding: 1rem 3rem;
+  margin: 1rem 0.4rem;
+  text-decoration: none;
+
+  &:hover{
+      text-decoration: none;
+  }
+
+  outline: none;
+}
+
+.c-button--primary {
+  @extend .c-button;
+  background: $primary;
+  color: $gray-light;
+  border: none;
+  
+  &::focus{
+      outline: none;
+  }
+
+  &:hover{
+      background: $primary-light;
+      color: $white;
+  }
+}
+
+.c-button--line {
+  @extend .c-button;
+  border-width: 2px;
+  border-style: solid;
+}
+.c-button--line--dark {
+  @extend .c-button--line;
+  border-color: $gray-dark;
+  color: $gray-dark;
+
+  &:hover{
+      background: $gray-dark;
+      color: $white;
+  }
+}
