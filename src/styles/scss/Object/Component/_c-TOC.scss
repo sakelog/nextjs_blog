@@ -1,0 +1,17 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.c-TOC {
+  border: 1px solid $primary-lighter;
+  padding: 0;
+  margin: 3rem auto;
+  width: 100%;
+  @include mq(md) {
+      width: 80%;
+  }
+  h2 {
+      margin: 0;
+      background: $primary-light;
+      color: $white;
+  }
+}

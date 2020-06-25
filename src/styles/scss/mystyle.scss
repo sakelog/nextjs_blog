@@ -8,8 +8,11 @@
 //---Component-----------------------------------------------------------------
 @use './Object/Component/c-icon';
 @use './Object/Component/c-button';
+@use './Object/Component/c-badge';
 //---Project-------------------------------------------------------------------
 @use './Object/Project/p-bio';
+@use './Object/Project/p-tag-list';
+@use './Object/Project/p-article';
 
 // Layout
 @use './Layout/l-header';

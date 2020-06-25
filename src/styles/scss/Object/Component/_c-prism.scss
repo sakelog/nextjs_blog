@@ -1,0 +1,41 @@
+@use '../../../../../node_modules/prismjs/themes/prism.css';
+@use '../../../../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
+
+@use '../../Foundation/variables' as *;
+
+$prism-theme-background: #f5f2f0;
+$prism-theme-highlight: rgba($accent, 0.2);
+
+.gatsby-highlight {
+  background-color: $prism-theme-background;
+  margin: 2rem 0;
+  padding: 1rem;
+  overflow: auto;
+}
+.gatsby-highlight [class*='language-'] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left;
+  min-width: calc(100% - 6rem);
+}
+
+.gatsby-code-title {
+  background: $prism-theme-background;
+  opacity: 0.8;
+  color: $gray-dark;
+  font-size: 1.2rem;
+  padding: 0.4rem 1.4rem;
+  border-radius: 8px 8px 0 0;
+  display: table;
+  margin-bottom: -2rem;
+}
+.gatsby-highlight-code-line {
+  background-color: $prism-theme-highlight;
+  display: block;
+  margin-right: -1rem;
+  margin-left: -1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
