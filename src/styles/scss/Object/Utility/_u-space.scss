@@ -1,0 +1,40 @@
+@use '../../Foundation/variables' as *;
+
+$default-space: 1rem;
+
+@mixin u-space--pad {
+  @for $i from 1 through 4 {
+    .u-space--pad--#{$i} {
+      padding: $default-space * $i;
+    }
+  }
+}
+@mixin u-space--pad {
+  @for $i from 1 through 4 {
+    .u-space--pad--#{$i} {
+      padding: $default-space * $i;
+    }
+    @each $position in $positions {
+      .u-space--pad--#{$i}-#{$position} {
+        padding-#{$position}: $default-space * $i;
+      }
+    }
+  }
+}
+
+@include u-space--pad();
+
+@mixin u-space--mgn {
+  @for $i from 1 through 4 {
+    .u-space--mgn--#{$i} {
+      margin: $default-space * $i;
+    }
+    @each $position in $positions {
+      .u-space--mgn--#{$i}-#{$position} {
+        margin-#{$position}: $default-space * $i;
+      }
+    }
+  }
+}
+
+@include u-space--mgn();

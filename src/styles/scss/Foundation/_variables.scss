@@ -29,3 +29,11 @@ $font-ss:
 $font-default: $font-ss;
 $font-hw: 'Architects Daughter', cursive;
 $font-logo: 'Fredericka the Great', cursive;
+
+// Position
+$positions : (
+    'top',
+    'bottom',
+    'left',
+    'right'
+) !default;
