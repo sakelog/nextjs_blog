@@ -55,6 +55,7 @@ const Header = () => {
             type="checkbox"
             className="u-display--none is-checked"
             checked={isChecked}
+            readOnly
           />
 
           <div className="l-header__nav__drawer__content">
