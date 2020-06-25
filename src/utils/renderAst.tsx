@@ -31,15 +31,27 @@ const RenderAst = new rehypeReact({
           React.ClassAttributes<HTMLElement> &
           React.ImgHTMLAttributes<HTMLElement>
     ) => {
-      return (
+      var ContentfulImgFlg: boolean
+      ContentfulImgFlg = (useContentfulImage({...props}.src)) === null ? false : true
+      const ImgTag = (
         <div style={{width: '100%', maxWidth: '630px', margin: 'auto'}}>
-          <Img
-            fluid={useContentfulImage({...props}.src)}
-            alt={{...props}.alt}
-            title={{...props}.title}
-          />
+          {ContentfulImgFlg === true ? (
+            <Img
+              fluid={useContentfulImage({...props}.src)}
+              alt={{...props}.alt}
+              title={{...props}.title}
+            />
+          ) : (
+            <img
+              src={{...props}.src}
+              alt={{...props}.alt}
+              title={{...props}.title}
+              style={{...props}.style}
+            />
+          )}
         </div>
       )
+      return ImgTag
     },
   },
 }).Compiler
