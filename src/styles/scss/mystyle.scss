@@ -11,12 +11,14 @@
 @use './Object/Component/c-badge';
 @use './Object/component/c-post-date';
 @use './Object/Component/c-form';
+@use './Object/Component/c-pagination';
 //---Project-------------------------------------------------------------------
 @use './Object/Project/p-bio';
 @use './Object/Project/p-tag-list';
 @use './Object/Project/p-article';
 
 // Layout
+@use './Layout/l-wrapper';
 @use './Layout/l-header';
 @use './Layout/l-main';
 @use './Layout/l-footer';
