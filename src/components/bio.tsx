@@ -21,17 +21,17 @@ const Bio = () => {
     `
   )
   return (
-    <div className="sl-bio">
-      <div className="sl-bio-image-sec">
-        <div className="sl-bio-image">
+    <div className="p-bio">
+      <div className="p-bio__section--image">
+        <div style={{width: '100%'}}>
           <Link to="/about_this_site/">
-            <Img fluid={data.profileImg.childImageSharp.fluid} />
+            <Img fluid={data.profileImg.childImageSharp.fluid} className="p-bio__image" />
           </Link>
         </div>
-        <p className="sl-bio-title">sake</p>
+        <p className="p-bio__authorName">sake</p>
       </div>
 
-      <div className="sl-bio-description-sec">
+      <div className="p-bio__section--description">
         <p>
           現役システムエンジニア。
           <br />
@@ -39,7 +39,7 @@ const Bio = () => {
           <br />
           ブログでは主にWeb関係の技術について、勉強したことや実際にコーディングしてみた内容を発信していきます。
         </p>
-        <Link to="/about_this_site/" className="sl-btn sl-btn-primary">
+        <Link to="/about_this_site/" className="c-button--primary">
           プロフィール
         </Link>
         <SocialIcon />

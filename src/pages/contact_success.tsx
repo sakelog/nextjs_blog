@@ -14,7 +14,6 @@ export default () => (
       "sake logについてのお問い合わせはこちらから",
       false)
     }
-    <h1>{pageTitle}</h1>
     <div className="" role="alert">
       <h2 className="">送信成功</h2>
       <p>お問い合わせ内容は送信されました。確認後、返信させていただきます。</p>

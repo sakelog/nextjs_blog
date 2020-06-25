@@ -7,7 +7,7 @@ import { FiMail } from 'react-icons/fi'
 
 const SocialIcon = () => {
   return (
-    <ul className="sl-inline-list">
+    <ul className="u-list--inline">
     <li>
       <a
         href="https://github.com/sakelog"
@@ -15,7 +15,7 @@ const SocialIcon = () => {
         rel="noopener noreferrer"
         role="presentation"
         aria-label="Github"
-        className="sl-icon"
+        className="c-icon"
       >
         <FaGithubAlt />
       </a>
@@ -27,7 +27,7 @@ const SocialIcon = () => {
         rel="noopener noreferrer"
         role="presentation"
         aria-label="Twitter"
-        className="sl-icon"
+        className="c-icon"
       >
         <FaTwitter />
       </a>
@@ -37,7 +37,7 @@ const SocialIcon = () => {
         to="/contact/"
         role="presentation"
         aria-label="Mail"
-        className="sl-icon"
+        className="c-icon"
       >
         <FiMail />
       </Link>

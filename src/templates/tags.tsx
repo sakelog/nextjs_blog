@@ -30,25 +30,25 @@ const Tags = ({ pageContext, data }: TagsType) => {
   return (
     <Layout>
       {SEO(tagHeader, `「${tag}」についての一覧ページです`, false)}
-      <h1 className="sl-align-center">
+      <h1 className="u-align--center">
         <span>{tagHeader}</span>
       </h1>
       <p>投稿：{totalCount}件</p>
       {edges.map(({ node }) => {
-        const slug = node.slug
+        const slug = `/${node.slug}/`
         const title = node.title || node.slug
         const description = node.description
         const postCategoryName = node.category.name
         const categoryPath = `/category/${_.kebabCase(node.category.slug)}/`
         
         return (
-          <div key={slug} className="sl-border-bottom">
+          <div key={slug} className="u-border--bottom u-space--pad--2">
             <PostDate postdate={node.date} update={node.update} />
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
             <p>{description}</p>
-            <Link to={categoryPath} className="sl-cat-badge">
+            <Link to={categoryPath} className="c-badge">
               <h3>{postCategoryName}</h3>
             </Link>
           </div>
@@ -59,7 +59,7 @@ const Tags = ({ pageContext, data }: TagsType) => {
         currentPage={currentPage}
         pathBase={pathBase}
       />
-      <Link to="/tags">タグ一覧</Link>
+      <Link to="/tags/">タグ一覧</Link>
       <BackToTopPage />
     </Layout>
   )

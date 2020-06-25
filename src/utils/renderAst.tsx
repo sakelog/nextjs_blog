@@ -3,6 +3,7 @@ const rehypeReact = require('rehype-react')
 
 import Img from 'gatsby-image'
 import useContentfulImage from '../utils/ContentfulImage'
+import { Link } from 'gatsby'
 
 // component再定義
 const RenderAst = new rehypeReact({
@@ -36,11 +37,13 @@ const RenderAst = new rehypeReact({
       const ImgTag = (
         <div style={{width: '100%', maxWidth: '630px', margin: 'auto'}}>
           {ContentfulImgFlg === true ? (
-            <Img
-              fluid={useContentfulImage({...props}.src)}
-              alt={{...props}.alt}
-              title={{...props}.title}
-            />
+            <Link to = {`${{...props}.src}?fm=webp`}>
+              <Img
+                fluid={useContentfulImage({...props}.src)}
+                alt={{...props}.alt}
+                title={{...props}.title}
+              />
+            </Link>
           ) : (
             <img
               src={{...props}.src}

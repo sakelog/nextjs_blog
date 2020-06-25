@@ -1,0 +1,8 @@
+@use '../Foundation/mixin' as *;
+
+.l-main {
+  padding: 2rem 1rem;
+  @include mq(sm) {
+      padding: 2rem 4rem;
+  }
+}

@@ -29,7 +29,7 @@ const Category = ({ pageContext, data }: Props) => {
   return (
     <Layout>
       {SEO(categoryHeader, `「${category}」についての一覧ページです`, false)}
-      <h1 className="sl-align-center">
+      <h1 className="u-align--center">
         <span>{categoryHeader}</span>
       </h1>
       <p>投稿：{totalCount}件</p>
@@ -38,7 +38,7 @@ const Category = ({ pageContext, data }: Props) => {
         const title = node.title || node.slug
         const description = node.description
         return (
-          <div key={slug} className="sl-border-bottom">
+          <div key={slug} className="u-border--bottom u-space--pad--2">
             <PostDate
               postdate={node.date}
               update={node.update}

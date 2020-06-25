@@ -27,11 +27,11 @@ const TagsPage = ({
   return (
     <Layout>
       {SEO('タグ一覧ページ', '全タグの一覧ページです', false)}
-      <h1 className="text-center">全タグ一覧</h1>
+      <h1 className="u-align--center">全タグ一覧</h1>
       <div>
-        <ul className="sl-tag-list">
+        <ul className="p-tag-list">
           {sortedGroup.map((tag, index: number) => (
-            <li key={index} className="sl-tag-item">
+            <li key={index} className="c-tag-item">
               <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
               </Link>
