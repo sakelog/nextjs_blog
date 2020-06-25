@@ -8,19 +8,16 @@ GatsbyJSでの開発の参考にしてください。
 
 ## 使用する際の注意点
 
-コンテンツ部分（記事やページ）は含めていません。
+Contentfulとの連携を前提にしています。
 
-このソースコードをそのまま流用する場合は、ローカルリポジトリ直下に**content**というフォルダを作成してください。
+使用する際はルートフォルダに`.env`ファイルを作成してください。
 
-contentフォルダの下のpostフォルダの中身を記事、pageフォルダの中身を固定ページとして扱います。
+下記環境変数を使用します。
 
-```text
-./
-├ content
-│　├ post
-│　└ page
-├ src
-・
-・
-・
-```
+* CFL_SPACE_ID
+* CFL_DELIVERY_API
+* CFL_PREVIEW_API
+
+ContentfulのAPI_Key確認画面から取得してください。
+
+参考：[Authentication | Contentful](https://www.contentful.com/developers/docs/references/authentication/)
