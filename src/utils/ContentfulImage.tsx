@@ -18,7 +18,9 @@ export default (assetUrl: any) => {
     `
   )
 
-  return allContentfulAsset.nodes.find(
+  var result = allContentfulAsset.nodes.find(
     (n: { file: { url: any } }) => n.file.url === assetUrl
-  ).fluid
+  )
+
+  return result === undefined ? null : result.fluid
 }
