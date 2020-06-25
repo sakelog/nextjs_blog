@@ -15,10 +15,10 @@ interface PrevNextType {
 const PrevNext = ({ prev, next }: PrevNextType) => {
   return (
     <nav>
-      <div className="sl-prevnext">
-        <div className="sl-prevnext-item sl-prev">
+      <div className="c-prevnext">
+        <div className="c-prevnext__item--prev">
           {prev && (
-            <div className="sl-prevnext-icon">
+            <div className="c-prevnext__icon">
               <span>前</span>
             </div>
           )}
@@ -28,14 +28,14 @@ const PrevNext = ({ prev, next }: PrevNextType) => {
             </Link>
           )}
         </div>
-        <div className="sl-prevnext-item sl-next">
+        <div className="c-prevnext__item--next u-align--right">
           {next && (
             <Link to={`/${next.slug}/`} rel="next">
               {next.title}
             </Link>
           )}
           {next && (
-            <div className="sl-prevnext-icon">
+            <div className="c-prevnext__icon">
               <span>次</span>
             </div>
           )}

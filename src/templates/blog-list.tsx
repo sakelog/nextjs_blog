@@ -56,7 +56,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
         const categoryPath = `/category/${_.kebabCase(node.category.slug)}/`
 
         return (
-          <div key={node.slug} className="sl-border-bottom">
+          <div key={node.slug} className="u-border--bottom u-space--pad--2">
             <PostDate
               postdate={node.date}
               update={node.update}
@@ -65,7 +65,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
               <Link to={`/${node.slug}/`}>{title}</Link>
             </h2>
             <p>{description}</p>
-            <Link to={categoryPath} className="sl-cat-badge">
+            <Link to={categoryPath} className="c-badge">
               <h3>{postCategoryName}</h3>
             </Link>
             <TagList Tags={node.tags} />

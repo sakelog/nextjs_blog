@@ -26,11 +26,11 @@ const Footer = () => {
       ? startYear + SiteTitle
       : startYear + '-' + nowYear + SiteTitle
   return (
-    <footer>
-      <div className="sl-align-center">
+    <footer className="l-footer">
+      <div className="u-align--center">
         <p>&copy;{copytext}</p>
       </div>
-      <div className="sl-align-center">
+      <div className="u-align--center">
         <SocialIcon />
       </div>
     </footer>

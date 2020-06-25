@@ -1,0 +1,21 @@
+@use '../../Foundation/variables' as *;
+
+.c-note {
+  background: $note;
+  padding: 0.5em;
+  margin: 1em 0;
+  border-radius: 5px;
+  font-size: smaller;
+  
+  .custom-block-heading {
+    font-weight: 700;
+  }
+}
+.c-note--danger {
+  @extend .c-note;
+  background: $danger;
+
+  .custom-block-heading {
+    color: #c53d43;
+  }
+}

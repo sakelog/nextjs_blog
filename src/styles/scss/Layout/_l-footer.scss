@@ -1,0 +1,15 @@
+@use '../Foundation/variables' as *;
+
+/*=====================================
+** フッター
+**=====================================*/
+.l-footer {
+  margin-top: auto;
+  background: $gray-light;
+  overflow: hidden;
+  font-size: small;
+
+  .u-list--inline {
+      margin: 0 auto;
+  }
+}

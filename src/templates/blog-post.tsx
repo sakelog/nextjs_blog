@@ -48,16 +48,16 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
   return (
     <Layout>
       {SEO(post.title, post.description, true)}
-      <div className="Article">
+      <div className="p-article">
         <h1>{post.title}</h1>
-        <Link to={categoryPath} className="sl-cat-badge">
+        <Link to={categoryPath} className="c-badge">
           <h4>{categoryInfo.name}</h4>
         </Link>
         <PostDate postdate={post.date} update={post.update} />
         <hr />
 
-        <div className="tableOfContents">
-          <h2 className="text-center">目次</h2>
+        <div className="c-TOC">
+          <h2 className="u-align--center">目次</h2>
           <div dangerouslySetInnerHTML={{ __html: bodyTableOfContents }} />
         </div>
 

@@ -13,15 +13,15 @@ const PostDate = ({ postdate, update }: PostDateType) => {
   var validUpdateCheck = moment(update, 'YYYY年M月D日').isValid()
 
   return (
-    <ul className="sl-post-date-list">
-      <li>
+    <ul className="c-post-date">
+      <li className="c-post-date__date-wrapper">
         <FiCalendar />
-        <span className="sl-date">{moment(postdate).format('YYYY年M月D日')}</span>
+        <span className="c-post-date__date">{moment(postdate).format('YYYY年M月D日')}</span>
       </li>
       {validUpdateCheck === true && (
-        <li>
+        <li className="c-post-date__date-wrapper">
           <FiRefreshCw />
-          <span className="sl-date">{moment(update).format('YYYY年M月D日')}</span>
+          <span className="c-post-date__date">{moment(update).format('YYYY年M月D日')}</span>
         </li>
       )}
     </ul>

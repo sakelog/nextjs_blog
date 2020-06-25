@@ -48,7 +48,7 @@ const HeaderCatList = () => {
     const categoryPath = `/category/${_.kebabCase(hasPostCategory.slug)}/`
     return <Link to={categoryPath}>{hasPostCategory.name}</Link>
   })
-  return <div className="sl-nav-cat">{categoryLinks}</div>
+  return <div className="l-header__nav__drawer__content__menu--category">{categoryLinks}</div>
 }
 
 export default HeaderCatList

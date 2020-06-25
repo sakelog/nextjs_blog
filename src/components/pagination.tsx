@@ -16,35 +16,34 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
 
   const prevText = '前へ'
   const nextText = '次へ'
-  return (
-    <nav className="sl-pagination">
-      {numPages !== 1 && (
-        <div className="grid-3-middle_md-1">
-          <div className="col sl-pagination-prev sl-align-center">
+  const paginationTag =  numPages !== 1 ? (
+      <nav className="c-pagination u-space--mgn--2">
+        <div className="sl-pagination-prev u-align--center">
             {!isFirst ? (
-              <Link to={prevPage} className="" rel="prev">
+              <Link to={prevPage} rel="prev">
                 {prevText}
               </Link>
             ) : (
-              <span className="">{prevText}</span>
+              <span>{prevText}</span>
             )}
           </div>
 
-          <div className="col sl-align-center">
-            <ul className="sl-inline-list">
+          <div>
+            <ul className="u-list--inline">
               {Array.from({ length: numPages }, (_, i) =>
                 i + 1 === currentPage ? (
                   <li
                     key={`pagination-number${i + 1}`}
-                    className="sl-page-current"
+                    className="c-pagination__number--current"
                   >
-                    <span className="">{i + 1}</span>
+                    <span>{i + 1}</span>
                   </li>
                 ) : (
-                  <li key={`pagination-number${i + 1}`} className="sl-page-link">
+                  <li 
+                    key={`pagination-number${i + 1}`}
+                    className="c-pagination__number--link">
                     <Link
-                      to={pathBase + (i === 0 ? '' : i + 1)}
-                      className=""
+                      to = {pathBase + (i === 0 ? '' : i + 1)}
                     >
                       {i + 1}
                     </Link>
@@ -54,19 +53,19 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
             </ul>
           </div>
 
-          <div className="col sl-pagination-next sl-align-center">
+          <div className="col sl-pagination-next u-align--center">
             {!isLast ? (
-              <Link to={nextPage} rel="next" className="">
+              <Link to={nextPage} rel="next">
                 {nextText}
               </Link>
             ) : (
               <span className="">{nextText}</span>
             )}
           </div>
-        </div>
-      )}
-    </nav>
-  )
+      </nav>
+  ) : null
+
+  return paginationTag
 }
 
 export default Pagination

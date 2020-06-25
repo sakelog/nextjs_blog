@@ -1,0 +1,14 @@
+@use '../../Foundation/mixin' as *;
+
+ul,ol {
+  &.u-list--inline{
+      padding-left: 1rem;
+      li {
+          display: inline-block;
+          margin: auto 0.2rem;
+          @include mq(md){
+              margin: auto 0.6rem;
+          }
+      }
+  }
+}
