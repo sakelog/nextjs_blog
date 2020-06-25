@@ -5,7 +5,7 @@ import { TempBlogPostQuery } from '../../types/graphql-types'
 // Components
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import RenderAst from '../components/renderAst'
+import RenderAst from '../utils/renderAst'
 import PrevNext from '../components/prev-next'
 import Bio from '../components/bio'
 import BackToTopPage from '../components/back-to-top-page'

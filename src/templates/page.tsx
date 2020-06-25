@@ -6,7 +6,7 @@ import { TempPageQuery } from '../../types/graphql-types'
 // Components
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import RenderAst from '../components/renderAst'
+import RenderAst from '../utils/renderAst'
 import BackToTopPage from '../components/back-to-top-page'
 
 type Props = {
