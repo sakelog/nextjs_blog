@@ -150,6 +150,23 @@ module.exports = {
           // link
           `gatsby-remark-external-links`,
           `gatsby-plugin-catch-links`,
+          // Font
+          {
+            resolve: `gatsby-plugin-prefetch-google-fonts`,
+            options: {
+              fonts: [
+                {
+                  family: `Architects Daughter`,
+                  variants: [`400`],
+                },
+                {
+                  family: `Fredericka the Great`,
+                  variants: [`400`],
+                  subsets: [`latin`],
+                },
+              ],
+            },
+          },
         ],
       },
     },
