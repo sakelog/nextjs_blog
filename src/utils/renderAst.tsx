@@ -15,7 +15,7 @@ const RenderAst = new rehypeReact({
         React.TableHTMLAttributes<HTMLTableElement>
     ) => {
       return (
-        <div className="sl-responsive-table">
+        <div className="c-table">
           <table {...props}></table>
         </div>
       )

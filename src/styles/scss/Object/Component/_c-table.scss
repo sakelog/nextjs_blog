@@ -1,0 +1,20 @@
+@use '../../Foundation/variables' as *;
+
+.c-table {
+  overflow-x: auto;
+  width: 100%;
+  table {
+    min-width: 64rem;
+    margin: 2rem 1rem;
+    border-collapse: collapse;
+    th {
+      background: $gray;
+    }
+    tr{
+      border-bottom: solid 1px $gray;
+    }
+    td {
+      padding: 1rem 2rem;
+    }
+  }
+}

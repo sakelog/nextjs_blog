@@ -44,9 +44,9 @@ const HeaderCatList = () => {
       }
     })
   })
-  const categoryLinks = hasPostCategorys.map((hasPostCategory) => {
+  const categoryLinks = hasPostCategorys.map((hasPostCategory,index) => {
     const categoryPath = `/category/${_.kebabCase(hasPostCategory.slug)}/`
-    return <Link to={categoryPath}>{hasPostCategory.name}</Link>
+    return <Link to = {categoryPath} key = {index}>{hasPostCategory.name}</Link>
   })
   return <div className="l-header__nav__drawer__content__menu--category">{categoryLinks}</div>
 }
