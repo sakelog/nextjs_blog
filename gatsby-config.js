@@ -137,11 +137,11 @@ module.exports = {
             options: {
               blocks: {
                 note: {
-                  classes: 'note',
+                  classes: 'c-note',
                   title: 'optional',
                 },
                 danger: {
-                  classes: 'note danger',
+                  classes: 'c-note--danger',
                   title: 'optional',
                 },
               },

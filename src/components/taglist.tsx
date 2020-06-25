@@ -13,7 +13,7 @@ interface TagListType {
 
 const TagList = ({Tags}:TagListType) => {
   const tag_list = Tags.map((tag, index: number) => (
-    <li key={index} className="sl-tag-item">
+    <li key={index} className="c-tag-item">
       <Link to={`/tags/${kebabCase(tag.name)}/`}>
         <h5>{tag.name}</h5>
       </Link>
@@ -21,7 +21,7 @@ const TagList = ({Tags}:TagListType) => {
   ))
 
   return (
-    <ul className="sl-tag-list">
+    <ul className="p-tag-list">
       <li><FiTag /></li>
       {tag_list}
     </ul>
