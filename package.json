@@ -32,7 +32,6 @@
     "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-custom-blocks": "^2.3.3",
     "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-images-contentful": "^2.3.5",
     "gatsby-remark-prismjs": "^3.5.3",
     "gatsby-source-contentful": "^2.3.16",
     "gatsby-source-filesystem": "^2.3.10",
@@ -60,8 +59,7 @@
     "@types/react": "^16.9.35",
     "@types/react-helmet": "^6.0.0",
     "@types/rehype-react": "^4.0.0",
-    "prettier": "^2.0.5",
-    "prettier-stylelint": "^0.4.2"
+    "prettier": "^2.0.5"
   },
   "repository": {
     "type": "git",
