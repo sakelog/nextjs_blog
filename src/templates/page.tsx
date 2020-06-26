@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
-
-import { TempPageQuery } from '../../types/graphql-types'
+import { pageContext } from '../../gatsby-node'
 
 // Components
 import Layout from '../components/layout'
@@ -9,12 +7,12 @@ import SEO from '../components/seo'
 import RenderAst from '../utils/renderAst'
 import BackToTopPage from '../components/back-to-top-page'
 
-type Props = {
-  data: TempPageQuery
+type pageTypes = {
+  pathContext: pageContext
 }
 
-const Page = ({ data }: Props) => {
-  const page = data.cflPage
+const Page = ({ pathContext }: pageTypes) => {
+  const page = pathContext.page
 
   const description = page.description
 
@@ -24,7 +22,6 @@ const Page = ({ data }: Props) => {
       <div className="p-article">
         <h1>{page.title}</h1>
         <hr />
-
         <div>
           <RenderAst {...page.body.childMarkdownRemark.htmlAst} />
         </div>
@@ -35,17 +32,3 @@ const Page = ({ data }: Props) => {
 }
 
 export default Page
-
-export const pageQuery = graphql`
-  query TempPage($slug: String!) {
-    cflPage: contentfulPage(slug: { eq: $slug }) {
-      title
-      body {
-        childMarkdownRemark {
-          htmlAst
-        }
-      }
-      description
-    }
-  }
-`

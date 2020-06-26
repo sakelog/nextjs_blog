@@ -7,6 +7,7 @@ import {
   ContentfulPostConnection,
   ContentfulPost,
   ContentfulPageConnection,
+  ContentfulPage,
   ContentfulCategoryConnection,
 } from '../types/graphql-types'
 
@@ -22,6 +23,10 @@ export type postContext = {
   curPost: ContentfulPost
   prev: ContentfulPost
   next: ContentfulPost
+}
+
+export type pageContext = {
+  page: ContentfulPage
 }
 
 // Template
@@ -74,6 +79,12 @@ const query = `
       node {
         slug
         title
+        body {
+          childMarkdownRemark {
+            htmlAst
+          }
+        }
+        description
       }
     }
   }
@@ -111,7 +122,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   // Contentful Post
   const cflPosts = result.data.cflPosts.edges
 
-  cflPosts.forEach((post, index) => {
+  cflPosts.forEach((post) => {
     createPage<postContext>({
       path: post.node.slug,
       component: blogPostTemplate,
@@ -144,11 +155,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const cflpages = result.data.cflPages.edges
 
   cflpages.forEach((page) => {
-    createPage({
+    createPage<pageContext>({
       path: page.node.slug,
       component: pageTemplate,
       context: {
-        slug: page.node.slug,
+        page: page.node,
       },
     })
   })
