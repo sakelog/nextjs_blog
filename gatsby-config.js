@@ -17,9 +17,9 @@ module.exports = {
     // for Google
     `gatsby-plugin-sitemap`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        trackingId: 'UA-156013841-1',
+        id: 'GTM-N9SLS2F',
       },
     },
     {

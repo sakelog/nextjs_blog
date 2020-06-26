@@ -6841,6 +6841,13 @@ gatsby-plugin-google-analytics@^2.3.3:
     "@babel/runtime" "^7.10.3"
     minimatch "3.0.4"
 
+gatsby-plugin-google-tagmanager@^2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.3.7.tgz#57fca2f4a301f395506bf07facaae722473ce73d"
+  integrity sha512-TfnU2a+RbkH1XDQa8aypttg6RbzURCAgqXWdy1LB7iJOgUIrwUbqhXFw9qax+d0lZFxhIOFO79lMr4lvjIpEvQ==
+  dependencies:
+    "@babel/runtime" "^7.10.3"
+
 gatsby-plugin-lodash@^3.3.3:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-lodash/-/gatsby-plugin-lodash-3.3.6.tgz#51e8d37f38989627e1b9a199a6c5feaa13fbc9d1"
