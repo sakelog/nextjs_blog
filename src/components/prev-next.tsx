@@ -1,15 +1,11 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 
+import { ContentfulPost } from '../../types/graphql-types'
+
 interface PrevNextType {
-  prev?: {
-    slug: string
-    title: string
-  }
-  next?: {
-    slug: string
-    title: string
-  }
+  prev?: ContentfulPost
+  next?: ContentfulPost
 }
 
 const PrevNext = ({ prev, next }: PrevNextType) => {

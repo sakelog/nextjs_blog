@@ -17,7 +17,7 @@ interface BlogListType {
     currentPage: number
     numPages: number
   }
-    data: TempblogListQuery
+  data: TempblogListQuery
 }
 
 const BlogList = ({ pageContext, data }: BlogListType) => {
@@ -57,10 +57,7 @@ const BlogList = ({ pageContext, data }: BlogListType) => {
 
         return (
           <div key={node.slug} className="u-border--bottom u-space--pad--2">
-            <PostDate
-              postdate={node.date}
-              update={node.update}
-            />
+            <PostDate postdate={node.date} update={node.update} />
             <h2>
               <Link to={`/${node.slug}/`}>{title}</Link>
             </h2>
@@ -86,8 +83,8 @@ export const pageQuery = graphql`
       }
     }
     cfPosts: allContentfulPost(
-      limit: $limit,
-      skip: $skip,
+      limit: $limit
+      skip: $skip
       sort: { fields: date, order: DESC }
     ) {
       edges {

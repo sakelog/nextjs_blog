@@ -20,7 +20,7 @@ function SEO(title: string, description: string, imageFLG: boolean) {
   const metaTitle = (title ? title + ' | ' : '') + data.site.siteMetadata.title
   const metaDescription =
     description ||
-    'WEB系の技術を中心にした技術メモ置き場です。WordPress・Gatsby・Bootstrapなどなど。'
+    'WEB系の技術を中心にした技術メモ置き場です。GatsbyJS・Git・TypeScript'
   const ogpImage =
     imageFLG === true
       ? 'https://res.cloudinary.com/cl1sakelog/image/upload/l_text:Sawarabi%20Gothic_50_bold:' +

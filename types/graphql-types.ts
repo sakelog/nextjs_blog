@@ -528,6 +528,7 @@ export enum ContentfulCategoryFieldsEnum {
   PostTitle = 'post___title',
   PostSlug = 'post___slug',
   PostDate = 'post___date',
+  PostUpdate = 'post___update',
   PostDescription = 'post___description',
   PostCategoryId = 'post___category___id',
   PostCategoryParentId = 'post___category___parent___id',
@@ -551,6 +552,7 @@ export enum ContentfulCategoryFieldsEnum {
   PostCategoryPostTitle = 'post___category___post___title',
   PostCategoryPostSlug = 'post___category___post___slug',
   PostCategoryPostDate = 'post___category___post___date',
+  PostCategoryPostUpdate = 'post___category___post___update',
   PostCategoryPostDescription = 'post___category___post___description',
   PostCategoryPostTags = 'post___category___post___tags',
   PostCategoryPostSpaceId = 'post___category___post___spaceId',
@@ -558,7 +560,6 @@ export enum ContentfulCategoryFieldsEnum {
   PostCategoryPostCreatedAt = 'post___category___post___createdAt',
   PostCategoryPostUpdatedAt = 'post___category___post___updatedAt',
   PostCategoryPostNodeLocale = 'post___category___post___node_locale',
-  PostCategoryPostUpdate = 'post___category___post___update',
   PostCategorySpaceId = 'post___category___spaceId',
   PostCategoryContentfulId = 'post___category___contentful_id',
   PostCategoryCreatedAt = 'post___category___createdAt',
@@ -588,6 +589,7 @@ export enum ContentfulCategoryFieldsEnum {
   PostTagsPostTitle = 'post___tags___post___title',
   PostTagsPostSlug = 'post___tags___post___slug',
   PostTagsPostDate = 'post___tags___post___date',
+  PostTagsPostUpdate = 'post___tags___post___update',
   PostTagsPostDescription = 'post___tags___post___description',
   PostTagsPostTags = 'post___tags___post___tags',
   PostTagsPostSpaceId = 'post___tags___post___spaceId',
@@ -595,7 +597,6 @@ export enum ContentfulCategoryFieldsEnum {
   PostTagsPostCreatedAt = 'post___tags___post___createdAt',
   PostTagsPostUpdatedAt = 'post___tags___post___updatedAt',
   PostTagsPostNodeLocale = 'post___tags___post___node_locale',
-  PostTagsPostUpdate = 'post___tags___post___update',
   PostTagsSpaceId = 'post___tags___spaceId',
   PostTagsContentfulId = 'post___tags___contentful_id',
   PostTagsCreatedAt = 'post___tags___createdAt',
@@ -633,7 +634,6 @@ export enum ContentfulCategoryFieldsEnum {
   PostUpdatedAt = 'post___updatedAt',
   PostSysRevision = 'post___sys___revision',
   PostNodeLocale = 'post___node_locale',
-  PostUpdate = 'post___update',
   PostChildContentfulPostBodyTextNodeId = 'post___childContentfulPostBodyTextNode___id',
   PostChildContentfulPostBodyTextNodeParentId = 'post___childContentfulPostBodyTextNode___parent___id',
   PostChildContentfulPostBodyTextNodeParentChildren = 'post___childContentfulPostBodyTextNode___parent___children',
@@ -2026,6 +2026,7 @@ export type ContentfulPost = Node & {
   title?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
+  update?: Maybe<Scalars['Date']>;
   description?: Maybe<Scalars['String']>;
   category?: Maybe<ContentfulCategory>;
   tags?: Maybe<Array<Maybe<ContentfulTags>>>;
@@ -2036,12 +2037,19 @@ export type ContentfulPost = Node & {
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulPostSys>;
   node_locale?: Maybe<Scalars['String']>;
-  update?: Maybe<Scalars['Date']>;
   childContentfulPostBodyTextNode?: Maybe<ContentfulPostBodyTextNode>;
 };
 
 
 export type ContentfulPostDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulPostUpdateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2058,14 +2066,6 @@ export type ContentfulPostCreatedAtArgs = {
 
 
 export type ContentfulPostUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type ContentfulPostUpdateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2397,6 +2397,7 @@ export enum ContentfulPostFieldsEnum {
   Title = 'title',
   Slug = 'slug',
   Date = 'date',
+  Update = 'update',
   Description = 'description',
   CategoryId = 'category___id',
   CategoryParentId = 'category___parent___id',
@@ -2456,6 +2457,7 @@ export enum ContentfulPostFieldsEnum {
   CategoryPostTitle = 'category___post___title',
   CategoryPostSlug = 'category___post___slug',
   CategoryPostDate = 'category___post___date',
+  CategoryPostUpdate = 'category___post___update',
   CategoryPostDescription = 'category___post___description',
   CategoryPostCategoryId = 'category___post___category___id',
   CategoryPostCategoryChildren = 'category___post___category___children',
@@ -2487,7 +2489,6 @@ export enum ContentfulPostFieldsEnum {
   CategoryPostUpdatedAt = 'category___post___updatedAt',
   CategoryPostSysRevision = 'category___post___sys___revision',
   CategoryPostNodeLocale = 'category___post___node_locale',
-  CategoryPostUpdate = 'category___post___update',
   CategoryPostChildContentfulPostBodyTextNodeId = 'category___post___childContentfulPostBodyTextNode___id',
   CategoryPostChildContentfulPostBodyTextNodeChildren = 'category___post___childContentfulPostBodyTextNode___children',
   CategoryPostChildContentfulPostBodyTextNodeBody = 'category___post___childContentfulPostBodyTextNode___body',
@@ -2556,6 +2557,7 @@ export enum ContentfulPostFieldsEnum {
   TagsPostTitle = 'tags___post___title',
   TagsPostSlug = 'tags___post___slug',
   TagsPostDate = 'tags___post___date',
+  TagsPostUpdate = 'tags___post___update',
   TagsPostDescription = 'tags___post___description',
   TagsPostCategoryId = 'tags___post___category___id',
   TagsPostCategoryChildren = 'tags___post___category___children',
@@ -2587,7 +2589,6 @@ export enum ContentfulPostFieldsEnum {
   TagsPostUpdatedAt = 'tags___post___updatedAt',
   TagsPostSysRevision = 'tags___post___sys___revision',
   TagsPostNodeLocale = 'tags___post___node_locale',
-  TagsPostUpdate = 'tags___post___update',
   TagsPostChildContentfulPostBodyTextNodeId = 'tags___post___childContentfulPostBodyTextNode___id',
   TagsPostChildContentfulPostBodyTextNodeChildren = 'tags___post___childContentfulPostBodyTextNode___children',
   TagsPostChildContentfulPostBodyTextNodeBody = 'tags___post___childContentfulPostBodyTextNode___body',
@@ -2675,7 +2676,6 @@ export enum ContentfulPostFieldsEnum {
   SysContentTypeSysId = 'sys___contentType___sys___id',
   SysContentTypeSysContentfulId = 'sys___contentType___sys___contentful_id',
   NodeLocale = 'node_locale',
-  Update = 'update',
   ChildContentfulPostBodyTextNodeId = 'childContentfulPostBodyTextNode___id',
   ChildContentfulPostBodyTextNodeParentId = 'childContentfulPostBodyTextNode___parent___id',
   ChildContentfulPostBodyTextNodeParentParentId = 'childContentfulPostBodyTextNode___parent___parent___id',
@@ -2754,6 +2754,7 @@ export type ContentfulPostFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
+  update?: Maybe<DateQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   category?: Maybe<ContentfulCategoryFilterInput>;
   tags?: Maybe<ContentfulTagsFilterListInput>;
@@ -2764,7 +2765,6 @@ export type ContentfulPostFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  update?: Maybe<DateQueryOperatorInput>;
   childContentfulPostBodyTextNode?: Maybe<ContentfulPostBodyTextNodeFilterInput>;
 };
 
@@ -3082,6 +3082,7 @@ export enum ContentfulTagsFieldsEnum {
   PostTitle = 'post___title',
   PostSlug = 'post___slug',
   PostDate = 'post___date',
+  PostUpdate = 'post___update',
   PostDescription = 'post___description',
   PostCategoryId = 'post___category___id',
   PostCategoryParentId = 'post___category___parent___id',
@@ -3105,6 +3106,7 @@ export enum ContentfulTagsFieldsEnum {
   PostCategoryPostTitle = 'post___category___post___title',
   PostCategoryPostSlug = 'post___category___post___slug',
   PostCategoryPostDate = 'post___category___post___date',
+  PostCategoryPostUpdate = 'post___category___post___update',
   PostCategoryPostDescription = 'post___category___post___description',
   PostCategoryPostTags = 'post___category___post___tags',
   PostCategoryPostSpaceId = 'post___category___post___spaceId',
@@ -3112,7 +3114,6 @@ export enum ContentfulTagsFieldsEnum {
   PostCategoryPostCreatedAt = 'post___category___post___createdAt',
   PostCategoryPostUpdatedAt = 'post___category___post___updatedAt',
   PostCategoryPostNodeLocale = 'post___category___post___node_locale',
-  PostCategoryPostUpdate = 'post___category___post___update',
   PostCategorySpaceId = 'post___category___spaceId',
   PostCategoryContentfulId = 'post___category___contentful_id',
   PostCategoryCreatedAt = 'post___category___createdAt',
@@ -3142,6 +3143,7 @@ export enum ContentfulTagsFieldsEnum {
   PostTagsPostTitle = 'post___tags___post___title',
   PostTagsPostSlug = 'post___tags___post___slug',
   PostTagsPostDate = 'post___tags___post___date',
+  PostTagsPostUpdate = 'post___tags___post___update',
   PostTagsPostDescription = 'post___tags___post___description',
   PostTagsPostTags = 'post___tags___post___tags',
   PostTagsPostSpaceId = 'post___tags___post___spaceId',
@@ -3149,7 +3151,6 @@ export enum ContentfulTagsFieldsEnum {
   PostTagsPostCreatedAt = 'post___tags___post___createdAt',
   PostTagsPostUpdatedAt = 'post___tags___post___updatedAt',
   PostTagsPostNodeLocale = 'post___tags___post___node_locale',
-  PostTagsPostUpdate = 'post___tags___post___update',
   PostTagsSpaceId = 'post___tags___spaceId',
   PostTagsContentfulId = 'post___tags___contentful_id',
   PostTagsCreatedAt = 'post___tags___createdAt',
@@ -3187,7 +3188,6 @@ export enum ContentfulTagsFieldsEnum {
   PostUpdatedAt = 'post___updatedAt',
   PostSysRevision = 'post___sys___revision',
   PostNodeLocale = 'post___node_locale',
-  PostUpdate = 'post___update',
   PostChildContentfulPostBodyTextNodeId = 'post___childContentfulPostBodyTextNode___id',
   PostChildContentfulPostBodyTextNodeParentId = 'post___childContentfulPostBodyTextNode___parent___id',
   PostChildContentfulPostBodyTextNodeParentChildren = 'post___childContentfulPostBodyTextNode___parent___children',
@@ -5247,6 +5247,7 @@ export type QueryContentfulPostArgs = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
+  update?: Maybe<DateQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   category?: Maybe<ContentfulCategoryFilterInput>;
   tags?: Maybe<ContentfulTagsFilterListInput>;
@@ -5257,7 +5258,6 @@ export type QueryContentfulPostArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  update?: Maybe<DateQueryOperatorInput>;
   childContentfulPostBodyTextNode?: Maybe<ContentfulPostBodyTextNodeFilterInput>;
 };
 
@@ -5791,73 +5791,479 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   __typename?: 'SitePageContext';
-  slug?: Maybe<Scalars['String']>;
-  category?: Maybe<Scalars['String']>;
-  prev?: Maybe<SitePageContextPrev>;
-  next?: Maybe<SitePageContextNext>;
+  curPost?: Maybe<SitePageContextCurPost>;
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
   numPages?: Maybe<Scalars['Int']>;
   currentPage?: Maybe<Scalars['Int']>;
+  slug?: Maybe<Scalars['String']>;
   tag?: Maybe<Scalars['String']>;
   pathBase?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPost = {
+  __typename?: 'SitePageContextCurPost';
+  slug?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['Date']>;
+  update?: Maybe<Scalars['Date']>;
+  category?: Maybe<SitePageContextCurPostCategory>;
+  tags?: Maybe<Array<Maybe<SitePageContextCurPostTags>>>;
+  description?: Maybe<Scalars['String']>;
+  body?: Maybe<SitePageContextCurPostBody>;
+};
+
+export type SitePageContextCurPostBody = {
+  __typename?: 'SitePageContextCurPostBody';
+  childMarkdownRemark?: Maybe<SitePageContextCurPostBodyChildMarkdownRemark>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemark = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemark';
+  htmlAst?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAst>;
+  tableOfContents?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkFilterInput = {
+  htmlAst?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstFilterInput>;
+  tableOfContents?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAst = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAst';
+  type?: Maybe<Scalars['String']>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildren>>>;
+  data?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstData>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildren';
+  type?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildren>>>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildren>>>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildren>>>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildren>>>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildren>>>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildren>>>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren>>>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren>>>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties';
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  className?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties';
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  className?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenProperties';
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  href?: Maybe<Scalars['String']>;
+  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
+  target?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  className?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+  rel?: Maybe<StringQueryOperatorInput>;
+  target?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenProperties';
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  src?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+  target?: Maybe<Scalars['String']>;
+  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fillRule?: Maybe<Scalars['String']>;
+  d?: Maybe<Scalars['String']>;
+  align?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  className?: Maybe<StringQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  style?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+  target?: Maybe<StringQueryOperatorInput>;
+  rel?: Maybe<StringQueryOperatorInput>;
+  fillRule?: Maybe<StringQueryOperatorInput>;
+  d?: Maybe<StringQueryOperatorInput>;
+  align?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenProperties';
+  fillRule?: Maybe<Scalars['String']>;
+  d?: Maybe<Scalars['String']>;
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  href?: Maybe<Scalars['String']>;
+  target?: Maybe<Scalars['String']>;
+  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
+  ariaHidden?: Maybe<Scalars['String']>;
+  focusable?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+  viewBox?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  fillRule?: Maybe<StringQueryOperatorInput>;
+  d?: Maybe<StringQueryOperatorInput>;
+  className?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+  target?: Maybe<StringQueryOperatorInput>;
+  rel?: Maybe<StringQueryOperatorInput>;
+  ariaHidden?: Maybe<StringQueryOperatorInput>;
+  focusable?: Maybe<StringQueryOperatorInput>;
+  height?: Maybe<StringQueryOperatorInput>;
+  version?: Maybe<StringQueryOperatorInput>;
+  viewBox?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterListInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenProperties';
+  ariaHidden?: Maybe<Scalars['String']>;
+  focusable?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+  viewBox?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['String']>;
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  style?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+  target?: Maybe<Scalars['String']>;
+  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
+  ariaLabel?: Maybe<Scalars['String']>;
+  src?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenPropertiesFilterInput = {
+  ariaHidden?: Maybe<StringQueryOperatorInput>;
+  focusable?: Maybe<StringQueryOperatorInput>;
+  height?: Maybe<StringQueryOperatorInput>;
+  version?: Maybe<StringQueryOperatorInput>;
+  viewBox?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<StringQueryOperatorInput>;
+  className?: Maybe<StringQueryOperatorInput>;
+  style?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+  target?: Maybe<StringQueryOperatorInput>;
+  rel?: Maybe<StringQueryOperatorInput>;
+  ariaLabel?: Maybe<StringQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterListInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenProperties';
+  href?: Maybe<Scalars['String']>;
+  ariaLabel?: Maybe<Scalars['String']>;
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  style?: Maybe<Scalars['String']>;
+  src?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  target?: Maybe<Scalars['String']>;
+  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenPropertiesFilterInput = {
+  href?: Maybe<StringQueryOperatorInput>;
+  ariaLabel?: Maybe<StringQueryOperatorInput>;
+  className?: Maybe<StringQueryOperatorInput>;
+  style?: Maybe<StringQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  target?: Maybe<StringQueryOperatorInput>;
+  rel?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterListInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenProperties = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenProperties';
+  id?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['String']>;
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  dataLanguage?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
+  scrolling?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  src?: Maybe<Scalars['String']>;
+  frameBorder?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenPropertiesFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  style?: Maybe<StringQueryOperatorInput>;
+  className?: Maybe<StringQueryOperatorInput>;
+  dataLanguage?: Maybe<StringQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+  scrolling?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  frameBorder?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstData = {
+  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstData';
+  quirksMode?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstDataFilterInput = {
+  quirksMode?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterListInput>;
+  data?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstDataFilterInput>;
+};
+
+export type SitePageContextCurPostBodyFilterInput = {
+  childMarkdownRemark?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkFilterInput>;
+};
+
+export type SitePageContextCurPostCategory = {
+  __typename?: 'SitePageContextCurPostCategory';
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostCategoryFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  date?: Maybe<DateQueryOperatorInput>;
+  update?: Maybe<DateQueryOperatorInput>;
+  category?: Maybe<SitePageContextCurPostCategoryFilterInput>;
+  tags?: Maybe<SitePageContextCurPostTagsFilterListInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  body?: Maybe<SitePageContextCurPostBodyFilterInput>;
+};
+
+export type SitePageContextCurPostTags = {
+  __typename?: 'SitePageContextCurPostTags';
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextCurPostTagsFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextCurPostTagsFilterListInput = {
+  elemMatch?: Maybe<SitePageContextCurPostTagsFilterInput>;
 };
 
 export type SitePageContextFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  category?: Maybe<StringQueryOperatorInput>;
-  prev?: Maybe<SitePageContextPrevFilterInput>;
-  next?: Maybe<SitePageContextNextFilterInput>;
+  curPost?: Maybe<SitePageContextCurPostFilterInput>;
   limit?: Maybe<IntQueryOperatorInput>;
   skip?: Maybe<IntQueryOperatorInput>;
   numPages?: Maybe<IntQueryOperatorInput>;
   currentPage?: Maybe<IntQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
   tag?: Maybe<StringQueryOperatorInput>;
   pathBase?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNext = {
-  __typename?: 'SitePageContextNext';
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  category?: Maybe<SitePageContextNextCategory>;
-};
-
-export type SitePageContextNextCategory = {
-  __typename?: 'SitePageContextNextCategory';
-  name?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextCategoryFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNextFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  category?: Maybe<SitePageContextNextCategoryFilterInput>;
-};
-
-export type SitePageContextPrev = {
-  __typename?: 'SitePageContextPrev';
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  category?: Maybe<SitePageContextPrevCategory>;
-};
-
-export type SitePageContextPrevCategory = {
-  __typename?: 'SitePageContextPrevCategory';
-  name?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPrevCategoryFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPrevFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  category?: Maybe<SitePageContextPrevCategoryFilterInput>;
+  category?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -5960,20 +6366,24 @@ export enum SitePageFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  ContextSlug = 'context___slug',
-  ContextCategory = 'context___category',
-  ContextPrevSlug = 'context___prev___slug',
-  ContextPrevTitle = 'context___prev___title',
-  ContextPrevCategoryName = 'context___prev___category___name',
-  ContextNextSlug = 'context___next___slug',
-  ContextNextTitle = 'context___next___title',
-  ContextNextCategoryName = 'context___next___category___name',
+  ContextCurPostSlug = 'context___curPost___slug',
+  ContextCurPostTitle = 'context___curPost___title',
+  ContextCurPostDate = 'context___curPost___date',
+  ContextCurPostUpdate = 'context___curPost___update',
+  ContextCurPostCategoryName = 'context___curPost___category___name',
+  ContextCurPostCategorySlug = 'context___curPost___category___slug',
+  ContextCurPostTags = 'context___curPost___tags',
+  ContextCurPostTagsName = 'context___curPost___tags___name',
+  ContextCurPostTagsSlug = 'context___curPost___tags___slug',
+  ContextCurPostDescription = 'context___curPost___description',
   ContextLimit = 'context___limit',
   ContextSkip = 'context___skip',
   ContextNumPages = 'context___numPages',
   ContextCurrentPage = 'context___currentPage',
+  ContextSlug = 'context___slug',
   ContextTag = 'context___tag',
   ContextPathBase = 'context___pathBase',
+  ContextCategory = 'context___category',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
@@ -6024,8 +6434,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsBrowserApIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   PluginCreatorPluginOptionsPluginsSsrApIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   PluginCreatorPluginOptionsPluginsPluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
-  PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
-  PluginCreatorPluginOptionsPublisherId = 'pluginCreator___pluginOptions___publisherId',
+  PluginCreatorPluginOptionsId = 'pluginCreator___pluginOptions___id',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
@@ -6047,9 +6456,10 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsClassPrefix = 'pluginCreator___pluginOptions___classPrefix',
   PluginCreatorPluginOptionsShowLineNumbers = 'pluginCreator___pluginOptions___showLineNumbers',
   PluginCreatorPluginOptionsNoInlineHighlight = 'pluginCreator___pluginOptions___noInlineHighlight',
-  PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
-  PluginCreatorPluginOptionsWithWebp = 'pluginCreator___pluginOptions___withWebp',
-  PluginCreatorPluginOptionsLoading = 'pluginCreator___pluginOptions___loading',
+  PluginCreatorPluginOptionsFonts = 'pluginCreator___pluginOptions___fonts',
+  PluginCreatorPluginOptionsFontsFamily = 'pluginCreator___pluginOptions___fonts___family',
+  PluginCreatorPluginOptionsFontsVariants = 'pluginCreator___pluginOptions___fonts___variants',
+  PluginCreatorPluginOptionsFontsSubsets = 'pluginCreator___pluginOptions___fonts___subsets',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
@@ -6251,15 +6661,12 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsPluginOptionsClassPrefix = 'pluginOptions___plugins___pluginOptions___classPrefix',
   PluginOptionsPluginsPluginOptionsShowLineNumbers = 'pluginOptions___plugins___pluginOptions___showLineNumbers',
   PluginOptionsPluginsPluginOptionsNoInlineHighlight = 'pluginOptions___plugins___pluginOptions___noInlineHighlight',
-  PluginOptionsPluginsPluginOptionsMaxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
-  PluginOptionsPluginsPluginOptionsWithWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
-  PluginOptionsPluginsPluginOptionsLoading = 'pluginOptions___plugins___pluginOptions___loading',
+  PluginOptionsPluginsPluginOptionsFonts = 'pluginOptions___plugins___pluginOptions___fonts',
   PluginOptionsPluginsNodeApIs = 'pluginOptions___plugins___nodeAPIs',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
   PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
-  PluginOptionsTrackingId = 'pluginOptions___trackingId',
-  PluginOptionsPublisherId = 'pluginOptions___publisherId',
+  PluginOptionsId = 'pluginOptions___id',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsShortName = 'pluginOptions___short_name',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
@@ -6285,9 +6692,10 @@ export enum SitePluginFieldsEnum {
   PluginOptionsBlocksNoteTitle = 'pluginOptions___blocks___note___title',
   PluginOptionsBlocksDangerClasses = 'pluginOptions___blocks___danger___classes',
   PluginOptionsBlocksDangerTitle = 'pluginOptions___blocks___danger___title',
-  PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
-  PluginOptionsWithWebp = 'pluginOptions___withWebp',
-  PluginOptionsLoading = 'pluginOptions___loading',
+  PluginOptionsFonts = 'pluginOptions___fonts',
+  PluginOptionsFontsFamily = 'pluginOptions___fonts___family',
+  PluginOptionsFontsVariants = 'pluginOptions___fonts___variants',
+  PluginOptionsFontsSubsets = 'pluginOptions___fonts___subsets',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
@@ -6412,8 +6820,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
-  trackingId?: Maybe<Scalars['String']>;
-  publisherId?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
@@ -6433,9 +6840,7 @@ export type SitePluginPluginOptions = {
   showLineNumbers?: Maybe<Scalars['Boolean']>;
   noInlineHighlight?: Maybe<Scalars['Boolean']>;
   blocks?: Maybe<SitePluginPluginOptionsBlocks>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  loading?: Maybe<Scalars['String']>;
+  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -6474,8 +6879,7 @@ export type SitePluginPluginOptionsBlocksNoteFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
-  trackingId?: Maybe<StringQueryOperatorInput>;
-  publisherId?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
@@ -6495,10 +6899,25 @@ export type SitePluginPluginOptionsFilterInput = {
   showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
   blocks?: Maybe<SitePluginPluginOptionsBlocksFilterInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
+  fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsFonts = {
+  __typename?: 'SitePluginPluginOptionsFonts';
+  family?: Maybe<Scalars['String']>;
+  variants?: Maybe<Array<Maybe<Scalars['String']>>>;
+  subsets?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePluginPluginOptionsFontsFilterInput = {
+  family?: Maybe<StringQueryOperatorInput>;
+  variants?: Maybe<StringQueryOperatorInput>;
+  subsets?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsFontsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
 };
 
 export type SitePluginPluginOptionsIcons = {
@@ -6553,9 +6972,7 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   showLineNumbers?: Maybe<Scalars['Boolean']>;
   noInlineHighlight?: Maybe<Scalars['Boolean']>;
   blocks?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsBlocks>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  loading?: Maybe<Scalars['String']>;
+  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsPluginsPluginOptionsFonts>>>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsBlocks = {
@@ -6596,9 +7013,24 @@ export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
   blocks?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsBlocksFilterInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
+  fonts?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFontsFilterListInput>;
+};
+
+export type SitePluginPluginOptionsPluginsPluginOptionsFonts = {
+  __typename?: 'SitePluginPluginOptionsPluginsPluginOptionsFonts';
+  family?: Maybe<Scalars['String']>;
+  variants?: Maybe<Array<Maybe<Scalars['String']>>>;
+  subsets?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePluginPluginOptionsPluginsPluginOptionsFontsFilterInput = {
+  family?: Maybe<StringQueryOperatorInput>;
+  variants?: Maybe<StringQueryOperatorInput>;
+  subsets?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPluginsPluginOptionsFontsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFontsFilterInput>;
 };
 
 export type SitePluginSortInput = {
@@ -6692,36 +7124,6 @@ export type TempblogListQuery = (
       ) }
     )> }
   ) }
-);
-
-export type TempBlogPostQueryVariables = Exact<{
-  slug: Scalars['String'];
-  category: Scalars['String'];
-}>;
-
-
-export type TempBlogPostQuery = (
-  { __typename?: 'Query' }
-  & { cflPost?: Maybe<(
-    { __typename?: 'ContentfulPost' }
-    & Pick<ContentfulPost, 'title' | 'date' | 'update' | 'description'>
-    & { category?: Maybe<(
-      { __typename?: 'ContentfulCategory' }
-      & Pick<ContentfulCategory, 'name' | 'slug'>
-    )>, tags?: Maybe<Array<Maybe<(
-      { __typename?: 'ContentfulTags' }
-      & Pick<ContentfulTags, 'name' | 'slug'>
-    )>>>, body?: Maybe<(
-      { __typename?: 'contentfulPostBodyTextNode' }
-      & { childMarkdownRemark?: Maybe<(
-        { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'htmlAst' | 'tableOfContents'>
-      )> }
-    )> }
-  )>, cflCategory?: Maybe<(
-    { __typename?: 'ContentfulCategory' }
-    & Pick<ContentfulCategory, 'name' | 'slug'>
-  )> }
 );
 
 export type TempCategoryQueryVariables = Exact<{

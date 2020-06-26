@@ -18,6 +18,12 @@ type Result = {
   cflCategoryPost: ContentfulPostConnection
 }
 
+export type postContext = {
+  curPost: ContentfulPost
+  prev: ContentfulPost
+  next: ContentfulPost
+}
+
 // Template
 const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
 const blogPostListTemplate = path.resolve('./src/templates/blog-list.tsx')
@@ -35,9 +41,31 @@ const query = `
       node {
         slug
         title
+        date
+        update
         category {
           name
+          slug
         }
+        tags {
+          name
+          slug
+        }
+        description
+        body {
+          childMarkdownRemark {
+            htmlAst
+            tableOfContents(absolute: false)
+          }
+        }
+      }
+      previous {
+        title
+        slug
+      }
+      next {
+        title
+        slug
       }
     }
   }
@@ -84,17 +112,13 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const cflPosts = result.data.cflPosts.edges
 
   cflPosts.forEach((post, index) => {
-    const prev = index === cflPosts.length - 1 ? null : cflPosts[index + 1].node
-    const next = index === 0 ? null : cflPosts[index - 1].node
-
-    createPage({
+    createPage<postContext>({
       path: post.node.slug,
       component: blogPostTemplate,
       context: {
-        slug: post.node.slug,
-        category: post.node.category.name,
-        prev,
-        next,
+        curPost: post.node,
+        prev: post.next,
+        next: post.previous,
       },
     })
   })
