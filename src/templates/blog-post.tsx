@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 import { postContext } from '../../gatsby-node'
 
 // Components
@@ -23,9 +23,7 @@ const BlogPost = ({ pathContext }: BlogPostTypes) => {
   const post = pathContext.curPost
   const prev = pathContext.prev
   const next = pathContext.next
-  //const { prev, next } = pathContext
 
-  //const category = data.cflCategory
   const categoryName = post.category.name
   const categorySlug = post.category.slug
   const categoryPath = `/category/${kebabCase(categorySlug)}/`
