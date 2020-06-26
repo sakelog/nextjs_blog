@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
-import { TempBlogPostQuery } from '../../types/graphql-types'
+import { postContext } from '../../gatsby-node'
 
 // Components
 import Layout from '../components/layout'
@@ -15,32 +15,20 @@ import TagList from '../components/taglist'
 // Utilities
 const kebabCase = require('lodash/kebabCase')
 
-interface BlogPostTypes {
-  pageContext: {
-    prev?: {
-      slug: string
-      title: string
-    }
-    next?: {
-      slug: string
-      title: string
-    }
-  }
-  data: TempBlogPostQuery
+type BlogPostTypes = {
+  pathContext: postContext
 }
 
-const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
-  const post = data.cflPost
-  const { prev, next } = pageContext
+const BlogPost = ({ pathContext }: BlogPostTypes) => {
+  const post = pathContext.curPost
+  const prev = pathContext.prev
+  const next = pathContext.next
+  //const { prev, next } = pathContext
 
   //const category = data.cflCategory
   const categoryName = post.category.name
   const categorySlug = post.category.slug
-  const categoryInfo: { name: string; slug: string } = {
-    name: categoryName,
-    slug: categorySlug,
-  }
-  const categoryPath = `/category/${kebabCase(categoryInfo.slug)}/`
+  const categoryPath = `/category/${kebabCase(categorySlug)}/`
 
   const bodyTableOfContents = post.body.childMarkdownRemark.tableOfContents
   const bodyHtml = post.body.childMarkdownRemark.htmlAst
@@ -51,7 +39,7 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
       <div className="p-article">
         <h1>{post.title}</h1>
         <Link to={categoryPath} className="c-badge">
-          <h4>{categoryInfo.name}</h4>
+          <h4>{categoryName}</h4>
         </Link>
         <PostDate postdate={post.date} update={post.update} />
         <hr />
@@ -75,32 +63,3 @@ const BlogPost = ({ pageContext, data }: BlogPostTypes) => {
 }
 
 export default BlogPost
-
-export const pageQuery = graphql`
-  query TempBlogPost($slug: String!, $category: String!) {
-    cflPost: contentfulPost(slug: { eq: $slug }) {
-      title
-      date
-      update
-      category {
-        name
-        slug
-      }
-      tags {
-        name
-        slug
-      }
-      description
-      body {
-        childMarkdownRemark {
-          htmlAst
-          tableOfContents(absolute: false)
-        }
-      }
-    }
-    cflCategory: contentfulCategory(name: { eq: $category }) {
-      name
-      slug
-    }
-  }
-`

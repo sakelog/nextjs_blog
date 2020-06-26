@@ -34,15 +34,12 @@ const Category = ({ pageContext, data }: Props) => {
       </h1>
       <p>投稿：{totalCount}件</p>
       {edges.map(({ node }) => {
-        const slug = node.slug
+        const slug = `/${node.slug}/`
         const title = node.title || node.slug
         const description = node.description
         return (
           <div key={slug} className="u-border--bottom u-space--pad--2">
-            <PostDate
-              postdate={node.date}
-              update={node.update}
-            />
+            <PostDate postdate={node.date} update={node.update} />
             <Link to={slug}>
               <h2>{title}</h2>
             </Link>
@@ -65,9 +62,9 @@ export default Category
 
 export const pageQuery = graphql`
   query TempCategory($category: String!, $limit: Int!, $skip: Int!) {
-    cflPosts :allContentfulPost(
+    cflPosts: allContentfulPost(
       sort: { fields: date, order: DESC }
-      filter: {category: {name: { eq: $category } } }
+      filter: { category: { name: { eq: $category } } }
       limit: $limit
       skip: $skip
     ) {

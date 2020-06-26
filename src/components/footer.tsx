@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 // Component
 import SocialIcon from './social-icon'
@@ -27,11 +27,35 @@ const Footer = () => {
       : startYear + '-' + nowYear + SiteTitle
   return (
     <footer className="l-footer">
-      <div className="u-align--center">
-        <p>&copy;{copytext}</p>
+      <div>
+        <ul>
+          <li>
+            <Link to="/tags/" className="nav-link">
+              タグ一覧
+            </Link>
+          </li>
+          <li>
+            <Link to="/about_this_site/" className="nav-link">
+              このサイトについて
+            </Link>
+          </li>
+          <li>
+            <Link to="/privacy/" className="nav-link">
+              プライバシーポリシー
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact/" className="nav-link">
+              お問い合わせ
+            </Link>
+          </li>
+        </ul>
       </div>
-      <div className="u-align--center">
+      <div>
         <SocialIcon />
+      </div>
+      <div>
+        <p>&copy;{copytext}</p>
       </div>
     </footer>
   )

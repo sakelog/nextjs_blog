@@ -60,21 +60,6 @@ const Header = () => {
 
           <div className="l-header__nav__drawer__content">
             <HeaderCatList />
-            <hr />
-            <div className="l-header__nav__drawer__content__menu--pages">
-              <Link to="/tags/" className="nav-link">
-                #タグ一覧
-              </Link>
-              <Link to="/about_this_site/" className="nav-link">
-                このサイトについて
-              </Link>
-              <Link to="/privacy/" className="nav-link">
-                プライバシーポリシー
-              </Link>
-              <Link to="/contact/" className="nav-link">
-                お問い合わせ
-              </Link>
-            </div>
           </div>
         </div>
       </nav>

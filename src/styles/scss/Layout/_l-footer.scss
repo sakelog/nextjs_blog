@@ -1,15 +1,25 @@
 @use '../Foundation/variables' as *;
+@use '../Foundation/mixin' as *;
 
 /*=====================================
 ** フッター
 **=====================================*/
 .l-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: auto;
   background: $gray-light;
   overflow: hidden;
-  font-size: small;
+  font-size: 1.2rem;
 
-  .u-list--inline {
-      margin: 0 auto;
+  @include mq(md) {
+    flex-direction: row;
+    justify-content: space-around;
   }
+  /*
+  .u-list--inline {
+    margin: 0 auto;
+  }
+  */
 }

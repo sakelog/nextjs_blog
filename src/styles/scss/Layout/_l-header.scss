@@ -144,17 +144,6 @@
             }
           }
         }
-        .l-header__nav__drawer__content__menu--pages {
-          @extend .l-header__nav__drawer__content__menu;
-          a {
-            width: 100%;
-            margin: 1rem 0;
-            @include mq(md) {
-              width: 25%;
-              margin: auto;
-            }
-          }
-        }
       }
     }
     #l-header-nav__checkbox:checked {
@@ -162,7 +151,7 @@
         transform: translateY(0);
         -webkit-transform: translateY(0);
         filter: drop-shadow(0 1rem 1rem rgba(0, 0, 0, 0.1))
-        drop-shadow(0 0 0.6rem rgba(0, 0, 0, 0.2));
+          drop-shadow(0 0 0.6rem rgba(0, 0, 0, 0.2));
       }
     }
   }
