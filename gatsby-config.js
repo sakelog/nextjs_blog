@@ -98,14 +98,6 @@ module.exports = {
         accessToken: process.env.CFL_DELIVERY_API,
       },
     },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CFL_SPACE_ID,
-        accessToken: process.env.CFL_PREVIEW_API,
-        host: `preview.contentful.com`,
-      },
-    },
     // markdown
     {
       resolve: `gatsby-transformer-remark`,
