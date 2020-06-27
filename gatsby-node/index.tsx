@@ -15,8 +15,7 @@ type Result = {
   cflPosts: ContentfulPostConnection
   cflPages: ContentfulPageConnection
   cflTagsPost: ContentfulPostConnection
-  cflCategoryGroup: ContentfulCategoryConnection
-  cflCategoryPost: ContentfulPostConnection
+  cflCategoryGroup: ContentfulPostConnection
 }
 
 export type postContext = {
@@ -27,6 +26,15 @@ export type postContext = {
 
 export type pageContext = {
   page: ContentfulPage
+}
+
+export type categoryContext = {
+  limit: number
+  skip: number
+  numPages: number
+  currentPage: number
+  slug: string
+  pathBase: string
 }
 
 // Template
@@ -94,20 +102,12 @@ const query = `
       fieldValue
     }
   }
-  cflCategoryGroup: allContentfulCategory(limit: 2000) {
-    edges {
-      node {
-        name
-        slug
+  cflCategoryGroup: allContentfulPost(limit: 2000) {
+    group(field: category___slug) {
+      fieldValue
+      totalCount
       }
     }
-  }
-  cflCategoryPost: allContentfulPost(limit: 2000) {
-    group(field: category___name) {
-      totalCount
-      fieldValue
-    }
-  }
 }
 `
 
@@ -188,34 +188,25 @@ export const createPages: GatsbyNode['createPages'] = async ({
   })
 
   // Contentful CategoryPage
-  const cflCategorys = result.data.cflCategoryGroup.edges
-  const cflCategoryPostGroup = result.data.cflCategoryPost.group
-  const cflCategoryPerPage = 10
+  const cflCategorys = result.data.cflCategoryGroup.group
+  const CategoryPerPage = 10
 
   cflCategorys.forEach((category) => {
-    cflCategoryPostGroup.forEach((categoryPosts) => {
-      var categorynumPages =
-        category.node.name === categoryPosts.fieldValue
-          ? Math.ceil(categoryPosts.totalCount / cflCategoryPerPage)
-          : null
-      var categoryPathBase =
-        category.node.name === categoryPosts.fieldValue
-          ? `/category/${_.kebabCase(category.node.slug)}/`
-          : null
+    var categoryNumPages = Math.ceil(category.totalCount / CategoryPerPage)
+    var categoryPathBase = '/category/' + _.kebabCase(category.fieldValue) + '/'
 
-      Array.from({ length: categorynumPages }).forEach((_, i) => {
-        createPage({
-          path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
-          component: categoryTemplate,
-          context: {
-            limit: cflCategoryPerPage,
-            skip: i * cflCategoryPerPage,
-            category: category.node.name,
-            numPages: categorynumPages,
-            currentPage: i + 1,
-            pathBase: categoryPathBase,
-          },
-        })
+    Array.from({ length: categoryNumPages }).forEach((_, i) => {
+      createPage<categoryContext>({
+        path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
+        component: categoryTemplate,
+        context: {
+          limit: CategoryPerPage,
+          skip: i * CategoryPerPage,
+          numPages: categoryNumPages,
+          currentPage: i + 1,
+          slug: category.fieldValue,
+          pathBase: categoryPathBase,
+        },
       })
     })
   })

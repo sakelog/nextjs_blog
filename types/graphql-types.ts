@@ -5067,7 +5067,6 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -5761,7 +5760,6 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
-  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
@@ -5787,483 +5785,6 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   field: SitePageFieldsEnum;
-};
-
-export type SitePageContext = {
-  __typename?: 'SitePageContext';
-  curPost?: Maybe<SitePageContextCurPost>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  numPages?: Maybe<Scalars['Int']>;
-  currentPage?: Maybe<Scalars['Int']>;
-  slug?: Maybe<Scalars['String']>;
-  tag?: Maybe<Scalars['String']>;
-  pathBase?: Maybe<Scalars['String']>;
-  category?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPost = {
-  __typename?: 'SitePageContextCurPost';
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  update?: Maybe<Scalars['Date']>;
-  category?: Maybe<SitePageContextCurPostCategory>;
-  tags?: Maybe<Array<Maybe<SitePageContextCurPostTags>>>;
-  description?: Maybe<Scalars['String']>;
-  body?: Maybe<SitePageContextCurPostBody>;
-};
-
-export type SitePageContextCurPostBody = {
-  __typename?: 'SitePageContextCurPostBody';
-  childMarkdownRemark?: Maybe<SitePageContextCurPostBodyChildMarkdownRemark>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemark = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemark';
-  htmlAst?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAst>;
-  tableOfContents?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkFilterInput = {
-  htmlAst?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstFilterInput>;
-  tableOfContents?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAst = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAst';
-  type?: Maybe<Scalars['String']>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildren>>>;
-  data?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstData>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildren';
-  type?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildren>>>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildren>>>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildren>>>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildren>>>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildren>>>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildren>>>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren>>>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-  tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties>;
-  children?: Maybe<Array<Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren>>>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildren';
-  type?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties';
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
-  className?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenProperties';
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
-  className?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenProperties';
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  href?: Maybe<Scalars['String']>;
-  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
-  target?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
-  className?: Maybe<StringQueryOperatorInput>;
-  href?: Maybe<StringQueryOperatorInput>;
-  rel?: Maybe<StringQueryOperatorInput>;
-  target?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenProperties';
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  src?: Maybe<Scalars['String']>;
-  style?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  target?: Maybe<Scalars['String']>;
-  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fillRule?: Maybe<Scalars['String']>;
-  d?: Maybe<Scalars['String']>;
-  align?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
-  className?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
-  href?: Maybe<StringQueryOperatorInput>;
-  target?: Maybe<StringQueryOperatorInput>;
-  rel?: Maybe<StringQueryOperatorInput>;
-  fillRule?: Maybe<StringQueryOperatorInput>;
-  d?: Maybe<StringQueryOperatorInput>;
-  align?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenProperties';
-  fillRule?: Maybe<Scalars['String']>;
-  d?: Maybe<Scalars['String']>;
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  href?: Maybe<Scalars['String']>;
-  target?: Maybe<Scalars['String']>;
-  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ariaHidden?: Maybe<Scalars['String']>;
-  focusable?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  viewBox?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput = {
-  fillRule?: Maybe<StringQueryOperatorInput>;
-  d?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  href?: Maybe<StringQueryOperatorInput>;
-  target?: Maybe<StringQueryOperatorInput>;
-  rel?: Maybe<StringQueryOperatorInput>;
-  ariaHidden?: Maybe<StringQueryOperatorInput>;
-  focusable?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  viewBox?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenChildrenFilterListInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenProperties';
-  ariaHidden?: Maybe<Scalars['String']>;
-  focusable?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  viewBox?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['String']>;
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  style?: Maybe<Scalars['String']>;
-  href?: Maybe<Scalars['String']>;
-  target?: Maybe<Scalars['String']>;
-  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ariaLabel?: Maybe<Scalars['String']>;
-  src?: Maybe<Scalars['String']>;
-  alt?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenPropertiesFilterInput = {
-  ariaHidden?: Maybe<StringQueryOperatorInput>;
-  focusable?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  viewBox?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
-  href?: Maybe<StringQueryOperatorInput>;
-  target?: Maybe<StringQueryOperatorInput>;
-  rel?: Maybe<StringQueryOperatorInput>;
-  ariaLabel?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  alt?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenChildrenFilterListInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenProperties';
-  href?: Maybe<Scalars['String']>;
-  ariaLabel?: Maybe<Scalars['String']>;
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  style?: Maybe<Scalars['String']>;
-  src?: Maybe<Scalars['String']>;
-  alt?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  target?: Maybe<Scalars['String']>;
-  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenPropertiesFilterInput = {
-  href?: Maybe<StringQueryOperatorInput>;
-  ariaLabel?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  alt?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  target?: Maybe<StringQueryOperatorInput>;
-  rel?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenPropertiesFilterInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenChildrenFilterListInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenProperties = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenProperties';
-  id?: Maybe<Scalars['String']>;
-  style?: Maybe<Scalars['String']>;
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  dataLanguage?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Int']>;
-  scrolling?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  src?: Maybe<Scalars['String']>;
-  frameBorder?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenPropertiesFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  dataLanguage?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-  scrolling?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  frameBorder?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstData = {
-  __typename?: 'SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstData';
-  quirksMode?: Maybe<Scalars['Boolean']>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstDataFilterInput = {
-  quirksMode?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  children?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstChildrenFilterListInput>;
-  data?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkHtmlAstDataFilterInput>;
-};
-
-export type SitePageContextCurPostBodyFilterInput = {
-  childMarkdownRemark?: Maybe<SitePageContextCurPostBodyChildMarkdownRemarkFilterInput>;
-};
-
-export type SitePageContextCurPostCategory = {
-  __typename?: 'SitePageContextCurPostCategory';
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostCategoryFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  update?: Maybe<DateQueryOperatorInput>;
-  category?: Maybe<SitePageContextCurPostCategoryFilterInput>;
-  tags?: Maybe<SitePageContextCurPostTagsFilterListInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<SitePageContextCurPostBodyFilterInput>;
-};
-
-export type SitePageContextCurPostTags = {
-  __typename?: 'SitePageContextCurPostTags';
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextCurPostTagsFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextCurPostTagsFilterListInput = {
-  elemMatch?: Maybe<SitePageContextCurPostTagsFilterInput>;
-};
-
-export type SitePageContextFilterInput = {
-  curPost?: Maybe<SitePageContextCurPostFilterInput>;
-  limit?: Maybe<IntQueryOperatorInput>;
-  skip?: Maybe<IntQueryOperatorInput>;
-  numPages?: Maybe<IntQueryOperatorInput>;
-  currentPage?: Maybe<IntQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  tag?: Maybe<StringQueryOperatorInput>;
-  pathBase?: Maybe<StringQueryOperatorInput>;
-  category?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -6366,24 +5887,6 @@ export enum SitePageFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  ContextCurPostSlug = 'context___curPost___slug',
-  ContextCurPostTitle = 'context___curPost___title',
-  ContextCurPostDate = 'context___curPost___date',
-  ContextCurPostUpdate = 'context___curPost___update',
-  ContextCurPostCategoryName = 'context___curPost___category___name',
-  ContextCurPostCategorySlug = 'context___curPost___category___slug',
-  ContextCurPostTags = 'context___curPost___tags',
-  ContextCurPostTagsName = 'context___curPost___tags___name',
-  ContextCurPostTagsSlug = 'context___curPost___tags___slug',
-  ContextCurPostDescription = 'context___curPost___description',
-  ContextLimit = 'context___limit',
-  ContextSkip = 'context___skip',
-  ContextNumPages = 'context___numPages',
-  ContextCurrentPage = 'context___currentPage',
-  ContextSlug = 'context___slug',
-  ContextTag = 'context___tag',
-  ContextPathBase = 'context___pathBase',
-  ContextCategory = 'context___category',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
@@ -6496,7 +5999,6 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -7127,7 +6629,7 @@ export type TempblogListQuery = (
 );
 
 export type TempCategoryQueryVariables = Exact<{
-  category: Scalars['String'];
+  slug: Scalars['String'];
   limit: Scalars['Int'];
   skip: Scalars['Int'];
 }>;
@@ -7135,7 +6637,10 @@ export type TempCategoryQueryVariables = Exact<{
 
 export type TempCategoryQuery = (
   { __typename?: 'Query' }
-  & { cflPosts: (
+  & { cflCategory?: Maybe<(
+    { __typename?: 'ContentfulCategory' }
+    & Pick<ContentfulCategory, 'name'>
+  )>, cflPosts: (
     { __typename?: 'ContentfulPostConnection' }
     & Pick<ContentfulPostConnection, 'totalCount'>
     & { edges: Array<(
@@ -7150,26 +6655,6 @@ export type TempCategoryQuery = (
       ) }
     )> }
   ) }
-);
-
-export type TempPageQueryVariables = Exact<{
-  slug: Scalars['String'];
-}>;
-
-
-export type TempPageQuery = (
-  { __typename?: 'Query' }
-  & { cflPage?: Maybe<(
-    { __typename?: 'ContentfulPage' }
-    & Pick<ContentfulPage, 'title' | 'description'>
-    & { body?: Maybe<(
-      { __typename?: 'contentfulPageBodyTextNode' }
-      & { childMarkdownRemark?: Maybe<(
-        { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'htmlAst'>
-      )> }
-    )> }
-  )> }
 );
 
 export type TempTagsQueryVariables = Exact<{
