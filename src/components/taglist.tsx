@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
+
+import { ContentfulTags } from '../../types/graphql-types'
 
 // Utilities
 const kebabCase = require('lodash/kebabCase')
@@ -8,24 +10,27 @@ const kebabCase = require('lodash/kebabCase')
 import { FiTag } from 'react-icons/fi'
 
 interface TagListType {
-  Tags: {name?: string , slug?: string}[]
+  Tags?: Pick<ContentfulTags, 'name' | 'slug'>[]
 }
 
-const TagList = ({Tags}:TagListType) => {
-  const tag_list = Tags.map((tag, index: number) => (
-    <li key={index} className="c-tag-item">
-      <Link to={`/tags/${kebabCase(tag.name)}/`}>
-        <h5>{tag.name}</h5>
-      </Link>
-    </li>
-  ))
+const TagList = ({ Tags }: TagListType) => {
+  const tag_list =
+    Tags === null ? null : (
+      <ul className="p-tag-list">
+        <li>
+          <FiTag />
+        </li>
+        {Tags.map((tag, index: number) => (
+          <li key={index} className="c-tag-item">
+            <Link to={`/tags/${kebabCase(tag.name)}/`}>
+              <h5>{tag.name}</h5>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )
 
-  return (
-    <ul className="p-tag-list">
-      <li><FiTag /></li>
-      {tag_list}
-    </ul>
-  )
+  return <ul className="p-tag-list">{tag_list}</ul>
 }
 
 export default TagList
