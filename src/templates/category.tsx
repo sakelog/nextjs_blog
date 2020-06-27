@@ -1,8 +1,8 @@
 import * as React from 'react'
-//import PropTypes from "prop-types"
 import { Link, graphql } from 'gatsby'
 
 import { TempCategoryQuery } from '../../types/graphql-types'
+import { categoryContext } from '../../gatsby-node'
 
 // Components
 import Layout from '../components/layout'
@@ -13,27 +13,29 @@ import PostDate from '../components/post-date'
 import TagList from '../components/taglist'
 
 interface Props {
-  pageContext: {
-    category: string
-    currentPage: number
-    numPages: number
-    pathBase: string
-  }
+  pathContext: categoryContext
   data: TempCategoryQuery
 }
 
-const Category = ({ pageContext, data }: Props) => {
-  const { category, currentPage, numPages, pathBase } = pageContext
-  const { edges, totalCount } = data.cflPosts
-  const categoryHeader = `カテゴリー：${category}`
+const Category = ({ pathContext, data }: Props) => {
+  const { currentPage, numPages, pathBase } = pathContext
+  const categoryName = data.cflCategory.name
+  const totalCount = data.cflPosts.totalCount
+  const categoryPosts = data.cflPosts.edges
+
+  const categoryHeader = `カテゴリー：${categoryName}`
   return (
     <Layout>
-      {SEO(categoryHeader, `「${category}」についての一覧ページです`, false)}
+      {SEO(
+        categoryHeader,
+        `「${categoryName}」についての一覧ページです`,
+        false
+      )}
       <h1 className="u-align--center">
         <span>{categoryHeader}</span>
       </h1>
       <p>投稿：{totalCount}件</p>
-      {edges.map(({ node }) => {
+      {categoryPosts.map(({ node }) => {
         const slug = `/${node.slug}/`
         const title = node.title || node.slug
         const description = node.description
@@ -61,10 +63,13 @@ const Category = ({ pageContext, data }: Props) => {
 export default Category
 
 export const pageQuery = graphql`
-  query TempCategory($category: String!, $limit: Int!, $skip: Int!) {
+  query TempCategory($slug: String!, $limit: Int!, $skip: Int!) {
+    cflCategory: contentfulCategory(slug: { eq: "tech" }) {
+      name
+    }
     cflPosts: allContentfulPost(
       sort: { fields: date, order: DESC }
-      filter: { category: { name: { eq: $category } } }
+      filter: { category: { slug: { eq: $slug } } }
       limit: $limit
       skip: $skip
     ) {
