@@ -16,7 +16,6 @@ Contentfulとの連携を前提にしています。
 
 * CFL_SPACE_ID
 * CFL_DELIVERY_API
-* CFL_PREVIEW_API
 
 ContentfulのAPI_Key確認画面から取得してください。
 
