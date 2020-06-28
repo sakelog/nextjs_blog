@@ -7,6 +7,7 @@ const ContactForm = () => {
     <form
       name="contact"
       method="POST"
+      data-netlify-recaptcha="true"
       data-netlify="true"
       action="../contact_success/"
       className="c-form"
@@ -15,7 +16,9 @@ const ContactForm = () => {
       <div className="u-border--bottom u-space--pad--2-top u-space--pad--2-bottom">
         <div className="c-form__item-wrapper">
           <div className="c-form__label-wrapper">
-            <label htmlFor="contactName" className="c-form__label">お名前</label>
+            <label htmlFor="contactName" className="c-form__label">
+              お名前
+            </label>
           </div>
           <div className="c-form__form-item-wrapper">
             <input
@@ -29,7 +32,9 @@ const ContactForm = () => {
         </div>
         <div className="c-form__item-wrapper">
           <div className="c-form__label-wrapper">
-            <label htmlFor="contactEmail" className="c-form__label">メールアドレス</label>
+            <label htmlFor="contactEmail" className="c-form__label">
+              メールアドレス
+            </label>
           </div>
           <div className="c-form__form-item-wrapper">
             <input
@@ -43,7 +48,9 @@ const ContactForm = () => {
         </div>
         <div className="c-form__item-wrapper">
           <div className="c-form__label-wrapper">
-            <label htmlFor="contactTextarea" className="c-form__label">本文</label>
+            <label htmlFor="contactTextarea" className="c-form__label">
+              本文
+            </label>
           </div>
           <div className="c-form__form-item-wrapper">
             <textarea
