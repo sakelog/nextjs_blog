@@ -64,7 +64,7 @@ export default Category
 
 export const pageQuery = graphql`
   query TempCategory($slug: String!, $limit: Int!, $skip: Int!) {
-    cflCategory: contentfulCategory(slug: { eq: "tech" }) {
+    cflCategory: contentfulCategory(slug: { eq: $slug }) {
       name
     }
     cflPosts: allContentfulPost(
