@@ -102,7 +102,6 @@ module.exports = {
       options: {
         spaceId: process.env.CFL_SPACE_ID,
         accessToken: process.env.CFL_DELIVERY_API,
-        host: `preview.contentful.com`,
       },
     },
     // markdown
