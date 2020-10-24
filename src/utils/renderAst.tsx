@@ -28,28 +28,30 @@ const RenderAst = new rehypeReact({
       return <blockquote className="blockquote" {...props}></blockquote>
     },
     img: (
-        props: JSX.IntrinsicAttributes &
-          React.ClassAttributes<HTMLElement> &
-          React.ImgHTMLAttributes<HTMLElement>
+      props: JSX.IntrinsicAttributes &
+        React.ClassAttributes<HTMLElement> &
+        React.ImgHTMLAttributes<HTMLElement>
     ) => {
       var ContentfulImgFlg: boolean
-      ContentfulImgFlg = (useContentfulImage({...props}.src)) === null ? false : true
+      ContentfulImgFlg =
+        useContentfulImage({ ...props }.src) === null ? false : true
       const ImgTag = (
-        <div style={{width: '100%', maxWidth: '630px', margin: 'auto'}}>
+        <div style={{ width: '100%', maxWidth: '630px', margin: 'auto' }}>
           {ContentfulImgFlg === true ? (
-            <Link to = {`${{...props}.src}?fm=webp`}>
+            <Link to={`${{ ...props }.src}?fm=webp`}>
               <Img
-                fluid={useContentfulImage({...props}.src)}
-                alt={{...props}.alt}
-                title={{...props}.title}
+                fluid={useContentfulImage({ ...props }.src)}
+                alt={{ ...props }.alt}
+                title={{ ...props }.title}
               />
             </Link>
           ) : (
             <img
-              src={{...props}.src}
-              alt={{...props}.alt}
-              title={{...props}.title}
-              style={{...props}.style}
+              src={{ ...props }.src}
+              alt={{ ...props }.alt}
+              title={{ ...props }.title}
+              style={{ ...props }.style}
+              className={{ ...props }.className}
             />
           )}
         </div>
