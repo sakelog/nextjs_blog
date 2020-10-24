@@ -13,7 +13,7 @@ $rakuten: #d91414;
   //border: 3px double var.$sl-gray;
   border: 1px solid $gray;
   padding: 2rem;
-  margin:  2rem auto;
+  margin: 2rem auto;
   overflow: hidden;
   font-size: small;
   display: flex;
@@ -34,6 +34,7 @@ $rakuten: #d91414;
     }
   }
 
+  .kaerebalink-image,
   .booklink-image {
     img {
       max-width: 600px;
@@ -41,7 +42,7 @@ $rakuten: #d91414;
     }
     text-align: center;
     margin: 1rem auto;
-    @include mq(lg){
+    @include mq(lg) {
       margin: 0 1.5rem 0.5rem 0;
     }
   }

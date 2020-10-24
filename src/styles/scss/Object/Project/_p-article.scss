@@ -1,5 +1,6 @@
 @forward '../Component/c-TOC';
 @forward '../Component/c-yomereba';
+@forward '../Component/c-appreach';
 @forward '../Component/c-prism';
 @forward '../Component/c-note';
 @forward '../Component/c-prevnext';
@@ -24,7 +25,7 @@
     border-left: $primary-lighter 3px solid;
     max-width: calc(100%-4em);
   }
-  a[target="_blank"]{
+  a[target='_blank'] {
     padding-right: 0.375rem;
 
     &::after {
@@ -33,7 +34,7 @@
       height: 20px;
       background: url(/img/external-link.svg) no-repeat 0 0;
       background-size: 20px 20px;
-      content: "";
+      content: '';
       position: relative;
       top: 0.15625rem;
       left: 0.125rem;

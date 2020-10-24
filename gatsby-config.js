@@ -109,6 +109,10 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // Embedded
+          {
+            resolve: 'gatsby-remark-embed-youtube',
+          },
           // Table of Content
           `gatsby-remark-autolink-headers`,
           // Syntax Highlight
@@ -145,6 +149,8 @@ module.exports = {
         ],
       },
     },
+    // Embedded
+    `gatsby-plugin-twitter`,
     // Font
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
