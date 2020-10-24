@@ -22,6 +22,12 @@ module.exports = {
         id: 'GTM-N9SLS2F',
       },
     },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-5013956882447566`,
+      },
+    },
     // develop
     `gatsby-plugin-lodash`,
     `gatsby-plugin-typescript`,
