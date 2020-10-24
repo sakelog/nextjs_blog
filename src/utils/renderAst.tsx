@@ -45,6 +45,14 @@ const RenderAst = new rehypeReact({
                 title={{ ...props }.title}
               />
             </Link>
+          ) : { ...props }.src.match(/.svg/) === null ? (
+            <img
+              src={{ ...props }.src}
+              alt={{ ...props }.alt}
+              title={{ ...props }.title}
+              style={{ ...props }.style}
+              className={{ ...props }.className}
+            />
           ) : (
             <img
               src={{ ...props }.src}
