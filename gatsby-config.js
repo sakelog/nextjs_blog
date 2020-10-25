@@ -102,6 +102,7 @@ module.exports = {
       options: {
         spaceId: process.env.CFL_SPACE_ID,
         accessToken: process.env.CFL_DELIVERY_API,
+        host: process.env.CFL_HOST,
       },
     },
     // markdown
