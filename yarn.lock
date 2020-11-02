@@ -2076,7 +2076,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash@^4.14.164", "@types/lodash@^4.14.92":
+"@types/lodash@^4.14.163", "@types/lodash@^4.14.92":
   version "4.14.164"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.164.tgz#52348bcf909ac7b4c1bcbeda5c23135176e5dfa0"
   integrity sha512-fXCEmONnrtbYUc5014avwBeMdhHHO8YJCkOBflUL9EoJBSKZ1dei+VO74fA7JkTHZ1GvZack2TyIw5U+1lT8jg==
@@ -6917,13 +6917,6 @@ gatsby-plugin-typescript@^2.4.25:
     "@babel/preset-typescript" "^7.10.4"
     "@babel/runtime" "^7.11.2"
     babel-plugin-remove-graphql-queries "^2.9.20"
-
-gatsby-plugin-utils@0.2.39:
-  version "0.2.39"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-0.2.39.tgz#aa0c5e9469977b476884d53fe97b28fd771f2a78"
-  integrity sha512-Ar6m9hjWodd4+AwHQZYBe08XGmYS1t5nghZdyKGaBcdMZRP3GGmoeyU7LH/bdkvJFf0dyoY1Me0oJV4ZNT6Abg==
-  dependencies:
-    joi "^17.2.1"
 
 gatsby-plugin-utils@^0.2.40:
   version "0.2.40"
