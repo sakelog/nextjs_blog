@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
 // color
 $primary: #54917f;
 $primary-light: lighten($primary, 12%);
@@ -14,22 +17,11 @@ $danger: lighten($accent, 28%);
 $font-color: $gray-darker;
 
 // Font
-$font-ss:
-    "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
-    sans-serif
-;
+$font-ss: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
+  Meiryo, sans-serif;
 $font-default: $font-ss;
 $font-hw: 'Architects Daughter', cursive;
 $font-logo: 'Fredericka the Great', cursive;
 
 // Position
-$positions : (
-    'top',
-    'bottom',
-    'left',
-    'right'
-) !default;
+$positions: ('top', 'bottom', 'left', 'right') !default;

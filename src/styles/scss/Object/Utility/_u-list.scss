@@ -5,9 +5,8 @@ ol {
   &.u-list--inline {
     display: flex;
     padding-left: 1rem;
+    list-style: none;
     li {
-      /*display: inline-block;
-      margin: auto 0.2rem;*/
       @include mq(md) {
         margin: auto 0.6rem;
       }
