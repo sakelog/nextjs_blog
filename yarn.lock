@@ -7151,7 +7151,6 @@ gatsby-source-contentful@^4.1.1:
     node-fetch "^2.6.1"
     progress "^2.0.3"
     qs "^6.9.4"
-
 gatsby-source-filesystem@^2.3.10, gatsby-source-filesystem@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.6.1.tgz#28529fadbcbdd61a4257c8561200bfc1a8d5556c"
