@@ -6784,7 +6784,7 @@ gatsby-cli@^2.12.114:
     yoga-layout-prebuilt "^1.9.6"
     yurnalist "^1.1.2"
 
-gatsby-core-utils@^1.3.23, gatsby-core-utils@^1.3.24, gatsby-core-utils@^1.5.0:
+gatsby-core-utils@^1.3.23, gatsby-core-utils@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.5.0.tgz#0834b561ab32b8b93db2ddb3ee695188f8d2eea9"
   integrity sha512-hCt44m7I9Kmra/iVJwrmHXK8WFK9I1JwXQZquIVZ/JaG8UgqroxW1wpsY7ColbHGMATOmp13Efqn02VNPnms5Q==
@@ -6865,12 +6865,12 @@ gatsby-plugin-google-tagmanager@^2.3.7:
   dependencies:
     "@babel/runtime" "^7.11.2"
 
-gatsby-plugin-lodash@^3.3.3:
-  version "3.3.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-lodash/-/gatsby-plugin-lodash-3.3.13.tgz#9c59d86528416d6fbdb596185f7ae7012e9ca01c"
-  integrity sha512-/my49PU5UAGItg3xr06fOD/uLdIRV8XJfJbnUkl9TBaabO1xQYXRnUVlXdPjFt9wvKeXDwTvlrdcHPqnV9JZ1g==
+gatsby-plugin-lodash@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-lodash/-/gatsby-plugin-lodash-3.5.0.tgz#54fde321e2530718fcd025ebd2204f1d81b87504"
+  integrity sha512-b/rHlwYQzpcxLIteE8y4TuYtOxg8wCvHw5EVaPo/5jT88gKeCwh1fQOvaDvtHBss2zLvEykNBF+lbJwfJANMbQ==
   dependencies:
-    "@babel/runtime" "^7.11.2"
+    "@babel/runtime" "^7.12.5"
     babel-plugin-lodash "^3.3.4"
     lodash-webpack-plugin "^0.11.5"
 
@@ -6933,7 +6933,7 @@ gatsby-plugin-react-helmet@^3.5.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-gatsby-plugin-sharp@^2.9.1:
+gatsby-plugin-sharp@^2.7.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.9.1.tgz#74556f75858a5d7271cb83418a9b116f0a3f0289"
   integrity sha512-Z96HoUk0gsP/6Ats5FF0na1YDECqUFSBUuFJBs0sZpSnNVmvozK4el+lBIB67eAQlHrSe55PqW/lqrq3zSXqMg==
@@ -7152,6 +7152,7 @@ gatsby-source-contentful@^4.1.1:
     node-fetch "^2.6.1"
     progress "^2.0.3"
     qs "^6.9.4"
+
 gatsby-source-filesystem@^2.3.10, gatsby-source-filesystem@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.6.1.tgz#28529fadbcbdd61a4257c8561200bfc1a8d5556c"
