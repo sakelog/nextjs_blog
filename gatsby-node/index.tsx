@@ -8,7 +8,6 @@ import {
   ContentfulPost,
   ContentfulPageConnection,
   ContentfulPage,
-  ContentfulCategoryConnection,
 } from '../types/graphql-types'
 
 type Result = {
