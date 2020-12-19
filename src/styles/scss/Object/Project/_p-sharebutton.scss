@@ -1,0 +1,22 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.p-sharebutton {
+  margin: 1rem auto;
+  padding: 1rem;
+
+  border-top: 1px dashed $gray;
+  border-bottom: 1px dashed $gray;
+
+  .p-sharebutton__title {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .p-sharebutton__copyurl {
+    background: $gray-dark;
+    color: $white;
+    margin: auto 1rem;
+    padding: 1rem;
+  }
+}

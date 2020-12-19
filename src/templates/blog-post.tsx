@@ -11,6 +11,7 @@ import Bio from '../components/bio'
 import BackToTopPage from '../components/back-to-top-page'
 import PostDate from '../components/post-date'
 import TagList from '../components/taglist'
+import ShareButton from '../components/sharebutton'
 
 // Utilities
 const kebabCase = require('lodash/kebabCase')
@@ -52,6 +53,7 @@ const BlogPost = ({ pathContext }: BlogPostTypes) => {
         </div>
         <TagList Tags={post.tags} />
       </div>
+      <ShareButton post={post} />
       <Bio />
       <hr />
       <PrevNext prev={prev} next={next} />
