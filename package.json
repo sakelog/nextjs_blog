@@ -28,7 +28,7 @@
     "gatsby-plugin-react-helmet": "^3.7.0",
     "gatsby-plugin-sharp": "^2.11.1",
     "gatsby-plugin-sitemap": "^2.9.0",
-    "gatsby-plugin-twitter": "^2.5.0",
+    "gatsby-plugin-twitter": "^2.7.0",
     "gatsby-plugin-typescript": "^2.9.0",
     "gatsby-remark-autolink-headers": "^2.3.16",
     "gatsby-remark-code-titles": "^1.1.0",
