@@ -7008,10 +7008,10 @@ gatsby-plugin-react-helmet@^3.5.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-gatsby-plugin-sharp@^2.7.1:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.11.0.tgz#92b4b6b4a79b2499f944aebe1dbcf79bd001edc3"
-  integrity sha512-euNpOvvFIExsPRPHe8SYA07Dy4KsgTlS6aspwlCIc4UvyVIBS7vf2iTUnfiOSZMJ4mB5EpN2qUZEkFf8ZeTjyw==
+gatsby-plugin-sharp@^2.11.1:
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.11.1.tgz#8fc2df2d12c9d8bef1c2aaa795e78e46259e405a"
+  integrity sha512-x+szZDBequnh8bCn/TAS4TYXybPFM/jcu9MwkV85M2tnBZwU9/1Y/XFQMV6pMfrkc5xASTqG0UR9wMSPQGBtUg==
   dependencies:
     "@babel/runtime" "^7.12.5"
     async "^3.2.0"
@@ -7248,28 +7248,7 @@ gatsby-source-filesystem@^2.3.10, gatsby-source-filesystem@^2.6.1:
     valid-url "^1.0.9"
     xstate "^4.13.0"
 
-gatsby-telemetry@^1.3.38:
-  version "1.3.38"
-  resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.3.38.tgz#1c6a81ac8cca7117c09577fa2f4c8dd12573c14e"
-  integrity sha512-8AoSNzVgrtPJ0Jgd+cPSuVGj2uBCXI2aJ2ANokOVjPbZO/Z+Z9hcOFdU+AkeBdZWCHaJaX0+qpE6KbgkwBoWPA==
-  dependencies:
-    "@babel/code-frame" "^7.10.4"
-    "@babel/runtime" "^7.11.2"
-    "@turist/fetch" "^7.1.7"
-    "@turist/time" "^0.0.1"
-    async-retry-ng "^2.0.1"
-    boxen "^4.2.0"
-    configstore "^5.0.1"
-    envinfo "^7.7.3"
-    fs-extra "^8.1.0"
-    gatsby-core-utils "^1.3.23"
-    git-up "^4.0.2"
-    is-docker "^2.1.1"
-    lodash "^4.17.20"
-    node-fetch "^2.6.1"
-    uuid "3.4.0"
-
-gatsby-telemetry@^1.7.0:
+gatsby-telemetry@^1.3.38, gatsby-telemetry@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.7.0.tgz#412950669e3c1e71ed2fbe4ba941178b0bb54536"
   integrity sha512-0hHskxnPV667snd6uSkZ32vKfBsv+9mFe0Pl3A9c9NC4HoKQlfmoluUTZr0nOjWdMMslz08XydzqxNdb6wB+oQ==
