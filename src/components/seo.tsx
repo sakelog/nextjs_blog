@@ -67,6 +67,10 @@ function SEO(title: string, description: string, imageFLG: boolean) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `viewport`,
+          content: `minimum-scale=1, initial-scale=1, width=device-width`,
+        },
       ]}
       defer={false}
     />
