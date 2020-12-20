@@ -10,13 +10,14 @@
 
 .p-article {
   h2 {
-    background: $primary-light;
-    color: $white;
+    border-top: 2px solid $primary-light;
+    border-bottom: 2px solid $primary-light;
+    color: $primary;
     padding: 1rem;
   }
   h3 {
-    color: $primary-light;
-    border-bottom: 1px solid $primary-light;
+    color: $gray-dark;
+    border-bottom: 3px double $gray;
     padding: 0.6rem 1rem;
   }
   blockquote {

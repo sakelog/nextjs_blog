@@ -45,7 +45,10 @@ const BlogPost = ({ pathContext }: BlogPostTypes) => {
 
         <div className="c-TOC">
           <h2 className="u-align--center">目次</h2>
-          <div dangerouslySetInnerHTML={{ __html: bodyTableOfContents }} />
+          <div
+            className="c-TOC__item"
+            dangerouslySetInnerHTML={{ __html: bodyTableOfContents }}
+          />
         </div>
 
         <div>

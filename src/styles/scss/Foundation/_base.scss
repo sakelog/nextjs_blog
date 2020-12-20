@@ -10,8 +10,8 @@ body {
   letter-spacing: 0.06rem;
   line-height: 1.5;
   color: $font-color;
-  @include mq(lg){
-    font-size:1.8rem;
+  @include mq(lg) {
+    font-size: 1.8rem;
     letter-spacing: 0.08rem;
     line-height: 1.8;
   }
@@ -19,10 +19,11 @@ body {
 p {
   margin: 1.8rem auto;
 }
-ul,ol {
+ul,
+ol {
   margin: 0.6rem;
   @include mq(md) {
-      margin: 1rem;
+    margin: 1rem;
   }
   padding-left: 2rem;
   padding-right: 1rem;
@@ -30,29 +31,28 @@ ul,ol {
   padding-bottom: 1rem;
 
   li {
-      padding-left: 0.2rem;
-      padding-top: 0.2rem;
-      padding-bottom: 0.2rem;
-      line-height: 2;
+    padding-left: 0.2rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    line-height: 2;
   }
 }
 h1 {
   font-size: 2.8rem;
-  @include mq(md){
-      font-size: 3.6rem;
+  @include mq(md) {
+    font-size: 3.6rem;
   }
   font-weight: normal;
   width: 90%;
   margin: 3.2rem auto;
-  //text-align: center;
 }
 h2 {
-  font-size: 2.0rem;
-  @include mq(md){
+  font-size: 2rem;
+  @include mq(md) {
     font-size: 2.4rem;
   }
   font-weight: normal;
-  margin: 2.0rem auto;
+  margin: 2rem auto;
 }
 h3 {
   font-size: 1.8rem;
@@ -63,22 +63,25 @@ h3 {
   margin: 1.4rem auto;
 }
 
-a{
+a {
   color: $primary-light;
   font-weight: bold;
   &:hover {
-      color: $primary-lighter;
-      text-decoration: none;
+    color: $primary-lighter;
+    text-decoration: none;
   }
   &:active {
-      color: $primary;
+    color: $primary;
   }
 }
 hr {
   border: none;
   border-top: 1px solid $gray;
 }
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   margin: 0;
   padding: 0;
   background: none;
