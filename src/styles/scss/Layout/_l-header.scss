@@ -1,6 +1,23 @@
 @use '../Foundation/variables' as *;
 @use '../Foundation/mixin' as *;
 
+@keyframes open-menu {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes close-menu {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 .l-header {
   position: sticky;
   top: 0;
@@ -8,13 +25,12 @@
 
   .l-header__nav {
     position: relative;
-    background: $primary;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @include mq(md) {
+    background: $white;
+    @include cm(light) {
+      border-bottom: 1px solid $gray;
+    }
+    @include cm(dark) {
+      background: $primary;
       a {
         color: $white;
         &:hover {
@@ -22,9 +38,15 @@
         }
       }
     }
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .l-header__nav--menuIcon {
       font-size: 3rem;
+      display: flex;
+      align-items: center;
       @include mq(md) {
         display: none;
       }
@@ -33,12 +55,8 @@
       font-family: $font-logo;
       font-size: 2rem;
       a {
-        color: $white;
         text-decoration: none;
         font-weight: normal;
-        &:hover {
-          color: $primary-light;
-        }
       }
     }
     .l-header__nav__main {
@@ -47,13 +65,13 @@
       align-items: center;
       min-width: 20rem;
       width: 100%;
-      color: $white;
       @include mq(md) {
         width: auto;
       }
     }
     .l-header__nav__drawer {
       z-index: 1;
+      display: none;
       background: $white;
       height: 100vh;
       min-width: 60%;
@@ -65,18 +83,31 @@
       left: 0;
       overflow-y: auto;
       font-size: 1.4rem;
-      border: 1px solid $gray;
+      @include cm(light) {
+        border: 1px solid $gray;
+      }
+      @include cm(dark) {
+        background: $primary;
+      }
+
+      @include mq(md) {
+        display: flex;
+      }
 
       &.l-header__nav__darwer--hide {
-        display: none;
+        display: block;
+        animation: close-menu 0.3s forwards;
         @include mq(md) {
           display: flex;
+          animation: none;
         }
       }
       &.l-header__nav__darwer--show {
         display: block;
+        animation: open-menu 0.3s forwards;
         @include mq(md) {
           display: flex;
+          animation: none;
         }
       }
 
@@ -130,12 +161,16 @@
         }
       }
       .l-header__nav__drawer__item {
-        .c-icon {
-          padding: 2rem;
-          border: 2px solid $primary-light;
-          @include mq(md) {
-            padding: inherit;
-            border: none;
+        .u-list--inline {
+          margin: 0 auto;
+          .c-icon {
+            padding: 2rem;
+            border: 2px solid $primary-light;
+            @include mq(md) {
+              padding: inherit;
+              border: none;
+              font-size: 2rem;
+            }
           }
         }
       }

@@ -23,9 +23,7 @@ const Header = () => {
   )
   const SiteTitle = data.site.siteMetadata.title
 
-  const [navMenuShow, setNavMenuShow] = useState<String>(
-    'l-header__nav__darwer--hide'
-  )
+  const [navMenuShow, setNavMenuShow] = useState<String>('')
 
   const handleChangeNavMenu_Show = (): void => {
     setNavMenuShow('l-header__nav__darwer--show')

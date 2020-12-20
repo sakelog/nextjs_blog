@@ -2,19 +2,21 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');*/
 
 // color
-$primary: #54917f;
+$primary: #bd6856;
 $primary-light: lighten($primary, 12%);
 $primary-lighter: lighten($primary-light, 24%);
-$accent: #e95464;
+$accent: #57acbd;
 $gray: #dddddd;
 $gray-light: lighten($gray, 12%);
 $gray-dark: darken($gray, 48%);
 $gray-darker: darken($gray-dark, 18%);
 $white: #ffffff;
+$black: #000000;
 $note: #ffffe5;
 $danger: lighten($accent, 28%);
 
 $font-color: $gray-darker;
+$font-color-light: $gray-light;
 
 // Font
 $font-ss: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',

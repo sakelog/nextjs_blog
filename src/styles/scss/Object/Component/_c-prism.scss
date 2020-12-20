@@ -1,9 +1,9 @@
-@use '../../../../../node_modules/prismjs/themes/prism.css';
+@use '../../../../../node_modules/prismjs/themes/prism-tomorrow.css';
 @use '../../../../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 @use '../../Foundation/variables' as *;
 
-$prism-theme-background: #f5f2f0;
+$prism-theme-background: #2d2d2d;
 $prism-theme-highlight: rgba($accent, 0.2);
 
 .gatsby-highlight {
@@ -24,7 +24,7 @@ $prism-theme-highlight: rgba($accent, 0.2);
 .gatsby-code-title {
   background: $prism-theme-background;
   opacity: 0.8;
-  color: $gray-dark;
+  color: $white;
   font-size: 1.2rem;
   padding: 0.4rem 1.4rem;
   border-radius: 8px 8px 0 0;

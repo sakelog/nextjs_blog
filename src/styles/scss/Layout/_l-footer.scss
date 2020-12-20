@@ -10,6 +10,9 @@
   align-items: center;
   margin-top: auto;
   background: $gray-light;
+  @include cm(dark) {
+    background: $gray-dark;
+  }
   overflow: hidden;
   font-size: 1.2rem;
 
