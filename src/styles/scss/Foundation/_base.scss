@@ -10,6 +10,10 @@ body {
   letter-spacing: 0.06rem;
   line-height: 1.5;
   color: $font-color;
+  @include cm(dark) {
+    background: $gray-darker;
+    color: $font-color-light;
+  }
   @include mq(lg) {
     font-size: 1.8rem;
     letter-spacing: 0.08rem;

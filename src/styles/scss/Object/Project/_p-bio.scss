@@ -3,7 +3,12 @@
 
 .p-bio {
   background: $gray-light;
-  border: 1px solid $gray;
+  @include cm(light) {
+    border: 1px solid $gray;
+  }
+  @include cm(dark) {
+    background: $gray-dark;
+  }
 
   margin: 4rem auto;
   padding: 1rem;
@@ -41,8 +46,11 @@
   .p-bio__authorName {
     font-size: 3rem;
     font-family: $font-hw;
-    color: $gray-dark;
     margin: 0 auto;
+    color: $gray-dark;
+    @include cm(dark) {
+      color: $white;
+    }
   }
   .p-bio__image {
     border-radius: 50%;

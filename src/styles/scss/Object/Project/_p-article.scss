@@ -14,10 +14,16 @@
     border-bottom: 2px solid $primary-light;
     color: $primary;
     padding: 1rem;
+    @include cm(dark) {
+      color: $primary-light;
+    }
   }
   h3 {
-    color: $gray-dark;
     border-bottom: 3px double $gray;
+    color: $gray-dark;
+    @include cm(dark) {
+      color: $gray-light;
+    }
     padding: 0.6rem 1rem;
   }
   blockquote {

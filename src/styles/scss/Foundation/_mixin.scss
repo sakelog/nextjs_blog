@@ -11,3 +11,15 @@ $breakpoints: (
     @content;
   }
 }
+
+// colorMode
+$colormodes: (
+  'light': '(prefers-color-scheme: light)',
+  'dark': '(prefers-color-scheme: dark)',
+) !default;
+
+@mixin cm($colormode) {
+  @media #{map-get($colormodes, $colormode)} {
+    @content;
+  }
+}
