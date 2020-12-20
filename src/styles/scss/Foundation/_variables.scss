@@ -2,10 +2,10 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');*/
 
 // color
-$primary: #bd6856;
+$primary: #54917f;
 $primary-light: lighten($primary, 12%);
 $primary-lighter: lighten($primary-light, 24%);
-$accent: #57acbd;
+$accent: invert($primary);
 $gray: #dddddd;
 $gray-light: lighten($gray, 12%);
 $gray-dark: darken($gray, 48%);
