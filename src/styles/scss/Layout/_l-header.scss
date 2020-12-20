@@ -56,7 +56,8 @@
       z-index: 1;
       background: $white;
       height: 100vh;
-      width: 60%;
+      min-width: 60%;
+      width: auto;
       margin: 0;
       padding: 2rem 4rem;
       position: fixed;
