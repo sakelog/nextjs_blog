@@ -44,11 +44,17 @@ const HeaderCatList = () => {
       }
     })
   })
-  const categoryLinks = hasPostCategorys.map((hasPostCategory,index) => {
+  const categoryLinks = hasPostCategorys.map((hasPostCategory, index) => {
     const categoryPath = `/category/${_.kebabCase(hasPostCategory.slug)}/`
-    return <Link to = {categoryPath} key = {index}>{hasPostCategory.name}</Link>
+    return (
+      <li>
+        <Link to={categoryPath} key={index}>
+          {hasPostCategory.name}
+        </Link>
+      </li>
+    )
   })
-  return <div className="l-header__nav__drawer__content__menu--category">{categoryLinks}</div>
+  return <ul className="l-header__nav__drawer--list">{categoryLinks}</ul>
 }
 
 export default HeaderCatList

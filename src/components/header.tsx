@@ -1,11 +1,13 @@
 import * as React from 'react'
+import { useState } from 'react'
 
 import { Link, graphql, useStaticQuery } from 'gatsby'
 
 //Components
 import HeaderCatList from './header-cat-list'
+import SocialIcon from './social-icon'
 
-import { FiPlus, FiMinus } from 'react-icons/fi'
+import { MdMenu, MdClose } from 'react-icons/md'
 
 const Header = () => {
   const data = useStaticQuery(
@@ -21,7 +23,41 @@ const Header = () => {
   )
   const SiteTitle = data.site.siteMetadata.title
 
-  const [isChecked, setIsChecked] = React.useState(false)
+  const [navMenuShow, setNavMenuShow] = useState<String>(
+    'l-header__nav__darwer--hide'
+  )
+
+  const handleChangeNavMenu_Show = (): void => {
+    setNavMenuShow('l-header__nav__darwer--show')
+  }
+  const handleChangeNavMenu_Hide = (): void => {
+    setNavMenuShow('l-header__nav__darwer--hide')
+  }
+
+  const pageList = (
+    <ul className="l-header__nav__drawer--list">
+      <li>
+        <Link to="/tags/" className="nav-link">
+          タグ一覧
+        </Link>
+      </li>
+      <li>
+        <Link to="/about_this_site/" className="nav-link">
+          このサイトについて
+        </Link>
+      </li>
+      <li>
+        <Link to="/privacy/" className="nav-link">
+          プライバシーポリシー
+        </Link>
+      </li>
+      <li>
+        <Link to="/contact/" className="nav-link">
+          お問い合わせ
+        </Link>
+      </li>
+    </ul>
+  )
 
   return (
     <header className="l-header">
@@ -30,36 +66,35 @@ const Header = () => {
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="l-header__nav__title">
-          <Link to="/" className="l-header__nav__title__inner">
-            <span>{SiteTitle}</span>
-          </Link>
-
-          <label
-            className="l-header__nav__title__menubutton"
-            onClick={() => setIsChecked(!isChecked)}
+        <div className="l-header__nav__main">
+          <span
+            className="l-header__nav--menuIcon"
+            onClick={handleChangeNavMenu_Show}
           >
-            <span>
-              {isChecked ? (
-                <FiMinus className="l-header__nav__title__menubutton__icon--cheked" />
-              ) : (
-                <FiPlus />
-              )}
-            </span>
-          </label>
+            <MdMenu />
+          </span>
+          <span className="l-header__nav--title">
+            <Link to="/">{SiteTitle}</Link>
+          </span>
         </div>
-
-        <div className="l-header__nav__drawer">
-          <input
-            id="l-header-nav__checkbox"
-            type="checkbox"
-            className="u-display--none is-checked"
-            checked={isChecked}
-            readOnly
-          />
-
-          <div className="l-header__nav__drawer__content">
+        <div className={`l-header__nav__drawer ${navMenuShow}`}>
+          <span
+            className="l-header__nav--menuIcon"
+            onClick={handleChangeNavMenu_Hide}
+          >
+            <MdClose />
+          </span>
+          <div className="l-header__nav__drawer__item">
+            <h2>カテゴリー一覧</h2>
             <HeaderCatList />
+          </div>
+          <div className="l-header__nav__drawer__item">
+            <h2>ページ一覧</h2>
+            {pageList}
+          </div>
+          <div className="l-header__nav__drawer__item">
+            <h2>連絡</h2>
+            <SocialIcon />
           </div>
         </div>
       </nav>

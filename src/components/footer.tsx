@@ -27,36 +27,7 @@ const Footer = () => {
       : startYear + '-' + nowYear + SiteTitle
   return (
     <footer className="l-footer">
-      <div>
-        <ul>
-          <li>
-            <Link to="/tags/" className="nav-link">
-              タグ一覧
-            </Link>
-          </li>
-          <li>
-            <Link to="/about_this_site/" className="nav-link">
-              このサイトについて
-            </Link>
-          </li>
-          <li>
-            <Link to="/privacy/" className="nav-link">
-              プライバシーポリシー
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact/" className="nav-link">
-              お問い合わせ
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <SocialIcon />
-      </div>
-      <div>
-        <p>&copy;{copytext}</p>
-      </div>
+      <p>&copy;{copytext}</p>
     </footer>
   )
 }
