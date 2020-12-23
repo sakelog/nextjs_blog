@@ -15,7 +15,7 @@
     "serve": "gatsby serve -H 0.0.0.0"
   },
   "dependencies": {
-    "contentful": "^8.1.4",
+    "contentful": "^8.1.5",
     "gatsby": "^2.29.1",
     "gatsby-image": "^2.8.0",
     "gatsby-plugin-catch-links": "^2.7.0",
