@@ -1088,10 +1088,10 @@
     ts-node "^9"
     tslib "^2"
 
-"@graphql-codegen/cli@^1.19.4":
-  version "1.19.4"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/cli/-/cli-1.19.4.tgz#16e5caaa46ee159cbb01e2a2699203f8f25faac2"
-  integrity sha512-PN1xgaXZaTTEPhBfQkIRK82RzrzY8Pr+tfCqOtibeJMed0mtIJ5gSQfollRbtZ0/t7ZEmYCxojqQiVSbKzXDMw==
+"@graphql-codegen/cli@^1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/cli/-/cli-1.20.0.tgz#e1bb62fce07caaf1395ca6e94ffc0f2ba1f57938"
+  integrity sha512-5pLtZoaqEmEui6PR7IArmD23VLD3++UQby6iNe4NFG4eMcRai2raIM0E4a/MSn7SjyfSRguekYMMC5JKS1VgQw==
   dependencies:
     "@graphql-codegen/core" "1.17.9"
     "@graphql-codegen/plugin-helpers" "^1.18.2"
@@ -1104,9 +1104,9 @@
     "@graphql-tools/load" "^6"
     "@graphql-tools/prisma-loader" "^6"
     "@graphql-tools/url-loader" "^6"
-    "@graphql-tools/utils" "^6"
+    "@graphql-tools/utils" "^7.0.0"
     ansi-escapes "^4.3.1"
-    camel-case "^4.1.1"
+    camel-case "^4.1.2"
     chalk "^4.1.0"
     chokidar "^3.4.3"
     common-tags "^1.8.0"
@@ -1133,9 +1133,10 @@
     string-env-interpolation "^1.0.1"
     ts-log "^2.2.3"
     tslib "~2.0.1"
-    upper-case "^2.0.1"
+    upper-case "^2.0.2"
     valid-url "^1.0.9"
     wrap-ansi "^7.0.0"
+    yaml "^1.10.0"
     yargs "^16.1.1"
 
 "@graphql-codegen/core@1.17.9":
@@ -1165,14 +1166,14 @@
     tslib "~2.0.1"
     upper-case "2.0.1"
 
-"@graphql-codegen/typescript-operations@^1.15.1":
-  version "1.17.12"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-operations/-/typescript-operations-1.17.12.tgz#25e0f0ede1bcd165196f0c161286d745395c7768"
-  integrity sha512-UXe/O3kNAlLptURuripAhK8n/Gf6FthL7xr6sG4vpuLVwrWjXu/KlS7+TP+UvlI9OH2LICm0KHqA0xoFCjNbMg==
+"@graphql-codegen/typescript-operations@^1.17.13":
+  version "1.17.13"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-operations/-/typescript-operations-1.17.13.tgz#a5b08c1573b9507ca5a9e66e795aecc40ddc5305"
+  integrity sha512-Wm/S4pmPy+KPvFVpygNwC4pd9zKtGIwnS+2rlMUBZVSpv4fxjX2YDvYHP/gucck+SiS0RRxB7hW65bTwCns46g==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^1.18.2"
     "@graphql-codegen/typescript" "^1.18.1"
-    "@graphql-codegen/visitor-plugin-common" "^1.17.20"
+    "@graphql-codegen/visitor-plugin-common" "^1.17.22"
     auto-bind "~4.0.0"
     tslib "~2.0.1"
 
@@ -1186,10 +1187,10 @@
     auto-bind "~4.0.0"
     tslib "~2.0.1"
 
-"@graphql-codegen/visitor-plugin-common@^1.17.20", "@graphql-codegen/visitor-plugin-common@^1.17.21":
-  version "1.17.21"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.17.21.tgz#e47a5623392bcdb89d5af2484798a2fd9a59df8c"
-  integrity sha512-rhdJdj+4DAMgMSBlgkvfOMw65L46sAtYb7G/n9ucc9uJGUbiIcgvS/wpoQ/gxz2eUaNfcoFmjVLm+dkTM/XwqA==
+"@graphql-codegen/visitor-plugin-common@^1.17.21", "@graphql-codegen/visitor-plugin-common@^1.17.22":
+  version "1.17.22"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.17.22.tgz#5321077ea54b423397b659406a2b60d1a3b44156"
+  integrity sha512-5+fkcET7ftqexyEkGWvmalL+RTi1ApfAt9k9FEmM2WdRXi/uYwwYb+qHwIoaMVD0pXKeUAB5+Qgs9+Md4VIM7Q==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^1.18.2"
     "@graphql-tools/optimize" "^1.0.1"
@@ -1415,22 +1416,13 @@
     camel-case "4.1.1"
     tslib "~2.0.1"
 
-"@graphql-tools/utils@^7.0.0", "@graphql-tools/utils@^7.0.2", "@graphql-tools/utils@^7.1.0":
+"@graphql-tools/utils@^7.0.0", "@graphql-tools/utils@^7.0.1", "@graphql-tools/utils@^7.0.2", "@graphql-tools/utils@^7.1.0":
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-7.1.6.tgz#307e99f9a1a39ee3202ccdf8ce7528d4fe1a6103"
   integrity sha512-vupjLA3lobKaqFsQJoPqaUhZ525F+SbqhAtZl/mug96EAjjGMi1KpZMqIMP+eyYlVQFgyV1Mej9LALrGU1c9SQ==
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     camel-case "4.1.2"
-    tslib "~2.0.1"
-
-"@graphql-tools/utils@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-7.0.1.tgz#8bf54676de65878d2b1ba34fcd58ef4d8ae0b589"
-  integrity sha512-DsV7XfEJE6rPQ3Ysusf28MPun/YL+pc7L0hiBOph/F8+/H1pW1ndRqRrnmX3Owrq9xW1EHSw2WU8qvdjn8kOjw==
-  dependencies:
-    "@ardatan/aggregate-error" "0.0.6"
-    camel-case "4.1.1"
     tslib "~2.0.1"
 
 "@graphql-tools/wrap@^7.0.0":
@@ -3793,7 +3785,7 @@ callsites@^3.0.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-camel-case@4.1.1, camel-case@^4.1.1:
+camel-case@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-4.1.1.tgz#1fc41c854f00e2f7d0139dfeba1542d6896fe547"
   integrity sha512-7fa2WcG4fYFkclIvEmxBbTvmibwF2/agfEBc6q3lOpVu0A13ltLsA+Hr/8Hp6kp5f+G7hKi6t8lys6XxP+1K6Q==
@@ -3801,7 +3793,7 @@ camel-case@4.1.1, camel-case@^4.1.1:
     pascal-case "^3.1.1"
     tslib "^1.10.0"
 
-camel-case@4.1.2:
+camel-case@4.1.2, camel-case@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-4.1.2.tgz#9728072a954f805228225a6deea6b38461e1bd5a"
   integrity sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==
@@ -4401,10 +4393,10 @@ contentful@^7.14.12:
     fast-copy "^2.1.0"
     json-stringify-safe "^5.0.1"
 
-contentful@^8.1.4:
-  version "8.1.4"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-8.1.4.tgz#c24c320f9cc8a2320751d13e7b4c3dd055f688fa"
-  integrity sha512-uaeIJjyWYk1q9fI3FBDYcHhwWlUhq8QEkXFLys/UmqDAfp79G8oS+vaOKflh4oDBFariJdFsjQUcfwvXxvsZnw==
+contentful@^8.1.5:
+  version "8.1.5"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-8.1.5.tgz#920f6cc8ee0603c93e627a8a6d4e594d9e1f3f2c"
+  integrity sha512-ZYAd18XR3HW17Uc9OjTHDMg+PyevMKHUB6D6olRc4z7OkzcpmslUzsHvUIl32SI2i8JDQUsZD+1B0e/QGM3iAg==
   dependencies:
     axios "^0.21.0"
     contentful-resolve-response "^1.3.0"
@@ -6924,25 +6916,25 @@ gatsby-plugin-lodash@^3.7.0:
     babel-plugin-lodash "^3.3.4"
     lodash-webpack-plugin "^0.11.5"
 
-gatsby-plugin-manifest@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.9.0.tgz#81233217670c3b9eba1a2559a971cd6b4429a12c"
-  integrity sha512-bOXcix1ZfnwDY66NYmySYFGLCi09wq5Hsci1eWMhGwsFnRxI0X2pAzd3NoG6iosvYyuPnDovmAxgVWG0qcs7Lw==
+gatsby-plugin-manifest@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.9.1.tgz#963bd237541397738ad8d66fcd15e7c46d1b1d95"
+  integrity sha512-SkZSAIjSp31VxstFg4y7xks9w8lxhcxjzKeChxnjeVYbAFWhgLEvo8fJ9aI3yXvFRKCX1+kj5QCaMbM9eq2pMA==
   dependencies:
     "@babel/runtime" "^7.12.5"
-    gatsby-core-utils "^1.7.0"
+    gatsby-core-utils "^1.7.1"
     gatsby-plugin-utils "^0.6.0"
     semver "^7.3.2"
     sharp "^0.26.3"
 
-gatsby-plugin-offline@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.7.0.tgz#f4ca6c142695a099fdf3b758684bcbc5d0ad0181"
-  integrity sha512-mhwR4E/59xUCRv9TrEJLf0l8yI/+o8NNtVfQllRsqj64mBlg6x2KGyWjdPea2W0ictd4gi6HnMT/cRa1brjKZQ==
+gatsby-plugin-offline@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.7.1.tgz#ecf3f8b238dd3e63261c38bfdd672217cfc3cb22"
+  integrity sha512-PRx44UwdvGF0uxTZKdTn8K4YTelrIAHeOa/OigTM4QROZBDIfmpvZ9o92uE8oMtN9rPu7aG9tv8q8CQpzx/RYw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     cheerio "^1.0.0-rc.3"
-    gatsby-core-utils "^1.7.0"
+    gatsby-core-utils "^1.7.1"
     glob "^7.1.6"
     idb-keyval "^3.2.0"
     lodash "^4.17.20"
@@ -15257,7 +15249,7 @@ upper-case@2.0.1:
   dependencies:
     tslib "^1.10.0"
 
-upper-case@^2.0.1:
+upper-case@^2.0.1, upper-case@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/upper-case/-/upper-case-2.0.2.tgz#d89810823faab1df1549b7d97a76f8662bae6f7a"
   integrity sha512-KgdgDGJt2TpuwBUIjgG6lzw2GWFRCW9Qkfkiv0DxqHHLYJHmtmdUIKcZd8rHgFSjopVTlw6ggzCm1b8MFQwikg==
