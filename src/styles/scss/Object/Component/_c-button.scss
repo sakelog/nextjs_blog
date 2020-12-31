@@ -7,8 +7,8 @@
   margin: 1rem 0.4rem;
   text-decoration: none;
 
-  &:hover{
-      text-decoration: none;
+  &:hover {
+    text-decoration: none;
   }
 
   outline: none;
@@ -19,14 +19,14 @@
   background: $primary;
   color: $gray-light;
   border: none;
-  
-  &::focus{
-      outline: none;
+
+  &::focus {
+    outline: none;
   }
 
-  &:hover{
-      background: $primary-light;
-      color: $white;
+  &:hover {
+    background: $primary-light;
+    color: $white;
   }
 }
 
@@ -40,8 +40,15 @@
   border-color: $gray-dark;
   color: $gray-dark;
 
-  &:hover{
-      background: $gray-dark;
-      color: $white;
+  &:hover {
+    background: $gray-dark;
+    color: $white;
+  }
+  @include cm(dark) {
+    border-color: invert($gray-dark);
+    color: invert($gray-dark);
+    &:hover {
+      border-color: $gray-dark;
+    }
   }
 }
