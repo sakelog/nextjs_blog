@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import _ from 'lodash';
+import { getCategoryPath } from '../lib/getCategoryPath';
 
 const PostList: PostList.func = (props) => {
   const posts = props.data.posts.nodes;
 
   const postListTag = posts.map((post) => {
-    const categoryPath = `/category/${_.kebabCase(post.category.slug)}/`;
+    const categoryPath = getCategoryPath(post.category.slug);
     return (
       <div key={post.slug} className="u-border--bottom u-space--pad--2">
         {/*<PostDate postdate={node.date} update={node.update} />*/}
