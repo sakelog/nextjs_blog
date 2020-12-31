@@ -1,4 +1,5 @@
 import { GatsbyNode } from 'gatsby';
+import { getCategoryPath } from '../src/lib/getCategoryPath';
 
 declare namespace Post {
   type pathQuery = {
@@ -17,6 +18,19 @@ declare namespace Post {
             slug: string;
             title: string;
           };
+        }
+      ];
+    };
+  };
+}
+
+declare namespace Category {
+  type pathQuery = {
+    data: {
+      group: [
+        {
+          fieldValue: string;
+          totalCount: number;
         }
       ];
     };
@@ -43,6 +57,16 @@ const postQuery = `query {
     }
   }
 }`;
+
+const categoryQuery = `query{
+  data: allContentfulPost {
+    group(field: category___slug) {
+      fieldValue
+      totalCount
+    }
+  }
+}
+`;
 
 export const createPages: GatsbyNode['createPages'] = async ({
   actions: { createPage },
@@ -84,19 +108,35 @@ export const createPages: GatsbyNode['createPages'] = async ({
       },
     });
   });
-  /*
-  // Contentful Post
-  posts.map((post) => {
-    const curPost = post.node;
-    const slug = curPost.slug;
-    createPage({
-      path: slug,
-      component: require.resolve(`../src/templates/post.tsx`),
-      context: {
-        slug: 'test',
-      },
+  // post---------------------------------------------------------------------end
+  // category-----------------------------------------------------------------start
+  const { data: categoryGroupQuery } = await graphql<Category.pathQuery>(
+    categoryQuery
+  );
+  console.log(categoryGroupQuery.data.group);
+  const categorys = categoryGroupQuery.data.group;
+  const categoryPerPage = 10;
+
+  categorys.map((category) => {
+    const categoryNumPages = Math.ceil(category.totalCount / categoryPerPage);
+    const categoryPathBase = category.fieldValue
+      ? getCategoryPath(category.fieldValue)
+      : '';
+
+    Array.from({ length: categoryNumPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? categoryPathBase : categoryPathBase + (i + 1),
+        component: require.resolve(`../src/templates/categoryPages.tsx`),
+        context: {
+          limit: categoryPerPage,
+          skip: i * categoryPerPage,
+          numPages: categoryNumPages,
+          currentPage: i + 1,
+          slug: category.fieldValue,
+          pathBase: categoryPathBase,
+        },
+      });
     });
   });
-  */
-  // post---------------------------------------------------------------------end
+  // category----------------------------------------------------------------end
 };
