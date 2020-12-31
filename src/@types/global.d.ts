@@ -71,28 +71,41 @@ declare namespace Post {
   declare type func = (props:props) => JSX.Element
 }
 
-{/*
-declare namespace Post {
+declare namespace Category {
   declare type props = {
     pageContext: {
-      slug:string;
-      post: {
-        slug: string;
-        title: string;
-      }
-      previous: {
-        slug: string;
-        title: string;
-      }
-      next: {
-        slug: string;
-        title: string;
-      }
+      limit: number;
+      skip: number;
+      numPages: number;
+      currentPage: number;
+      slug: string;
+      pathBase: string;
     }
     data: {
-
+      category: {
+        slug: string;
+        name: string;
+      }
+      posts: {
+        totalCount: number;
+        nodes: [
+          {
+            slug:string;
+            title: string;
+            description: string;
+            date: string;
+            update: sting;
+            tags: [
+              {
+                name: string;
+                slug: string;
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 
-  declare type func = (props:props) => JSX.Element
-*/}
+  declare type func = (props:props) => JSX.Element;
+}
