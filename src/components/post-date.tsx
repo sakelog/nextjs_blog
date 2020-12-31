@@ -1,27 +1,25 @@
 import * as React from 'react'
-import * as moment from 'moment'
+//import * as moment from 'moment'
+import { format } from 'date-fns'
 
 // Icons
 import { FiCalendar, FiRefreshCw } from 'react-icons/fi'
-
 interface PostDateType {
   postdate: string
   update: string
 }
 
 const PostDate = ({ postdate, update }: PostDateType) => {
-  var validUpdateCheck = moment(update, 'YYYY年M月D日').isValid()
-
   return (
     <ul className="c-post-date">
       <li className="c-post-date__date-wrapper">
         <FiCalendar />
-        <span className="c-post-date__date">{moment(postdate).format('YYYY年M月D日')}</span>
+        <span className="c-post-date__date">{getFormatDate(postdate)}</span>
       </li>
-      {validUpdateCheck === true && (
+      {update && (
         <li className="c-post-date__date-wrapper">
           <FiRefreshCw />
-          <span className="c-post-date__date">{moment(update).format('YYYY年M月D日')}</span>
+          <span className="c-post-date__date">{getFormatDate(update)}</span>
         </li>
       )}
     </ul>
@@ -29,3 +27,10 @@ const PostDate = ({ postdate, update }: PostDateType) => {
 }
 
 export default PostDate
+
+function getFormatDate(date: string) {
+  let formatDate: string
+  formatDate = format(new Date(date), 'yyyy年M月d日')
+
+  return formatDate
+}
