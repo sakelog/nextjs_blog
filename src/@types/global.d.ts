@@ -33,3 +33,66 @@ declare namespace PostList {
 
   declare type func = (props:props) => JSX.Element
 }
+
+declare namespace Post {
+  declare type props = {
+    pageContext: {
+      slug:string;
+      post: {
+        slug: string;
+        title: string;
+      }
+      previous: {
+        slug: string;
+        title: string;
+      }
+      next: {
+        slug: string;
+        title: string;
+      }
+    }
+    data: {
+      post: {
+        title: string;
+        category: {
+          name: string;
+          slug: string;
+        }
+        body: {
+          childMarkdownRemark: {
+            htmlAst: [];
+            tableOfContents: any;
+          }
+        }
+      }
+    }
+  }
+
+  declare type func = (props:props) => JSX.Element
+}
+
+{/*
+declare namespace Post {
+  declare type props = {
+    pageContext: {
+      slug:string;
+      post: {
+        slug: string;
+        title: string;
+      }
+      previous: {
+        slug: string;
+        title: string;
+      }
+      next: {
+        slug: string;
+        title: string;
+      }
+    }
+    data: {
+
+    }
+  }
+
+  declare type func = (props:props) => JSX.Element
+*/}
