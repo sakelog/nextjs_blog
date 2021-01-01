@@ -80,13 +80,18 @@ declare namespace Category {
       currentPage: number;
       slug: string;
       pathBase: string;
+      type: string;
     }
     data: {
       category: {
         slug: string;
         name: string;
       }
-      posts: {
+      tags: {
+        slug: string;
+        name: string;
+      }
+      catPosts: {
         totalCount: number;
         nodes: [
           {
@@ -104,8 +109,54 @@ declare namespace Category {
           }
         ]
       }
+      tagsPosts: {
+        totalCount: number;
+        nodes: [
+          {
+            slug:string;
+            title: string;
+            description: string;
+            date: string;
+            update: sting;
+            category: {
+              name: string;
+              slug: string;
+            }
+          }
+        ]
+      }
     }
   }
 
   declare type func = (props:props) => JSX.Element;
+}
+
+declare namespace Page {
+  declare type props = {
+    pageContext : {
+      slug: string;
+      page: {
+        slug: string;
+        title: string;
+      }
+    }
+    data : {
+      page: {
+        title
+        date
+        update
+        description
+        body : {
+          childMarkdownRemark :{
+            htmlAst: []
+          }
+        }
+      }
+    }
+  }
+
+  declare type func = (props:props) => JSX.Element
+}
+
+declare namespace MyLib {
 }

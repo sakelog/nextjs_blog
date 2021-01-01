@@ -1,22 +1,21 @@
-import * as React from 'react'
-import { pageContext } from '../../gatsby-node'
+import * as React from 'react';
+import { graphql } from 'gatsby';
 
 // Components
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import RenderAst from '../utils/renderAst'
-import BackToTopPage from '../components/back-to-top-page'
+/*
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import RenderAst from '../utils/renderAst';
+import BackToTopPage from '../components/back-to-top-page';
+*/
 
-type pageTypes = {
-  pathContext: pageContext
-}
+const Page: Page.func = (props) => {
+  const page = props.data.page;
 
-const Page = ({ pathContext }: pageTypes) => {
-  const page = pathContext.page
+  const description = page.description;
 
-  const description = page.description
-
-  return (
+  {
+    /*
     <Layout>
       {SEO(page.title, description, false)}
       <div className="p-article">
@@ -28,7 +27,34 @@ const Page = ({ pathContext }: pageTypes) => {
       </div>
       <BackToTopPage />
     </Layout>
-  )
-}
+    */
+  }
 
-export default Page
+  return (
+    <>
+      <div className="p-article">
+        <h1>{page.title}</h1>
+        <hr />
+        <div></div>
+      </div>
+    </>
+  );
+};
+
+export default Page;
+
+export const pageQuery = graphql`
+  query tempPage($slug: String) {
+    page: contentfulPage(slug: { eq: $slug }) {
+      title
+      date
+      update
+      description
+      body {
+        childMarkdownRemark {
+          htmlAst
+        }
+      }
+    }
+  }
+`;
