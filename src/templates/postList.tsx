@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import { getCategoryPath } from '../lib/getCategoryPath';
+import { getRootPath, getCategoryPath } from '../lib/getPath';
 
 const PostList: PostList.func = (props) => {
   const posts = props.data.posts.nodes;
@@ -11,7 +11,7 @@ const PostList: PostList.func = (props) => {
       <div key={post.slug} className="u-border--bottom u-space--pad--2">
         {/*<PostDate postdate={node.date} update={node.update} />*/}
         <h2>
-          <Link to={`/${post.slug}/`}>{post.title}</Link>
+          <Link to={getRootPath(post.slug)}>{post.title}</Link>
         </h2>
         <p>{post.description}</p>
         <Link to={categoryPath} className="c-badge">

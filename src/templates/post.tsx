@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { getCategoryPath } from '../lib/getCategoryPath';
+import { getCategoryPath } from '../lib/getPath';
 
 const Post: Post.func = (props) => {
   const post = props.data.post;
