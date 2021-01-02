@@ -16,7 +16,7 @@ require('ts-node').register({
   },
 });
 
-exports.createPages = require('./gatsby-node/index').createPages;
+exports.createPages = require('./src/gatsby-node/index').createPages;
 
 /*
 exports.createPages = async function ({ actions, graphql }) {

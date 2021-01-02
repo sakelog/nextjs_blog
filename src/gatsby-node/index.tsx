@@ -1,5 +1,5 @@
 import { GatsbyNode } from 'gatsby';
-import { getCategoryPath, getTagPath } from '../src/lib/getPath';
+import { getCategoryPath, getTagPath } from '../lib/getPath';
 
 declare namespace Post {
   type pathQuery = {
@@ -113,7 +113,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? '/' : '/' + (i + 1),
-      component: require.resolve(`../src/templates/postList.tsx`),
+      component: require.resolve(`../templates/postList.tsx`),
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
@@ -130,7 +130,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     createPage({
       path: slug,
-      component: require.resolve(`../src/templates/post.tsx`),
+      component: require.resolve(`../templates/post.tsx`),
       context: {
         slug: slug,
         post: curPost,
@@ -150,7 +150,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     createPage({
       path: slug,
-      component: require.resolve(`../src/templates/page.tsx`),
+      component: require.resolve(`../templates/page.tsx`),
       context: {
         slug: slug,
         page: curPage,
@@ -194,7 +194,7 @@ function createCatTagPages(
     Array.from({ length: numPages }).forEach((_, i) => {
       actions({
         path: i === 0 ? pathBase : pathBase + (i + 1),
-        component: require.resolve(`../src/templates/CatTagPages.tsx`),
+        component: require.resolve(`../templates/CatTagPages.tsx`),
         context: {
           limit: itemPerPage,
           skip: i * itemPerPage,
