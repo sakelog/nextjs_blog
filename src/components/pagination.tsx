@@ -1,24 +1,19 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-interface PaginationProps {
-  numPages: number
-  currentPage: number
-  pathBase?: string
-}
-
-const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
-  const isFirst = currentPage === 1
-  const isLast = currentPage === numPages
-  const pageLimit = 3
-  const omitFirst = currentPage - 1 > pageLimit
-  const omitLast = numPages - currentPage > pageLimit
+const Pagination = ({ numPages, currentPage, pathBase }: pagination.props) => {
+  // page 表示範囲
+  const pageLimit = 3;
+  const omitFirst = currentPage - 1 > pageLimit;
+  const omitLast = numPages - currentPage > pageLimit;
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
   const prevPage =
-    currentPage - 1 === 1 ? pathBase : pathBase + (currentPage - 1).toString()
-  const nextPage = pathBase + (currentPage + 1).toString()
+    currentPage - 1 === 1 ? pathBase : pathBase + (currentPage - 1).toString();
+  const nextPage = pathBase + (currentPage + 1).toString();
 
-  const prevText = '前へ'
-  const nextText = '次へ'
+  const prevText = '前へ';
+  const nextText = '次へ';
   const paginationTag =
     numPages !== 1 ? (
       <nav className="c-pagination u-space--mgn--2">
@@ -89,9 +84,9 @@ const Pagination = ({ numPages, currentPage, pathBase }: PaginationProps) => {
           )}
         </div>
       </nav>
-    ) : null
+    ) : null;
 
-  return paginationTag
-}
+  return paginationTag;
+};
 
-export default Pagination
+export default Pagination;

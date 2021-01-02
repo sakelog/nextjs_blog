@@ -2,8 +2,12 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { getRootPath, getCategoryPath } from '../lib/getPath';
 
+import TagList from '../components/taglist';
+import Pagination from '../components/pagination';
+
 const PostList: PostList.func = (props) => {
   const posts = props.data.posts.nodes;
+  const { numPages, currentPage } = props.pageContext;
 
   const postListTag = posts.map((post) => {
     const categoryPath = getCategoryPath(post.category.slug);
@@ -17,12 +21,17 @@ const PostList: PostList.func = (props) => {
         <Link to={categoryPath} className="c-badge">
           <h3>{post.category.name}</h3>
         </Link>
-        {/*<TagList Tags={node.tags} />*/}
+        <TagList tags={post.tags} />
       </div>
     );
   });
 
-  return <div>{postListTag}</div>;
+  return (
+    <>
+      <div>{postListTag}</div>{' '}
+      <Pagination numPages={numPages} currentPage={currentPage} pathBase="/" />
+    </>
+  );
 };
 
 export default PostList;
