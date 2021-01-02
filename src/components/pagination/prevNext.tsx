@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import { getRootPath } from '../lib/getPath';
+import { getRootPath } from '../../lib/getPath';
 
 type propType = {
   prev: Post.prevPost;

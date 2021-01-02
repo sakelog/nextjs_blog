@@ -4,7 +4,7 @@ import * as React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ContactForm from '../components/contact-form';
-import BackToTopPage from '../components/backToTopPage';
+import BackToTopPage from '../components/pagination/backToTopPage';
 
 const pageTitle = 'お問い合わせ';
 

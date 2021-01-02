@@ -5,8 +5,8 @@ import RenderAst from '../lib/renderAst';
 
 import TagList from '../components/taglist';
 import Bio from '../components/bio';
-import PrevNext from '../components/prevNext';
-import BackToTopPage from '../components/backToTopPage';
+import PrevNext from '../components/pagination/prevNext';
+import BackToTopPage from '../components/pagination/backToTopPage';
 
 const Post: Post.func = (props) => {
   const post = props.data.post;

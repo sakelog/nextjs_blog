@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import { getRootPath, getCategoryPath } from '../lib/getPath';
 
 import TagList from '../components/taglist';
-import Pagination from '../components/pagination';
+import Pagination from '../components/pagination/pagination';
 
 const PostList: PostList.func = (props) => {
   const posts = props.data.posts.nodes;
