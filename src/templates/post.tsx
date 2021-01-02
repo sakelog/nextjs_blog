@@ -5,6 +5,7 @@ import RenderAst from '../lib/renderAst';
 
 import TagList from '../components/taglist';
 import Bio from '../components/bio';
+import PrevNext from '../components/prevNext';
 import BackToTopPage from '../components/backToTopPage';
 
 const Post: Post.func = (props) => {
@@ -16,7 +17,7 @@ const Post: Post.func = (props) => {
 
   return (
     <>
-      <div className="p-article">
+      <article className="p-article">
         <h1>{post.title}</h1>
         <Link to={categoryPath} className="c-badge">
           <h4>{post.category.name}</h4>
@@ -31,15 +32,15 @@ const Post: Post.func = (props) => {
         </div>
         <section>{RenderAst(htmlBody)}</section>
         <TagList tags={post.tags} />
-      </div>
+      </article>
+      {/*<ShareButton post={post} />*/}
       <Bio />
       <hr />
+      <PrevNext
+        prev={props.pageContext.previous}
+        next={props.pageContext.next}
+      />
       <BackToTopPage />
-      {/*
-          <ShareButton post={post} />
-      <hr />
-      <PrevNext prev={prev} next={next} />
-    <BackToTopPage />*/}
     </>
   );
 };

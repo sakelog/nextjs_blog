@@ -51,14 +51,8 @@ declare namespace Post {
         slug: string;
         title: string;
       }
-      previous: {
-        slug: string;
-        title: string;
-      }
-      next: {
-        slug: string;
-        title: string;
-      }
+      previous: prevPost
+      next: nextPost
     }
     data: {
       post: {
@@ -81,6 +75,15 @@ declare namespace Post {
         }
       }
     }
+  }
+
+  declare type prevPost = {
+    slug: string;
+    title: string;
+  }
+  declare type nextPost = {
+    slug: string;
+    title: string;
   }
 
   declare type func = (props:props) => JSX.Element

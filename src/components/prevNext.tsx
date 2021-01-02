@@ -1,14 +1,14 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import { ContentfulPost } from '../../types/graphql-types'
+import { getRootPath } from '../lib/getPath';
 
-interface PrevNextType {
-  prev?: ContentfulPost
-  next?: ContentfulPost
-}
+type propType = {
+  prev: Post.prevPost;
+  next: Post.nextPost;
+};
 
-const PrevNext = ({ prev, next }: PrevNextType) => {
+const PrevNext = ({ prev, next }: propType) => {
   return (
     <nav>
       <div className="c-prevnext">
@@ -19,14 +19,14 @@ const PrevNext = ({ prev, next }: PrevNextType) => {
             </div>
           )}
           {prev && (
-            <Link to={`/${prev.slug}/`} rel="prev">
+            <Link to={getRootPath(prev.slug)} rel="prev">
               {prev.title}
             </Link>
           )}
         </div>
         <div className="c-prevnext__item--next u-align--right">
           {next && (
-            <Link to={`/${next.slug}/`} rel="next">
+            <Link to={getRootPath(next.slug)} rel="next">
               {next.title}
             </Link>
           )}
@@ -38,7 +38,7 @@ const PrevNext = ({ prev, next }: PrevNextType) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default PrevNext
+export default PrevNext;
