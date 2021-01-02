@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { Link, graphql } from 'gatsby'
+import * as React from 'react';
+import { Link, graphql } from 'gatsby';
 
-import { PagesTagsQuery } from '../../types/graphql-types'
+import { PagesTagsQuery } from '../../types/graphql-types';
 
 // Components
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import BackToTopPage from '../components/back-to-top-page'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import BackToTopPage from '../components/backToTopPage';
 
 // Utilities
-import { kebabCase } from 'lodash'
+import { kebabCase } from 'lodash';
 
 type Props = {
-  data: PagesTagsQuery
-}
+  data: PagesTagsQuery;
+};
 
 const TagsPage = ({
   data: {
@@ -21,8 +21,8 @@ const TagsPage = ({
   },
 }: Props) => {
   var sortedGroup = group.sort(function (a, b) {
-    return b.totalCount - a.totalCount
-  })
+    return b.totalCount - a.totalCount;
+  });
 
   return (
     <Layout>
@@ -41,20 +41,18 @@ const TagsPage = ({
       </div>
       <BackToTopPage />
     </Layout>
-  )
-}
+  );
+};
 
-export default TagsPage
+export default TagsPage;
 
 export const pageQuery = graphql`
   query PagesTags {
-    cflTagsPost: allContentfulPost(
-      limit: 2000
-    ) {
+    cflTagsPost: allContentfulPost(limit: 2000) {
       group(field: tags___name) {
         fieldValue
         totalCount
       }
     }
   }
-`
+`;

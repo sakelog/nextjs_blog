@@ -67,6 +67,12 @@ declare namespace Post {
           name: string;
           slug: string;
         }
+        tags: [
+          {
+            name: string;
+            slug: string;
+          }
+        ]
         body: {
           childMarkdownRemark: {
             html: string;

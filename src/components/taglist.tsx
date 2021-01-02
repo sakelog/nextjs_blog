@@ -1,36 +1,34 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import { ContentfulTags } from '../../types/graphql-types'
-
-// Utilities
-const kebabCase = require('lodash/kebabCase')
+import { getTagPath } from '../lib/getPath';
 
 //Icon
-import { FiTag } from 'react-icons/fi'
+import { FiTag } from 'react-icons/fi';
 
-interface TagListType {
-  Tags?: Pick<ContentfulTags, 'name' | 'slug'>[]
-}
-
-const TagList = ({ Tags }: TagListType) => {
-  const tag_list =
-    Tags === null ? null : (
-      <ul className="p-tag-list">
-        <li>
-          <FiTag />
-        </li>
-        {Tags.map((tag, index: number) => (
-          <li key={index} className="c-tag-item">
-            <Link to={`/tags/${kebabCase(tag.name)}/`}>
+const TagList = (tags) => {
+  const targetTags: [{ slug: string; name: string }] = tags.tags;
+  const items = targetTags
+    ? targetTags.map((tag) => {
+        return (
+          <li key={tag.slug}>
+            <Link to={getTagPath(tag.slug)}>
               <h5>{tag.name}</h5>
             </Link>
           </li>
-        ))}
-      </ul>
-    )
+        );
+      })
+    : null;
+  const allTag = targetTags ? (
+    <ul className="p-tag-list">
+      <li>
+        <FiTag />
+        {items}
+      </li>
+    </ul>
+  ) : null;
 
-  return <ul className="p-tag-list">{tag_list}</ul>
-}
+  return allTag;
+};
 
-export default TagList
+export default TagList;
