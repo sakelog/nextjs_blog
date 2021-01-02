@@ -5,7 +5,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 
 //Components
 import HeaderCatList from './header-cat-list';
-import SocialIcon from './social_Icon';
+import SocialIcon from '../social_Icon';
 
 import { MdMenu, MdClose } from 'react-icons/md';
 

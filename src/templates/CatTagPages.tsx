@@ -3,8 +3,8 @@ import { graphql, Link } from 'gatsby';
 
 import { getRootPath } from '../lib/getPath';
 
-import PostDate from '../components/postDate';
-import TagList from '../components/taglist';
+import PostDate from '../components/articleParts/postDate';
+import TagList from '../components/articleParts/taglist';
 import Pagination from '../components/pagination/pagination';
 import BackToTopPage from '../components/pagination/backToTopPage';
 

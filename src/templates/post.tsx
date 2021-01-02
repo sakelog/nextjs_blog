@@ -3,9 +3,9 @@ import { graphql, Link } from 'gatsby';
 import { getCategoryPath } from '../lib/getPath';
 import RenderAst from '../lib/renderAst';
 
-import PostDate from '../components/postDate';
-import TagList from '../components/taglist';
-import Bio from '../components/bio';
+import PostDate from '../components/articleParts/postDate';
+import TagList from '../components/articleParts/taglist';
+import Bio from '../components/articleParts/bio';
 import PrevNext from '../components/pagination/prevNext';
 import BackToTopPage from '../components/pagination/backToTopPage';
 
