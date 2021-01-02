@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import { getCategoryPath } from '../lib/getPath';
 import RenderAst from '../lib/renderAst';
 
+import PostDate from '../components/postDate';
 import TagList from '../components/taglist';
 import Bio from '../components/bio';
 import PrevNext from '../components/pagination/prevNext';
@@ -18,6 +19,7 @@ const Post: Post.func = (props) => {
   return (
     <>
       <article className="p-article">
+        <PostDate postdate={post.date} update={post.update} />
         <h1>{post.title}</h1>
         <Link to={categoryPath} className="c-badge">
           <h4>{post.category.name}</h4>

@@ -1,15 +1,15 @@
-import * as React from 'react'
-//import * as moment from 'moment'
-import { format } from 'date-fns'
+import * as React from 'react';
+import { format } from 'date-fns';
 
 // Icons
-import { FiCalendar, FiRefreshCw } from 'react-icons/fi'
-interface PostDateType {
-  postdate: string
-  update: string
-}
+import { FiCalendar, FiRefreshCw } from 'react-icons/fi';
 
-const PostDate = ({ postdate, update }: PostDateType) => {
+type propType = {
+  postdate: string;
+  update: string;
+};
+
+const PostDate = ({ postdate, update }: propType) => {
   return (
     <ul className="c-post-date">
       <li className="c-post-date__date-wrapper">
@@ -23,14 +23,14 @@ const PostDate = ({ postdate, update }: PostDateType) => {
         </li>
       )}
     </ul>
-  )
-}
+  );
+};
 
-export default PostDate
+export default PostDate;
 
 function getFormatDate(date: string) {
-  let formatDate: string
-  formatDate = format(new Date(date), 'yyyy年M月d日')
+  let formatDate: string;
+  formatDate = format(new Date(date), 'yyyy年M月d日');
 
-  return formatDate
+  return formatDate;
 }

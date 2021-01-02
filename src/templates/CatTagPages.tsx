@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 
 import { getRootPath } from '../lib/getPath';
 
+import PostDate from '../components/postDate';
 import TagList from '../components/taglist';
 import Pagination from '../components/pagination/pagination';
 import BackToTopPage from '../components/pagination/backToTopPage';
@@ -18,7 +19,7 @@ const CategoryPages: Category.func = (props) => {
   const postsTag = target.targetPosts.map((post) => {
     return (
       <div key={post.slug} className="u-border--bottom u-space--pad--2">
-        {/*<PostDate postdate={post.date} update={post.update} />*/}
+        <PostDate postdate={post.date} update={post.update} />
         <Link to={getRootPath(post.slug)}>
           <h2>{post.title}</h2>
         </Link>
