@@ -1,11 +1,10 @@
 import React from 'react';
 import Img, { FluidObject } from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
-import { cfImg } from '../@types/global';
 
 const CONTENTFUL_IMAGE = '//images.ctfassets.net/';
 
-function RemarkImage(props: { src: string; alt: string; title: string }) {
+function RemarkImage(props: MyLib.remarkImage.props) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -28,10 +27,18 @@ function RemarkImage(props: { src: string; alt: string; title: string }) {
         fluid={getfluidSrc(props.src, data.cfImg.nodes)}
         alt={props.alt}
         title={props.title}
+        style={props.style}
+        className={props.className}
       />
     </div>
   ) : (
-    <img src={props.src} alt={props.alt} title={props.title} />
+    <img
+      src={props.src}
+      alt={props.alt}
+      title={props.title}
+      style={props.style}
+      className={props.className}
+    />
   );
   return imgTag;
 }

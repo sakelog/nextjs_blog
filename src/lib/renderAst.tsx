@@ -1,12 +1,10 @@
 import * as React from 'react';
 import unified from 'unified';
-//const vfile = require('to-vfile');
-//const report = require('vfile-reporter');
 import parse from 'rehype-parse';
 import rehype2react from 'rehype-react';
-//import html from 'rehype-stringify';
 
 import MyImage from './remarkImage';
+import MyTable from './remarkTable';
 
 const renderAst = (htmlBody: string) => {
   let processedHtml;
@@ -15,11 +13,10 @@ const renderAst = (htmlBody: string) => {
     .use(rehype2react, {
       createElement: React.createElement,
       components: {
-        img: (props: { src: string; alt: string; title: string }) =>
-          MyImage(props),
+        img: (props: MyLib.remarkImage.props) => MyImage(props),
+        table: (props) => MyTable(props),
       },
     });
-  //.use(html);
   processedHtml = processor.processSync(htmlBody).result;
 
   return processedHtml;
