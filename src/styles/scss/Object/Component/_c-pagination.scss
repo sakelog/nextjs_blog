@@ -1,0 +1,76 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.c-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mq(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .c-pagination__number {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .c-pagination__number--firstlast {
+    @extend .c-pagination__number;
+    width: auto;
+
+    a {
+      border-radius: 50%;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+
+      &:hover {
+        background: $primary-lighter;
+        color: $gray-dark;
+      }
+    }
+
+    span {
+      width: 3rem;
+      height: 3rem;
+      margin: auto 0.2rem;
+      text-align: center;
+    }
+  }
+  .c-pagination__number--current {
+    @extend .c-pagination__number;
+    border: 1px solid $primary;
+    border-radius: 50%;
+    background: $primary;
+    color: $white;
+  }
+  .c-pagination__number--link {
+    @extend .c-pagination__number;
+
+    a {
+      border-radius: 50%;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      &:hover {
+        background: $primary-lighter;
+        color: $gray-dark;
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@use '../../Foundation/variables' as *;
+
+.u-border--bottom {
+  border-bottom: 1px solid $gray;
+}
