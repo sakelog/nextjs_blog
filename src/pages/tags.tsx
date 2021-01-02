@@ -6,7 +6,7 @@ import { PagesTagsQuery } from '../../types/graphql-types';
 // Components
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import BackToTopPage from '../components/backToTopPage';
+import BackToTopPage from '../components/pagination/backToTopPage';
 
 // Utilities
 import { kebabCase } from 'lodash';

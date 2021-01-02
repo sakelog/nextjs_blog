@@ -3,7 +3,7 @@ import * as React from 'react';
 // Components
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import BackToTopPage from '../components/backToTopPage';
+import BackToTopPage from '../components/pagination/backToTopPage';
 
 const pageTitle = 'お問い合わせ';
 

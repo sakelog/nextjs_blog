@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import RenderAst from '../lib/renderAst';
 
-import BackToTopPage from '../components/backToTopPage';
+import BackToTopPage from '../components/pagination/backToTopPage';
 // Components
 /*
 import Layout from '../components/layout';
