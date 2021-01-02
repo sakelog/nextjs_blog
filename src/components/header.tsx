@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { useState } from 'react'
+import * as React from 'react';
+import { useState } from 'react';
 
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby';
 
 //Components
-import HeaderCatList from './header-cat-list'
-import SocialIcon from './social-icon'
+import HeaderCatList from './header-cat-list';
+import SocialIcon from './social_Icon';
 
-import { MdMenu, MdClose } from 'react-icons/md'
+import { MdMenu, MdClose } from 'react-icons/md';
 
 const Header = () => {
   const data = useStaticQuery(
@@ -20,17 +20,17 @@ const Header = () => {
         }
       }
     `
-  )
-  const SiteTitle = data.site.siteMetadata.title
+  );
+  const SiteTitle = data.site.siteMetadata.title;
 
-  const [navMenuShow, setNavMenuShow] = useState<String>('')
+  const [navMenuShow, setNavMenuShow] = useState<String>('');
 
   const handleChangeNavMenu_Show = (): void => {
-    setNavMenuShow('l-header__nav__darwer--show')
-  }
+    setNavMenuShow('l-header__nav__darwer--show');
+  };
   const handleChangeNavMenu_Hide = (): void => {
-    setNavMenuShow('l-header__nav__darwer--hide')
-  }
+    setNavMenuShow('l-header__nav__darwer--hide');
+  };
 
   const pageList = (
     <ul className="l-header__nav__drawer--list">
@@ -55,7 +55,7 @@ const Header = () => {
         </Link>
       </li>
     </ul>
-  )
+  );
 
   return (
     <header className="l-header">
@@ -97,7 +97,7 @@ const Header = () => {
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

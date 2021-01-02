@@ -1,10 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { graphql, useStaticQuery, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql, useStaticQuery, Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 // Component
-import SocialIcon from './social-icon'
+import SocialIcon from './social_Icon';
 
 const Bio = () => {
   const data = useStaticQuery(
@@ -19,13 +19,16 @@ const Bio = () => {
         }
       }
     `
-  )
+  );
   return (
     <div className="p-bio">
       <div className="p-bio__section--image">
-        <div style={{width: '100%'}}>
+        <div style={{ width: '100%' }}>
           <Link to="/about_this_site/">
-            <Img fluid={data.profileImg.childImageSharp.fluid} className="p-bio__image" />
+            <Img
+              fluid={data.profileImg.childImageSharp.fluid}
+              className="p-bio__image"
+            />
           </Link>
         </div>
         <p className="p-bio__authorName">sake</p>
@@ -45,7 +48,7 @@ const Bio = () => {
         <SocialIcon />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

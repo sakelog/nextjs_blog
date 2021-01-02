@@ -1,12 +1,20 @@
 declare type cfImg = 
-  [
-    {
-      file: {
-        url: string,
-      }
-      fluid: any;
+[
+  {
+    file: {
+      url: string,
     }
-  ] 
+    fluid: any;
+  }
+] 
+
+declare namespace pagination {
+  declare type props = {
+    numPages: number
+    currentPage: number
+    pathBase: string
+  }
+}
 declare namespace PostList {
   declare type props = {
     pageContext: {
