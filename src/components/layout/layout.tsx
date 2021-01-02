@@ -1,8 +1,8 @@
 import React from 'react';
 import config from '../config';
 
-import Header from './header';
-import Footer from './footer';
+import Header from './_header';
+import Footer from './_footer';
 
 import '../../styles/css/mystyle.css';
 

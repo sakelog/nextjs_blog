@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import { MdMenu, MdClose } from 'react-icons/md';
 
 import config from '../config';
-import HeaderCatList from './headerCatList';
+import HeaderCatList from './_headerCatList';
 import SocialIcon from '../social_Icon';
 
 const Header = () => {

@@ -10,24 +10,27 @@ declare namespace Post {
       next: nextPost
     }
     data: {
-      post: {
-        title: string;
-        date: string;
-        update: string;
-        description: string;
-        category: category;
-        tags: [
-          {
-            name: string;
-            slug: string;
-          }
-        ]
-        body: {
-          childMarkdownRemark: {
-            html: string;
-            tableOfContents: any;
-          }
-        }
+      post: post
+    }
+  }
+
+  declare type post = {
+    title: string;
+    slug: string;
+    date: string;
+    update: string;
+    description: string;
+    category: category;
+    tags: [
+      {
+        name: string;
+        slug: string;
+      }
+    ]
+    body: {
+      childMarkdownRemark: {
+        html: string;
+        tableOfContents: any;
       }
     }
   }
