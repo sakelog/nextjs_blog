@@ -2,10 +2,10 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { getCategoryPath } from '../lib/getPath';
 import RenderAst from '../lib/renderAst';
-//import ContentfulImage from '../utils/ContentfulImage';
 
-//import ImageConverter from '../lib/imageConverter';
-//import RenderAst from '../lib/renderAst';
+import TagList from '../components/taglist';
+import Bio from '../components/bio';
+import BackToTopPage from '../components/backToTopPage';
 
 const Post: Post.func = (props) => {
   const post = props.data.post;
@@ -30,13 +30,13 @@ const Post: Post.func = (props) => {
           />
         </div>
         <section>{RenderAst(htmlBody)}</section>
-        {/*<TagList Tags={post.tags} />*/}
+        <TagList tags={post.tags} />
       </div>
-      {/*<ShareButton post={post} />
-    <Bio />*/}
+      <Bio />
+      <hr />
+      <BackToTopPage />
       {/*
           <ShareButton post={post} />
-      <Bio />
       <hr />
       <PrevNext prev={prev} next={next} />
     <BackToTopPage />*/}
