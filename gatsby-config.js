@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-require('dotenv').config()
+require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: `sake log`,
@@ -16,12 +16,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     // for Google
     `gatsby-plugin-sitemap`,
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: 'GTM-N9SLS2F',
-      },
-    },
     {
       resolve: `gatsby-plugin-google-adsense`,
       options: {
@@ -153,4 +147,4 @@ module.exports = {
     // Embedded
     `gatsby-plugin-twitter`,
   ],
-}
+};
