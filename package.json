@@ -13,7 +13,7 @@
     "sass-watch": "sass ./src/styles/scss/mystyle.scss ./src/styles/css/mystyle.css --style compressed --watch"
   },
   "dependencies": {
-    "contentful": "^8.1.5",
+    "contentful": "^8.1.6",
     "date-fns": "^2.16.1",
     "gatsby": "^2.29.1",
     "gatsby-image": "^2.8.0",
