@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import { getTagPath } from '../lib/getPath';
+import { getTagPath } from '../../lib/getPath';
 
 //Icon
 import { FiTag } from 'react-icons/fi';

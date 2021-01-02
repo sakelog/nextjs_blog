@@ -4,7 +4,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 // Component
-import SocialIcon from './social_Icon';
+import SocialIcon from '../social_Icon';
 
 const Bio = () => {
   const data = useStaticQuery(

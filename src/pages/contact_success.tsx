@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Components
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
 import BackToTopPage from '../components/pagination/backToTopPage';
 

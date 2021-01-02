@@ -2,8 +2,8 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { getRootPath, getCategoryPath } from '../lib/getPath';
 
-import PostDate from '../components/postDate';
-import TagList from '../components/taglist';
+import PostDate from '../components/articleParts/postDate';
+import TagList from '../components/articleParts/taglist';
 import Pagination from '../components/pagination/pagination';
 
 const PostList: PostList.func = (props) => {
