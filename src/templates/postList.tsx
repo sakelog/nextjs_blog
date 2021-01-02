@@ -4,7 +4,7 @@ import { getRootPath, getCategoryPath } from '../lib/getPath';
 import config from '../components/config';
 
 import Layout from '../components/layout/layout';
-import customHead from '../components/customHead';
+import CustomHead from '../components/customHead';
 import PostDate from '../components/articleParts/postDate';
 import TagList from '../components/articleParts/taglist';
 import Pagination from '../components/pagination/pagination';
@@ -37,7 +37,7 @@ const PostList: PostList.func = (props) => {
 
   return (
     <Layout>
-      {customHead(pageTitle, description, false)}
+      {CustomHead(pageTitle, description, false)}
       <div>{postListTag}</div>{' '}
       <Pagination numPages={numPages} currentPage={currentPage} pathBase="/" />
     </Layout>
