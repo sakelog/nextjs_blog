@@ -1,6 +1,6 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 
 const ContactForm = () => {
   return (
@@ -9,7 +9,7 @@ const ContactForm = () => {
       method="POST"
       data-netlify-recaptcha="true"
       data-netlify="true"
-      action="../contact_success/"
+      action="../contactSuccess/"
       className="c-form"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -75,7 +75,7 @@ const ContactForm = () => {
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;
