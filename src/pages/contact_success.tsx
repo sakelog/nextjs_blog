@@ -2,7 +2,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../components/layout/layout';
-import SEO from '../components/seo';
+import SEO from '../components/customHead';
 import BackToTopPage from '../components/pagination/backToTopPage';
 
 const pageTitle = 'お問い合わせ';

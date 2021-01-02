@@ -2,8 +2,8 @@ import * as React from 'react';
 
 // Components
 import Layout from '../components/layout/layout';
-import SEO from '../components/seo';
-import ContactForm from '../components/contact-form';
+import SEO from '../components/customHead';
+import ContactForm from '../components/contactForm';
 import BackToTopPage from '../components/pagination/backToTopPage';
 
 const pageTitle = 'お問い合わせ';

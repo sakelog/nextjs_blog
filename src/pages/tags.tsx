@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import { PagesTagsQuery } from '../../types/graphql-types';
+//import { PagesTagsQuery } from '../../types/graphql-types';
 
 // Components
 import Layout from '../components/layout/layout';
-import SEO from '../components/seo';
+import SEO from '../components/customHead';
 import BackToTopPage from '../components/pagination/backToTopPage';
 
 // Utilities
