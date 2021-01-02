@@ -1,3 +1,12 @@
+declare type cfImg = 
+  [
+    {
+      file: {
+        url: string,
+      }
+      fluid: any;
+    }
+  ] 
 declare namespace PostList {
   declare type props = {
     pageContext: {
@@ -60,7 +69,7 @@ declare namespace Post {
         }
         body: {
           childMarkdownRemark: {
-            htmlAst: [];
+            html: string;
             tableOfContents: any;
           }
         }
@@ -148,7 +157,7 @@ declare namespace Page {
         description
         body : {
           childMarkdownRemark :{
-            htmlAst: []
+            html: string;
           }
         }
       }
@@ -159,4 +168,6 @@ declare namespace Page {
 }
 
 declare namespace MyLib {
+  declare namespace remarkImage {
+  }
 }

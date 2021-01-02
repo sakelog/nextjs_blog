@@ -1,12 +1,17 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { getCategoryPath } from '../lib/getPath';
+import RenderAst from '../lib/renderAst';
+//import ContentfulImage from '../utils/ContentfulImage';
+
+//import ImageConverter from '../lib/imageConverter';
+//import RenderAst from '../lib/renderAst';
 
 const Post: Post.func = (props) => {
   const post = props.data.post;
   const categoryPath = getCategoryPath(post.category.slug);
 
-  const htmlBody = post.body.childMarkdownRemark.htmlAst;
+  const htmlBody = post.body.childMarkdownRemark.html;
   const htmlTOC = post.body.childMarkdownRemark.tableOfContents;
 
   return (
@@ -24,7 +29,7 @@ const Post: Post.func = (props) => {
             dangerouslySetInnerHTML={{ __html: htmlTOC }}
           />
         </div>
-        <div>{/*htmlBody*/}</div>
+        <section>{RenderAst(htmlBody)}</section>
         {/*<TagList Tags={post.tags} />*/}
       </div>
       {/*<ShareButton post={post} />
@@ -58,7 +63,7 @@ export const pageQuery = graphql`
       }
       body {
         childMarkdownRemark {
-          htmlAst
+          html
           tableOfContents(absolute: false)
         }
       }

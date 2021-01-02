@@ -11,8 +11,7 @@ export function getTagPath(slug: string) {
 }
 
 export function getRootPath(slug: string) {
-  const basePath = '/';
-  return setPath(slug, basePath);
+  return '/' + slug + '/';
 }
 
 function setPath(slug: string, basePath: string) {
