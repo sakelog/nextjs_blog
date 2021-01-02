@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { toKebabCase } from './toKebabCase';
 
 export function getCategoryPath(slug: string) {
   const basePath = '/category/';
@@ -16,7 +16,7 @@ export function getRootPath(slug: string) {
 
 function setPath(slug: string, basePath: string) {
   let combinePath = basePath;
-  combinePath += _.kebabCase(slug);
+  combinePath += toKebabCase(slug);
   combinePath += '/';
 
   return combinePath;
