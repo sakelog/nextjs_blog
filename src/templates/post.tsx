@@ -42,10 +42,7 @@ const Post: Post.func = (props) => {
       <ShareButton post={post} />
       <Bio />
       <hr />
-      <PrevNext
-        prev={props.pageContext.previous}
-        next={props.pageContext.next}
-      />
+      <PrevNext prev={props.pageContext.prev} next={props.pageContext.next} />
       <BackToTopPage />
     </Layout>
   );

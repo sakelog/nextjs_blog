@@ -6,7 +6,7 @@ declare namespace Post {
         slug: string;
         title: string;
       }
-      previous: prevPost
+      prev: prevPost
       next: nextPost
     }
     data: {
