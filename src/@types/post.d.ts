@@ -15,10 +15,7 @@ declare namespace Post {
         date: string;
         update: string;
         description: string;
-        category: {
-          name: string;
-          slug: string;
-        }
+        category: category;
         tags: [
           {
             name: string;
@@ -42,6 +39,10 @@ declare namespace Post {
   declare type nextPost = {
     slug: string;
     title: string;
+  }
+  declare type category = {
+    slug: string;
+    name: string;
   }
 
   declare type func = (props:props) => JSX.Element

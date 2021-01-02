@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import RenderAst from '../lib/renderAst';
 
+import Layout from '../components/layout/layout';
 import BackToTopPage from '../components/pagination/backToTopPage';
 // Components
 /*
@@ -25,14 +26,14 @@ const Page: Page.func = (props) => {
   }
 
   return (
-    <>
+    <Layout>
       <article className="p-article">
         <h1>{page.title}</h1>
         <hr />
         <section>{RenderAst(htmlBody)}</section>
       </article>
       <BackToTopPage />
-    </>
+    </Layout>
   );
 };
 
