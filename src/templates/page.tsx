@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
+import RenderAst from '../lib/renderAst';
 // Components
 /*
 import Layout from '../components/layout';
@@ -13,6 +14,7 @@ const Page: Page.func = (props) => {
   const page = props.data.page;
 
   const description = page.description;
+  const htmlBody = page.body.childMarkdownRemark.html;
 
   {
     /*
@@ -35,7 +37,7 @@ const Page: Page.func = (props) => {
       <div className="p-article">
         <h1>{page.title}</h1>
         <hr />
-        <div></div>
+        <section>{RenderAst(htmlBody)}</section>
       </div>
     </>
   );
@@ -52,7 +54,7 @@ export const pageQuery = graphql`
       description
       body {
         childMarkdownRemark {
-          htmlAst
+          html
         }
       }
     }
