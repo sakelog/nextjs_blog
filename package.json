@@ -6,12 +6,11 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop -H 0.0.0.0",
-    "push": "git push origin master",
+    "build": "gatsby build",
+    "serve": "gatsby serve -H 0.0.0.0",
     "clean": "gatsby clean",
     "sass": "sass ./src/styles/scss/mystyle.scss ./src/styles/css/mystyle.css --style compressed",
-    "sass-watch": "sass ./src/styles/scss/mystyle.scss ./src/styles/css/mystyle.css --style compressed --watch",
-    "build": "gatsby build",
-    "serve": "gatsby serve -H 0.0.0.0"
+    "sass-watch": "sass ./src/styles/scss/mystyle.scss ./src/styles/css/mystyle.css --style compressed --watch"
   },
   "dependencies": {
     "contentful": "^8.1.5",

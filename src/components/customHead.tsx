@@ -64,6 +64,10 @@ function customHead(title: string, description: string, imageFLG: boolean) {
           name: `viewport`,
           content: `minimum-scale=1, initial-scale=1, width=device-width`,
         },
+        {
+          name: 'theme-color',
+          content: '#54917f',
+        },
       ]}
       link={[
         {
