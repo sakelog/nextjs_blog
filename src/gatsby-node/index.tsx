@@ -99,6 +99,11 @@ const TagsetQuery = `query{
 }
 `;
 
+const POST_LIST_TEMPLATE = '../templates/postList.tsx';
+const POST_TEMPLATE = '../templates/post.tsx';
+const PAGE_TEMPLATE = '../templates/page.tsx';
+const CATTAG_TEMPLATE = '../templates/CatTagPages.tsx';
+
 export const createPages: GatsbyNode['createPages'] = async ({
   actions: { createPage },
   graphql,
@@ -113,7 +118,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? '/' : '/' + (i + 1),
-      component: require.resolve(`../templates/postList.tsx`),
+      component: require.resolve(POST_LIST_TEMPLATE),
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
@@ -130,7 +135,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     createPage({
       path: slug,
-      component: require.resolve(`../templates/post.tsx`),
+      component: require.resolve(POST_TEMPLATE),
       context: {
         slug: slug,
         post: curPost,
@@ -150,7 +155,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     createPage({
       path: slug,
-      component: require.resolve(`../templates/page.tsx`),
+      component: require.resolve(PAGE_TEMPLATE),
       context: {
         slug: slug,
         page: curPage,
@@ -194,7 +199,7 @@ function createCatTagPages(
     Array.from({ length: numPages }).forEach((_, i) => {
       actions({
         path: i === 0 ? pathBase : pathBase + (i + 1),
-        component: require.resolve(`../templates/CatTagPages.tsx`),
+        component: require.resolve(CATTAG_TEMPLATE),
         context: {
           limit: itemPerPage,
           skip: i * itemPerPage,

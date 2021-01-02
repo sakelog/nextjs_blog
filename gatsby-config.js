@@ -6,18 +6,12 @@
 
 require('dotenv').config();
 module.exports = {
-  siteMetadata: {
-    title: `sake log`,
-    author: `sake`,
-    siteUrl: `https://sake-log.website/`,
-  },
   plugins: [
     // meta
     `gatsby-plugin-react-helmet`,
     // for Google
     `gatsby-plugin-sitemap`,
     // develop
-    `gatsby-plugin-lodash`,
     `gatsby-plugin-typescript`,
     //PWA
     `gatsby-plugin-offline`,
