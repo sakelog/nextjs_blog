@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 
 import { getRootPath } from '../lib/getPath';
 
+import Layout from '../components/layout/layout';
 import PostDate from '../components/articleParts/postDate';
 import TagList from '../components/articleParts/taglist';
 import Pagination from '../components/pagination/pagination';
@@ -30,7 +31,7 @@ const CategoryPages: Category.func = (props) => {
   });
 
   return (
-    <>
+    <Layout>
       <h1 className="u-align--center">
         <span>{target.label}</span>
       </h1>
@@ -42,7 +43,7 @@ const CategoryPages: Category.func = (props) => {
         pathBase={pathBase}
       />
       <BackToTopPage />
-    </>
+    </Layout>
   );
 };
 

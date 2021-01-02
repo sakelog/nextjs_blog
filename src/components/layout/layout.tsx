@@ -1,19 +1,18 @@
-/*
-import * as React from 'react'
-import Header from './header'
-import Footer from './footer'
+import React from 'react';
 
-import '../styles/css/mystyle.css'
+import Header from './header';
+import Footer from './footer';
 
-const Layout = ({ children }: any) => {
+import '../../styles/css/mystyle.css';
+
+const Layout = (props: any) => {
   return (
     <div className="l-wrapper">
       <Header />
-      <main className="l-main">{children}</main>
+      <main className="l-main">{props.children}</main>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
-*/
+export default Layout;

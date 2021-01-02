@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import { getCategoryPath } from '../lib/getPath';
 import RenderAst from '../lib/renderAst';
 
+import Layout from '../components/layout/layout';
 import PostDate from '../components/articleParts/postDate';
 import TagList from '../components/articleParts/taglist';
 import Bio from '../components/articleParts/bio';
@@ -17,7 +18,7 @@ const Post: Post.func = (props) => {
   const htmlTOC = post.body.childMarkdownRemark.tableOfContents;
 
   return (
-    <>
+    <Layout>
       <article className="p-article">
         <PostDate postdate={post.date} update={post.update} />
         <h1>{post.title}</h1>
@@ -43,7 +44,7 @@ const Post: Post.func = (props) => {
         next={props.pageContext.next}
       />
       <BackToTopPage />
-    </>
+    </Layout>
   );
 };
 

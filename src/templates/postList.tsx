@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { getRootPath, getCategoryPath } from '../lib/getPath';
 
+import Layout from '../components/layout/layout';
 import PostDate from '../components/articleParts/postDate';
 import TagList from '../components/articleParts/taglist';
 import Pagination from '../components/pagination/pagination';
@@ -28,10 +29,10 @@ const PostList: PostList.func = (props) => {
   });
 
   return (
-    <>
+    <Layout>
       <div>{postListTag}</div>{' '}
       <Pagination numPages={numPages} currentPage={currentPage} pathBase="/" />
-    </>
+    </Layout>
   );
 };
 

@@ -13183,6 +13183,11 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
+reset-css-complete@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/reset-css-complete/-/reset-css-complete-2.0.0.tgz#645e06f4fd6a3ad75ecc382370e6fd1fdc64494e"
+  integrity sha512-T+VP0WV/AhRYnrtzOupc92dgYYyUSYdoBiDV11c9meDk9efQ8esbWUUOOyuAhEF32iOTJ1qrQW7aiHEr+cUQtg==
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
