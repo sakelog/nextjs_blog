@@ -3,6 +3,10 @@ import { graphql, Link } from 'gatsby';
 
 import { getRootPath } from '../lib/getPath';
 
+import TagList from '../components/taglist';
+import Pagination from '../components/pagination';
+import BackToTopPage from '../components/backToTopPage';
+
 const CATEGORY = 'category';
 const CATEGORY_LABEL = 'カテゴリー:';
 const TAGS = 'tags';
@@ -10,6 +14,7 @@ const TAGS_LABEL = 'タグ:';
 
 const CategoryPages: Category.func = (props) => {
   const target = setTag(props);
+  const { numPages, currentPage, pathBase } = props.pageContext;
   const postsTag = target.targetPosts.map((post) => {
     return (
       <div key={post.slug} className="u-border--bottom u-space--pad--2">
@@ -18,7 +23,7 @@ const CategoryPages: Category.func = (props) => {
           <h2>{post.title}</h2>
         </Link>
         <p>{post.description}</p>
-        {/*<TagList Tags={node.tags} />*/}
+        <TagList tags={post.tags} />
       </div>
     );
   });
@@ -30,12 +35,12 @@ const CategoryPages: Category.func = (props) => {
       </h1>
       <p>投稿：{target.totalCount}件</p>
       {postsTag}
-      {/* <Pagination
+      <Pagination
         numPages={numPages}
         currentPage={currentPage}
         pathBase={pathBase}
       />
-      <BackToTopPage />*/}
+      <BackToTopPage />
     </>
   );
 };
@@ -109,7 +114,7 @@ export const pageQuery = graphql`
     }
     tagsPosts: allContentfulPost(
       sort: { fields: date, order: DESC }
-      filter: { tags: { elemMatch: { slug: { eq: "bootstrap" } } } }
+      filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
       limit: $limit
       skip: $skip
     ) {
