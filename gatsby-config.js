@@ -16,12 +16,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     // for Google
     `gatsby-plugin-sitemap`,
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: `ca-pub-5013956882447566`,
-      },
-    },
     // develop
     `gatsby-plugin-lodash`,
     `gatsby-plugin-typescript`,
