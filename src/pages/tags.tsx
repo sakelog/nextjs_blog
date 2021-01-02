@@ -1,44 +1,47 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
+import { getTagPath } from '../lib/getPath';
 
-//import { PagesTagsQuery } from '../../types/graphql-types';
-
-// Components
 import Layout from '../components/layout/layout';
-import SEO from '../components/customHead';
+import CustomHead from '../components/customHead';
 import BackToTopPage from '../components/pagination/backToTopPage';
 
-// Utilities
-import { kebabCase } from 'lodash';
+const TagsPage: tagsPage.func = (props) => {
+  let sortedGroup: tagsPage.sortedTagGroup[] = props.data.tagGroup.group.sort(
+    function (a, b) {
+      return b.totalCount - a.totalCount;
+    }
+  );
 
-type Props = {
-  data: PagesTagsQuery;
-};
+  // slug取得
+  const allTag = props.data.tag.nodes;
+  sortedGroup.map((hasPostTag) => {
+    for (var i = 0; i < allTag.length; i++) {
+      const isHit = hasPostTag.fieldValue === allTag[i].name;
 
-const TagsPage = ({
-  data: {
-    cflTagsPost: { group },
-  },
-}: Props) => {
-  var sortedGroup = group.sort(function (a, b) {
-    return b.totalCount - a.totalCount;
+      if (isHit) {
+        hasPostTag.slug = allTag[i].slug;
+        break;
+      }
+    }
   });
 
+  const tagList = sortedGroup.map((tag) => {
+    return (
+      <li key={tag.fieldValue} className="c-tag-item">
+        <Link to={getTagPath(tag.slug)}>
+          {tag.fieldValue} ({tag.totalCount})
+        </Link>
+      </li>
+    );
+  });
   return (
     <Layout>
-      {SEO('タグ一覧ページ', '全タグの一覧ページです', false)}
-      <h1 className="u-align--center">全タグ一覧</h1>
-      <div>
-        <ul className="p-tag-list">
-          {sortedGroup.map((tag, index: number) => (
-            <li key={index} className="c-tag-item">
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue} ({tag.totalCount})
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {CustomHead('タグ一覧ページ', '全タグの一覧ページです', false)}
+      <section>
+        <h1 className="u-align--center">全タグ一覧</h1>
+        <ul className="p-tag-list">{tagList}</ul>
+      </section>
       <BackToTopPage />
     </Layout>
   );
@@ -47,11 +50,17 @@ const TagsPage = ({
 export default TagsPage;
 
 export const pageQuery = graphql`
-  query PagesTags {
-    cflTagsPost: allContentfulPost(limit: 2000) {
+  query tagsPage {
+    tagGroup: allContentfulPost {
       group(field: tags___name) {
         fieldValue
         totalCount
+      }
+    }
+    tag: allContentfulTags {
+      nodes {
+        name
+        slug
       }
     }
   }
