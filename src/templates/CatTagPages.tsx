@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby';
 import { getRootPath } from '../lib/getPath';
 
 import Layout from '../components/layout/layout';
+import CustomHead from '../components/customHead';
 import PostDate from '../components/articleParts/postDate';
 import TagList from '../components/articleParts/taglist';
 import Pagination from '../components/pagination/pagination';
@@ -16,6 +17,7 @@ const TAGS_LABEL = 'タグ:';
 
 const CategoryPages: Category.func = (props) => {
   const target = setTag(props);
+  const pageDescription = target.label + 'についての一覧ページです';
   const { numPages, currentPage, pathBase } = props.pageContext;
   const postsTag = target.targetPosts.map((post) => {
     return (
@@ -32,6 +34,7 @@ const CategoryPages: Category.func = (props) => {
 
   return (
     <Layout>
+      {CustomHead(target.label, pageDescription, false)}
       <h1 className="u-align--center">
         <span>{target.label}</span>
       </h1>

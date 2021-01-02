@@ -4,6 +4,7 @@ import { getCategoryPath } from '../lib/getPath';
 import RenderAst from '../lib/renderAst';
 
 import Layout from '../components/layout/layout';
+import CustomHead from '../components/customHead';
 import PostDate from '../components/articleParts/postDate';
 import TagList from '../components/articleParts/taglist';
 import Bio from '../components/articleParts/bio';
@@ -19,6 +20,7 @@ const Post: Post.func = (props) => {
 
   return (
     <Layout>
+      {CustomHead(post.title, post.description, true)}
       <article className="p-article">
         <PostDate postdate={post.date} update={post.update} />
         <h1>{post.title}</h1>

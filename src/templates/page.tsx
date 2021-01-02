@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import RenderAst from '../lib/renderAst';
 
 import Layout from '../components/layout/layout';
+import CustomHead from '../components/customHead';
 import BackToTopPage from '../components/pagination/backToTopPage';
 // Components
 /*
@@ -17,16 +18,9 @@ const Page: Page.func = (props) => {
   const description = page.description;
   const htmlBody = page.body.childMarkdownRemark.html;
 
-  {
-    /*
-    <Layout>
-      {SEO(page.title, description, false)}
-    </Layout>
-    */
-  }
-
   return (
     <Layout>
+      {CustomHead(page.title, description, false)}
       <article className="p-article">
         <h1>{page.title}</h1>
         <hr />
