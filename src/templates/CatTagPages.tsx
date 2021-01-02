@@ -5,8 +5,8 @@ import { getRootPath } from '../lib/getPath';
 
 import Layout from '../components/layout/layout';
 import CustomHead from '../components/customHead';
-import PostDate from '../components/articleParts/postDate';
-import TagList from '../components/articleParts/taglist';
+import PostDate from '../components/articleParts/_postDate';
+import TagList from '../components/articleParts/_taglist';
 import Pagination from '../components/pagination/pagination';
 import BackToTopPage from '../components/pagination/backToTopPage';
 
