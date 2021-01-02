@@ -24,12 +24,17 @@ const HeaderCatList = () => {
   const categorys = data.category.nodes;
   const categoryPostGroup = data.categoryGroup.group;
   let hasPostCategorys: Post.category[] = [];
-  categorys.map((category: Post.category) => {
-    categoryPostGroup.map((post) => {
-      return (
-        post.fieldValue === category.name && hasPostCategorys.push(category)
-      );
-    });
+
+  //const allTag = props.data.tag.nodes;
+  categoryPostGroup.map((hasPostCategory) => {
+    for (var i = 0; i < categorys.length; i++) {
+      const isHit = hasPostCategory.fieldValue === categorys[i].name;
+
+      if (isHit) {
+        hasPostCategorys.push(categorys[i]);
+        break;
+      }
+    }
   });
 
   const categoryList = hasPostCategorys
