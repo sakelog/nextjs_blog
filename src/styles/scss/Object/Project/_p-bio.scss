@@ -3,12 +3,7 @@
 
 .p-bio {
   background: $gray-light;
-  @include cm(light) {
-    border: 1px solid $gray;
-  }
-  @include cm(dark) {
-    background: $gray-dark;
-  }
+  border-radius: 4px;
 
   margin: 4rem auto;
   padding: 1rem;
@@ -48,17 +43,26 @@
     font-family: $font-hw;
     margin: 0 auto;
     color: $gray-dark;
-    @include cm(dark) {
-      color: $white;
-    }
   }
   .p-bio__image {
     border-radius: 50%;
     max-width: 20rem;
     margin: auto;
-    border: 1px solid $gray;
     &:hover {
       opacity: 0.8;
     }
+  }
+}
+@include cm(light) {
+  .p-bio {
+    border: 1px solid $gray;
+  }
+}
+@include cm(dark) {
+  .p-bio {
+    background: $gray-dark;
+  }
+  .p-bio__authorName {
+    color: $white;
   }
 }

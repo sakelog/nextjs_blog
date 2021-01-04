@@ -36,6 +36,12 @@ body {
       line-height: 2;
     }
   }
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal-leading-zero;
+  }
   h1 {
     font-size: 2.8rem;
     @include mq(md) {
