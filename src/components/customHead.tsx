@@ -18,7 +18,7 @@ function customHead(title: string, description: string, imageFLG: boolean) {
     imageFLG === true
       ? 'https://res.cloudinary.com/cl1sakelog/image/upload/l_text:Sawarabi%20Gothic_50_bold:' +
         escape(title) +
-        ',co_rgb:fff,w_700,c_fit/v1581204377/sakelog_ogp.png'
+        ',co_rgb:fff,w_700,c_fit/v1581205307/sakelog_ogp.png'
       : config.url + '/ogp.png';
   const TwitterType = imageFLG === true ? 'summary_large_image' : 'summary';
   return (
