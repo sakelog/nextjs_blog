@@ -1,8 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
+import loadable from '@loadable/component';
 
 import config from './config';
+const GTMScript = loadable(() => import('../components/scripts/_gtmScript'));
 
+/*
 const GTM_ID = config.GTM_ID;
 
 const GTMScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -10,6 +13,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`;
+*/
 
 function customHead(title: string, description: string, imageFLG: boolean) {
   const metaTitle = (title ? title + ' | ' : '') + config.title;
@@ -90,7 +94,7 @@ function customHead(title: string, description: string, imageFLG: boolean) {
       ]}
       defer={false}
     >
-      <script async>{GTMScript}</script>
+      <GTMScript />
     </Helmet>
   );
 }
