@@ -82,7 +82,7 @@ function customHead(title: string, description: string, imageFLG: boolean) {
       ]}
       defer={false}
     >
-      <script>{GTMScript}</script>
+      <script async>{GTMScript}</script>
     </Helmet>
   );
 }
