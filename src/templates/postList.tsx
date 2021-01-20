@@ -1,13 +1,16 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { getRootPath, getCategoryPath } from '../lib/getPath';
 import config from '../components/config';
+import loadable from '@loadable/component';
 
 import Layout from '../components/layout/layout';
 import CustomHead from '../components/customHead';
-const PostDate = lazy(() => import('../components/articleParts/_postDate'));
-const TagList = lazy(() => import('../components/articleParts/_taglist'));
-const Pagination = lazy(() => import('../components/pagination/pagination'));
+const PostDate = loadable(() => import('../components/articleParts/_postDate'));
+const TagList = loadable(() => import('../components/articleParts/_taglist'));
+const Pagination = loadable(
+  () => import('../components/pagination/pagination')
+);
 
 const PostList: PostList.func = (props) => {
   const posts = props.data.posts.nodes;
@@ -36,21 +39,11 @@ const PostList: PostList.func = (props) => {
   });
 
   return (
-    <Suspense
-      fallback={
-        <Layout>{CustomHead(pageTitle, description, false)}記事一覧</Layout>
-      }
-    >
-      <Layout>
-        {CustomHead(pageTitle, description, false)}
-        <div>{postListTag}</div>{' '}
-        <Pagination
-          numPages={numPages}
-          currentPage={currentPage}
-          pathBase="/"
-        />
-      </Layout>
-    </Suspense>
+    <Layout>
+      {CustomHead(pageTitle, description, false)}
+      <div>{postListTag}</div>{' '}
+      <Pagination numPages={numPages} currentPage={currentPage} pathBase="/" />
+    </Layout>
   );
 };
 

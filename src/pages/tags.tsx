@@ -1,10 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { getTagPath } from '../lib/getPath';
+import loadable from '@loadable/component';
 
 import Layout from '../components/layout/layout';
 import CustomHead from '../components/customHead';
-const BackToTopPage = lazy(
+const BackToTopPage = loadable(
   () => import('../components/pagination/backToTopPage')
 );
 
@@ -38,23 +39,14 @@ const TagsPage: tagsPage.func = (props) => {
     );
   });
   return (
-    <Suspense
-      fallback={
-        <Layout>
-          {CustomHead('タグ一覧ページ', '全タグの一覧ページです', false)}
-          <h1 className="u-align--center">全タグ一覧</h1>
-        </Layout>
-      }
-    >
-      <Layout>
-        {CustomHead('タグ一覧ページ', '全タグの一覧ページです', false)}
-        <section>
-          <h1 className="u-align--center">全タグ一覧</h1>
-          <ul className="p-tag-list">{tagList}</ul>
-        </section>
-        <BackToTopPage />
-      </Layout>
-    </Suspense>
+    <Layout>
+      {CustomHead('タグ一覧ページ', '全タグの一覧ページです', false)}
+      <section>
+        <h1 className="u-align--center">全タグ一覧</h1>
+        <ul className="p-tag-list">{tagList}</ul>
+      </section>
+      <BackToTopPage />
+    </Layout>
   );
 };
 

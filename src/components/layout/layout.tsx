@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import config from '../config';
+import loadable from '@loadable/component';
 
-const Header = lazy(() => import('./_header'));
-const Footer = lazy(() => import('./_footer'));
+const Header = loadable(() => import('./_header'));
+const Footer = loadable(() => import('./_footer'));
 
 import '../../styles/css/mystyle.css';
 
@@ -14,11 +15,9 @@ const Layout = (props: any) => {
   return (
     <>
       <div className="l-wrapper">
-        <Suspense fallback={<main className="l-main">{props.children}</main>}>
-          <Header />
-          <main className="l-main">{props.children}</main>
-          <Footer />
-        </Suspense>
+        <Header />
+        <main className="l-main">{props.children}</main>
+        <Footer />
       </div>
       <noscript dangerouslySetInnerHTML={{ __html: GTMScript }} />
     </>

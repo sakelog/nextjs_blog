@@ -1,11 +1,12 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { Link } from 'gatsby';
 import { MdMenu, MdClose } from 'react-icons/md';
+import loadable from '@loadable/component';
 
 import config from '../config';
-const HeaderCatList = lazy(() => import('./_headerCatList'));
-const SocialIcon = lazy(() => import('../social_Icon'));
+const HeaderCatList = loadable(() => import('./_headerCatList'));
+const SocialIcon = loadable(() => import('../social_Icon'));
 
 const Header = () => {
   const siteTitle = config.title;
@@ -51,39 +52,37 @@ const Header = () => {
         role="navigation"
         aria-label="main navigation"
       >
-        <Suspense fallback={<div>ヘッダーメニュー</div>}>
-          <div className="l-header__nav__main">
-            <span
-              className="l-header__nav--menuIcon"
-              onClick={handleChangeNavMenu_Show}
-            >
-              <MdMenu />
-            </span>
-            <span className="l-header__nav--title">
-              <Link to="/">{siteTitle}</Link>
-            </span>
+        <div className="l-header__nav__main">
+          <span
+            className="l-header__nav--menuIcon"
+            onClick={handleChangeNavMenu_Show}
+          >
+            <MdMenu />
+          </span>
+          <span className="l-header__nav--title">
+            <Link to="/">{siteTitle}</Link>
+          </span>
+        </div>
+        <div className={'l-header__nav__drawer ' + navMenuShow}>
+          <span
+            className="l-header__nav--menuIcon"
+            onClick={handleChangeNavMenu_Hide}
+          >
+            <MdClose />
+          </span>
+          <div className="l-header__nav__drawer__item">
+            <h2>カテゴリー一覧</h2>
+            <HeaderCatList />
           </div>
-          <div className={'l-header__nav__drawer ' + navMenuShow}>
-            <span
-              className="l-header__nav--menuIcon"
-              onClick={handleChangeNavMenu_Hide}
-            >
-              <MdClose />
-            </span>
-            <div className="l-header__nav__drawer__item">
-              <h2>カテゴリー一覧</h2>
-              <HeaderCatList />
-            </div>
-            <div className="l-header__nav__drawer__item">
-              <h2>ページ一覧</h2>
-              {pageList}
-            </div>
-            <div className="l-header__nav__drawer__item">
-              <h2>連絡</h2>
-              <SocialIcon />
-            </div>
+          <div className="l-header__nav__drawer__item">
+            <h2>ページ一覧</h2>
+            {pageList}
           </div>
-        </Suspense>
+          <div className="l-header__nav__drawer__item">
+            <h2>連絡</h2>
+            <SocialIcon />
+          </div>
+        </div>
       </nav>
     </header>
   );

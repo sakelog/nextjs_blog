@@ -1,10 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import config from '../components/config';
+import loadable from '@loadable/component';
 
 import Layout from '../components/layout/layout';
 import CustomHead from '../components/customHead';
-const ContactForm = lazy(() => import('../components/contactForm'));
-const BackToTopPage = lazy(
+const ContactForm = loadable(() => import('../components/contactForm'));
+const BackToTopPage = loadable(
   () => import('../components/pagination/backToTopPage')
 );
 
@@ -13,23 +14,14 @@ const description = config.title + 'についてのお問い合わせページ';
 
 const Contact = () => {
   return (
-    <Suspense
-      fallback={
-        <Layout>
-          {CustomHead(pageTitle, description, false)}
-          <h1 className="u-align--center">{pageTitle}</h1>
-        </Layout>
-      }
-    >
-      <Layout>
-        {CustomHead(pageTitle, description, false)}
-        <section>
-          <h1 className="u-align--center">{pageTitle}</h1>
-          <ContactForm />
-        </section>
-        <BackToTopPage />
-      </Layout>
-    </Suspense>
+    <Layout>
+      {CustomHead(pageTitle, description, false)}
+      <section>
+        <h1 className="u-align--center">{pageTitle}</h1>
+        <ContactForm />
+      </section>
+      <BackToTopPage />
+    </Layout>
   );
 };
 
