@@ -75,6 +75,14 @@ function customHead(title: string, description: string, imageFLG: boolean) {
           href: 'https://fonts.gstatic.com',
         },
         {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com',
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://www.googletagmanager.com',
+        },
+        {
           rel: 'stylesheet',
           href:
             'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap',
