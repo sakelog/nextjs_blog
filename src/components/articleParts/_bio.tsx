@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 // Component
-import SocialIcon from '../social_Icon';
+const SocialIcon = lazy(() => import('../social_Icon'));
 
 const Bio = () => {
   const data = useStaticQuery(
@@ -45,7 +45,9 @@ const Bio = () => {
         <Link to="/about_this_site/" className="c-button--primary">
           プロフィール
         </Link>
-        <SocialIcon />
+        <Suspense fallback={<div>ソーシャルアイコン</div>}>
+          <SocialIcon />
+        </Suspense>
       </div>
     </div>
   );

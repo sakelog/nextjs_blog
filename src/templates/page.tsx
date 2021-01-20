@@ -1,16 +1,13 @@
-import * as React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { graphql } from 'gatsby';
 
 import RenderAst from '../lib/renderAst';
 
 import Layout from '../components/layout/layout';
 import CustomHead from '../components/customHead';
-import BackToTopPage from '../components/pagination/backToTopPage';
-// Components
-/*
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-*/
+const BackToTopPage = lazy(
+  () => import('../components/pagination/backToTopPage')
+);
 
 const Page: Page.func = (props) => {
   const page = props.data.page;
@@ -19,15 +16,24 @@ const Page: Page.func = (props) => {
   const htmlBody = page.body.childMarkdownRemark.html;
 
   return (
-    <Layout>
-      {CustomHead(page.title, description, false)}
-      <article className="p-article">
-        <h1>{page.title}</h1>
-        <hr />
-        <section>{RenderAst(htmlBody)}</section>
-      </article>
-      <BackToTopPage />
-    </Layout>
+    <Suspense
+      fallback={
+        <Layout>
+          {CustomHead(page.title, description, false)}
+          <h1>{page.title}</h1>
+        </Layout>
+      }
+    >
+      <Layout>
+        {CustomHead(page.title, description, false)}
+        <article className="p-article">
+          <h1>{page.title}</h1>
+          <hr />
+          <section>{RenderAst(htmlBody)}</section>
+        </article>
+        <BackToTopPage />
+      </Layout>
+    </Suspense>
   );
 };
 

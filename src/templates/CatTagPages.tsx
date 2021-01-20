@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { getRootPath } from '../lib/getPath';
 
 import Layout from '../components/layout/layout';
 import CustomHead from '../components/customHead';
-import PostDate from '../components/articleParts/_postDate';
-import TagList from '../components/articleParts/_taglist';
-import Pagination from '../components/pagination/pagination';
-import BackToTopPage from '../components/pagination/backToTopPage';
+//import PostDate from '../components/articleParts/_postDate';
+const PostDate = lazy(() => import('../components/articleParts/_postDate'));
+//import TagList from '../components/articleParts/_taglist';
+const TagList = lazy(() => import('../components/articleParts/_taglist'));
+//import Pagination from '../components/pagination/pagination';
+const Pagination = lazy(() => import('../components/pagination/pagination'));
+//import BackToTopPage from '../components/pagination/backToTopPage';
+const BackToTopPage = lazy(
+  () => import('../components/pagination/backToTopPage')
+);
 
 const CATEGORY = 'category';
 const CATEGORY_LABEL = 'カテゴリー:';
@@ -33,20 +39,31 @@ const CategoryPages: Category.func = (props) => {
   });
 
   return (
-    <Layout>
-      {CustomHead(target.label, pageDescription, false)}
-      <h1 className="u-align--center">
-        <span>{target.label}</span>
-      </h1>
-      <p>投稿：{target.totalCount}件</p>
-      {postsTag}
-      <Pagination
-        numPages={numPages}
-        currentPage={currentPage}
-        pathBase={pathBase}
-      />
-      <BackToTopPage />
-    </Layout>
+    <Suspense
+      fallback={
+        <Layout>
+          {CustomHead(target.label, pageDescription, false)}
+          <h1 className="u-align--center">
+            <span>{target.label}</span>
+          </h1>
+        </Layout>
+      }
+    >
+      <Layout>
+        {CustomHead(target.label, pageDescription, false)}
+        <h1 className="u-align--center">
+          <span>{target.label}</span>
+        </h1>
+        <p>投稿：{target.totalCount}件</p>
+        {postsTag}
+        <Pagination
+          numPages={numPages}
+          currentPage={currentPage}
+          pathBase={pathBase}
+        />
+        <BackToTopPage />
+      </Layout>
+    </Suspense>
   );
 };
 

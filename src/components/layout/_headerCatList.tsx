@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { getCategoryPath } from '../../lib/getPath';
@@ -25,7 +25,6 @@ const HeaderCatList = () => {
   const categoryPostGroup = data.categoryGroup.group;
   let hasPostCategorys: Post.category[] = [];
 
-  //const allTag = props.data.tag.nodes;
   categoryPostGroup.map((hasPostCategory) => {
     for (var i = 0; i < categorys.length; i++) {
       const isHit = hasPostCategory.fieldValue === categorys[i].name;
