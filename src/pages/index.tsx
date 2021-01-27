@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 
 import { getAllPosts, getURLSet } from '../lib/contentful/exportContent';
-import { getPostListNumPages, getPostListSlugs } from '../lib/routing';
+import CreatePostListProps from '../lib/createProps/createPostListProps';
 import { getConcatPath, getRootPath } from '../lib/getPath';
 import { setSiteMap } from '../lib/setSitemap';
 
@@ -14,16 +14,7 @@ import Layout from '../components/layout/layout';
 
 const POST_PER_LISTPAGE = 6;
 
-type propsType = {
-  posts: {
-    posts: contentful.post[];
-    currentPage: number;
-    lastPage: number;
-    pathBase: string;
-  };
-};
-
-const TopPage = (props: propsType) => {
+const TopPage = (props: { posts: Template.postList.props }) => {
   const TemplateTag = (
     <Temp_PostList
       posts={props.posts.posts}
@@ -38,15 +29,14 @@ const TopPage = (props: propsType) => {
 export default TopPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const allPosts = await getAllPosts();
+  const allpost = await getAllPosts();
   // postList
-  const postListSlugs = getPostListSlugs(
-    getPostListNumPages({ posts: allPosts, per_page: POST_PER_LISTPAGE })
-  );
-  const postListSkip = 0;
-  const targetPosts = allPosts.slice(postListSkip, POST_PER_LISTPAGE);
-  const postListCurrentPage = 1;
-  const postListMaxPage = postListSlugs[postListSlugs.length - 1];
+  const postListProps = await CreatePostListProps({
+    allpost,
+    per_page: POST_PER_LISTPAGE,
+    slug: '/',
+  });
+  console.log(postListProps);
 
   // sitemap
   const fetchDate = new Date();
@@ -57,16 +47,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
       priority: '0.4',
     },
   ];
-  setSiteMap(fetchDate, await getURLSet());
+  setSiteMap(fetchDate, manualURLSet.concat(await getURLSet()));
 
   return {
     props: {
-      posts: {
-        posts: targetPosts,
-        currentPage: postListCurrentPage,
-        lastPage: postListMaxPage,
-        pathBase: '/',
-      },
+      posts: postListProps,
     },
   };
 };

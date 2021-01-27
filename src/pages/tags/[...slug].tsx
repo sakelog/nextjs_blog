@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { getAllTags, getPostByTag } from '../../lib/contentful/exportContent';
-import { getPostListNumPages, getPostListSlugs } from '../../lib/routing';
+import { getPostListNumPages, getPostListSlugs } from '../../lib/getSlugs';
 import { toKebabCase } from '../../lib/toKebabCase';
 
 import Layout from '../../components/layout/layout';

@@ -62,13 +62,6 @@ declare namespace contentful {
       };
     };
   };
-  declare namespace Template {
-    declare namespace page {
-      declare type props = {
-        page: page;
-      };
-    }
-  }
   declare namespace MyLib {
     declare namespace getAllPosts {}
     declare namespace getTargetPosts {

@@ -5,7 +5,7 @@ import BackToTop from '../components/pagination/backToTop';
 
 import wrapperStyles from '../styles/Layout/_l-pageWrapper.module.scss';
 
-const Temp_Page = (props: contentful.Template.page.props) => {
+const Temp_Page = (props: Template.page.props) => {
   const body = props.page.fields.body;
   return (
     <article>
