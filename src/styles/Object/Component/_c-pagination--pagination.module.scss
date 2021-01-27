@@ -1,0 +1,39 @@
+@use '../../Foundation/variables' as *;
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  max-width: $sm;
+}
+.prevNextRoot {
+  display: flex;
+}
+.firstLast {
+  flex-grow: 1;
+  display: flex;
+  a {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+.paginationItem {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  background: $light-gray;
+  padding: 0.2rem 0.4rem;
+  margin: 0 0.4rem;
+  color: $darker-gray;
+  a {
+    color: $darker-gray;
+    font-weight: normal;
+  }
+  &.disable {
+    color: $dark-gray;
+    a {
+      color: $dark-gray;
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+.paginationItem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 6px;
+  background: $light-gray;
+  padding: 0.2rem 0.4rem;
+  margin: 0.4rem;
+  color: $darker-gray;
+  cursor: pointer;
+  &.next {
+    justify-content: flex-end;
+  }
+  &.disable {
+    display: none;
+  }
+  a {
+    color: $darker-gray;
+  }
+  .paginationIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  @include mq(sm) {
+    width: calc(50% - 2rem);
+    &.disable {
+      content: '';
+      display: block;
+      width: 45%;
+      background: $gray;
+    }
+  }
+}

@@ -1,90 +1,73 @@
-import React from 'react';
-import { useState } from 'react';
-import { Link } from 'gatsby';
+import { useEffect, useState } from 'react';
+
+import Link from 'next/link';
 import { MdMenu, MdClose } from 'react-icons/md';
-import loadable from '@loadable/component';
+import { Router } from 'next/router';
 
 import config from '../config';
-const HeaderCatList = loadable(() => import('./_headerCatList'));
-const SocialIcon = loadable(() => import('../social_Icon'));
+
+import PageList from './headerNav/pageList';
+import SocialIcon from '../socialIcon';
+
+import styles from '../../styles/Object/Project/_p-header.module.scss';
+import headingStyles from '../../styles/Object/Component/_c-heading.module.scss';
 
 const Header = () => {
-  const siteTitle = config.title;
-
-  const [navMenuShow, setNavMenuShow] = useState<string>('');
-
-  const handleChangeNavMenu_Show = (): void => {
-    setNavMenuShow('l-header__nav__darwer--show');
+  const [state, setState] = useState<string>('');
+  useEffect(() => {
+    Router.events.on('routeChangeStart', handleInit);
+    window.addEventListener('resize', handleInit);
+    window.addEventListener('orientationchange', handleInit);
+    return () => {
+      Router.events.off('routeChangeStart', handleInit);
+      window.removeEventListener('resize', handleInit);
+      window.removeEventListener('orientationchange', handleInit);
+    };
+  });
+  const handleInit = () => {
+    setState('');
   };
-  const handleChangeNavMenu_Hide = (): void => {
-    setNavMenuShow('l-header__nav__darwer--hide');
+  const handleOpen = () => {
+    setState('open');
   };
-
-  const pageList = (
-    <ul className="l-header__nav__drawer--list">
-      <li>
-        <Link to="/tags/" className="nav-link">
-          タグ一覧
-        </Link>
-      </li>
-      <li>
-        <Link to="/about_this_site/" className="nav-link">
-          このサイトについて
-        </Link>
-      </li>
-      <li>
-        <Link to="/privacy/" className="nav-link">
-          プライバシーポリシー
-        </Link>
-      </li>
-      <li>
-        <Link to="/contact/" className="nav-link">
-          お問い合わせ
-        </Link>
-      </li>
-    </ul>
-  );
-
+  const handleClose = () => {
+    setState('close');
+  };
+  const SiteTitle = <Link href="/">{config.title}</Link>;
   return (
-    <header className="l-header">
-      <nav
-        className="l-header__nav"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div className="l-header__nav__main">
-          <span
-            className="l-header__nav--menuIcon"
-            onClick={handleChangeNavMenu_Show}
-          >
-            <MdMenu />
-          </span>
-          <span className="l-header__nav--title">
-            <Link to="/">{siteTitle}</Link>
-          </span>
-        </div>
-        <div className={'l-header__nav__drawer ' + navMenuShow}>
-          <span
-            className="l-header__nav--menuIcon"
-            onClick={handleChangeNavMenu_Hide}
-          >
-            <MdClose />
-          </span>
-          <div className="l-header__nav__drawer__item">
-            <h2>カテゴリー一覧</h2>
-            <HeaderCatList />
+    <>
+      <header className={styles.root}>
+        <nav className={styles.navMenu}>
+          <div className={styles.navBar}>
+            <div className={styles.title}>{SiteTitle}</div>
+            <span className={styles.navIcon}>
+              <MdMenu onClick={handleOpen} />
+            </span>
           </div>
-          <div className="l-header__nav__drawer__item">
-            <h2>ページ一覧</h2>
-            {pageList}
+          <div
+            className={styles.drawerBack + ' ' + styles[state]}
+            onClick={handleClose}
+          ></div>
+          <div className={styles.navDrawer + ' ' + styles[state]}>
+            <span className={styles.navIcon}>
+              <MdClose onClick={handleClose} />
+            </span>
+            <h2 className={styles.heading + ' ' + headingStyles.flexCenter}>
+              ページ一覧
+            </h2>
+            <div className={styles.pageList}>
+              <PageList />
+            </div>
+            <h2 className={styles.heading + ' ' + headingStyles.flexCenter}>
+              連絡先
+            </h2>
+            <div className={styles.socialIcon}>
+              <SocialIcon />
+            </div>
           </div>
-          <div className="l-header__nav__drawer__item">
-            <h2>連絡</h2>
-            <SocialIcon />
-          </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   );
 };
 

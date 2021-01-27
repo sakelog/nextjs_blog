@@ -1,0 +1,53 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.appreach {
+  background: $light-gray;
+  width: 100%;
+  max-width: $sm;
+  margin: 2rem auto !important;
+  border-radius: 6px;
+  padding: 2rem;
+  a {
+    &:after {
+      display: none;
+    }
+  }
+  .appreach__name {
+    font-size: 2rem;
+  }
+  .appreach__price {
+    margin: 0 0.6em;
+  }
+  .appreach__posted {
+    margin-left: 0.6em;
+  }
+  .appreach__icon {
+    width: 100%;
+    height: auto;
+    max-width: 120px;
+    border-radius: 10px;
+  }
+  .appreach__links {
+    .appreach__aslink,
+    .appreach__gplink {
+      margin: 0.4rem;
+    }
+    .appreach__aslink {
+      img {
+        height: 60px;
+        width: 135px;
+      }
+    }
+    .appreach__gplink {
+      img {
+        height: 40px;
+        width: 140px;
+      }
+    }
+    @include mq(md) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

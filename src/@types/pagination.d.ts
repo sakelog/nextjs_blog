@@ -1,7 +1,15 @@
 declare namespace pagination {
-  declare type props = {
-    numPages: number
-    currentPage: number
-    pathBase: string
+  declare namespace pagination {
+    declare type props = {
+      currentPage: number;
+      lastPage: number;
+      pathBase: string;
+    };
+  }
+  declare namespace prevNext {
+    declare type props = {
+      prevPost?: contentful.post;
+      nextPost?: contentful.post;
+    };
   }
 }

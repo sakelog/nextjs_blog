@@ -1,0 +1,56 @@
+@use '../../Foundation//variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.root {
+  background: #ffffff;
+  padding: 1rem;
+}
+.profileIcon {
+  background: #ffffff;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.author {
+  font-size: 2.4rem;
+  text-align: center;
+  font-weight: bold;
+}
+.socialIcon {
+  ul {
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 0.4rem;
+    }
+  }
+}
+.detail {
+  margin: 0.6rem 0;
+}
+@include mq(md) {
+  .main {
+    display: flex;
+    width: 100%;
+    max-width: 768px;
+  }
+  .profileIcon {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .content {
+    margin-left: 1rem;
+    width: calc(100% - 200px);
+    .author {
+      text-align: inherit;
+    }
+    .socialIcon {
+      ul {
+        justify-content: flex-start;
+      }
+    }
+  }
+}

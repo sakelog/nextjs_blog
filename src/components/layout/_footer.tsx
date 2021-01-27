@@ -1,21 +1,24 @@
-import React from 'react';
 import config from '../config';
 
+import styles from '../../styles/Layout/_l-footer.module.scss';
+
 const Footer = () => {
-  const SiteTitle = config.title;
+  const siteTitle = config.title;
   const startDate = new Date(config.createAt);
   const startYear = startDate.getFullYear();
 
   const now = new Date();
   const nowYear = now.getFullYear();
-  const copytext =
-    nowYear === startYear
-      ? startYear + SiteTitle
-      : startYear + '-' + nowYear + SiteTitle;
 
+  const copyText =
+    nowYear > startYear
+      ? startYear + '-' + nowYear + siteTitle
+      : startYear + siteTitle;
   return (
-    <footer className="l-footer">
-      <p>&copy;{copytext}</p>
+    <footer className={styles.root}>
+      <small>
+        <p>&copy;{copyText}</p>
+      </small>
     </footer>
   );
 };

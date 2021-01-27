@@ -1,0 +1,160 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+@keyframes open-menu {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes close-menu {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.root {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+.navMenu {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  @include mq(md) {
+    display: flex;
+    justify-content: space-between;
+    background: $theme-color;
+    overflow: hidden;
+  }
+}
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $theme-color;
+  padding: 0 0.6rem;
+}
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: $font-logo;
+  a {
+    color: #ffffff;
+  }
+}
+.navIcon {
+  font-size: 5rem;
+  color: #ffffff;
+  @include mq(md) {
+    display: none;
+  }
+}
+.drawerBack {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  &.open {
+    display: block;
+    z-index: 1;
+    @include mq(md) {
+      display: none;
+    }
+  }
+}
+.navDrawer {
+  display: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 9999;
+  padding: 0.8rem;
+  background: #ffffff;
+  width: calc(100% - 60px);
+  max-width: $xs;
+  transform: translateX(calc(100% + 60px));
+  &.close {
+    display: hidden;
+    animation: close-menu 0.3s forwards;
+  }
+  &.open {
+    display: block;
+    animation: open-menu 0.3s forwards;
+  }
+  .navIcon {
+    color: $theme-color;
+    display: block;
+    text-align: right;
+  }
+  .pageList {
+    padding: 1rem 0.8rem;
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+  .socialIcon {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem 0.4rem;
+      li {
+        margin: 0.4rem;
+      }
+    }
+  }
+  @include mq(md) {
+    display: flex;
+    align-items: center;
+    transform: none;
+    position: relative;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    background: none;
+    color: #ffffff;
+    overflow-x: auto;
+    a {
+      color: #ffffff;
+    }
+    &.close {
+      display: inherit;
+      animation: none;
+    }
+    &.open {
+      display: inherit;
+      animation: none;
+    }
+    .navIcon {
+      display: none;
+    }
+    .heading {
+      display: none;
+    }
+    .pageList {
+      flex-grow: 0;
+      flex-shrink: 0;
+      ul {
+        display: flex;
+        li {
+          margin: 0 1rem;
+        }
+      }
+    }
+    .socialIcon {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+}

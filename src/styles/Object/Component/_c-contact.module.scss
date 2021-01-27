@@ -1,0 +1,72 @@
+@use '../../Foundation/variables' as *;
+@use '../../Foundation/mixin' as *;
+
+.formItems {
+  background: $gray;
+  padding: 0.6rem;
+  border-radius: 6px;
+  > div {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dashed $darker-gray;
+    padding-bottom: 0.6rem;
+    &:last-of-type {
+      border: none;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0.6rem;
+      .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $theme-color;
+        color: #ffffff;
+        border-radius: 100%;
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-right: 0.6rem;
+      }
+    }
+    input,
+    textarea {
+      background: #ffffff;
+      margin: 0.4rem 0;
+      padding: 0.4rem 0;
+      border-radius: 6px;
+    }
+    textarea {
+      resize: vertical;
+    }
+  }
+  @include mq(md) {
+    max-width: $xs;
+    margin: auto;
+    > div {
+      flex-direction: row;
+      align-items: baseline;
+      label {
+        width: 200px;
+      }
+      input,
+      textarea {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+.privacy {
+  max-width: $xs;
+  margin: auto;
+}
+.button {
+  background: $theme-color;
+  color: #ffffff;
+  border-radius: 6px;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0.4rem;
+  max-width: $xs;
+  display: block;
+}

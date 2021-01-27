@@ -1,0 +1,23 @@
+@use '../../Foundation/variables' as *;
+
+.root {
+  overflow-x: auto;
+  width: 100%;
+  table {
+    min-width: 768px;
+    background: $light-gray;
+    border-collapse: collapse;
+    th {
+      background: $dark-gray;
+      color: #ffffff;
+      padding: 1rem 2rem;
+      font-weight: bold;
+    }
+    tr {
+      border-bottom: $dark-gray solid 1px;
+    }
+    td {
+      padding: 0.6rem 2rem;
+    }
+  }
+}
