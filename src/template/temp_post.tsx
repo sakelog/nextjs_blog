@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { lazy, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import loadable from '@loadable/component';
 import { FiTag } from 'react-icons/fi';
 
 import { getCategoryPath, getTagPath } from '../lib/getPath';
-const RenderTOC = loadable(() => import('../lib/renderTOC'));
+import RenderTOC from '../lib/renderTOC';
 import { getWindowSize } from '../lib/getWindowSize';
 
 import CustomHead from '../components/customHead';
