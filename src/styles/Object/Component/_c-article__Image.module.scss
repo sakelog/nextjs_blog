@@ -1,0 +1,26 @@
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  &.show {
+    display: block;
+  }
+}
+.articleImage {
+  display: block;
+  width: 100%;
+  max-width: 768px;
+  position: relative;
+  overflow: hidden;
+  margin: 2rem;
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    position: relative;
+    padding-top: (9/16) * 100%;
+  }
+}

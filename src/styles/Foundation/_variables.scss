@@ -1,0 +1,17 @@
+// font
+$font-default: 'Roboto', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+  'Yu Gothic', 'Meiryo', sans-serif;
+$font-logo: 'Press Start 2P', cursive;
+
+// color
+$theme-color: #5b7e91;
+$gray: #dcdddd;
+$light-gray: lighten($gray, 10%);
+$dark-gray: darken($gray, 20%);
+$darker-gray: darken($gray, 60%);
+
+// size
+$xs: 575px;
+$sm: 767px;
+$md: 991px;
+$lg: 1199px;

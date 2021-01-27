@@ -1,102 +1,81 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import loadable from '@loadable/component';
+import Head from 'next/head';
 
-import config from './config';
-const GTMScript = loadable(() => import('../components/scripts/_gtmScript'));
+import config from '../components/config';
+import GTMScript from '../scripts/gtmScript';
 
-/*
-const GTM_ID = config.GTM_ID;
+type propsType = {
+  pageTitle?: string;
+  description?: string;
+  imgFLG?: boolean;
+};
 
-const GTMScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`;
-*/
-
-function customHead(title: string, description: string, imageFLG: boolean) {
-  const metaTitle = (title ? title + ' | ' : '') + config.title;
-  const metaDescription = description || config.description;
-  const ogpImage =
-    imageFLG === true
-      ? 'https://res.cloudinary.com/cl1sakelog/image/upload/l_text:Sawarabi%20Gothic_50_bold:' +
-        title +
-        ',co_rgb:fff,w_700,c_fit/v1581205307/sakelog_ogp.png'
-      : config.url + '/ogp.png';
-  const TwitterType = imageFLG === true ? 'summary_large_image' : 'summary';
+const CustomHead = (props: propsType) => {
+  const metaTitle =
+    (props.pageTitle ? props.pageTitle + ' | ' : '') + config.title;
+  const metaDiscription = props.description
+    ? props.description
+    : config.description;
+  const ogpImageSrc = props.imgFLG
+    ? encodeURI(
+        'https://res.cloudinary.com/cl1sakelog/image/upload/co_rgb:ffffff,c_fit,w_700,' +
+          'l_text:Sawarabi%20Gothic_50_bold:' +
+          props.pageTitle +
+          '/v1611679454/sakelog/postOGP.png'
+      )
+    : 'https://res.cloudinary.com/cl1sakelog/image/upload/v1611678550/sakelog/defaultOGP.png';
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: 'ja',
-      }}
-      title={metaTitle}
-      meta={[
-        {
-          name: 'description',
-          content: metaDescription,
-        },
-        {
-          property: 'og:title',
-          content: metaTitle,
-        },
-        {
-          property: 'og:description',
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          property: `og:image`,
-          content: ogpImage,
-        },
-        {
-          name: `twitter:card`,
-          content: TwitterType,
-        },
-        {
-          name: `twitter:title`,
-          content: metaTitle,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          name: `viewport`,
-          content: `minimum-scale=1, initial-scale=1, width=device-width`,
-        },
-        {
-          name: 'theme-color',
-          content: '#54917f',
-        },
-      ]}
-      link={[
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-        },
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.googleapis.com',
-        },
-        {
-          rel: 'preconnect',
-          href: 'https://www.googletagmanager.com',
-        },
-        {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap',
-        },
-      ]}
-      defer={false}
-    >
+    <>
+      <Head>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDiscription} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDiscription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={ogpImageSrc} />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={metaTitle} />
+        <meta property="twitter:description" content={metaDiscription} />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+        <meta name="theme-color" content={config.themeColor} />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link
+          rel="stylesheet"
+          href={
+            'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          }
+        />
+        <link
+          href={
+            'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'
+          }
+          rel="stylesheet"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/img/ico/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/img/ico/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/img/ico/favicon-16x16.png"
+        />
+      </Head>
       <GTMScript />
-    </Helmet>
+    </>
   );
-}
+};
 
-export default customHead;
+export default CustomHead;

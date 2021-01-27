@@ -1,0 +1,13 @@
+@use '../../Foundation/variables' as *;
+
+.root {
+  background: $dark-gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin: 2rem 0;
+  max-width: $xs;
+}

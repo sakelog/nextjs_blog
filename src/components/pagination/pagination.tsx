@@ -1,92 +1,81 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
+import {
+  MdChevronLeft,
+  MdChevronRight,
+  MdFirstPage,
+  MdLastPage,
+} from 'react-icons/md';
 
-const Pagination = ({ numPages, currentPage, pathBase }: pagination.props) => {
-  // page 表示範囲
-  const pageLimit = 3;
-  const omitFirst = currentPage - 1 > pageLimit;
-  const omitLast = numPages - currentPage > pageLimit;
+import styles from '../../styles/Object/Component/_c-pagination--pagination.module.scss';
+
+const Pagination = (props: pagination.pagination.props) => {
+  const { currentPage, lastPage, pathBase } = props;
   const isFirst = currentPage === 1;
-  const isLast = currentPage === numPages;
-  const prevPage =
-    currentPage - 1 === 1 ? pathBase : pathBase + (currentPage - 1).toString();
-  const nextPage = pathBase + (currentPage + 1).toString();
+  const isLast = currentPage === lastPage;
 
-  const prevText = '前へ';
-  const nextText = '次へ';
-  const paginationTag =
-    numPages !== 1 ? (
-      <nav className="c-pagination u-space--mgn--2">
-        <div className="sl-pagination-prev u-align--center">
-          {!isFirst ? (
-            <Link to={prevPage} rel="prev">
-              {prevText}
-            </Link>
-          ) : (
-            <span>{prevText}</span>
-          )}
-        </div>
+  const firstPath = pathBase;
+  const lastPath = pathBase + lastPage.toString();
 
-        <div>
-          <ul className="u-list--inline">
-            {
-              /*FirstPage*/
-              !isFirst && (
-                <div>
-                  <li className="c-pagination__number--firstlast">
-                    <Link to={pathBase}>1</Link>
-                    {omitFirst && <span>…</span>}
-                  </li>
-                </div>
-              )
-            }
-            {Array.from({ length: numPages }, (_, i) =>
-              i + 1 === currentPage ? (
-                <li
-                  key={`pagination-number${i + 1}`}
-                  className="c-pagination__number--current"
-                >
-                  <span>{i + 1}</span>
-                </li>
-              ) : (
-                i > 0 &&
-                i < numPages - 1 &&
-                currentPage - pageLimit < i + 1 &&
-                i + 1 < currentPage + pageLimit && (
-                  <li
-                    key={`pagination-number${i + 1}`}
-                    className="c-pagination__number--link"
-                  >
-                    <Link to={pathBase + (i === 0 ? '' : i + 1)}>{i + 1}</Link>
-                  </li>
-                )
-              )
-            )}
-            {
-              /*LastPage*/
-              !isLast && (
-                <li className="c-pagination__number--firstlast">
-                  {omitLast && <span>…</span>}
-                  <Link to={pathBase + numPages}>{numPages}</Link>
-                </li>
-              )
-            }
-          </ul>
-        </div>
+  const prevPath =
+    currentPage - 1 === 1 ? firstPath : pathBase + (currentPage - 1).toString();
+  const nextPath = pathBase + (currentPage + 1).toString();
 
-        <div className="col sl-pagination-next u-align--center">
-          {!isLast ? (
-            <Link to={nextPage} rel="next">
-              {nextText}
-            </Link>
-          ) : (
-            <span className="">{nextText}</span>
-          )}
-        </div>
-      </nav>
-    ) : null;
+  const prevLink = (
+    <span
+      className={styles.paginationItem + (isFirst ? ' ' + styles.disable : '')}
+    >
+      <MdChevronLeft />
+      <Link href={prevPath}>前へ</Link>
+    </span>
+  );
+  const nextLink = (
+    <span
+      className={styles.paginationItem + (isLast ? ' ' + styles.disable : '')}
+    >
+      <Link href={nextPath}>次へ</Link>
+      <MdChevronRight />
+    </span>
+  );
 
-  return paginationTag;
+  // 先頭ページ
+  const firstLink = (
+    <span
+      className={
+        styles.paginationItem +
+        ' ' +
+        styles.firstLast +
+        (isFirst ? ' ' + styles.disable : '')
+      }
+    >
+      <MdFirstPage />
+      <Link href={firstPath}>1</Link>
+    </span>
+  );
+  // 最終ページ
+  const lastLink = (
+    <span
+      className={
+        styles.paginationItem +
+        ' ' +
+        styles.firstLast +
+        (isLast ? ' ' + styles.disable : '')
+      }
+    >
+      <Link href={lastPath}>{lastPage.toString()}</Link>
+      <MdLastPage />
+    </span>
+  );
+  return (
+    <nav className={styles.root}>
+      {firstLink}
+      <div className={styles.prevNextRoot}>
+        {prevLink}
+        {/*<ul className={styles.numList}>{numList}</ul>*/}
+        {nextLink}
+      </div>
+      {lastLink}
+    </nav>
+  );
 };
 
 export default Pagination;

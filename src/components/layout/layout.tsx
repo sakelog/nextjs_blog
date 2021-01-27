@@ -1,26 +1,37 @@
-import React from 'react';
-import config from '../config';
-import loadable from '@loadable/component';
+import { useEffect, useState } from 'react';
 
-const Header = loadable(() => import('./_header'));
-const Footer = loadable(() => import('./_footer'));
+import { getWindowSize } from '../../lib/getWindowSize';
 
-import '../../styles/css/mystyle.css';
+import Header from './_header';
+import Footer from './_footer';
 
-const GTM_ID = config.GTM_ID;
-const GTMScript = `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+import wrapperStyles from '../../styles/Layout/_l-wrapper.module.scss';
+import mainStyles from '../../styles/Layout/_l-main.module.scss';
 
-const Layout = (props: any) => {
+const Layout = (props) => {
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  useEffect(() => {
+    handleSetWindowSize();
+    window.addEventListener('resize', handleSetWindowSize);
+    window.addEventListener('orientationchange', handleSetWindowSize);
+    return () => {
+      window.removeEventListener('resize', handleSetWindowSize);
+      window.removeEventListener('orientationchange', handleSetWindowSize);
+    };
+  }, []);
+  const handleSetWindowSize = () => {
+    const thisWindowSize = getWindowSize();
+    setWindowSize(thisWindowSize);
+  };
   return (
-    <>
-      <div className="l-wrapper">
-        <Header />
-        <main className="l-main">{props.children}</main>
-        <Footer />
-      </div>
-      <noscript dangerouslySetInnerHTML={{ __html: GTMScript }} />
-    </>
+    <div
+      className={wrapperStyles.root}
+      style={{ minHeight: windowSize.height }}
+    >
+      <Header />
+      <main className={mainStyles.root}>{props.children}</main>
+      <Footer />
+    </div>
   );
 };
 

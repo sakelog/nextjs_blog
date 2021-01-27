@@ -1,0 +1,30 @@
+@use '../../Foundation/variables' as *;
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  background: $darker-gray;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+}
+.toc {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  li {
+    margin-bottom: 0.6rem;
+    padding: 0.4rem;
+  }
+  a {
+    cursor: pointer;
+    color: $darker-gray;
+    font-weight: normal;
+  }
+  .active {
+    background: $dark-gray;
+    a {
+      color: #ffffff;
+    }
+  }
+}

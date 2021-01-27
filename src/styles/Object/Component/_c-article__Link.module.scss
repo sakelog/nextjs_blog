@@ -1,0 +1,13 @@
+.external {
+  position: relative;
+  &:after {
+    content: '';
+    background-image: url('/img/external-link.svg');
+    background-position: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-block;
+    vertical-align: text-top;
+    margin: 0 0.6rem;
+  }
+}

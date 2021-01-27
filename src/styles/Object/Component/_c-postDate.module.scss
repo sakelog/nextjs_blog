@@ -1,0 +1,15 @@
+@use '../../Foundation/variables' as *;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  .date {
+    display: flex;
+    align-items: center;
+    margin: 0 0.4rem;
+    .dateIcon {
+      font-size: 2.4rem;
+      color: $dark-gray;
+    }
+  }
+}
