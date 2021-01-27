@@ -17,7 +17,11 @@ const CreatePostListProps = async (
   const targetPosts = isPostList
     ? props.allpost.slice(postListSkip, postListSkip + props.per_page)
     : null;
-  const currentPage = isPostList ? Number(props.slug) : null;
+  const currentPage = isPostList
+    ? props.slug === '/'
+      ? 1
+      : Number(props.slug)
+    : null;
   const lastPage = Number(postListSlugs[postListSlugs.length - 1]);
 
   return isPostList
