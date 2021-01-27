@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
@@ -13,31 +12,9 @@ import BackToTop from '../components/pagination/backToTop';
 import styles from '../styles/Object/Component/_c-contact.module.scss';
 import wrapperStyles from '../styles/Layout/_l-pageWrapper.module.scss';
 
-const endPoint =
-  process.env.NODE_ENV === 'production' ? process.env.FORMSPREE_ENDPOINT : null;
+const endPoint = process.env.FORMSPREE_ENDPOINT;
 
 const Contact = () => {
-  const [state, setState] = useState<string>('');
-
-  function submitForm(ev) {
-    ev.preventDefault();
-    const form = ev.target;
-    const data = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    xhr.open(form.method, form.action);
-    xhr.setRequestHeader('Accept', 'application/json');
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        form.reset();
-        setState('SUCCESS');
-      } else {
-        setState('ERROR');
-      }
-    };
-    xhr.send(data);
-  }
-
   const PAGE_TITLE = 'お問い合わせ';
   const description = config.title + 'についてのお問い合わせページ';
 
@@ -57,12 +34,7 @@ const Contact = () => {
       <CustomHead pageTitle={PAGE_TITLE} description={description} />
       <section className={wrapperStyles.root}>
         <h1>{PAGE_TITLE}</h1>
-        <form
-          onSubmit={submitForm}
-          action={endPoint}
-          method="POST"
-          className={styles.root}
-        >
+        <form action={endPoint} method="POST" className={styles.root}>
           <div className={styles.formItems}>
             <div>
               <label>
@@ -93,12 +65,7 @@ const Contact = () => {
             </div>
           </div>
           {privacyTag}
-          {state === 'SUCCESS' ? (
-            <p>送信成功</p>
-          ) : (
-            <button className={styles.button}>送信</button>
-          )}
-          {state === 'ERROR' && <p>送信エラー</p>}
+          <button className={styles.button}>送信</button>
         </form>
       </section>
       <BackToTop />
