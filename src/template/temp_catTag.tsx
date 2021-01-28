@@ -36,14 +36,12 @@ const Temp_CatTag = (props: Template.catTagList.props) => {
         <li key={tag.fields.slug}>
           <h4>
             <Link href={getTagPath(tag.fields.slug)}>
-              <a>
-                <span className={tagStyles.tagListItem}>
-                  <span className={tagStyles.tagIcon}>
-                    <FiTag />
-                  </span>
-                  {tag.fields.name}
+              <span className={tagStyles.tagListItem}>
+                <span className={tagStyles.tagIcon}>
+                  <FiTag />
                 </span>
-              </a>
+                {tag.fields.name}
+              </span>
             </Link>
           </h4>
         </li>
@@ -55,19 +53,17 @@ const Temp_CatTag = (props: Template.catTagList.props) => {
     return (
       <li key={post.fields.slug} className={styles.post}>
         <Link href={getRootPath(post.fields.slug)}>
-          <a>
-            <div>
-              <h2 className={styles.title}>{post.fields.title}</h2>
-              <div className={styles.subItem}>
-                {categoryTag}
-                <PostDate
-                  postdate={post.fields.date}
-                  update={post.fields.update}
-                />
-                {tagsTag}
-              </div>
+          <div>
+            <h2 className={styles.title}>{post.fields.title}</h2>
+            <div className={styles.subItem}>
+              {categoryTag}
+              <PostDate
+                postdate={post.fields.date}
+                update={post.fields.update}
+              />
+              {tagsTag}
             </div>
-          </a>
+          </div>
         </Link>
       </li>
     );
