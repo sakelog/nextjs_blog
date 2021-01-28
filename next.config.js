@@ -1,17 +1,14 @@
 const path = require('path');
-//const withPWA = require('next-pwa');
-const withOffline = require('next-offline');
+const withPWA = require('next-pwa');
 
-module.exports = withOffline({
+module.exports = withPWA({
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
     domains: ['images.ctfassets.net'],
   },
-  /*
   pwa: {
     dest: 'public',
   },
-  */
 });
