@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 
 import config from '../components/config';
 import GTMScript from '../scripts/gtmScript';
