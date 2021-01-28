@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import loadable from '@loadable/component';
 
 import { getAllPosts, getURLSet } from '../lib/contentful/exportContent';
 import CreatePostListProps from '../lib/createProps/createPostListProps';
@@ -8,7 +9,7 @@ import { setSiteMap } from '../lib/setSitemap';
 import config from '../components/config';
 
 // Template
-import Temp_PostList from '../template/temp_postList';
+const Temp_PostList = loadable(() => import('../template/temp_postList'));
 
 import Layout from '../components/layout/layout';
 
@@ -36,7 +37,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     per_page: POST_PER_LISTPAGE,
     slug: '/',
   });
-  console.log(postListProps);
 
   // sitemap
   const fetchDate = new Date();
