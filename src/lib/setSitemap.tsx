@@ -2,7 +2,7 @@ import fs from 'fs';
 import { format, isValid } from 'date-fns';
 import config from '../components/config';
 
-export const setSiteMap = (fetchDate: Date, urlSet: sitemap.urlset) => {
+export const setSiteMap = (fetchDate: Date, urlSet: sitemap.urlset): void => {
   let SitemapString: string;
 
   SitemapString = '<?xml version="1.0" encoding="UTF-8" ?>';
@@ -23,7 +23,7 @@ export const setSiteMap = (fetchDate: Date, urlSet: sitemap.urlset) => {
   });
 };
 
-const setURL = (item: sitemap.url) => {
+const setURL = (item: sitemap.url): string => {
   let urlString: string;
   urlString = '<url><loc>';
   urlString += item.url;
@@ -40,7 +40,7 @@ const setURL = (item: sitemap.url) => {
   return urlString;
 };
 
-const formatYMD = (date: Date | string) => {
+const formatYMD = (date: Date | string): string => {
   const FORMAT_STRING = 'yyyy-MM-dd';
 
   return typeof date === 'string'
@@ -48,7 +48,7 @@ const formatYMD = (date: Date | string) => {
     : isValid(date) && format(date, FORMAT_STRING);
 };
 
-const formatHM = (date: Date | string) => {
+const formatHM = (date: Date | string): string => {
   const FORMAT_STRING = 'hh:mmxxx';
 
   return typeof date === 'string'

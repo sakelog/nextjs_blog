@@ -10,7 +10,7 @@ type propsType = {
   activeItemIds: any[];
 };
 
-const TOC = (props: propsType) => {
+const TOC: React.FC<propsType> = (props) => {
   const { toc, activeItemIds } = props;
   const TOCList = toc.map((item) => {
     return (

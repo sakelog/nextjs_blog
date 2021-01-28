@@ -1,6 +1,6 @@
 import { getCategoryPath } from '../getPath';
 import { getCategorySlugs, getPostListNumPages } from '../getSlugs';
-import { getPostByCategory } from '../contentful/exportContent';
+import { getPostByCategory } from '../contentful/exportContent/category';
 
 const CATEGORY = 'category';
 

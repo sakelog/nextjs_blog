@@ -8,7 +8,7 @@ import {
 
 import styles from '../../styles/Object/Component/_c-pagination--pagination.module.scss';
 
-const Pagination = (props: pagination.pagination.props) => {
+const Pagination: React.FC<pagination.pagination.props> = (props) => {
   const { currentPage, lastPage, pathBase } = props;
   const isFirst = currentPage === 1;
   const isLast = currentPage === lastPage;

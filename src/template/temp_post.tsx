@@ -1,7 +1,6 @@
-import { lazy, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import loadable from '@loadable/component';
 import { FiTag } from 'react-icons/fi';
 
 import { getCategoryPath, getTagPath } from '../lib/getPath';
@@ -24,11 +23,11 @@ import styles from '../styles/Object/Component/_c-post.module.scss';
 import categoryStyles from '../styles/Object/Component/_c-category.module.scss';
 import tagStyles from '../styles/Object/Component/_c-tagList.module.scss';
 
-const Temp_Post = (props: Template.post.props) => {
+const Temp_Post: React.FC<Template.post.props> = (props) => {
   const body = props.currentPost.fields.body;
   const category = props.currentPost.fields.category;
   const MIN_WIDTH = config.mediaQuery.md;
-  const [isMd, setIsMd] = useState<Boolean>(false);
+  const [isMd, setIsMd] = useState<boolean>(false);
   useEffect(() => {
     handleSetIsMd();
     window.addEventListener('resize', handleSetIsMd);

@@ -16,7 +16,7 @@ import tagStyles from '../styles/Object/Component/_c-tagList.module.scss';
 const TAGS = 'tags';
 const CATEGORY = 'category';
 
-const Temp_CatTag = (props: Template.catTagList.props) => {
+const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
   const pageTitle =
     (props.type === TAGS ? 'タグ：' : 'カテゴリー：') + props.name;
   const description =

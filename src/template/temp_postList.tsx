@@ -13,7 +13,7 @@ import styles from '../styles/Object/Project/_p-postList.module.scss';
 import categoryStyles from '../styles/Object/Component/_c-category.module.scss';
 import tagStyles from '../styles/Object/Component/_c-tagList.module.scss';
 
-const Temp_PostList = (props: Template.postList.props) => {
+const Temp_PostList: React.FC<Template.postList.props> = (props) => {
   const postListTag = props.posts.map((post: contentful.post) => {
     const category = post.fields.category.fields;
     const tagList = post.fields.tags.map((tag) => {

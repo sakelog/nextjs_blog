@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import loadable from '@loadable/component';
 
 import remark from 'remark';
 import gfm from 'remark-gfm';
 import slug from 'remark-slug';
-//import remarkIframes from 'remark-iframes';
 import remark2rehype from 'remark-rehype';
 import raw from 'rehype-raw';
 import rehype2react from 'rehype-react';
-
 //import html from 'rehype-stringify';
 
 import report from 'vfile-reporter';
@@ -22,9 +20,11 @@ const RemarkImage = loadable(() => import('./remark/remarkImage'));
 import RemarkLink from './remark/remarkLink';
 import RemarkTable from './remark/remarkTable';
 
-const renderMarkdownBody = (markdown: string) => {
+const renderMarkdownBody = (props: {
+  markdown: string;
+}): ReactElement | unknown => {
   if (process.env.NODE_ENV === 'development') {
-    const markdownLint = remark().use(styleGuide).processSync(markdown);
+    const markdownLint = remark().use(styleGuide).processSync(props.markdown);
     console.log(report(markdownLint));
   }
 
@@ -43,7 +43,7 @@ const renderMarkdownBody = (markdown: string) => {
         table: RemarkTable,
       },
     })
-    .processSync(markdown).result;
+    .processSync(props.markdown).result;
 
   return parsedMarkdown;
 };

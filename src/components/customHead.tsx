@@ -9,7 +9,7 @@ type propsType = {
   imgFLG?: boolean;
 };
 
-const CustomHead = (props: propsType) => {
+const CustomHead: React.FC<propsType> = (props) => {
   const metaTitle =
     (props.pageTitle ? props.pageTitle + ' | ' : '') + config.title;
   const metaDiscription = props.description

@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
-  render() {
+  render(): JSX.Element {
     const GTMNoScript =
       process.env.NODE_ENV === 'production' &&
       `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}"

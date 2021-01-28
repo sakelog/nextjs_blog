@@ -1,5 +1,5 @@
 import { getTagSlugs, getPostListNumPages } from '../getSlugs';
-import { getPostByTag } from '../contentful/exportContent';
+import { getPostByTag } from '../contentful/exportContent/tag';
 import { getTagPath } from '../getPath';
 
 const TAGS = 'tags';

@@ -8,7 +8,7 @@ import Footer from './_footer';
 import wrapperStyles from '../../styles/Layout/_l-wrapper.module.scss';
 import mainStyles from '../../styles/Layout/_l-main.module.scss';
 
-const Layout = (props) => {
+const Layout: React.FC = (props) => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   useEffect(() => {
     handleSetWindowSize();

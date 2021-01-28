@@ -1,4 +1,4 @@
-export function toKebabCase(target: string) {
+export function toKebabCase(target: string): string {
   let KebabString: string;
 
   KebabString = target;

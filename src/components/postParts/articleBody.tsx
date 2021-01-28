@@ -6,9 +6,11 @@ type propsType = {
   body: string;
 };
 
-const ArticleBody = (props: propsType) => {
+const ArticleBody: React.FC<propsType> = (props) => {
   return (
-    <section className={styles.root}>{RenderMarkdownBody(props.body)}</section>
+    <section className={styles.root}>
+      {RenderMarkdownBody({ markdown: props.body })}
+    </section>
   );
 };
 

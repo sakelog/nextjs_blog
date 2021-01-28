@@ -3,7 +3,7 @@ import {
   getPostBySlug,
   getPrevPost,
   getNextPost,
-} from '../contentful/exportContent';
+} from '../contentful/exportContent/post';
 
 const createPostProps = async (
   props: createProps.post.props

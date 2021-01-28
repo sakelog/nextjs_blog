@@ -1,30 +1,43 @@
 declare namespace contentful {
   declare type sys = {
-    space: [Object];
+    type: any;
     id: string;
-    type: 'Entry';
-    createdAt: Date;
-    updatedAt: Date;
-    environment: [Object];
-    revision: number;
-    contentType: [Object];
-    locale: 'ja';
+    name?: string;
+    locals?: [
+      { code: string; default: boolean; name: string; fallbackCode?: boolean }
+    ];
   };
-  declare type post = {
-    sys: sys;
+
+  declare interface postCollection extends EntryCollection {
+    sys?: Sys;
+    total?: number;
+    skip?: number;
+    limit?: number;
+    items?: post[];
+  }
+  declare interface post extends Entry {
+    sys: Sys;
     fields: {
       title: string;
       slug: string;
       date: string;
       update?: string;
       category: category;
-      tags: tags;
+      tags: tags[];
       description: string;
       body: string;
     };
-  };
-  declare type page = {
-    sys: sys;
+  }
+
+  declare interface pageCollection extends EntryCollection {
+    sys?: Sys;
+    total?: number;
+    skip?: number;
+    limit?: number;
+    items?: page[];
+  }
+  declare interface page extends Entry {
+    sys: Sys;
     fields: {
       title: string;
       slug: string;
@@ -33,35 +46,36 @@ declare namespace contentful {
       update?: string;
       body: string;
     };
-  };
-  declare type category = {
-    sys: sys;
+  }
+
+  declare interface categoryCollection extends EntryCollection {
+    sys?: Sys;
+    total?: number;
+    skip?: number;
+    limit?: number;
+    items?: category[];
+  }
+  declare interface category extends Entry {
+    sys: Sys;
     fields: {
       name: string;
       slug: string;
     };
-  };
-  declare type tags = [
-    {
-      sys: sys;
-      fields: {
-        name: string;
-        slug: string;
-      };
-    }
-  ];
-  declare type assets = {
-    sys: sys;
+  }
+  declare interface tagsCollection extends EntryCollection {
+    sys?: Sys;
+    total?: number;
+    skip?: number;
+    limit?: number;
+    items?: tags[];
+  }
+  declare interface tags extends Entry {
+    sys: Sys;
     fields: {
-      title: string;
-      file: {
-        url: string;
-        details: { size: number; image: { width: number; height: number } };
-        fileName: string;
-        contentType: string;
-      };
+      name: string;
+      slug: string;
     };
-  };
+  }
   declare namespace MyLib {
     declare namespace getAllPosts {}
     declare namespace getTargetPosts {
@@ -80,6 +94,11 @@ declare namespace contentful {
       declare type props = {
         slug: string | string[];
         posts: contentful.post[];
+      };
+    }
+    declare namespace getPreviewPostBySlug {
+      declare type props = {
+        slug: string | string[];
       };
     }
     declare namespace getPageBySlug {

@@ -1,0 +1,66 @@
+import { client, previewClient } from './client';
+
+// Post
+export const getPostBySlug = async (
+  props: contentful.MyLib.getPostBySlug.props
+): Promise<contentful.post> => {
+  const res: contentful.postCollection = !props.preview
+    ? await client.getEntries({
+        content_type: 'post',
+        'fields.slug': props.slug,
+      })
+    : await previewClient.getEntries({
+        content_type: 'post',
+        'fields.slug': props.slug,
+      });
+  return res.items[0];
+};
+
+export const getPrevPost = async (
+  props: contentful.MyLib.getPostIndex.props
+): Promise<contentful.post> => {
+  const currentIndex = await getPostIndex({
+    slug: props.slug,
+    posts: props.posts,
+  });
+  const prevPost =
+    currentIndex < props.posts.length - 1
+      ? await getPostBySlug({ slug: props.posts[currentIndex + 1].fields.slug })
+      : null;
+  return prevPost;
+};
+
+export const getNextPost = async (
+  props: contentful.MyLib.getPostIndex.props
+): Promise<contentful.post> => {
+  const currentIndex = await getPostIndex({
+    slug: props.slug,
+    posts: props.posts,
+  });
+  const nextPost =
+    currentIndex > 0
+      ? await getPostBySlug({ slug: props.posts[currentIndex - 1].fields.slug })
+      : null;
+  return nextPost;
+};
+
+export const getPostIndex = (
+  props: contentful.MyLib.getPostIndex.props
+): number => {
+  let result: number;
+  props.posts.some((post, index) => {
+    result = index;
+    if (post.fields.slug === props.slug) {
+      return true;
+    }
+  });
+  return result;
+};
+
+// --preview
+export const getPreviewPostBySlug = async (
+  props: contentful.MyLib.getPreviewPostBySlug.props
+): Promise<contentful.post> => {
+  const res = await getPostBySlug({ slug: props.slug, preview: true });
+  return res;
+};

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const ProfileIcon = () => {
+const ProfileIcon: React.FC = () => {
   return (
     <>
       <Image

@@ -6,7 +6,7 @@ import config from '../../components/config';
 
 import styles from '../../styles/Object/Component/_c-article__Link.module.scss';
 
-const RemarkLink = (props: JSX.IntrinsicElements['a']) => {
+const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
   let isExternalLink = props.href.startsWith('http');
   const isInternalLinkAbsolute = props.href.startsWith(config.url);
   isExternalLink =

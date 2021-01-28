@@ -12,7 +12,7 @@ import SocialIcon from '../socialIcon';
 import styles from '../../styles/Object/Project/_p-header.module.scss';
 import headingStyles from '../../styles/Object/Component/_c-heading.module.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
   const [state, setState] = useState<string>('');
   useEffect(() => {
     Router.events.on('routeChangeStart', handleInit);

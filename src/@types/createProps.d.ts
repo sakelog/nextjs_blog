@@ -28,7 +28,7 @@ declare namespace createProps {
 
   declare namespace tags {
     declare type props = {
-      alltags: contentful.tags;
+      alltags: contentful.tags[];
       slug: string | string[];
       per_page: number;
     };

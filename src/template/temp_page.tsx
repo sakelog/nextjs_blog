@@ -5,7 +5,7 @@ import BackToTop from '../components/pagination/backToTop';
 
 import wrapperStyles from '../styles/Layout/_l-pageWrapper.module.scss';
 
-const Temp_Page = (props: Template.page.props) => {
+const Temp_Page: React.FC<Template.page.props> = (props) => {
   const body = props.page.fields.body;
   return (
     <article>

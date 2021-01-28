@@ -3,12 +3,12 @@ import { MdEvent, MdUpdate } from 'react-icons/md';
 
 import styles from '../styles/Object/Component/_c-postDate.module.scss';
 
-type propType = {
+type propsType = {
   postdate: string;
   update?: string;
 };
 
-const PostDate = (props: propType) => {
+const PostDate: React.FC<propsType> = (props) => {
   const postDateTag = (
     <span className={styles.date}>
       <span className={styles.dateIcon}>
@@ -37,8 +37,7 @@ const PostDate = (props: propType) => {
 export default PostDate;
 
 function getFormatDate(date: string) {
-  let formatDate: string;
-  formatDate = format(new Date(date), 'yyyy年M月d日');
+  const formatDate = format(new Date(date), 'yyyy年M月d日');
 
   return formatDate;
 }

@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {
   getAllCategory,
   getPostByCategory,
-} from '../../lib/contentful/exportContent';
+} from '../../lib/contentful/exportContent/category';
 import { getPostListNumPages, getPostListSlugs } from '../../lib/getSlugs';
 import { toKebabCase } from '../../lib/toKebabCase';
 
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const allCategory = await getAllCategory();
 
-  let allSlugs = [];
+  const allSlugs = [];
 
   for (let index = 0; index < allCategory.length; index++) {
     const targetPost = await getPostByCategory({

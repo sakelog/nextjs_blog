@@ -2,7 +2,10 @@ import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 
-import { getAllTags, getPostByTag } from '../../lib/contentful/exportContent';
+import {
+  getAllTags,
+  getPostByTag,
+} from '../../lib/contentful/exportContent/tag';
 import { getTagPath } from '../../lib/getPath';
 
 import Layout from '../../components/layout/layout';
@@ -53,7 +56,7 @@ const TagsPage: NextPage<propsType> = (props) => {
 
 export default TagsPage;
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const allTags = await getAllTags();
 
   let tagsInfo: { name: string; path: string; totalCount: number }[] = [];

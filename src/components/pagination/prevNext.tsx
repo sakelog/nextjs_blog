@@ -5,7 +5,7 @@ import { getRootPath } from '../../lib/getPath';
 
 import styles from '../../styles/Object/Component/_c-pagination--prevNext.module.scss';
 
-const PrevNext = (props: pagination.prevNext.props) => {
+const PrevNext: React.FC<pagination.prevNext.props> = (props) => {
   const { prevPost, nextPost } = props;
   const prevLink = prevPost ? (
     <Link href={getRootPath(prevPost.fields.slug)}>

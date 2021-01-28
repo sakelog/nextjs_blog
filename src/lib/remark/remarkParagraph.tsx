@@ -7,7 +7,7 @@ type propsType = {
   children?: ReactNode[];
 };
 
-const RemarkParagraph = (props: propsType) => {
+const RemarkParagraph: React.FC<propsType> = (props) => {
   const newChildren = props.children.map((child, i) => {
     return typeof child === 'string'
       ? child.match(/\*\*.*\*\*/)
@@ -60,5 +60,3 @@ const createCustomBlock = (text: string, index: number) => {
     ]
   );
 };
-
-const createEmbedBlock = () => {};

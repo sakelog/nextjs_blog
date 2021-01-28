@@ -1,4 +1,4 @@
-export const CheckContentfulSetup = () => {
+export const CheckContentfulSetup = (): void | boolean => {
   const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
   const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 
@@ -15,7 +15,7 @@ export const CheckContentfulSetup = () => {
   }
 };
 
-export const CheckContentfulSetupPreview = () => {
+export const CheckContentfulSetupPreview = (): void | boolean => {
   const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
   const CONTENTFUL_PREVIEW_ACCESS_TOKEN =
     process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;

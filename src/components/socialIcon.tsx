@@ -1,10 +1,8 @@
-import { FaGithubAlt, FaTwitter } from 'react-icons/fa';
 import { SocialIcon } from 'react-social-icons';
-import { FiMail } from 'react-icons/fi';
 
 import config from './config';
 
-const RenderSocialIcon = () => {
+const RenderSocialIcon: React.FC = () => {
   const githubBase = 'https://github.com/';
   const githubPath = githubBase + config.social.github;
   const twitterBase = 'https://twitter.com/';

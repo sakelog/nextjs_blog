@@ -3,25 +3,32 @@ import theme from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 
 import styles from '../../styles/Object/Component/_c-article__SyntaxHighlight.module.scss';
 
-const RemarkHighlight = (props: JSX.IntrinsicElements['code']) => {
+const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
   const className = props.className;
+  const TITLE_STRING = ':title=';
+  const DATALINE_START_STRING = '{';
+  const DATALINE_END_STRING = '}';
+  const LANG_STRING = 'language-';
+
+  const hasTitle = className && className.match(/:title=/);
   const title =
-    className &&
-    className.match(/:title=.*/) &&
-    className.match(/:title=.*/)[0].replace(/:title=/, '');
+    hasTitle && className.match(/:title=.*/)[0].replace(TITLE_STRING, '');
+
+  const hasDataLine = className && className.match(/\{.*\}/);
   const dataLine =
-    className &&
-    className.match(/\{.*\}/) &&
+    hasDataLine &&
     className
       .match(/\{.*\}/)[0]
-      .replace(/{/, '')
-      .replace(/}/, '');
+      .replace(DATALINE_START_STRING, '')
+      .replace(DATALINE_END_STRING, '');
+
+  const hasLang = className && className.match(/language-[^\s]*/);
   let lang =
-    className &&
-    className.match(/language-[^\s]*/) &&
-    className.match(/language-[^\s]*/)[0].replace(/language-/, '');
-  lang = lang && title ? lang.replace(/:title=.*/, '') : lang;
-  lang = lang && dataLine ? lang.replace(/\{.*\}/, '') : lang;
+    hasLang && className.match(/language-[^\s]*/)[0].replace(LANG_STRING, '');
+
+  lang = hasLang && hasTitle ? lang.replace(/:title=.*/, '') : lang;
+  lang = hasLang && hasDataLine ? lang.replace(/\{.*\}/, '') : lang;
+
   const code = props.children[0];
   const dataLineRawItems = dataLine && dataLine.split(',');
   const dataLineArray =
@@ -78,16 +85,18 @@ const RemarkHighlight = (props: JSX.IntrinsicElements['code']) => {
             });
           return { style };
         }}
-        children={code}
-      />
+      >
+        {code}
+      </SyntaxHighlighter>
     </div>
   ) : (
     <SyntaxHighlighter
       language={'inline'}
       style={theme}
       className={styles.inline}
-      children={code}
-    />
+    >
+      {code}
+    </SyntaxHighlighter>
   );
 };
 

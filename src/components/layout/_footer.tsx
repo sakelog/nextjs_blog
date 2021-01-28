@@ -2,7 +2,7 @@ import config from '../config';
 
 import styles from '../../styles/Layout/_l-footer.module.scss';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const siteTitle = config.title;
   const startDate = new Date(config.createAt);
   const startYear = startDate.getFullYear();

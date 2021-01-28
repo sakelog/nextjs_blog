@@ -2,7 +2,8 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { getAllPosts, getAllPages } from '../lib/contentful/exportContent';
+import { getAllPosts } from '../lib/contentful/exportContent/postList';
+import { getAllPages } from '../lib/contentful/exportContent/page';
 import {
   getPostSlugs,
   getPageSlugs,
@@ -108,7 +109,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // page
   const pageSlugs = getPageSlugs(allPages);
 
-  let allSlugs: string[] = [];
+  const allSlugs: string[] = [];
   postListSlugs.map((num) => {
     allSlugs.push(num);
   });

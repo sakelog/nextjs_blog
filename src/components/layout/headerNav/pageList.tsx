@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { getRootPath } from '../../../lib/getPath';
 
-const PageList = () => {
+const PageList: React.FC = () => {
   return (
     <ul>
       <li key="tags">

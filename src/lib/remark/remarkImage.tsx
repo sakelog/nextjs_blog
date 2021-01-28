@@ -5,7 +5,7 @@ import { getWindowSize } from '../getWindowSize';
 
 import styles from '../../styles/Object/Component/_c-article__Image.module.scss';
 
-const RemarkImage = (props: JSX.IntrinsicElements['img']) => {
+const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   const isContentfulImg = props.src.startsWith('//images.ctfassets.net');
   const alt = props.alt ? props.alt : null;
   const [state, setState] = useState<string>('');

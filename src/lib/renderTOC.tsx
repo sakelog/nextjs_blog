@@ -1,7 +1,7 @@
 /*==========================================================
 参考：https://github.com/Takumon/react-markdown-sync-toc
 ============================================================*/
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { throttle } from 'lodash';
 
 import remark from 'remark';
@@ -14,45 +14,31 @@ import TOC from '../components/postParts/TOC';
 
 const OFFSET_ACTIVE_IMTE = 160;
 
-interface IState {
-  activeItemIds: any[];
-  itemTopOffsets: any[];
-}
-class ScrollSyncToc extends React.Component<{ markdown: string }, IState> {
-  toc: any;
-  constructor(props, context) {
-    super(props, context);
+const RenderTOC: React.FC<{ markdown: string }> = (props) => {
+  const [activeItemIds, setActiveItemIds] = useState<render.toc.activeItemIds>(
+    []
+  );
+  const [
+    itemTopOffsets,
+    setItemTopOffsets,
+  ] = useState<render.toc.itemTopOffsets>([]);
 
-    this.toc = _getToc(this.props.markdown);
+  const toc = _getToc(props.markdown);
 
-    this.state = {
-      activeItemIds: [],
-      itemTopOffsets: [],
+  useEffect(() => {
+    calculateItemTopOffsets();
+    window.addEventListener('scroll', throttledHandleScroll);
+    return () => {
+      window.removeEventListener('scroll', throttledHandleScroll);
     };
+  });
 
-    this.calculateItemTopOffsets = this.calculateItemTopOffsets.bind(this);
-    this.handleScroll = throttle(this.handleScroll.bind(this), 100);
-  }
+  const calculateItemTopOffsets = () => {
+    setItemTopOffsets(_getElementTopOffsetsById(toc));
+  };
 
-  componentDidMount() {
-    this.calculateItemTopOffsets();
-
-    window.addEventListener(`scroll`, this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener(`scroll`, this.handleScroll);
-  }
-
-  calculateItemTopOffsets() {
-    this.setState({
-      itemTopOffsets: _getElementTopOffsetsById(this.toc),
-    });
-  }
-
-  handleScroll() {
-    const { itemTopOffsets } = this.state;
-
+  const throttledHandleScroll = throttle(() => handleScroll(), 100);
+  const handleScroll = () => {
     const item = itemTopOffsets.find((current, i) => {
       const next = itemTopOffsets[i + 1];
 
@@ -61,30 +47,17 @@ class ScrollSyncToc extends React.Component<{ markdown: string }, IState> {
             window.scrollY + OFFSET_ACTIVE_IMTE < next.offsetTop
         : window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop;
     });
+    const nowActiveItemIds = item ? [item.id] : [];
 
-    const activeItemIds = item
-      ? item.parents
-        ? [item.id, ...item.parents.map((i) => i.id)]
-        : [item.id]
-      : [];
+    setActiveItemIds(nowActiveItemIds);
+  };
 
-    this.setState({ activeItemIds });
-  }
-
-  render() {
-    const { activeItemIds } = this.state;
-    return <TOC activeItemIds={activeItemIds} toc={this.toc} {...this.props} />;
-  }
-}
-
-// マークダウン文字列から目次情報を取得する
-function _getToc(rawMarkdownBody) {
-  const headings = _extractToc(rawMarkdownBody);
-  return headings;
-}
+  return <TOC activeItemIds={activeItemIds} toc={toc} {...props} />;
+};
+export default RenderTOC;
 
 // マークダウン文字列から目次情報を抽出する
-function _extractToc(rawMarkdownBody) {
+const _getToc: render.toc.getToc = (rawMarkdownBody) => {
   githubSlugger.reset();
 
   const result = [];
@@ -101,8 +74,10 @@ function _extractToc(rawMarkdownBody) {
   });
 
   return result;
-}
-const _getElementTopOffsetsById = (ids) => {
+};
+const _getElementTopOffsetsById: render.toc.getElementTopOffsetsById = (
+  ids
+) => {
   return ids
     .map(({ id }) => {
       const element = document.getElementById(id);
@@ -115,5 +90,3 @@ const _getElementTopOffsetsById = (ids) => {
     })
     .filter((item) => item);
 };
-
-export default ScrollSyncToc;

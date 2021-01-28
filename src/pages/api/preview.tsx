@@ -1,9 +1,10 @@
-import { getPreviewPostBySlug } from '../../lib/contentful/exportContent';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { getPreviewPostBySlug } from '../../lib/contentful/exportContent/post';
 
 export default async function preview(
-  req: { query: { secret?: string; slug?: string } },
-  res
-) {
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<NextApiResponse | void> {
   const secret = req.query.secret && req.query.secret;
   const slug = req.query.slug && req.query.slug;
 
@@ -11,7 +12,7 @@ export default async function preview(
     return res.status(401).json({ message: 'Invalid token' });
   }
 
-  const post = await getPreviewPostBySlug(slug);
+  const post = await getPreviewPostBySlug({ slug });
 
   if (!post) {
     return res.status(401).json({ message: 'Invalid slug' });

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ErrorPage from 'next/error';
 import loadable from '@loadable/component';
 
-import { getPreviewPostBySlug } from '../../lib/contentful/exportContent';
+import { getPreviewPostBySlug } from '../../lib/contentful/exportContent/post';
 
 import Layout from '../../components/layout/layout';
 const Temp_Post = loadable(() => import('../../template/temp_post'));
@@ -31,7 +31,7 @@ export default PreviewPage;
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params.slug;
   const targetPost = context.preview
-    ? await getPreviewPostBySlug({ slug: slug })
+    ? await getPreviewPostBySlug({ slug })
     : null;
   const isPreviewPost: boolean = targetPost
     ? targetPost.fields.slug === slug

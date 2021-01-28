@@ -5,7 +5,7 @@ import SocialIcon from '../../socialIcon';
 import styles from '../../../styles/Object/Component/_c-post__Bio.module.scss';
 import headingStyles from '../../../styles/Object/Component/_c-heading.module.scss';
 
-const Bio = () => {
+const Bio: React.FC = () => {
   return (
     <section className={styles.root}>
       <h2 className={headingStyles.flexLeft}>執筆者</h2>

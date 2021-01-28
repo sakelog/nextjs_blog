@@ -25,7 +25,7 @@ type propsType = {
   title?: string;
 };
 
-const Share = (props: propsType) => {
+const Share: React.FC<propsType> = (props) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
