@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import loadable from '@loadable/component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllPosts, getURLSet } from '../lib/contentful/exportContent';
 import CreatePostListProps from '../lib/createProps/createPostListProps';
@@ -8,8 +9,16 @@ import { setSiteMap } from '../lib/setSitemap';
 
 import config from '../components/config';
 
+const Loading = (
+  <div>
+    Loading...
+    <CircularProgress />
+  </div>
+);
 // Template
-const Temp_PostList = loadable(() => import('../template/temp_postList'));
+const Temp_PostList = loadable(() => import('../template/temp_postList'), {
+  fallback: Loading,
+});
 
 import Layout from '../components/layout/layout';
 

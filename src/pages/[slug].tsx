@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import loadable from '@loadable/component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllPosts, getAllPages } from '../lib/contentful/exportContent';
 import {
@@ -12,10 +13,22 @@ import CreatePostListProps from '../lib/createProps/createPostListProps';
 import CreatePageProps from '../lib/createProps/createPageProps';
 import CreatePostProps from '../lib/createProps/createPostProps';
 
+const Loading = (
+  <div>
+    Loading...
+    <CircularProgress />
+  </div>
+);
 // Template
-const Temp_PostList = loadable(() => import('../template/temp_postList'));
-const Temp_Post = loadable(() => import('../template/temp_post'));
-const Temp_Page = loadable(() => import('../template/temp_page'));
+const Temp_PostList = loadable(() => import('../template/temp_postList'), {
+  fallback: Loading,
+});
+const Temp_Post = loadable(() => import('../template/temp_post'), {
+  fallback: Loading,
+});
+const Temp_Page = loadable(() => import('../template/temp_page'), {
+  fallback: Loading,
+});
 
 import Layout from '../components/layout/layout';
 
