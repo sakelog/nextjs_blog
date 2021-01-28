@@ -68,7 +68,7 @@ const Pagination = (props: pagination.pagination.props) => {
   // 現在ページ
   const currentPagePart = (
     <span className={styles.paginationItem + ' ' + styles.currentPage}>
-      {currentPage}
+      {'( ' + currentPage + ' )'}
     </span>
   );
   return (
