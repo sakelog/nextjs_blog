@@ -43,3 +43,33 @@ export const getPostListSlugs = (postListNumPages: number) => {
   );
   return postListSlugs;
 };
+
+// Category slug一覧
+export const getCategorySlugs = (allCategory: contentful.category[]) => {
+  let categorySlugs: { slug: string; id: string; name: string }[] = Array.from(
+    { length: allCategory.length },
+    (_, i) => {
+      return {
+        slug: toKebabCase(allCategory[i].fields.slug),
+        id: allCategory[i].sys.id,
+        name: allCategory[i].fields.name,
+      };
+    }
+  );
+  return categorySlugs;
+};
+
+// Tag slug一覧
+export const getTagSlugs = (tags: contentful.tags) => {
+  let tagSlugs: { slug: string; id: string; name: string }[] = Array.from(
+    { length: tags.length },
+    (_, i) => {
+      return {
+        slug: toKebabCase(tags[i].fields.slug),
+        id: tags[i].sys.id,
+        name: tags[i].fields.name,
+      };
+    }
+  );
+  return tagSlugs;
+};

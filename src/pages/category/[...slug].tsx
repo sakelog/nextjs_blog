@@ -1,4 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
+import loadable from '@loadable/component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   getAllCategory,
@@ -7,19 +9,28 @@ import {
 import { getPostListNumPages, getPostListSlugs } from '../../lib/getSlugs';
 import { toKebabCase } from '../../lib/toKebabCase';
 
+import CreateCategoryProps from '../../lib/createProps/createCategoryProps';
+
 import Layout from '../../components/layout/layout';
-import Temp_CatTag from '../../template/temp_catTag';
+const Loading = (
+  <div>
+    Loading...
+    <CircularProgress />
+  </div>
+);
+const Temp_CatTag = loadable(() => import('../../template/temp_catTag'), {
+  fallback: Loading,
+});
 
 const POST_PER_LISTPAGE = 10;
-const CATEGORY = 'category';
 
-const TagsDirectory = (props) => {
+const CategoryDirectory = (props: Template.catTagList.props) => {
   return (
     <Layout>
       <Temp_CatTag
         name={props.name}
         posts={props.posts}
-        type={CATEGORY}
+        type={props.type}
         totalCount={props.totalCount}
         currentPage={props.currentPage}
         lastPage={props.lastPage}
@@ -29,46 +40,20 @@ const TagsDirectory = (props) => {
   );
 };
 
-export default TagsDirectory;
+export default CategoryDirectory;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const allCategory = await getAllCategory();
+  const allcategory = await getAllCategory();
   const slug = context.params.slug;
-  const allCategorySlugs = getCategorySlugs(allCategory);
-  let id: string = null;
-  let name: string = null;
-  allCategorySlugs.some((catSlug) => {
-    catSlug.slug === slug[0];
-    if (catSlug.slug === slug[0]) {
-      id = catSlug.id;
-      name = catSlug.name;
-    }
-  });
 
-  const allPosts = await getPostByCategory({ id: id });
-  const lastPage = getPostListNumPages({
-    posts: allPosts,
+  const categoryProps = await CreateCategoryProps({
+    allcategory,
+    slug,
     per_page: POST_PER_LISTPAGE,
   });
-  const currentPage = slug.length > 1 ? Number(slug[slug.length - 1]) : 1;
-  const skip =
-    slug.length > 1
-      ? (Number(slug[slug.length - 1]) - 1) * POST_PER_LISTPAGE
-      : 0;
-  const limit = skip + POST_PER_LISTPAGE;
-  const targetPosts = allPosts.slice(skip, limit);
-
-  const pathBase = '/' + CATEGORY + '/' + slug[0] + '/';
 
   return {
-    props: {
-      name: name,
-      posts: targetPosts,
-      totalCount: allPosts.length,
-      lastPage: lastPage,
-      currentPage: currentPage,
-      pathBase: pathBase,
-    },
+    props: categoryProps,
   };
 };
 
@@ -99,19 +84,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   return { paths, fallback: false };
-};
-
-// Category slug一覧
-const getCategorySlugs = (allCategory: contentful.category[]) => {
-  let categorySlugs: { slug: string; id: string; name: string }[] = Array.from(
-    { length: allCategory.length },
-    (_, i) => {
-      return {
-        slug: toKebabCase(allCategory[i].fields.slug),
-        id: allCategory[i].sys.id,
-        name: allCategory[i].fields.name,
-      };
-    }
-  );
-  return categorySlugs;
 };

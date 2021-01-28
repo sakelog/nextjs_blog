@@ -1,16 +1,27 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
+import loadable from '@loadable/component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllTags, getPostByTag } from '../../lib/contentful/exportContent';
 import { getPostListNumPages, getPostListSlugs } from '../../lib/getSlugs';
 import { toKebabCase } from '../../lib/toKebabCase';
+import CreateTagsProps from '../../lib/createProps/createTagsProps';
 
 import Layout from '../../components/layout/layout';
-import Temp_CatTag from '../../template/temp_catTag';
+const Loading = (
+  <div>
+    Loading...
+    <CircularProgress />
+  </div>
+);
+const Temp_CatTag = loadable(() => import('../../template/temp_catTag'), {
+  fallback: Loading,
+});
 
 const POST_PER_LISTPAGE = 10;
 const TAGS = 'tags';
 
-const TagsDirectory = (props) => {
+const TagsDirectory = (props: Template.catTagList.props) => {
   return (
     <Layout>
       <Temp_CatTag
@@ -29,43 +40,17 @@ const TagsDirectory = (props) => {
 export default TagsDirectory;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const allTags = await getAllTags();
+  const alltags = await getAllTags();
   const slug = context.params.slug;
-  const allTagSlugs = getTagSlugs(allTags);
-  let id: string = null;
-  let name: string = null;
-  allTagSlugs.some((tagSlug) => {
-    tagSlug.slug === slug[0];
-    if (tagSlug.slug === slug[0]) {
-      id = tagSlug.id;
-      name = tagSlug.name;
-    }
-  });
 
-  const allPosts = await getPostByTag({ id: id });
-  const lastPage = getPostListNumPages({
-    posts: allPosts,
+  const tagsProps = await CreateTagsProps({
+    alltags,
+    slug,
     per_page: POST_PER_LISTPAGE,
   });
-  const currentPage = slug.length > 1 ? Number(slug[slug.length - 1]) : 1;
-  const skip =
-    slug.length > 1
-      ? (Number(slug[slug.length - 1]) - 1) * POST_PER_LISTPAGE
-      : 0;
-  const limit = skip + POST_PER_LISTPAGE;
-  const targetPosts = allPosts.slice(skip, limit);
-
-  const pathBase = '/' + TAGS + '/' + slug[0] + '/';
 
   return {
-    props: {
-      name: name,
-      posts: targetPosts,
-      totalCount: allPosts.length,
-      lastPage: lastPage,
-      currentPage: currentPage,
-      pathBase: pathBase,
-    },
+    props: tagsProps,
   };
 };
 
@@ -94,19 +79,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   return { paths, fallback: false };
-};
-
-// Tag slug一覧
-const getTagSlugs = (tags: contentful.tags) => {
-  let tagSlugs: { slug: string; id: string; name: string }[] = Array.from(
-    { length: tags.length },
-    (_, i) => {
-      return {
-        slug: toKebabCase(tags[i].fields.slug),
-        id: tags[i].sys.id,
-        name: tags[i].fields.name,
-      };
-    }
-  );
-  return tagSlugs;
 };

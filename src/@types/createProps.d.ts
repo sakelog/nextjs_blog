@@ -18,4 +18,19 @@ declare namespace createProps {
       slug: string | string[];
     };
   }
+  declare namespace category {
+    declare type props = {
+      allcategory: contentful.category[];
+      slug: string | string[];
+      per_page: number;
+    };
+  }
+
+  declare namespace tags {
+    declare type props = {
+      alltags: contentful.tags;
+      slug: string | string[];
+      per_page: number;
+    };
+  }
 }
