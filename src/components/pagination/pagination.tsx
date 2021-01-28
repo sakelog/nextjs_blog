@@ -65,12 +65,18 @@ const Pagination = (props: pagination.pagination.props) => {
       <MdLastPage />
     </span>
   );
+  // 現在ページ
+  const currentPagePart = (
+    <span className={styles.paginationItem + ' ' + styles.currentPage}>
+      {currentPage}
+    </span>
+  );
   return (
     <nav className={styles.root}>
       {firstLink}
       <div className={styles.prevNextRoot}>
         {prevLink}
-        {/*<ul className={styles.numList}>{numList}</ul>*/}
+        {currentPagePart}
         {nextLink}
       </div>
       {lastLink}

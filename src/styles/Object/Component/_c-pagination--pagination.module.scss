@@ -6,17 +6,6 @@
   margin: 2rem auto;
   max-width: $sm;
 }
-.prevNextRoot {
-  display: flex;
-}
-.firstLast {
-  flex-grow: 1;
-  display: flex;
-  a {
-    flex-grow: 1;
-    text-align: center;
-  }
-}
 .paginationItem {
   display: flex;
   align-items: center;
@@ -36,4 +25,22 @@
       pointer-events: none;
     }
   }
+}
+.prevNextRoot {
+  display: flex;
+}
+.firstLast {
+  flex-grow: 1;
+  display: flex;
+  a {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+.currentPage {
+  width: 4rem;
+  justify-content: center;
+  background: $dark-gray;
+  color: #ffffff;
+  font-weight: bold;
 }
