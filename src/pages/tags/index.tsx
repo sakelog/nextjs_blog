@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 
@@ -17,7 +17,7 @@ type propsType = {
   tagsInfo: { name: string; path: string; totalCount: number }[];
 };
 
-const TagsPage = (props: propsType) => {
+const TagsPage: NextPage<propsType> = (props) => {
   const PAGE_TITLE = 'タグ一覧ページ';
   const DESCRIPTION = '全タグの一覧ページです';
 

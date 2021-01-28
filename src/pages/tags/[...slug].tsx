@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -21,7 +21,7 @@ const Temp_CatTag = loadable(() => import('../../template/temp_catTag'), {
 const POST_PER_LISTPAGE = 10;
 const TAGS = 'tags';
 
-const TagsDirectory = (props: Template.catTagList.props) => {
+const TagsDirectory: NextPage<Template.catTagList.props> = (props) => {
   return (
     <Layout>
       <Temp_CatTag

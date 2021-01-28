@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Link from 'next/link';
 import ErrorPage from 'next/error';
 import loadable from '@loadable/component';
@@ -8,7 +8,12 @@ import { getPreviewPostBySlug } from '../../lib/contentful/exportContent';
 import Layout from '../../components/layout/layout';
 const Temp_Post = loadable(() => import('../../template/temp_post'));
 
-const PreviewPage = (props) => {
+type propsType = {
+  post: contentful.post;
+  isPreviewPost: boolean;
+};
+
+const PreviewPage: NextPage<propsType> = (props) => {
   return props.post && props.isPreviewPost ? (
     <Layout>
       <div>

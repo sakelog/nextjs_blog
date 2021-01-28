@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -24,7 +24,7 @@ import Layout from '../components/layout/layout';
 
 const POST_PER_LISTPAGE = 6;
 
-const TopPage = (props: { posts: Template.postList.props }) => {
+const TopPage: NextPage<{ posts: Template.postList.props }> = (props) => {
   const TemplateTag = (
     <Temp_PostList
       posts={props.posts.posts}

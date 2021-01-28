@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { NextPage } from 'next';
 import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 import { getRootPath } from '../lib/getPath';
@@ -14,7 +15,7 @@ import wrapperStyles from '../styles/Layout/_l-pageWrapper.module.scss';
 
 const endPoint = process.env.FORMSPREE_ENDPOINT;
 
-const Contact = () => {
+const Contact: NextPage = () => {
   const PAGE_TITLE = 'お問い合わせ';
   const description = config.title + 'についてのお問い合わせページ';
 

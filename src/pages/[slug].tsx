@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -44,7 +44,7 @@ type propsType = {
   singlePage: contentful.page;
 };
 
-const RootDirectory = (props: propsType) => {
+const RootDirectory: NextPage<propsType> = (props) => {
   const TemplateTag =
     props.pathtype === POSTLIST ? (
       <Temp_PostList
