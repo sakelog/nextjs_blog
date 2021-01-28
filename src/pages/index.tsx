@@ -39,15 +39,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   // sitemap
-  const fetchDate = new Date();
-  const manualURLSet: sitemap.urlset = [
-    {
-      url: getConcatPath(config.url, getRootPath('contact')),
-      fetchDate,
-      priority: '0.4',
-    },
-  ];
-  setSiteMap(fetchDate, manualURLSet.concat(await getURLSet()));
+  if (process.env.NODE_ENV === 'production') {
+    const fetchDate = new Date();
+    const manualURLSet: sitemap.urlset = [
+      {
+        url: getConcatPath(config.url, getRootPath('contact')),
+        fetchDate,
+        priority: '0.4',
+      },
+    ];
+    setSiteMap(fetchDate, manualURLSet.concat(await getURLSet()));
+  }
 
   return {
     props: {
