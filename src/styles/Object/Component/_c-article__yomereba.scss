@@ -26,10 +26,13 @@ $rakuten: #d91414;
   }
   .kaerebalink-image,
   .booklink-image {
+    width: 100%;
     max-width: $xs;
     margin: auto;
     text-align: center;
     img {
+      width: 100%;
+      height: auto;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     }
   }
