@@ -1,3 +1,5 @@
+@use '../../Foundation/variables' as *;
+
 .modal {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -12,7 +14,7 @@
 .articleImage {
   display: block;
   width: 100%;
-  max-width: 768px;
+  max-width: $sm;
   position: relative;
   overflow: hidden;
   margin: 2rem;
