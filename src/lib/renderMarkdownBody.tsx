@@ -19,6 +19,7 @@ const RemarkSyntaxHighlight = loadable(
 const RemarkImage = loadable(() => import('./remark/remarkImage'));
 import RemarkLink from './remark/remarkLink';
 import RemarkTable from './remark/remarkTable';
+const RemarkIframe = loadable(() => import('./remark/remarkIframe'));
 
 const renderMarkdownBody = (props: {
   markdown: string;
@@ -41,6 +42,7 @@ const renderMarkdownBody = (props: {
         img: RemarkImage,
         a: RemarkLink,
         table: RemarkTable,
+        iframe: RemarkIframe,
       },
     })
     .processSync(props.markdown).result;

@@ -1,0 +1,29 @@
+@use '../../Foundation/variables' as *;
+
+.default {
+  position: relative;
+  width: 100%;
+  max-width: $sm;
+  overflow: hidden;
+  margin: 2rem;
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+.youtube {
+  @extend .default;
+  &::before {
+    padding-top: (9/16) * 100%;
+  }
+}
