@@ -1,5 +1,18 @@
 @use '../../Foundation/variables' as *;
 
+.root {
+  display: block;
+  width: 100%;
+  max-width: $sm;
+  position: relative;
+  margin: 2rem auto;
+}
+.title {
+  text-align: center;
+  margin: 1rem;
+  color: $dark-gray;
+  font-weight: bold;
+}
 .modal {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -17,10 +30,9 @@
 .articleImage {
   display: block;
   width: 100%;
-  max-width: $sm;
   position: relative;
   overflow: hidden;
-  margin: 2rem;
+  margin: 0;
   &::before {
     content: '';
     display: block;

@@ -42,8 +42,11 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
       onClick={state === 'show' ? handleHide : handleShow}
     />
   );
+  const ContentfulTitle = isContentfulImg && (
+    <div className={styles.title}>{props.title}</div>
+  );
   const customImgTag = isContentfulImg ? (
-    <>
+    <div className={styles.root}>
       <div
         className={styles.modal + ' ' + styles[state]}
         onClick={handleHide}
@@ -52,7 +55,8 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
         {ContentfulImgTag}
       </div>
       <div className={styles.articleImage}>{ContentfulImgTag}</div>
-    </>
+      {ContentfulTitle}
+    </div>
   ) : (
     <img {...props} />
   );
