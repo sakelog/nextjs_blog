@@ -24,13 +24,24 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   };
   useEffect(() => {
     handleChangeWindowSize();
-    window.addEventListener('resize', () => {
-      handleChangeWindowSize();
-    });
-    window.addEventListener('orientationchange', () => {
-      handleChangeWindowSize();
-    });
+    window.addEventListener('resize', handleChangeWindowSize);
+    window.addEventListener('orientationchange', handleChangeWindowSize);
+    return () => {
+      window.removeEventListener('resize', () => {
+        handleChangeWindowSize;
+      });
+      window.removeEventListener('orientationchange', handleChangeWindowSize);
+    };
   }, []);
+  const ContentfulImgTag = isContentfulImg && (
+    <Image
+      src={'https:' + props.src}
+      layout="fill"
+      objectFit="scale-down"
+      alt={alt}
+      onClick={state === 'show' ? handleHide : handleShow}
+    />
+  );
   const customImgTag = isContentfulImg ? (
     <>
       <div
@@ -38,22 +49,9 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
         onClick={handleHide}
         style={{ width: windowSize.width, height: windowSize.height }}
       >
-        <Image
-          src={'https:' + props.src}
-          layout="fill"
-          objectFit="scale-down"
-          alt={alt}
-        />
+        {ContentfulImgTag}
       </div>
-      <div className={styles.articleImage}>
-        <Image
-          src={'https:' + props.src}
-          layout="fill"
-          objectFit="scale-down"
-          alt={alt}
-          onClick={handleShow}
-        />
-      </div>
+      <div className={styles.articleImage}>{ContentfulImgTag}</div>
     </>
   ) : (
     <img {...props} />

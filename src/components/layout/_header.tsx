@@ -23,7 +23,7 @@ const Header: React.FC = () => {
       window.removeEventListener('resize', handleInit);
       window.removeEventListener('orientationchange', handleInit);
     };
-  });
+  }, []);
   const handleInit = () => {
     setState('');
   };

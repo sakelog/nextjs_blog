@@ -36,7 +36,7 @@ const Temp_Post: React.FC<Template.post.props> = (props) => {
       window.removeEventListener('resize', handleSetIsMd);
       window.removeEventListener('orientationchange', handleSetIsMd);
     };
-  });
+  }, []);
   const handleSetIsMd = () => {
     const windowWidth = getWindowSize().width;
     setIsMd(windowWidth <= MIN_WIDTH);
