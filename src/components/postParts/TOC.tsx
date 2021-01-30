@@ -6,23 +6,31 @@ import { Link } from 'react-scroll';
 import styles from '../../styles/Object/Component/_c-post__TOC.module.scss';
 
 type propsType = {
-  toc: any[];
-  activeItemIds: any[];
+  toc: render.toc.iditem[];
+  activeItemIds: render.toc.activeItemIds | null;
 };
+
+const MAX_DEPTH = 3;
 
 const TOC: React.FC<propsType> = (props) => {
   const { toc, activeItemIds } = props;
   const TOCList = toc.map((item) => {
     return (
-      <li
-        key={item.id}
-        style={{ marginLeft: `${(item.depth - 2) * 24}px` }}
-        className={activeItemIds.includes(item.id) ? styles.active : ''}
-      >
-        <Link to={item.id} smooth={true} duration={500}>
-          {item.value}
-        </Link>
-      </li>
+      item.depth <= MAX_DEPTH && (
+        <li
+          key={item.id}
+          style={{ marginLeft: `${(item.depth - 2) * 24}px` }}
+          className={
+            activeItemIds && activeItemIds.includes(item.id)
+              ? styles.active
+              : ''
+          }
+        >
+          <Link to={item.id} smooth={true} duration={500}>
+            {item.value}
+          </Link>
+        </li>
+      )
     );
   });
   return (
