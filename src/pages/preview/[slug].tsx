@@ -42,12 +42,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
       post: targetPost,
       isPreviewPost,
     },
+    revalidate: 60,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { slug: 'post' } }],
+    paths: [],
     fallback: true,
   };
 };
