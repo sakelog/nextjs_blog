@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { getRootPath } from '../../../lib/getPath';
+import { getRootPath } from '@lib/getPath';
 
 const PageList: React.FC = () => {
   return (

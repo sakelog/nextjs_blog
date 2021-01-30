@@ -8,9 +8,9 @@ import {
   getRootPath,
   getCategoryPath,
   getTagPath,
-} from '../../getPath';
+} from '@lib/getPath';
 
-import config from '../../../components/config';
+import config from '@component/config';
 
 // Path取得
 export const getURLSet = async (): Promise<sitemap.urlset> => {

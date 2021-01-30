@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getPreviewPostBySlug } from '../../lib/contentful/exportContent/post';
+import { getPreviewPostBySlug } from '@lib/contentful/exportContent/post';
 
 export default async function preview(
   req: NextApiRequest,

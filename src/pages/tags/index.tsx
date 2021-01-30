@@ -2,19 +2,16 @@ import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 
-import {
-  getAllTags,
-  getPostByTag,
-} from '../../lib/contentful/exportContent/tag';
-import { getTagPath } from '../../lib/getPath';
+import { getAllTags, getPostByTag } from '@lib/contentful/exportContent/tag';
+import { getTagPath } from '@lib/getPath';
 
-import Layout from '../../components/layout/layout';
-import CustomHead from '../../components/customHead';
+import Layout from '@layout/layout';
+import CustomHead from '@component/customHead';
 
-import BackToTop from '../../components/pagination/backToTop';
+import BackToTop from '@component/pagination/backToTop';
 
-import wrapperStyles from '../../styles/Layout/_l-pageWrapper.module.scss';
-import tagStyles from '../../styles/Object/Component/_c-tagList.module.scss';
+import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
+import tagStyles from '@styles/component/_c-tagList.module.scss';
 
 type propsType = {
   tagsInfo: { name: string; path: string; totalCount: number }[];

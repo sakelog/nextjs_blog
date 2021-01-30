@@ -1,9 +1,9 @@
-import { getPostSlugs } from '../getSlugs';
+import { getPostSlugs } from '@lib/getSlugs';
 import {
   getPostBySlug,
   getPrevPost,
   getNextPost,
-} from '../contentful/exportContent/post';
+} from '@lib/contentful/exportContent/post';
 
 const createPostProps = async (
   props: createProps.post.props

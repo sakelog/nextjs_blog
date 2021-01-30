@@ -5,20 +5,20 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {
   getAllCategory,
   getPostByCategory,
-} from '../../lib/contentful/exportContent/category';
-import { getPostListNumPages, getPostListSlugs } from '../../lib/getSlugs';
-import { toKebabCase } from '../../lib/toKebabCase';
+} from '@lib/contentful/exportContent/category';
+import { getPostListNumPages, getPostListSlugs } from '@lib/getSlugs';
+import { toKebabCase } from '@lib/toKebabCase';
 
-import CreateCategoryProps from '../../lib/createProps/createCategoryProps';
+import CreateCategoryProps from '@lib/createProps/createCategoryProps';
 
-import Layout from '../../components/layout/layout';
+import Layout from '@layout/layout';
 const Loading = (
   <div>
     Loading...
     <CircularProgress />
   </div>
 );
-const Temp_CatTag = loadable(() => import('../../template/temp_catTag'), {
+const Temp_CatTag = loadable(() => import('@template/temp_catTag'), {
   fallback: Loading,
 });
 

@@ -15,10 +15,10 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { FiClipboard } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
 
-import config from '../config';
+import config from '@component/config';
 
-import styles from '../../styles/Object/Component/_c-post__Share.module.scss';
-import headingStyles from '../../styles/Object/Component/_c-heading.module.scss';
+import styles from '@styles/component/_c-post__Share.module.scss';
+import headingStyles from '@styles/component/_c-heading.module.scss';
 
 type propsType = {
   url: string;

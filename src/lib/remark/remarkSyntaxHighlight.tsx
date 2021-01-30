@@ -1,7 +1,7 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import theme from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 
-import styles from '../../styles/Object/Component/_c-article__SyntaxHighlight.module.scss';
+import styles from '@styles/component/_c-article__SyntaxHighlight.module.scss';
 
 const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
   const className = props.className;

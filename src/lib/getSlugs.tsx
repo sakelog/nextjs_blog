@@ -1,4 +1,4 @@
-import { toKebabCase } from './toKebabCase';
+import { toKebabCase } from '@lib/toKebabCase';
 
 // post slug一覧
 export const getPostSlugs = (posts: contentful.post[]): getSlugs.postSlugs => {

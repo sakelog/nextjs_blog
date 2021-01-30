@@ -2,17 +2,17 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { getAllPosts } from '../lib/contentful/exportContent/postList';
-import { getAllPages } from '../lib/contentful/exportContent/page';
+import { getAllPosts } from '@lib/contentful/exportContent/postList';
+import { getAllPages } from '@lib/contentful/exportContent/page';
 import {
   getPostSlugs,
   getPageSlugs,
   getPostListNumPages,
   getPostListSlugs,
-} from '../lib/getSlugs';
-import CreatePostListProps from '../lib/createProps/createPostListProps';
-import CreatePageProps from '../lib/createProps/createPageProps';
-import CreatePostProps from '../lib/createProps/createPostProps';
+} from '@lib/getSlugs';
+import CreatePostListProps from '@lib/createProps/createPostListProps';
+import CreatePageProps from '@lib/createProps/createPageProps';
+import CreatePostProps from '@lib/createProps/createPostProps';
 
 const Loading = (
   <div>
@@ -21,17 +21,17 @@ const Loading = (
   </div>
 );
 // Template
-const Temp_PostList = loadable(() => import('../template/temp_postList'), {
+const Temp_PostList = loadable(() => import('@template/temp_postList'), {
   fallback: Loading,
 });
-const Temp_Post = loadable(() => import('../template/temp_post'), {
+const Temp_Post = loadable(() => import('@template/temp_post'), {
   fallback: Loading,
 });
-const Temp_Page = loadable(() => import('../template/temp_page'), {
+const Temp_Page = loadable(() => import('@template/temp_page'), {
   fallback: Loading,
 });
 
-import Layout from '../components/layout/layout';
+import Layout from '@layout/layout';
 
 const POST_PER_LISTPAGE = 6;
 const POSTLIST = 'postlist';

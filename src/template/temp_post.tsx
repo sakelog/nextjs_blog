@@ -3,25 +3,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FiTag } from 'react-icons/fi';
 
-import { getCategoryPath, getTagPath } from '../lib/getPath';
-import RenderTOC from '../lib/renderTOC';
-import { getWindowSize } from '../lib/getWindowSize';
+import { getCategoryPath, getTagPath } from '@lib/getPath';
+import RenderTOC from '@lib/renderTOC';
+import { getWindowSize } from '@lib/getWindowSize';
 
-import CustomHead from '../components/customHead';
+import CustomHead from '@component/customHead';
 
-import ArticleBody from '../components/postParts/articleBody';
-import Share from '../components/postParts/share';
-import Bio from '../components/postParts/bio/bio';
-import PostDate from '../components/postDate';
+import ArticleBody from '@component/postParts/articleBody';
+import Share from '@component/postParts/share';
+import Bio from '@component/postParts/bio/bio';
+import PostDate from '@component/postDate';
 
-import config from '../components/config';
+import config from '@component/config';
 
-import PrevNext from '../components/pagination/prevNext';
-import BackToTop from '../components/pagination/backToTop';
+import PrevNext from '@component/pagination/prevNext';
+import BackToTop from '@component/pagination/backToTop';
 
-import styles from '../styles/Object/Component/_c-post.module.scss';
-import categoryStyles from '../styles/Object/Component/_c-category.module.scss';
-import tagStyles from '../styles/Object/Component/_c-tagList.module.scss';
+import styles from '@styles/component/_c-post.module.scss';
+import categoryStyles from '@styles/component/_c-category.module.scss';
+import tagStyles from '@styles/component/_c-tagList.module.scss';
 
 const Temp_Post: React.FC<Template.post.props> = (props) => {
   const body = props.currentPost.fields.body;

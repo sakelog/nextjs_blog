@@ -1,9 +1,9 @@
-import CustomHead from '../components/customHead';
-import ArticleBody from '../components/postParts/articleBody';
+import CustomHead from '@component/customHead';
+import ArticleBody from '@component/postParts/articleBody';
 
-import BackToTop from '../components/pagination/backToTop';
+import BackToTop from '@component/pagination/backToTop';
 
-import wrapperStyles from '../styles/Layout/_l-pageWrapper.module.scss';
+import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
 
 const Temp_Page: React.FC<Template.page.props> = (props) => {
   const body = props.page.fields.body;

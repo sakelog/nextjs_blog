@@ -1,6 +1,6 @@
-import { getTagSlugs, getPostListNumPages } from '../getSlugs';
-import { getPostByTag } from '../contentful/exportContent/tag';
-import { getTagPath } from '../getPath';
+import { getTagSlugs, getPostListNumPages } from '@lib/getSlugs';
+import { getPostByTag } from '@lib/contentful/exportContent/tag';
+import { getTagPath } from '@lib/getPath';
 
 const TAGS = 'tags';
 

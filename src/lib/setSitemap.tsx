@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { format, isValid } from 'date-fns';
-import config from '../components/config';
+import config from '@component/config';
 
 export const setSiteMap = (fetchDate: Date, urlSet: sitemap.urlset): void => {
   let SitemapString: string;

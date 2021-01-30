@@ -3,7 +3,7 @@
 ============================================================*/
 
 import { Link } from 'react-scroll';
-import styles from '../../styles/Object/Component/_c-post__TOC.module.scss';
+import styles from '@styles/component/_c-post__TOC.module.scss';
 
 type propsType = {
   toc: render.toc.iditem[];

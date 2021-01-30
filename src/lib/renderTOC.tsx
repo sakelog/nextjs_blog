@@ -10,7 +10,7 @@ import mdastToString from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 const githubSlugger = new GithubSlugger();
 
-import TOC from '../components/postParts/TOC';
+import TOC from '@component/postParts/TOC';
 
 const OFFSET_ACTIVE_IMTE = 160;
 const MAX_DEPTH = 3;

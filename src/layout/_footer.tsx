@@ -1,6 +1,6 @@
-import config from '../config';
+import config from '@component/config';
 
-import styles from '../../styles/Layout/_l-footer.module.scss';
+import styles from '@styles/layout/_l-footer.module.scss';
 
 const Footer: React.FC = () => {
   const siteTitle = config.title;

@@ -1,4 +1,4 @@
-import styles from '../../styles/Object/Component/_c-article__Table.module.scss';
+import styles from '@styles/component/_c-article__Table.module.scss';
 
 const RemarkTable: React.FC<JSX.IntrinsicElements['table']> = (props) => {
   return (

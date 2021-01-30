@@ -1,4 +1,4 @@
-import { toKebabCase } from './toKebabCase';
+import { toKebabCase } from '@lib/toKebabCase';
 
 export function getCategoryPath(slug: string): string {
   const basePath = '/category/';

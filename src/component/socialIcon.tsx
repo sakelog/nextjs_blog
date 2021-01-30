@@ -1,6 +1,6 @@
 import { SocialIcon } from 'react-social-icons';
 
-import config from './config';
+import config from '@component/config';
 
 const RenderSocialIcon: React.FC = () => {
   const githubBase = 'https://github.com/';

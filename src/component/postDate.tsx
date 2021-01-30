@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { MdEvent, MdUpdate } from 'react-icons/md';
 
-import styles from '../styles/Object/Component/_c-postDate.module.scss';
+import styles from '@styles/component/_c-postDate.module.scss';
 
 type propsType = {
   postdate: string;

@@ -1,17 +1,17 @@
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 
-import { getRootPath, getCategoryPath, getTagPath } from '../lib/getPath';
+import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
-import config from '../components/config';
+import config from '@component/config';
 
-import CustomHead from '../components/customHead';
-import PostDate from '../components/postDate';
-import Pagination from '../components/pagination/pagination';
+import CustomHead from '@component/customHead';
+import PostDate from '@component/postDate';
+import Pagination from '@component/pagination/pagination';
 
-import styles from '../styles/Object/Project/_p-postList.module.scss';
-import categoryStyles from '../styles/Object/Component/_c-category.module.scss';
-import tagStyles from '../styles/Object/Component/_c-tagList.module.scss';
+import styles from '@styles/project/_p-postList.module.scss';
+import categoryStyles from '@styles/component/_c-category.module.scss';
+import tagStyles from '@styles/component/_c-tagList.module.scss';
 
 const Temp_PostList: React.FC<Template.postList.props> = (props) => {
   const postListTag = props.posts.map((post: contentful.post) => {

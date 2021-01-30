@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { MdMenu, MdClose } from 'react-icons/md';
 import { Router } from 'next/router';
 
-import config from '../config';
+import config from '@component/config';
 
-import PageList from './headerNav/pageList';
-import SocialIcon from '../socialIcon';
+import PageList from '@layout/headerNav/pageList';
+import SocialIcon from '@component/socialIcon';
 
-import styles from '../../styles/Object/Project/_p-header.module.scss';
-import headingStyles from '../../styles/Object/Component/_c-heading.module.scss';
+import styles from '@styles/project/_p-header.module.scss';
+import headingStyles from '@styles/component/_c-heading.module.scss';
 
 const Header: React.FC = () => {
   const [state, setState] = useState<string>('');

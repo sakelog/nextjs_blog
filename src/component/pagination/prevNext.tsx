@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
-import { getRootPath } from '../../lib/getPath';
+import { getRootPath } from '@lib/getPath';
 
-import styles from '../../styles/Object/Component/_c-pagination--prevNext.module.scss';
+import styles from '@styles/component/_c-pagination--prevNext.module.scss';
 
 const PrevNext: React.FC<pagination.prevNext.props> = (props) => {
   const { prevPost, nextPost } = props;

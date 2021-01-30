@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import config from '../components/config';
+import config from '@component/config';
 import GTMScript from '../scripts/gtmScript';
 
 type propsType = {

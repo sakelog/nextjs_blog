@@ -2,16 +2,16 @@ import Link from 'next/link';
 import { NextPage } from 'next';
 import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 
-import { getRootPath } from '../lib/getPath';
+import { getRootPath } from '@lib/getPath';
 
-import config from '../components/config';
+import config from '@component/config';
 
-import Layout from '../components/layout/layout';
-import CustomHead from '../components/customHead';
-import BackToTop from '../components/pagination/backToTop';
+import Layout from '@layout/layout';
+import CustomHead from '@component/customHead';
+import BackToTop from '@component/pagination/backToTop';
 
-import styles from '../styles/Object/Component/_c-contact.module.scss';
-import wrapperStyles from '../styles/Layout/_l-pageWrapper.module.scss';
+import styles from '@styles/component/_c-contact.module.scss';
+import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
 
 const endPoint = process.env.FORMSPREE_ENDPOINT;
 

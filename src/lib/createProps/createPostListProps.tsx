@@ -1,4 +1,4 @@
-import { getPostListSlugs, getPostListNumPages } from '../getSlugs';
+import { getPostListSlugs, getPostListNumPages } from '@lib/getSlugs';
 
 const CreatePostListProps = async (
   props: createProps.postList.props

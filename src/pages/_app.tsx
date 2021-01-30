@@ -1,4 +1,4 @@
-import '../styles/mystyle.scss';
+import '@styles/mystyle.scss';
 import App, { AppProps } from 'next/app';
 
 class MyApp extends App {

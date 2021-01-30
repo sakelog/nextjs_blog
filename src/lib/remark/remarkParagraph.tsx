@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import customBlockStyles from '../../styles/Object/Component/_c-article__customBlock.module.scss';
+import customBlockStyles from '@styles/component/_c-article__customBlock.module.scss';
 
 type propsType = {
   className?: string;

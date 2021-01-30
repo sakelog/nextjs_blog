@@ -6,7 +6,7 @@ import {
   MdLastPage,
 } from 'react-icons/md';
 
-import styles from '../../styles/Object/Component/_c-pagination--pagination.module.scss';
+import styles from '@styles/component/_c-pagination--pagination.module.scss';
 
 const Pagination: React.FC<pagination.pagination.props> = (props) => {
   const { currentPage, lastPage, pathBase } = props;

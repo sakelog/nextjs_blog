@@ -3,10 +3,10 @@ import Link from 'next/link';
 import ErrorPage from 'next/error';
 import loadable from '@loadable/component';
 
-import { getPreviewPostBySlug } from '../../lib/contentful/exportContent/post';
+import { getPreviewPostBySlug } from '@lib/contentful/exportContent/post';
 
-import Layout from '../../components/layout/layout';
-const Temp_Post = loadable(() => import('../../template/temp_post'));
+import Layout from '@layout/layout';
+const Temp_Post = loadable(() => import('@template/temp_post'));
 
 type propsType = {
   post: contentful.post;

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import { getWindowSize } from '../getWindowSize';
+import { getWindowSize } from '@lib/getWindowSize';
 
-import styles from '../../styles/Object/Component/_c-article__Image.module.scss';
+import styles from '@styles/component/_c-article__Image.module.scss';
 
 const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   const isContentfulImg = props.src.startsWith('//images.ctfassets.net');

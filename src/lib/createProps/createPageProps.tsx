@@ -1,5 +1,5 @@
-import { getPageSlugs } from '../getSlugs';
-import { getPageBySlug } from '../contentful/exportContent/page';
+import { getPageSlugs } from '@lib/getSlugs';
+import { getPageBySlug } from '@lib/contentful/exportContent/page';
 
 const CreatePageProps = async (
   props: createProps.page.props

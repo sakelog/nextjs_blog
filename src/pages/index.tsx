@@ -2,13 +2,13 @@ import { GetStaticProps, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { getAllPosts } from '../lib/contentful/exportContent/postList';
-import { getURLSet } from '../lib/contentful/exportContent/urlSet';
-import CreatePostListProps from '../lib/createProps/createPostListProps';
-import { getConcatPath, getRootPath } from '../lib/getPath';
-import { setSiteMap } from '../lib/setSitemap';
+import { getAllPosts } from '@lib/contentful/exportContent/postList';
+import { getURLSet } from '@lib/contentful/exportContent/urlSet';
+import CreatePostListProps from '@lib/createProps/createPostListProps';
+import { getConcatPath, getRootPath } from '@lib/getPath';
+import { setSiteMap } from '@lib/setSitemap';
 
-import config from '../components/config';
+import config from '@component/config';
 
 const Loading = (
   <div>
@@ -17,11 +17,11 @@ const Loading = (
   </div>
 );
 // Template
-const Temp_PostList = loadable(() => import('../template/temp_postList'), {
+const Temp_PostList = loadable(() => import('@template/temp_postList'), {
   fallback: Loading,
 });
 
-import Layout from '../components/layout/layout';
+import Layout from '@layout/layout';
 
 const POST_PER_LISTPAGE = 6;
 

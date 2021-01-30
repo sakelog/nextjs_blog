@@ -8,18 +8,17 @@ import remark2rehype from 'remark-rehype';
 import raw from 'rehype-raw';
 import rehype2react from 'rehype-react';
 //import html from 'rehype-stringify';
-
 import report from 'vfile-reporter';
 import styleGuide from 'remark-preset-lint-markdown-style-guide';
 
-import RemarkParagraph from './remark/remarkParagraph';
+import RemarkParagraph from '@lib/remark/remarkParagraph';
 const RemarkSyntaxHighlight = loadable(
-  () => import('./remark/remarkSyntaxHighlight')
+  () => import('@lib/remark/remarkSyntaxHighlight')
 );
-const RemarkImage = loadable(() => import('./remark/remarkImage'));
-import RemarkLink from './remark/remarkLink';
-import RemarkTable from './remark/remarkTable';
-const RemarkIframe = loadable(() => import('./remark/remarkIframe'));
+const RemarkImage = loadable(() => import('@lib/remark/remarkImage'));
+import RemarkLink from '@lib/remark/remarkLink';
+import RemarkTable from '@lib/remark/remarkTable';
+const RemarkIframe = loadable(() => import('@lib/remark/remarkIframe'));
 
 const renderMarkdownBody = (props: {
   markdown: string;

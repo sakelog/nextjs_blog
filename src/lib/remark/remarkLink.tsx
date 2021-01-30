@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-import { getRootPath } from '../getPath';
+import { getRootPath } from '@lib/getPath';
 
-import config from '../../components/config';
+import config from '@component/config';
 
-import styles from '../../styles/Object/Component/_c-article__Link.module.scss';
+import styles from '@styles/component/_c-article__Link.module.scss';
 
 const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
   let isExternalLink = props.href.startsWith('http');

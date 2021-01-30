@@ -1,9 +1,9 @@
-import config from '../../config';
+import config from '@component/config';
 import ProfileIcon from './_profileIcon';
-import SocialIcon from '../../socialIcon';
+import SocialIcon from '@component/socialIcon';
 
-import styles from '../../../styles/Object/Component/_c-post__Bio.module.scss';
-import headingStyles from '../../../styles/Object/Component/_c-heading.module.scss';
+import styles from '@styles/component/_c-post__Bio.module.scss';
+import headingStyles from '@styles/component/_c-heading.module.scss';
 
 const Bio: React.FC = () => {
   return (
