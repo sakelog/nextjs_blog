@@ -27,6 +27,8 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
 
   useEffect(() => {
     calculateItemTopOffsets();
+  }, []);
+  useEffect(() => {
     window.addEventListener('scroll', throttledHandleScroll);
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll);
