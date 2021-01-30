@@ -13,6 +13,7 @@ const githubSlugger = new GithubSlugger();
 import TOC from '../components/postParts/TOC';
 
 const OFFSET_ACTIVE_IMTE = 160;
+const MAX_DEPTH = 3;
 
 const RenderTOC: React.FC<{ markdown: string }> = (props) => {
   const [activeItemIds, setActiveItemIds] = useState<render.toc.activeItemIds>(
@@ -49,7 +50,7 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
             window.scrollY + OFFSET_ACTIVE_IMTE < next.offsetTop
         : window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop;
     });
-    const nowActiveItemIds = item ? [item.id] : [];
+    const nowActiveItemIds = item ? [item.id] : null;
 
     setActiveItemIds(nowActiveItemIds);
   };
@@ -81,11 +82,11 @@ const _getElementTopOffsetsById: render.toc.getElementTopOffsetsById = (
   ids
 ) => {
   return ids
-    .map(({ id }) => {
-      const element = document.getElementById(id);
-      return element
+    .map((item) => {
+      const element = document.getElementById(item.id);
+      return item.depth <= MAX_DEPTH && element
         ? {
-            id,
+            id: item.id,
             offsetTop: element.offsetTop,
           }
         : null;
