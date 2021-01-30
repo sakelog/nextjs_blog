@@ -31,7 +31,7 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll);
     };
-  }, []);
+  }, [itemTopOffsets]);
 
   const calculateItemTopOffsets = () => {
     setItemTopOffsets(_getElementTopOffsetsById(toc));
