@@ -14,7 +14,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ."
+    "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore . --fix"
   },
   "dependencies": {
     "@loadable/component": "^5.14.1",
