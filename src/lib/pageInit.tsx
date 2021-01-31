@@ -12,39 +12,37 @@ const PageInit: funcType = (dispatch) => {
   handleSetWindowSize(dispatch);
   handleInitDrawer(dispatch);
   Router.events.on('routeChangeStart', () => {
-    handleSetWindowSize(dispatch);
-    handleInitDrawer(dispatch);
+    handlePageInit(dispatch);
   });
   window.addEventListener('load', () => {
-    handleSetWindowSize(dispatch);
-    handleInitDrawer(dispatch);
+    handlePageInit(dispatch);
   });
   window.addEventListener('resize', () => {
-    handleSetWindowSize(dispatch);
-    handleInitDrawer(dispatch);
+    handlePageInit(dispatch);
   });
   window.addEventListener('orientationchange', () => {
-    handleSetWindowSize(dispatch);
-    handleInitDrawer(dispatch);
+    handlePageInit(dispatch);
   });
   return () => {
     Router.events.off('routerChangeStart', () => {
-      handleSetWindowSize(dispatch);
-      handleInitDrawer(dispatch);
+      handlePageInit(dispatch);
     });
     window.removeEventListener('load', () => handleSetWindowSize(dispatch));
     window.removeEventListener('resize', () => {
-      handleSetWindowSize(dispatch);
-      handleInitDrawer(dispatch);
+      handlePageInit(dispatch);
     });
     window.removeEventListener('orientationchange', () => {
-      handleSetWindowSize(dispatch);
-      handleInitDrawer(dispatch);
+      handlePageInit(dispatch);
     });
   };
 };
 
 export default PageInit;
+
+const handlePageInit = (dispatch: Dispatch<any>) => {
+  handleSetWindowSize(dispatch);
+  handleInitDrawer(dispatch);
+};
 
 const handleInitDrawer = (dispatch: Dispatch<any>) => {
   dispatch(drawerState.drawerOperations.init());

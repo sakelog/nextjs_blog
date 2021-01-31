@@ -22,6 +22,7 @@
       "@layout/*":["layout/*"],
       "@component/*" : ["component/*"],
       "@lib/*":["lib/*"],
+      "@scripts/*":["scripts/*"],
       "@template/*": ["template/*"],
       "@state/*": ["state/*"],
       "@styles/*":["styles/*"],
