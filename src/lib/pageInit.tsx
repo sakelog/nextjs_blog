@@ -2,11 +2,13 @@ import { Router } from 'next/router';
 import state from '@state/ducks/index';
 import { Dispatch } from 'react';
 
+type funcType = (dispatch: Dispatch<any>) => () => void;
+
 // page生成時のuseEffect内側
 const windowSizeState = state.windowSizeState;
 const drawerState = state.drawerState;
 
-const PageInit = (dispatch: Dispatch<any>) => {
+const PageInit: funcType = (dispatch) => {
   handleSetWindowSize(dispatch);
   handleInitDrawer(dispatch);
   Router.events.on('routeChangeStart', () => {
