@@ -20,19 +20,20 @@ const nextConfig = {
             maxEntries: 200,
           },
         },
-        async rewrites() {
-          return [
-            {
-              source: '/service-worker.js',
-              destination: '/_next/static/service-worker.js',
-            },
-          ];
-        },
       },
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/service-worker.js',
+        destination: '/_next/static/service-worker.js',
+      },
+    ];
   },
 };
 
 module.exports = withPlugins([
-  optional(() => require('next-offline'), { nextConfig }),
+  optional(() => require('next-offline')),
+  nextConfig,
 ]);
