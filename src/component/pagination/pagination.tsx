@@ -17,58 +17,58 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
   const lastPath = pathBase + lastPage.toString();
 
   const prevPath =
-    currentPage - 1 === 1 ? firstPath : pathBase + (currentPage - 1).toString();
-  const nextPath = pathBase + (currentPage + 1).toString();
+    !isFirst && currentPage - 1 === 1
+      ? firstPath
+      : pathBase + (currentPage - 1).toString();
+  const nextPath = !isLast && pathBase + (currentPage + 1).toString();
 
   const prevLink = (
-    <span
-      className={styles.paginationItem + (isFirst ? ' ' + styles.disable : '')}
-    >
-      <MdChevronLeft />
-      <Link href={prevPath}>前へ</Link>
+    <span className={styles.paginationItem}>
+      <MdChevronLeft className={isFirst && styles.disable} />
+      {isFirst ? (
+        <span className={styles.disable}>前へ</span>
+      ) : (
+        <Link href={prevPath}>前へ</Link>
+      )}
     </span>
   );
   const nextLink = (
-    <span
-      className={styles.paginationItem + (isLast ? ' ' + styles.disable : '')}
-    >
-      <Link href={nextPath}>次へ</Link>
-      <MdChevronRight />
+    <span className={styles.paginationItem}>
+      {isLast ? (
+        <span className={styles.disable}>次へ</span>
+      ) : (
+        <Link href={nextPath}>次へ</Link>
+      )}
+      <MdChevronRight className={isLast && styles.disable} />
     </span>
   );
 
   // 先頭ページ
   const firstLink = (
-    <span
-      className={
-        styles.paginationItem +
-        ' ' +
-        styles.firstLast +
-        (isFirst ? ' ' + styles.disable : '')
-      }
-    >
-      <MdFirstPage />
-      <Link href={firstPath}>1</Link>
+    <span className={styles.paginationItem + ' ' + styles.first}>
+      <MdFirstPage className={isFirst && styles.disable} />
+      {isFirst ? (
+        <span className={styles.disable}>1</span>
+      ) : (
+        <Link href={firstPath}>1</Link>
+      )}
     </span>
   );
   // 最終ページ
   const lastLink = (
-    <span
-      className={
-        styles.paginationItem +
-        ' ' +
-        styles.firstLast +
-        (isLast ? ' ' + styles.disable : '')
-      }
-    >
-      <Link href={lastPath}>{lastPage.toString()}</Link>
-      <MdLastPage />
+    <span className={styles.paginationItem + ' ' + styles.last}>
+      {isLast ? (
+        <span className={styles.disable}>{lastPage.toString()}</span>
+      ) : (
+        <Link href={lastPath}>{lastPage.toString()}</Link>
+      )}
+      <MdLastPage className={isLast && styles.disable} />
     </span>
   );
   // 現在ページ
   const currentPagePart = (
     <span className={styles.paginationItem + ' ' + styles.currentPage}>
-      {'( ' + currentPage + ' )'}
+      {currentPage}
     </span>
   );
   return (
