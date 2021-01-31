@@ -16,15 +16,16 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
   const firstPath = pathBase;
   const lastPath = pathBase + lastPage.toString();
 
-  const prevPath =
-    !isFirst && currentPage - 1 === 1
-      ? firstPath
-      : pathBase + (currentPage - 1).toString();
-  const nextPath = !isLast && pathBase + (currentPage + 1).toString();
+  const prevPath = isFirst
+    ? ''
+    : currentPage - 1 === 1
+    ? firstPath
+    : pathBase + (currentPage - 1).toString();
+  const nextPath = !isLast ? pathBase + (currentPage + 1).toString() : '';
 
   const prevLink = (
     <span className={styles.paginationItem}>
-      <MdChevronLeft className={isFirst && styles.disable} />
+      <MdChevronLeft className={isFirst ? styles.disable : ''} />
       {isFirst ? (
         <span className={styles.disable}>前へ</span>
       ) : (
@@ -39,14 +40,14 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
       ) : (
         <Link href={nextPath}>次へ</Link>
       )}
-      <MdChevronRight className={isLast && styles.disable} />
+      <MdChevronRight className={isLast ? styles.disable : ''} />
     </span>
   );
 
   // 先頭ページ
   const firstLink = (
     <span className={styles.paginationItem + ' ' + styles.first}>
-      <MdFirstPage className={isFirst && styles.disable} />
+      <MdFirstPage className={isFirst ? styles.disable : ''} />
       {isFirst ? (
         <span className={styles.disable}>1</span>
       ) : (
@@ -62,7 +63,7 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
       ) : (
         <Link href={lastPath}>{lastPage.toString()}</Link>
       )}
-      <MdLastPage className={isLast && styles.disable} />
+      <MdLastPage className={isLast ? styles.disable : ''} />
     </span>
   );
   // 現在ページ

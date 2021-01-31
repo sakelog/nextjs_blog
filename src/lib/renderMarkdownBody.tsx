@@ -10,6 +10,7 @@ import rehype2react from 'rehype-react';
 //import html from 'rehype-stringify';
 import report from 'vfile-reporter';
 import styleGuide from 'remark-preset-lint-markdown-style-guide';
+import vfile from 'vfile';
 
 import RemarkParagraph from '@lib/remark/remarkParagraph';
 const RemarkSyntaxHighlight = loadable(
@@ -20,15 +21,13 @@ import RemarkLink from '@lib/remark/remarkLink';
 import RemarkTable from '@lib/remark/remarkTable';
 const RemarkIframe = loadable(() => import('@lib/remark/remarkIframe'));
 
-const renderMarkdownBody = (props: {
-  markdown: string;
-}): ReactElement | unknown => {
+const renderMarkdownBody = (props: { markdown: string }): ReactElement | {} => {
   if (process.env.NODE_ENV === 'development') {
     const markdownLint = remark().use(styleGuide).processSync(props.markdown);
     console.log(report(markdownLint));
   }
 
-  const parsedMarkdown = remark()
+  const parsedMarkdown: vfile.VFile = remark()
     .use(gfm)
     .use(slug)
     .use(remark2rehype, { allowDangerousHtml: true })
@@ -44,9 +43,10 @@ const renderMarkdownBody = (props: {
         iframe: RemarkIframe,
       },
     })
-    .processSync(props.markdown).result;
+    .processSync(props.markdown);
 
-  return parsedMarkdown;
+  const result = parsedMarkdown.result;
+  return result;
 };
 
 export default renderMarkdownBody;

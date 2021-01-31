@@ -9,7 +9,9 @@ type propsType = {
 const ArticleBody: React.FC<propsType> = (props) => {
   return (
     <section className={styles.root}>
-      {RenderMarkdownBody({ markdown: props.body })}
+      {RenderMarkdownBody({ markdown: props.body }) === {}
+        ? null
+        : RenderMarkdownBody({ markdown: props.body })}
     </section>
   );
 };
