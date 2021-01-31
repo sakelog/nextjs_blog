@@ -8,32 +8,12 @@ const nextConfig = {
   async headers() {
     return [{ source: '/(.*)', headers: createSecureHeaders() }];
   },
-  workboxOpts: {
-    swDest: 'static/service-worker.js',
-    runtimeCaching: [
-      {
-        urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'offlineCache',
-          expiration: {
-            maxEntries: 200,
-          },
-        },
-      },
-    ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/service-worker.js',
-        destination: '/_next/static/service-worker.js',
-      },
-    ];
+  pwa: {
+    dest: 'public',
   },
 };
 
-module.exports = withPlugins([
-  optional(() => require('next-offline')),
-  nextConfig,
-]);
+module.exports = withPlugins(
+  [[optional(() => require('next-pwa')), {}], [createSecureHeaders]],
+  nextConfig
+);
