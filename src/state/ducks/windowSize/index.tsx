@@ -1,6 +1,6 @@
 import windowSizeReducer from './reducers';
 
-import { default as windowSizeActions } from './actions';
+import { default as windowSizeOperations } from './operations';
 import { default as windowSizeSelectors } from './selectors';
 
-export default { windowSizeReducer, windowSizeActions, windowSizeSelectors };
+export default { windowSizeReducer, windowSizeOperations, windowSizeSelectors };
