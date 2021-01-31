@@ -6,7 +6,6 @@ const RemarkIframe: React.FC<JSX.IntrinsicElements['iframe']> = (props) => {
 
   const className = isYoutube ? 'youtube' : 'default';
 
-  console.log(isYoutube);
   return (
     <div className={styles[className]}>
       <iframe {...props} />
