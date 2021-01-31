@@ -7,6 +7,8 @@ const windowSizeState = state.windowSizeState;
 const drawerState = state.drawerState;
 
 const PageInit = (dispatch: Dispatch<any>) => {
+  handleSetWindowSize(dispatch);
+  handleInitDrawer(dispatch);
   Router.events.on('routeChangeStart', () => {
     handleSetWindowSize(dispatch);
     handleInitDrawer(dispatch);
@@ -46,5 +48,5 @@ const handleInitDrawer = (dispatch: Dispatch<any>) => {
   dispatch(drawerState.drawerOperations.init());
 };
 const handleSetWindowSize = (dispatch: Dispatch<any>) => {
-  dispatch(windowSizeState.windowSizeActions.setWindowSize());
+  dispatch(windowSizeState.windowSizeOperations.setWindowSize());
 };
