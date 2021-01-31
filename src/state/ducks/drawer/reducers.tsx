@@ -11,13 +11,13 @@ export const initialState: drawerState = {
 
 const drawerReducer = createReducer<drawerState>(initialState, (builder) => {
   builder
-    .addCase(init, (state, _) => {
+    .addCase(init, (state) => {
       state.show = initialState.show;
     })
-    .addCase(open, (state, _) => {
+    .addCase(open, (state) => {
       state.show = 'open';
     })
-    .addCase(close, (state, _) => {
+    .addCase(close, (state) => {
       state.show = 'close';
     });
 });

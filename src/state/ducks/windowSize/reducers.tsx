@@ -14,7 +14,7 @@ export const initialState: windowSizeState = {
 const windowSizeReducer = createReducer<windowSizeState>(
   initialState,
   (builder) => {
-    builder.addCase(setWindowSize, (state, _) => {
+    builder.addCase(setWindowSize, (state) => {
       state.width = getWindowSize().width;
       state.height = getWindowSize().height;
     });

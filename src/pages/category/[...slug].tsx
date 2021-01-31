@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import { Router } from 'next/router';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
