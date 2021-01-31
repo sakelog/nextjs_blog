@@ -5,7 +5,6 @@ import { FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PageInit from '@lib/pageInit';
-//import state from '@state/ducks/index';
 
 import { getRootPath } from '@lib/getPath';
 

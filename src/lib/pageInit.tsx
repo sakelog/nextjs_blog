@@ -6,7 +6,6 @@ import { Dispatch } from 'react';
 const windowSizeState = state.windowSizeState;
 
 const PageInit = (dispatch: Dispatch<any>) => {
-  //handleSetWindowSize(dispatch);
   Router.events.on('routeChangeStart', () => {
     handleSetWindowSize(dispatch);
   });

@@ -6,7 +6,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PageInit from '@lib/pageInit';
-//import state from '@state/ducks/index';
 
 import {
   getAllCategory,
