@@ -8,6 +8,7 @@
   max-width: $sm;
   .paginationItem {
     display: flex;
+    justify-content: center;
     align-items: center;
     background: $light-gray;
     padding: 0.2rem 0.6rem;
