@@ -1,7 +1,7 @@
 const { createSecureHeaders } = require('next-secure-headers');
-const withOffline = require('next-offline');
+const { withPlugins, optional } = require('next-compose-plugins');
 
-module.exports = withOffline({
+const nextConfig = {
   images: {
     domains: ['images.ctfassets.net'],
   },
@@ -20,15 +20,19 @@ module.exports = withOffline({
             maxEntries: 200,
           },
         },
+        async rewrites() {
+          return [
+            {
+              source: '/service-worker.js',
+              destination: '/_next/static/service-worker.js',
+            },
+          ];
+        },
       },
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/service-worker.js',
-        destination: '/_next/static/service-worker.js',
-      },
-    ];
-  },
-});
+};
+
+module.exports = withPlugins([
+  optional(() => require('next-offline'), { nextConfig }),
+]);
