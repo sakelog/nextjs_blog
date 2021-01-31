@@ -8,7 +8,7 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   const isContentfulImg = props.src.startsWith('//images.ctfassets.net');
   const alt = props.alt ? props.alt : null;
 
-  const [showState, setShowState] = useState<string>('');
+  const [showState, setShowState] = useState<string>('hide');
   const handleShow = () => {
     setShowState('show');
   };
@@ -22,7 +22,9 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
       layout="fill"
       objectFit="scale-down"
       alt={alt}
-      onClick={showState === 'show' ? handleHide : handleShow}
+      onClick={() => {
+        showState === 'show' ? handleHide() : handleShow();
+      }}
     />
   );
   const ContentfulTitle = isContentfulImg && (
@@ -31,11 +33,12 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   const customImgTag = isContentfulImg ? (
     <div className={styles.root}>
       <div
-        className={styles.modal + ' ' + styles[showState]}
+        className={styles.modal}
         onClick={handleHide}
         style={{
           width: windowSizeState.windowSizeSelectors.widthSelector(),
           height: windowSizeState.windowSizeSelectors.heightSelector(),
+          display: showState === 'show' ? 'block' : 'none',
         }}
       >
         {ContentfulImgTag}
