@@ -23,6 +23,7 @@
       "@component/*" : ["component/*"],
       "@lib/*":["lib/*"],
       "@template/*": ["template/*"],
+      "@state/*": ["state/*"],
       "@styles/*":["styles/*"],
       "@styles/layout/*" : ["styles/Layout/*"],
       "@styles/project/*":["styles/Object/Project/*"],

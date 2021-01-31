@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FiTag } from 'react-icons/fi';
+import state from '@state/ducks/index';
 
 import { getCategoryPath, getTagPath } from '@lib/getPath';
 import RenderTOC from '@lib/renderTOC';
-import { getWindowSize } from '@lib/getWindowSize';
 
 import CustomHead from '@component/customHead';
 
@@ -24,23 +23,10 @@ import categoryStyles from '@styles/component/_c-category.module.scss';
 import tagStyles from '@styles/component/_c-tagList.module.scss';
 
 const Temp_Post: React.FC<Template.post.props> = (props) => {
+  const windowSizeState = state.windowSizeState;
   const body = props.currentPost.fields.body;
   const category = props.currentPost.fields.category;
   const MIN_WIDTH = config.mediaQuery.md;
-  const [isMd, setIsMd] = useState<boolean>(false);
-  useEffect(() => {
-    handleSetIsMd();
-    window.addEventListener('resize', handleSetIsMd);
-    window.addEventListener('orientationchange', handleSetIsMd);
-    return () => {
-      window.removeEventListener('resize', handleSetIsMd);
-      window.removeEventListener('orientationchange', handleSetIsMd);
-    };
-  }, []);
-  const handleSetIsMd = () => {
-    const windowWidth = getWindowSize().width;
-    setIsMd(windowWidth <= MIN_WIDTH);
-  };
   const postCategory = (
     <ul className={styles.categoryList}>
       <li key="category-title">カテゴリー：</li>
@@ -92,7 +78,7 @@ const Temp_Post: React.FC<Template.post.props> = (props) => {
             <h1>{props.currentPost.fields.title}</h1>
             <ArticleBody body={body} />
           </section>
-          {!isMd && (
+          {windowSizeState.windowSizeSelectors.widthSelector() >= MIN_WIDTH && (
             <aside className={styles.side}>
               <RenderTOC markdown={body} />
             </aside>

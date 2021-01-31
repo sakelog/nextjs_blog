@@ -1,6 +1,12 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import { Router } from 'next/router';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PageInit from '@lib/pageInit';
+//import state from '@state/ducks/index';
 
 import {
   getAllCategory,
@@ -25,6 +31,10 @@ const Temp_CatTag = loadable(() => import('@template/temp_catTag'), {
 const POST_PER_LISTPAGE = 10;
 
 const CategoryDirectory: NextPage<Template.catTagList.props> = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    PageInit(dispatch);
+  }, []);
   return (
     <Layout>
       <Temp_CatTag

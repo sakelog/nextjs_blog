@@ -1,45 +1,28 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-
-import { getWindowSize } from '@lib/getWindowSize';
-
+import { useState } from 'react';
+import state from '@state/ducks/index';
 import styles from '@styles/component/_c-article__Image.module.scss';
 
 const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
+  const windowSizeState = state.windowSizeState;
   const isContentfulImg = props.src.startsWith('//images.ctfassets.net');
   const alt = props.alt ? props.alt : null;
-  const [state, setState] = useState<string>('');
-  const [windowSize, setWindowSize] = useState<{
-    width: number;
-    height: number;
-  }>({ width: 0, height: 0 });
+
+  const [showState, setShowState] = useState<string>('');
   const handleShow = () => {
-    setState('show');
+    setShowState('show');
   };
   const handleHide = () => {
-    setState('hide');
+    setShowState('hide');
   };
-  const handleChangeWindowSize = () => {
-    setWindowSize(getWindowSize());
-  };
-  useEffect(() => {
-    handleChangeWindowSize();
-    window.addEventListener('resize', handleChangeWindowSize);
-    window.addEventListener('orientationchange', handleChangeWindowSize);
-    return () => {
-      window.removeEventListener('resize', () => {
-        handleChangeWindowSize;
-      });
-      window.removeEventListener('orientationchange', handleChangeWindowSize);
-    };
-  }, []);
+
   const ContentfulImgTag = isContentfulImg && (
     <Image
       src={'https:' + props.src}
       layout="fill"
       objectFit="scale-down"
       alt={alt}
-      onClick={state === 'show' ? handleHide : handleShow}
+      onClick={showState === 'show' ? handleHide : handleShow}
     />
   );
   const ContentfulTitle = isContentfulImg && (
@@ -48,9 +31,12 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   const customImgTag = isContentfulImg ? (
     <div className={styles.root}>
       <div
-        className={styles.modal + ' ' + styles[state]}
+        className={styles.modal + ' ' + styles[showState]}
         onClick={handleHide}
-        style={{ width: windowSize.width, height: windowSize.height }}
+        style={{
+          width: windowSizeState.windowSizeSelectors.widthSelector(),
+          height: windowSizeState.windowSizeSelectors.heightSelector(),
+        }}
       >
         {ContentfulImgTag}
       </div>

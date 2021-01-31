@@ -2,6 +2,10 @@ import { GetStaticProps, NextPage } from 'next';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PageInit from '@lib/pageInit';
+
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import { getURLSet } from '@lib/contentful/exportContent/urlSet';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
@@ -26,6 +30,10 @@ import Layout from '@layout/layout';
 const POST_PER_LISTPAGE = 6;
 
 const TopPage: NextPage<{ posts: Template.postList.props }> = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    PageInit(dispatch);
+  }, []);
   const TemplateTag = (
     <Temp_PostList
       posts={props.posts.posts}

@@ -1,6 +1,12 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import { Router } from 'next/router';
 import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PageInit from '@lib/pageInit';
+//import state from '@state/ducks/index';
 
 import { getAllTags, getPostByTag } from '@lib/contentful/exportContent/tag';
 import { getPostListNumPages, getPostListSlugs } from '@lib/getSlugs';
@@ -22,6 +28,11 @@ const POST_PER_LISTPAGE = 10;
 const TAGS = 'tags';
 
 const TagsDirectory: NextPage<Template.catTagList.props> = (props) => {
+  //const windowSizeState = state.windowSizeState;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    PageInit(dispatch);
+  }, []);
   return (
     <Layout>
       <Temp_CatTag

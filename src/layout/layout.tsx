@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-
-import { getWindowSize } from '@lib/getWindowSize';
+import state from '@state/ducks/index';
 
 import Header from './_header';
 import Footer from './_footer';
@@ -9,24 +7,13 @@ import wrapperStyles from '@styles/layout/_l-wrapper.module.scss';
 import mainStyles from '@styles/layout/_l-main.module.scss';
 
 const Layout: React.FC = (props) => {
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  useEffect(() => {
-    handleSetWindowSize();
-    window.addEventListener('resize', handleSetWindowSize);
-    window.addEventListener('orientationchange', handleSetWindowSize);
-    return () => {
-      window.removeEventListener('resize', handleSetWindowSize);
-      window.removeEventListener('orientationchange', handleSetWindowSize);
-    };
-  }, []);
-  const handleSetWindowSize = () => {
-    const thisWindowSize = getWindowSize();
-    setWindowSize(thisWindowSize);
-  };
+  const windowSizeState = state.windowSizeState;
   return (
     <div
       className={wrapperStyles.root}
-      style={{ minHeight: windowSize.height }}
+      style={{
+        minHeight: windowSizeState.windowSizeSelectors.heightSelector(),
+      }}
     >
       <Header />
       <main className={mainStyles.root}>{props.children}</main>

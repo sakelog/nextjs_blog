@@ -2,6 +2,10 @@ import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PageInit from '@lib/pageInit';
+
 import { getAllTags, getPostByTag } from '@lib/contentful/exportContent/tag';
 import { getTagPath } from '@lib/getPath';
 
@@ -18,6 +22,10 @@ type propsType = {
 };
 
 const TagsPage: NextPage<propsType> = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    PageInit(dispatch);
+  }, []);
   const PAGE_TITLE = 'タグ一覧ページ';
   const DESCRIPTION = '全タグの一覧ページです';
 
