@@ -5,6 +5,7 @@ import reducer from './ducks/index';
 
 const rootReducer = combineReducers({
   windowSizeState: reducer.windowSizeState.windowSizeReducer,
+  drawerState: reducer.drawerState.drawerReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

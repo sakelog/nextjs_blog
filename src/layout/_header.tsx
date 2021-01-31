@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-
 import Link from 'next/link';
 import { MdMenu, MdClose } from 'react-icons/md';
-import { Router } from 'next/router';
+
+import { useDispatch } from 'react-redux';
+import state from '@state/ducks/index';
 
 import config from '@component/config';
 
@@ -13,26 +13,12 @@ import styles from '@styles/project/_p-header.module.scss';
 import headingStyles from '@styles/component/_c-heading.module.scss';
 
 const Header: React.FC = () => {
-  const [state, setState] = useState<string>('');
-  useEffect(() => {
-    Router.events.on('routeChangeStart', handleInit);
-    window.addEventListener('resize', handleInit);
-    window.addEventListener('orientationchange', handleInit);
-    return () => {
-      Router.events.off('routeChangeStart', handleInit);
-      window.removeEventListener('resize', handleInit);
-      window.removeEventListener('orientationchange', handleInit);
-    };
-  }, []);
-  const handleInit = () => {
-    setState('');
-  };
-  const handleOpen = () => {
-    setState('open');
-  };
-  const handleClose = () => {
-    setState('close');
-  };
+  const dispatch = useDispatch();
+  const drawerState = state.drawerState;
+
+  const handleOpen = () => dispatch(drawerState.drawerOperations.open());
+  const handleClose = () => dispatch(drawerState.drawerOperations.close());
+
   const SiteTitle = <Link href="/">{config.title}</Link>;
   return (
     <>
@@ -41,16 +27,26 @@ const Header: React.FC = () => {
           <div className={styles.navBar}>
             <div className={styles.title}>{SiteTitle}</div>
             <span className={styles.navIcon}>
-              <MdMenu onClick={handleOpen} />
+              <MdMenu onClick={() => handleOpen()} />
             </span>
           </div>
           <div
-            className={styles.drawerBack + ' ' + styles[state]}
-            onClick={handleClose}
+            className={
+              styles.drawerBack +
+              ' ' +
+              styles[drawerState.drawerSelectors.drawerSelector()]
+            }
+            onClick={() => handleClose()}
           ></div>
-          <div className={styles.navDrawer + ' ' + styles[state]}>
+          <div
+            className={
+              styles.navDrawer +
+              ' ' +
+              styles[drawerState.drawerSelectors.drawerSelector()]
+            }
+          >
             <span className={styles.navIcon}>
-              <MdClose onClick={handleClose} />
+              <MdClose onClick={() => handleClose()} />
             </span>
             <h2 className={styles.heading + ' ' + headingStyles.flexCenter}>
               ページ一覧
