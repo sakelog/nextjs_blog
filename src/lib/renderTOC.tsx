@@ -11,7 +11,6 @@ import GithubSlugger from 'github-slugger';
 const githubSlugger = new GithubSlugger();
 
 import TOC from '@component/postParts/TOC';
-import { Node } from 'webpack';
 
 const OFFSET_ACTIVE_IMTE = 160;
 const MAX_DEPTH = 3;
@@ -47,9 +46,10 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
       const next = itemTopOffsets[i + 1];
 
       return next
-        ? window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop &&
+        ? current &&
+            window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop &&
             window.scrollY + OFFSET_ACTIVE_IMTE < next.offsetTop
-        : window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop;
+        : current && window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop;
     });
     const nowActiveItemIds = item ? [item.id] : null;
 
@@ -66,7 +66,7 @@ const _getToc: render.toc.getToc = (rawMarkdownBody) => {
 
   const result: render.toc.iditem[] = [];
   const ast = remark().parse(rawMarkdownBody);
-  visit(ast, 'heading', (child) => {
+  visit<any>(ast, 'heading', (child) => {
     const value = child.children[0].value;
     const id = githubSlugger.slug(value || mdastToString(child));
     const depth = child.depth ? child.depth : 0;
