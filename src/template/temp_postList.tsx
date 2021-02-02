@@ -21,14 +21,12 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
         <li key={tag.fields.slug}>
           <h4>
             <Link href={getTagPath(tag.fields.slug)}>
-              <a>
-                <span className={tagStyles.tagListItem}>
-                  <span className={tagStyles.tagIcon}>
-                    <FiTag />
-                  </span>
-                  {tag.fields.name}
+              <span className={tagStyles.tagListItem}>
+                <span className={tagStyles.tagIcon}>
+                  <FiTag />
                 </span>
-              </a>
+                {tag.fields.name}
+              </span>
             </Link>
           </h4>
         </li>

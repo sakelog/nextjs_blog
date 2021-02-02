@@ -66,12 +66,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
   let tagsInfo: { name: string; path: string; totalCount: number }[] = [];
 
-  for (let index = 0; index < allTags.length; index++) {
-    const targetPosts = await getPostByTag({ id: allTags[index].sys.id });
-    const totalCount = targetPosts.length;
-    const name = allTags[index].fields.name;
-    const path = getTagPath(allTags[index].fields.slug);
-    tagsInfo.push({ name: name, path: path, totalCount: totalCount });
+  if (allTags) {
+    for (let index = 0; index < allTags.length; index++) {
+      const targetPosts = await getPostByTag({ id: allTags[index].sys.id });
+      const totalCount = targetPosts ? targetPosts.length : 0;
+      const name = allTags[index].fields.name;
+      const path = getTagPath(allTags[index].fields.slug);
+      tagsInfo.push({ name: name, path: path, totalCount: totalCount });
+    }
   }
 
   tagsInfo = tagsInfo.filter((elm) => elm.totalCount > 0);

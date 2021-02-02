@@ -44,14 +44,12 @@ const Temp_Post: React.FC<Template.post.props> = (props) => {
       <li key={tag.fields.slug}>
         <h6>
           <Link href={getTagPath(tag.fields.slug)}>
-            <a>
-              <span className={tagStyles.tagListItem}>
-                <span className={tagStyles.tagIcon}>
-                  <FiTag />
-                </span>
-                {tag.fields.name}
+            <span className={tagStyles.tagListItem}>
+              <span className={tagStyles.tagIcon}>
+                <FiTag />
               </span>
-            </a>
+              {tag.fields.name}
+            </span>
           </Link>
         </h6>
       </li>
