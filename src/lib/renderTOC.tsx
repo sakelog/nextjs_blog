@@ -11,6 +11,7 @@ import GithubSlugger from 'github-slugger';
 const githubSlugger = new GithubSlugger();
 
 import TOC from '@component/postParts/TOC';
+import { Node } from 'webpack';
 
 const OFFSET_ACTIVE_IMTE = 160;
 const MAX_DEPTH = 3;
@@ -63,12 +64,12 @@ export default RenderTOC;
 const _getToc: render.toc.getToc = (rawMarkdownBody) => {
   githubSlugger.reset();
 
-  const result = [];
+  const result: render.toc.iditem[] = [];
   const ast = remark().parse(rawMarkdownBody);
   visit(ast, 'heading', (child) => {
     const value = child.children[0].value;
     const id = githubSlugger.slug(value || mdastToString(child));
-    const depth = child.depth;
+    const depth = child.depth ? child.depth : 0;
     result.push({
       value,
       id,

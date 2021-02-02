@@ -11,25 +11,24 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
   const LANG_STRING = 'language-';
 
   const hasTitle = className && className.match(/:title=/);
-  const title =
-    hasTitle && className.match(/:title=.*/)[0].replace(TITLE_STRING, '');
+  let title = hasTitle && hasTitle[0].replace(TITLE_STRING, '');
 
   const hasDataLine = className && className.match(/\{.*\}/);
   const dataLine =
     hasDataLine &&
-    className
-      .match(/\{.*\}/)[0]
+    hasDataLine[0]
       .replace(DATALINE_START_STRING, '')
       .replace(DATALINE_END_STRING, '');
 
   const hasLang = className && className.match(/language-[^\s]*/);
-  let lang =
-    hasLang && className.match(/language-[^\s]*/)[0].replace(LANG_STRING, '');
+  let lang = hasLang && hasLang[0].replace(LANG_STRING, '');
 
-  lang = hasLang && hasTitle ? lang.replace(/:title=.*/, '') : lang;
-  lang = hasLang && hasDataLine ? lang.replace(/\{.*\}/, '') : lang;
+  lang = hasLang && hasTitle ? lang && lang.replace(/:title=.*/, '') : lang;
+  lang = hasLang && hasDataLine ? lang && lang.replace(/\{.*\}/, '') : lang;
 
-  const code = props.children[0];
+  const code = props.children
+    ? Array.isArray(props.children) && props.children[0]
+    : null;
   const dataLineRawItems = dataLine && dataLine.split(',');
   const dataLineArray =
     dataLineRawItems &&
@@ -64,7 +63,11 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
           const ACCENT_COLOR = '#3e3e3e';
           const NONE = 'none';
           const BLOCK = 'block';
-          let style: { display; backgroundColor?; textShadow? } = {
+          let style: {
+            display: string;
+            backgroundColor?: string;
+            textShadow?: string;
+          } = {
             display: BLOCK,
           };
           dataLineArray &&
@@ -72,14 +75,16 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
               if (Array.isArray(line)) {
                 return (style = {
                   display: BLOCK,
-                  backgroundColor: line.includes(lineNumber) && ACCENT_COLOR,
-                  textShadow: line.includes(lineNumber) && NONE,
+                  backgroundColor: line.includes(lineNumber)
+                    ? ACCENT_COLOR
+                    : '',
+                  textShadow: line.includes(lineNumber) ? NONE : '',
                 });
               } else {
                 return (style = {
                   display: BLOCK,
-                  backgroundColor: line === lineNumber && ACCENT_COLOR,
-                  textShadow: line === lineNumber && NONE,
+                  backgroundColor: line === lineNumber ? ACCENT_COLOR : '',
+                  textShadow: line === lineNumber ? NONE : '',
                 });
               }
             });

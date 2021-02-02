@@ -7,8 +7,10 @@ import config from '@component/config';
 import styles from '@styles/component/_c-article__Link.module.scss';
 
 const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
-  let isExternalLink = props.href.startsWith('http');
-  const isInternalLinkAbsolute = props.href.startsWith(config.url);
+  let isExternalLink = props.href ? props.href.startsWith('http') : false;
+  const isInternalLinkAbsolute = props.href
+    ? props.href.startsWith(config.url)
+    : false;
   isExternalLink =
     isExternalLink && isInternalLinkAbsolute ? false : isExternalLink;
   const rel = props.rel
@@ -21,7 +23,7 @@ const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
   const linkTo = isExternalLink ? 'external' : 'internal';
   const internalPath =
     !isExternalLink &&
-    (isInternalLinkAbsolute
+    (isInternalLinkAbsolute && props.href
       ? getRootPath(props.href.replace(config.url, ''))
       : props.href);
   return (
@@ -29,16 +31,18 @@ const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
       {isExternalLink ? (
         <a
           href={props.href}
-          rel={rel}
-          target={target}
+          rel={rel ? rel : ''}
+          target={target ? target : ''}
           className={className + ' ' + styles[linkTo]}
         >
           {props.children}
         </a>
       ) : (
-        <Link href={internalPath}>
-          <a>{props.children}</a>
-        </Link>
+        internalPath && (
+          <Link href={internalPath}>
+            <a>{props.children}</a>
+          </Link>
+        )
       )}
     </>
   );

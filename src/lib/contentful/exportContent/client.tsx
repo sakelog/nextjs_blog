@@ -8,14 +8,26 @@ import {
 export const client =
   CheckContentfulSetup &&
   contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    space:
+      typeof process.env.CONTENTFUL_SPACE_ID === 'string'
+        ? process.env.CONTENTFUL_SPACE_ID
+        : '',
+    accessToken:
+      typeof process.env.CONTENTFUL_ACCESS_TOKEN === 'string'
+        ? process.env.CONTENTFUL_ACCESS_TOKEN
+        : '',
   });
 
 export const previewClient =
   CheckContentfulSetupPreview &&
   contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+    space:
+      typeof process.env.CONTENTFUL_SPACE_ID === 'string'
+        ? process.env.CONTENTFUL_SPACE_ID
+        : '',
+    accessToken:
+      typeof process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN === 'string'
+        ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+        : '',
     host: 'preview.contentful.com',
   });

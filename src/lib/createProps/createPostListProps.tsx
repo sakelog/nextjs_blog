@@ -15,16 +15,19 @@ const CreatePostListProps = async (
       : (Number(props.slug) - 1) * props.per_page
     : null;
   const targetPosts = isPostList
-    ? props.allpost.slice(postListSkip, postListSkip + props.per_page)
+    ? props.allpost.slice(
+        postListSkip ? postListSkip : 0,
+        postListSkip ? postListSkip : 0 + props.per_page
+      )
     : null;
   const currentPage = isPostList
     ? props.slug === '/'
       ? 1
       : Number(props.slug)
-    : null;
+    : 0;
   const lastPage = Number(postListSlugs[postListSlugs.length - 1]);
 
-  return isPostList
+  return isPostList && targetPosts
     ? { pathBase: '/', posts: targetPosts, currentPage, lastPage }
     : false;
 };

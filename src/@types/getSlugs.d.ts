@@ -5,7 +5,7 @@ declare namespace getSlugs {
 
   declare namespace getPostListNumPages {
     declare type props = {
-      posts: contentful.post[];
+      posts: contentful.post[] | null;
       per_page: number;
     };
   }

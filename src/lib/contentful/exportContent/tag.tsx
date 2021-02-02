@@ -1,22 +1,23 @@
 import { client } from './client';
 
 // Tag
-export const getAllTags = async (): Promise<contentful.tags[]> => {
+export const getAllTags = async (): Promise<contentful.tags[] | null> => {
   const res: contentful.tagsCollection = await client.getEntries({
     content_type: 'tags',
     order: '-sys.createdAt',
   });
-  const tags = res.items;
+  const tags = typeof res.items === 'undefined' ? null : res.items;
   return tags;
 };
 
 export const getPostByTag = async (
   props: contentful.MyLib.getPostByTag.props
-): Promise<contentful.post[]> => {
+): Promise<contentful.post[] | null> => {
   const res: contentful.postCollection = await client.getEntries({
     content_type: 'post',
     order: '-fields.date',
     'fields.tags.sys.id': props.id,
   });
-  return res.items;
+  const post = typeof res.items === 'undefined' ? null : res.items;
+  return post;
 };

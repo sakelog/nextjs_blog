@@ -9,7 +9,7 @@ const createPostProps = async (
   props: createProps.post.props
 ): Promise<Template.post.props | boolean> => {
   const postSlugs = getPostSlugs(props.allpost);
-  let postRealSlug: string;
+  let postRealSlug = '';
   const isPost = postSlugs.some((postSlug) => {
     postSlug.slug === props.slug;
     if (postSlug.slug === props.slug) {
@@ -26,7 +26,9 @@ const createPostProps = async (
     ? await getNextPost({ slug: postRealSlug, posts: props.allpost })
     : null;
 
-  return isPost ? { currentPost: targetPost, prevPost, nextPost } : false;
+  return isPost && targetPost
+    ? { currentPost: targetPost, prevPost, nextPost }
+    : false;
 };
 
 export default createPostProps;

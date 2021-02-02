@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import loadable from '@loadable/component';
 
 import remark from 'remark';
 import gfm from 'remark-gfm';
@@ -8,26 +7,25 @@ import remark2rehype from 'remark-rehype';
 import raw from 'rehype-raw';
 import rehype2react from 'rehype-react';
 //import html from 'rehype-stringify';
-import report from 'vfile-reporter';
-import styleGuide from 'remark-preset-lint-markdown-style-guide';
-import vfile from 'vfile';
+//const report = require('vfile-reporter');
+//const styleGuide = require('remark-preset-lint-markdown-style-guide');
 
 import RemarkParagraph from '@lib/remark/remarkParagraph';
-const RemarkSyntaxHighlight = loadable(
-  () => import('@lib/remark/remarkSyntaxHighlight')
-);
-const RemarkImage = loadable(() => import('@lib/remark/remarkImage'));
+import RemarkSyntaxHighlight from '@lib/remark/remarkSyntaxHighlight';
+import RemarkImage from '@lib/remark/remarkImage';
 import RemarkLink from '@lib/remark/remarkLink';
 import RemarkTable from '@lib/remark/remarkTable';
-const RemarkIframe = loadable(() => import('@lib/remark/remarkIframe'));
+import RemarkIframe from '@lib/remark/remarkIframe';
 
-const renderMarkdownBody = (props: { markdown: string }): ReactElement | {} => {
+const renderMarkdownBody = (props: { markdown: string }): ReactElement => {
+  /*
   if (process.env.NODE_ENV === 'development') {
     const markdownLint = remark().use(styleGuide).processSync(props.markdown);
     console.log(report(markdownLint));
   }
+  */
 
-  const parsedMarkdown: vfile.VFile = remark()
+  const parsedMarkdown = remark()
     .use(gfm)
     .use(slug)
     .use(remark2rehype, { allowDangerousHtml: true })
@@ -45,7 +43,7 @@ const renderMarkdownBody = (props: { markdown: string }): ReactElement | {} => {
     })
     .processSync(props.markdown);
 
-  const result = parsedMarkdown.result;
+  const result: ReactElement | any = parsedMarkdown.result;
   return result;
 };
 

@@ -8,8 +8,8 @@ declare namespace pagination {
   }
   declare namespace prevNext {
     declare type props = {
-      prevPost?: contentful.post;
-      nextPost?: contentful.post;
+      prevPost: contentful.post | null;
+      nextPost: contentful.post | null;
     };
   }
 }

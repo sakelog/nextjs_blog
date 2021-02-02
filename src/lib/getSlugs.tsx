@@ -27,7 +27,7 @@ export const getPageSlugs = (pages: contentful.page[]): getSlugs.pageSlugs => {
 export const getPostListNumPages = (
   props: getSlugs.getPostListNumPages.props
 ): number => {
-  return Math.ceil(props.posts.length / props.per_page);
+  return props.posts ? Math.ceil(props.posts.length / props.per_page) : 0;
 };
 
 // postList slug一覧

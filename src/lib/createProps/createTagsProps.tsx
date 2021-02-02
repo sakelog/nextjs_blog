@@ -9,8 +9,8 @@ const CreateTagsProps = async (
 ): Promise<Template.catTagList.props> => {
   const { alltags, slug, per_page } = props;
   const allTagSlugs = getTagSlugs(alltags);
-  let id: string = null;
-  let name: string = null;
+  let id = '';
+  let name = '';
   allTagSlugs.some((tagSlug) => {
     tagSlug.slug === slug[0];
     if (tagSlug.slug === slug[0]) {
@@ -28,7 +28,7 @@ const CreateTagsProps = async (
   const skip =
     slug.length > 1 ? (Number(slug[slug.length - 1]) - 1) * per_page : 0;
   const limit = skip + per_page;
-  const targetPosts = allPosts.slice(skip, limit);
+  const targetPosts = allPosts ? allPosts.slice(skip, limit) : null;
 
   const pathBase = getTagPath(slug[0]).slice(0, -1);
 
@@ -36,7 +36,7 @@ const CreateTagsProps = async (
     type: TAGS,
     name,
     posts: targetPosts,
-    totalCount: allPosts.length,
+    totalCount: allPosts ? allPosts.length : 0,
     currentPage,
     lastPage,
     pathBase,

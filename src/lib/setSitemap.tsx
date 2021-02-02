@@ -45,7 +45,9 @@ const formatYMD = (date: Date | string): string => {
 
   return typeof date === 'string'
     ? format(new Date(date), FORMAT_STRING)
-    : isValid(date) && format(date, FORMAT_STRING);
+    : isValid(date)
+    ? format(date, FORMAT_STRING)
+    : '0000-00-00';
 };
 
 const formatHM = (date: Date | string): string => {
@@ -53,5 +55,7 @@ const formatHM = (date: Date | string): string => {
 
   return typeof date === 'string'
     ? format(new Date(date), FORMAT_STRING)
-    : isValid(date) && format(date, FORMAT_STRING);
+    : isValid(date)
+    ? format(date, FORMAT_STRING)
+    : '00:00';
 };

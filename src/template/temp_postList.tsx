@@ -57,10 +57,16 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
     );
   });
 
-  const pageTitle =
-    props.currentPage > 1 && '記事一覧：' + props.currentPage + 'ページ目';
-  const description =
-    props.currentPage > 1 && config.title + 'の記事一覧ページです';
+  const pageTitle = props.currentPage
+    ? props.currentPage > 1
+      ? '記事一覧：' + props.currentPage + 'ページ目'
+      : config.title
+    : '';
+  const description = props.currentPage
+    ? props.currentPage > 1
+      ? config.title + 'の記事一覧ページです'
+      : config.description
+    : '';
 
   return (
     <section>

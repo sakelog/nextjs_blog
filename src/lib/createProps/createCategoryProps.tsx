@@ -9,8 +9,8 @@ const CreateCategoryProps = async (
 ): Promise<Template.catTagList.props> => {
   const { allcategory, slug, per_page } = props;
   const allCategorySlugs = getCategorySlugs(allcategory);
-  let id: string = null;
-  let name: string = null;
+  let id = '';
+  let name = '';
   allCategorySlugs.some((catSlug) => {
     catSlug.slug === slug[0];
     if (catSlug.slug === slug[0]) {
@@ -28,7 +28,9 @@ const CreateCategoryProps = async (
   const skip =
     slug.length > 1 ? (Number(slug[slug.length - 1]) - 1) * per_page : 0;
   const limit = skip + per_page;
-  const targetPosts = allPosts.slice(skip, limit);
+  const targetPosts = Array.isArray(allPosts)
+    ? allPosts.slice(skip, limit)
+    : null;
 
   const pathBase = getCategoryPath(slug[0]).slice(0, -1);
 
@@ -36,7 +38,7 @@ const CreateCategoryProps = async (
     type: CATEGORY,
     name,
     posts: targetPosts,
-    totalCount: allPosts.length,
+    totalCount: allPosts ? allPosts.length : 0,
     lastPage,
     currentPage,
     pathBase,

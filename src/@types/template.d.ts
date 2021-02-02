@@ -10,8 +10,8 @@ declare namespace Template {
   declare namespace post {
     declare type props = {
       currentPost: contentful.post;
-      prevPost?: contentful.post;
-      nextPost?: contentful.post;
+      prevPost: contentful.post | null;
+      nextPost: contentful.post | null;
     };
   }
 
@@ -24,8 +24,8 @@ declare namespace Template {
   declare namespace catTagList {
     declare type props = {
       name: string;
-      posts: contentful.post[];
-      type: 'tags' | 'category';
+      posts: contentful.post[] | null;
+      type: 'tags' | 'category' | '';
       totalCount: number;
       currentPage: number;
       lastPage: number;

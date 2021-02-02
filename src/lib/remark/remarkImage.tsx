@@ -5,7 +5,9 @@ import styles from '@styles/component/_c-article__Image.module.scss';
 
 const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
   const windowSizeState = state.windowSizeState;
-  const isContentfulImg = props.src.startsWith('//images.ctfassets.net');
+  const isContentfulImg = props.src
+    ? props.src.startsWith('//images.ctfassets.net')
+    : false;
   const alt = props.alt ? props.alt : null;
 
   const [showState, setShowState] = useState<string>('hide');
@@ -21,7 +23,7 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
       src={'https:' + props.src}
       layout="fill"
       objectFit="scale-down"
-      alt={alt}
+      alt={alt ? alt : ''}
       onClick={() => {
         showState === 'show' ? handleHide() : handleShow();
       }}

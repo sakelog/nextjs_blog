@@ -3,9 +3,9 @@ import { getPageBySlug } from '@lib/contentful/exportContent/page';
 
 const CreatePageProps = async (
   props: createProps.page.props
-): Promise<contentful.page | boolean> => {
+): Promise<contentful.page | null | boolean> => {
   const pageSlugs = getPageSlugs(props.allpage);
-  let pageRealSlug: string;
+  let pageRealSlug = '';
   const isPage = pageSlugs.some((pageSlug) => {
     pageSlug.slug === props.slug;
     if (pageSlug.slug === props.slug) {
