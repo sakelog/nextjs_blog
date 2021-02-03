@@ -73,6 +73,6 @@
     "rehype-stringify": "^8.0.0",
     "typescript": "^4.1.3",
     "vfile": "^4.2.1",
-    "webpack": "^4.0.0"
+    "webpack": "^4.46.0"
   }
 }
