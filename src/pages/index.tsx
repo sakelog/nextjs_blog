@@ -50,11 +50,13 @@ export default TopPage;
 export const getStaticProps: GetStaticProps = async () => {
   const allpost = await getAllPosts();
   // postList
-  const postListProps = await CreatePostListProps({
-    allpost,
-    per_page: POST_PER_LISTPAGE,
-    slug: '/',
-  });
+  const postListProps = allpost
+    ? await CreatePostListProps({
+        allpost,
+        per_page: POST_PER_LISTPAGE,
+        slug: '/',
+      })
+    : null;
 
   // sitemap
   if (process.env.NODE_ENV === 'production') {

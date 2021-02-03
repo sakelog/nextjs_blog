@@ -3,7 +3,7 @@ import { getPageBySlug } from '@lib/contentful/exportContent/page';
 
 const CreatePageProps = async (
   props: createProps.page.props
-): Promise<contentful.page | null | boolean> => {
+): Promise<contentful.page | boolean> => {
   const pageSlugs = getPageSlugs(props.allpage);
   let pageRealSlug = '';
   const isPage = pageSlugs.some((pageSlug) => {
@@ -16,7 +16,7 @@ const CreatePageProps = async (
     ? await getPageBySlug({ slug: pageRealSlug })
     : null;
 
-  return isPage ? targetPage : false;
+  return isPage && targetPage ? targetPage : false;
 };
 
 export default CreatePageProps;
