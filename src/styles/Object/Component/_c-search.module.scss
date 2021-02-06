@@ -25,9 +25,12 @@
 }
 .hits {
   position: fixed;
+  top: 10rem;
+  left: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
   padding: 1rem;
+  width: 100%;
   li {
     margin: 0.4rem 0;
     border-bottom: 1px dashed #ffffff;
