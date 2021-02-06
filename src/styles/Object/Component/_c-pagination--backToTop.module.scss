@@ -10,4 +10,7 @@
   border-radius: 6px;
   margin: 2rem 0;
   max-width: $xs;
+  @media print {
+    display: none;
+  }
 }
