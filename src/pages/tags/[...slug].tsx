@@ -49,13 +49,24 @@ export default TagsDirectory;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const alltags = await getAllTags();
-  const slug = context.params.slug;
+  const slug = context.params ? context.params.slug : '';
 
-  const tagsProps = await CreateTagsProps({
-    alltags,
-    slug,
-    per_page: POST_PER_LISTPAGE,
-  });
+  const tagsProps =
+    alltags && slug
+      ? await CreateTagsProps({
+          alltags,
+          slug,
+          per_page: POST_PER_LISTPAGE,
+        })
+      : {
+          name: '',
+          posts: null,
+          type: '',
+          totalCount: 0,
+          currentPage: 0,
+          lastPage: 0,
+          pathBase: '',
+        };
 
   return {
     props: tagsProps,
@@ -67,19 +78,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const allSlugs = [];
 
-  for (let index = 0; index < allTags.length; index++) {
-    const targetPost = await getPostByTag({ id: allTags[index].sys.id });
-    targetPost.length > 0 &&
-      allSlugs.push([toKebabCase(allTags[index].fields.slug)]);
-    const ListNum = getPostListNumPages({
-      posts: targetPost,
-      per_page: POST_PER_LISTPAGE,
-    });
-    const ListSlugs = getPostListSlugs(ListNum);
-    ListSlugs &&
-      ListSlugs.map((slug) => {
-        allSlugs.push([toKebabCase(allTags[index].fields.slug), slug]);
+  if (allTags) {
+    for (let index = 0; index < allTags.length; index++) {
+      const targetPost = await getPostByTag({ id: allTags[index].sys.id });
+      targetPost &&
+        targetPost.length > 0 &&
+        allSlugs.push([toKebabCase(allTags[index].fields.slug)]);
+      const ListNum = getPostListNumPages({
+        posts: targetPost,
+        per_page: POST_PER_LISTPAGE,
       });
+      const ListSlugs = getPostListSlugs(ListNum);
+      ListSlugs &&
+        ListSlugs.map((slug) => {
+          allSlugs.push([toKebabCase(allTags[index].fields.slug), slug]);
+        });
+    }
   }
 
   const paths = allSlugs.map((slug) => {

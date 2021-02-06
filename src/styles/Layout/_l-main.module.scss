@@ -1,3 +1,6 @@
 .root {
   padding: 1.8rem;
+  @media print {
+    padding: 0;
+  }
 }

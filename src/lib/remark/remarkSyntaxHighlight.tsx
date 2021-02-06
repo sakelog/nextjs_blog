@@ -10,7 +10,8 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
   const DATALINE_END_STRING = '}';
   const LANG_STRING = 'language-';
 
-  const hasTitle = className && className.match(/:title=/);
+  const hasTitle = className && className.match(/:title=.*/);
+  console.log(hasTitle);
   const title = hasTitle && hasTitle[0].replace(TITLE_STRING, '');
 
   const hasDataLine = className && className.match(/\{.*\}/);
@@ -52,7 +53,7 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
     });
   return lang ? (
     <div className={styles.root}>
-      {title && <div>{title}</div>}
+      {title && <div className={styles.title}>{title}</div>}
       <SyntaxHighlighter
         language={lang}
         style={theme}

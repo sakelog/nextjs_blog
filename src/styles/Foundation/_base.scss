@@ -13,6 +13,9 @@ html {
     font-size: 1.6rem;
     line-height: 2;
     overflow-x: hidden;
+    @media print {
+      overflow-x: visible;
+    }
   }
   h1 {
     font-size: 2.6rem;

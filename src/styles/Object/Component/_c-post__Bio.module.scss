@@ -4,6 +4,10 @@
 .root {
   background: #ffffff;
   padding: 1rem;
+  @media print {
+    border-top: 1px solid $dark-gray;
+    border-bottom: 1px solid $dark-gray;
+  }
 }
 .profileIcon {
   background: #ffffff;
@@ -26,6 +30,9 @@
     li {
       margin: 0.4rem;
     }
+  }
+  @media print {
+    display: none;
   }
 }
 .detail {

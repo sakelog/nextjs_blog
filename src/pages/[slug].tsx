@@ -78,20 +78,31 @@ const RootDirectory: NextPage<propsType> = (props) => {
 export default RootDirectory;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = context.params.slug;
+  const slug = context.params ? context.params.slug : '';
   const allpost = await getAllPosts();
   const allpage = await getAllPages();
 
   let postListProps: Template.postList.props | boolean = false;
   let pageProps: contentful.page | boolean = false;
   let postProps: Template.post.props | boolean = false;
-  postListProps = await CreatePostListProps({
-    allpost,
-    per_page: POST_PER_LISTPAGE,
-    slug,
-  });
-  pageProps = !postListProps && (await CreatePageProps({ allpage, slug }));
-  postProps = !pageProps && (await CreatePostProps({ allpost, slug }));
+  postListProps =
+    allpost && slug
+      ? await CreatePostListProps({
+          allpost,
+          per_page: POST_PER_LISTPAGE,
+          slug,
+        })
+      : false;
+  pageProps = !postListProps
+    ? allpage && slug
+      ? await CreatePageProps({ allpage, slug })
+      : false
+    : false;
+  postProps = !pageProps
+    ? allpost && slug
+      ? await CreatePostProps({ allpost, slug })
+      : false
+    : false;
 
   const pathtype = postListProps ? POSTLIST : pageProps ? PAGE : POST;
 
@@ -114,9 +125,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     getPostListNumPages({ posts: allPosts, per_page: POST_PER_LISTPAGE })
   );
   // post
-  const postSlugs = getPostSlugs(allPosts);
+  const postSlugs = allPosts ? getPostSlugs(allPosts) : [];
   // page
-  const pageSlugs = getPageSlugs(allPages);
+  const pageSlugs = allPages ? getPageSlugs(allPages) : [];
 
   const allSlugs: string[] = [];
   postListSlugs.map((num) => {

@@ -3,6 +3,9 @@
 .root {
   background: #ffffff;
   padding: 1rem;
+  @media print {
+    display: none;
+  }
 }
 .buttons {
   padding: 1rem;

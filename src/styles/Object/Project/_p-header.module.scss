@@ -22,6 +22,22 @@
   position: sticky;
   top: 0;
   z-index: 99;
+  @media print {
+    position: relative;
+    height: 5vh;
+    margin-bottom: 5vh;
+    .navMenu {
+      box-shadow: none;
+      border-bottom: 1px solid $dark-gray;
+      .title {
+        color: $theme-color;
+        font-size: 1vh;
+      }
+      .navDrawer {
+        display: none;
+      }
+    }
+  }
 }
 .navMenu {
   position: relative;

@@ -37,9 +37,9 @@ const PreviewPage: NextPage<propsType> = (props) => {
 export default PreviewPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = context.params.slug;
+  const slug = context.params ? context.params.slug : '';
   const targetPost = context.preview
-    ? await getPreviewPostBySlug({ slug })
+    ? slug && (await getPreviewPostBySlug({ slug }))
     : null;
   const isPreviewPost: boolean = targetPost
     ? targetPost.fields.slug === slug
