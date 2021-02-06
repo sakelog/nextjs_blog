@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import config from '@component/config';
-import GTMScript from '../scripts/gtmScript';
+import GTMScript from '@scripts/gtmScript';
 
 type propsType = {
   pageTitle?: string;

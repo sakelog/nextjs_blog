@@ -11,7 +11,6 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
   const LANG_STRING = 'language-';
 
   const hasTitle = className && className.match(/:title=.*/);
-  console.log(hasTitle);
   const title = hasTitle && hasTitle[0].replace(TITLE_STRING, '');
 
   const hasDataLine = className && className.match(/\{.*\}/);

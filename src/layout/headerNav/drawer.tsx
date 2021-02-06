@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import state from '@state/ducks/index';
 import { MdClose } from 'react-icons/md';
 
+import Search from '@layout/headerNav/search/search';
 import PageList from '@layout/headerNav/pageList';
 import SocialIcon from '@component/socialIcon';
 
@@ -38,6 +39,7 @@ const Drawer: React.FC = () => {
         <div className={styles.pageList}>
           <PageList />
         </div>
+        <Search />
         <h2 className={styles.heading + ' ' + headingStyles.flexCenter}>
           連絡先
         </h2>
