@@ -53,7 +53,7 @@ const RemarkHighlight: React.FC<JSX.IntrinsicElements['code']> = (props) => {
     });
   return lang ? (
     <div className={styles.root}>
-      {title && <div>{title}</div>}
+      {title && <div className={styles.title}>{title}</div>}
       <SyntaxHighlighter
         language={lang}
         style={theme}
