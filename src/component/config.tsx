@@ -10,10 +10,10 @@ export default {
     github: 'sakelog',
   },
   mediaQuery: {
-    xs: 575,
-    sm: 767,
-    md: 991,
-    lg: 1199,
+    xs: 599,
+    sm: 959,
+    md: 1279,
+    lg: 1919,
   },
   themeColor: '#5b7e91',
 };
