@@ -7,7 +7,6 @@ import {
   SwipeableDrawer,
   Hidden,
 } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
 import { MdMenu } from 'react-icons/md';
 
 import Search from '@layout/headerNav/search/search';
@@ -17,7 +16,6 @@ import styles from '@styles/project/_p-header.module.scss';
 import { useDispatch } from 'react-redux';
 import state from '@state/ducks/index';
 import config from '@component/config';
-import { muiTheme } from '@lib/mui/theme';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,7 +29,7 @@ const Header: React.FC = () => {
     </Link>
   );
   return (
-    <ThemeProvider theme={muiTheme}>
+    <nav>
       <AppBar position="sticky">
         <Toolbar>
           {SiteTitle}
@@ -56,7 +54,7 @@ const Header: React.FC = () => {
           <DrawerList />
         </SwipeableDrawer>
       </Hidden>
-    </ThemeProvider>
+    </nav>
   );
 };
 
