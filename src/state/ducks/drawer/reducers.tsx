@@ -3,7 +3,7 @@ import { init, open, close } from './actions';
 import { drawerState } from './types';
 
 export const initialState: drawerState = {
-  show: '',
+  show: false,
   loading: false,
   error: false,
   errorMessage: '',
@@ -15,10 +15,10 @@ const drawerReducer = createReducer<drawerState>(initialState, (builder) => {
       state.show = initialState.show;
     })
     .addCase(open, (state) => {
-      state.show = 'open';
+      state.show = true;
     })
     .addCase(close, (state) => {
-      state.show = 'close';
+      state.show = false;
     });
 });
 

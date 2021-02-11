@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '@state/store';
 
-const drawerSelector = (): string => {
+const drawerSelector = (): boolean => {
   return useSelector((state: RootState) => {
     return state.drawerState.show;
   });

@@ -1,5 +1,5 @@
 export type drawer = {
-  show: string;
+  show: boolean;
 };
 export type drawerState = drawer & {
   loading: boolean;
