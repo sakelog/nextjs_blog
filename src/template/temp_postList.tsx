@@ -58,7 +58,7 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
   const pageTitle = props.currentPage
     ? props.currentPage > 1
       ? '記事一覧：' + props.currentPage + 'ページ目'
-      : config.title
+      : null
     : '';
   const description = props.currentPage
     ? props.currentPage > 1

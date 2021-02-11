@@ -4,7 +4,7 @@ import config from '@component/config';
 import GTMScript from '@scripts/gtmScript';
 
 type propsType = {
-  pageTitle?: string;
+  pageTitle?: string | null;
   description?: string;
   imgFLG?: boolean;
 };
