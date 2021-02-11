@@ -20,8 +20,6 @@ import PrevNext from '@component/pagination/prevNext';
 import BackToTop from '@component/pagination/backToTop';
 
 import styles from '@styles/component/_c-post.module.scss';
-import categoryStyles from '@styles/component/_c-category.module.scss';
-//import tagStyles from '@styles/component/_c-tagList.module.scss';
 
 const Temp_Post: React.FC<Template.post.props> = (props) => {
   const windowSizeState = state.windowSizeState;
