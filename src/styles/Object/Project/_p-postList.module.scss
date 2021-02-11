@@ -2,37 +2,19 @@
 @use '../../Foundation/mixin' as *;
 
 .post {
-  background: #ffffff;
-  border-radius: 6px;
-  padding: 0.6rem;
-  margin-bottom: 1.8rem;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  height: 100%;
   a {
     color: $darker-gray;
   }
-  .title {
-    font-size: 2.4rem;
-    font-weight: bold;
-    padding: 0.4rem;
-    border-bottom: 1px dashed $dark-gray;
-    color: $darker-gray;
-  }
-  .subItem {
-    padding: 1rem;
-    div {
-      margin: 1rem 0;
-    }
-  }
 }
-
-@include mq(md) {
-  .postList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .post {
-    width: calc(50% - 0.6rem);
-  }
+.title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  border-bottom: 1px dashed $dark-gray;
+  color: $darker-gray;
+}
+.subItem {
+  font-size: 1.4rem;
 }

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
+import { Grid, Card, CardContent, Button } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
@@ -10,48 +12,44 @@ import PostDate from '@component/postDate';
 import Pagination from '@component/pagination/pagination';
 
 import styles from '@styles/project/_p-postList.module.scss';
-import categoryStyles from '@styles/component/_c-category.module.scss';
-import tagStyles from '@styles/component/_c-tagList.module.scss';
+import { muiTheme } from '@lib/mui/theme';
 
 const Temp_PostList: React.FC<Template.postList.props> = (props) => {
   const postListTag = props.posts.map((post: contentful.post) => {
     const category = post.fields.category.fields;
     const tagList = post.fields.tags.map((tag) => {
       return (
-        <li key={tag.fields.slug}>
+        <Button startIcon={<FiTag />} key={tag.fields.slug}>
           <h4>
-            <Link href={getTagPath(tag.fields.slug)}>
-              <span className={tagStyles.tagListItem}>
-                <span className={tagStyles.tagIcon}>
-                  <FiTag />
-                </span>
-                {tag.fields.name}
-              </span>
-            </Link>
+            <Link href={getTagPath(tag.fields.slug)}>{tag.fields.name}</Link>
           </h4>
-        </li>
+        </Button>
       );
     });
     return (
-      <li key={post.fields.slug} className={styles.post}>
+      <Grid item xs={12} sm={6} key={post.fields.slug}>
         <Link href={getRootPath(post.fields.slug)}>
-          <div>
+          <Card className={styles.post}>
             <h2 className={styles.title}>{post.fields.title}</h2>
-            <div className={styles.subItem}>
-              <h3 className={categoryStyles.category}>
-                <Link href={getCategoryPath(category.slug)}>
-                  {category.name}
-                </Link>
-              </h3>
-              <PostDate
-                postdate={post.fields.date}
-                update={post.fields.update}
-              />
-              <ul className={tagStyles.tagList}>{tagList}</ul>
-            </div>
-          </div>
+            <CardContent>
+              <div className={styles.subItem}>
+                <Button variant="outlined">
+                  <h3>
+                    <Link href={getCategoryPath(category.slug)}>
+                      {category.name}
+                    </Link>
+                  </h3>
+                </Button>
+                <PostDate
+                  postdate={post.fields.date}
+                  update={post.fields.update}
+                />
+                {tagList}
+              </div>
+            </CardContent>
+          </Card>
         </Link>
-      </li>
+      </Grid>
     );
   });
 
@@ -67,15 +65,19 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
     : '';
 
   return (
-    <section>
-      <CustomHead pageTitle={pageTitle} description={description} />
-      <ul className={styles.postList}>{postListTag}</ul>
-      <Pagination
-        currentPage={props.currentPage}
-        lastPage={props.lastPage}
-        pathBase={props.pathBase}
-      />
-    </section>
+    <ThemeProvider theme={muiTheme}>
+      <section>
+        <CustomHead pageTitle={pageTitle} description={description} />
+        <Grid container spacing={2}>
+          {postListTag}
+        </Grid>
+        <Pagination
+          currentPage={props.currentPage}
+          lastPage={props.lastPage}
+          pathBase={props.pathBase}
+        />
+      </section>
+    </ThemeProvider>
   );
 };
 

@@ -14,6 +14,7 @@ import { Message } from './types';
 
 import { getRootPath } from '@lib/getPath';
 import config from '@component/config';
+import { muiTheme } from '@lib/mui/theme';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +27,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     search: {
       position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
       borderRadius: '6px',
       backgroundColor: fade(theme.palette.common.white, 0.15),
       '&:hover': {
@@ -33,13 +36,8 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      margin: theme.spacing(0, 2),
+      fontSize: '2rem',
     },
     inputRoot: {
       color: 'inherit',
@@ -47,7 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',
     },
@@ -79,13 +76,11 @@ const useStyles = makeStyles((theme: Theme) =>
 type Props = AutocompleteProvided<Message>;
 
 const Autocomplete: React.FC<Props> = ({ hits, currentRefinement, refine }) => {
-  const styles = useStyles();
+  const styles = useStyles(muiTheme);
   return (
     <div className={styles.root}>
       <div className={styles.search}>
-        <div className={styles.searchIcon}>
-          <MdSearch />
-        </div>
+        <MdSearch className={styles.searchIcon} />
         <InputBase
           placeholder="検索…"
           classes={{

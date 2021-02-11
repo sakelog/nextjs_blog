@@ -1,6 +1,8 @@
 import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
+import { Grid, Button, Badge } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,7 +17,7 @@ import CustomHead from '@component/customHead';
 import BackToTop from '@component/pagination/backToTop';
 
 import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
-import tagStyles from '@styles/component/_c-tagList.module.scss';
+import { muiTheme } from '@lib/mui/theme';
 
 type propsType = {
   tagsInfo: { name: string; path: string; totalCount: number }[];
@@ -35,16 +37,20 @@ const TagsPage: NextPage<propsType> = (props) => {
 
   const tagsList = sortedList.map((tag) => {
     return (
-      <li key={tag.name}>
-        <Link href={tag.path}>
-          <span className={tagStyles.tagListItem}>
-            <span className={tagStyles.tagIcon}>
-              <FiTag />
-            </span>
-            {tag.name + ' (' + tag.totalCount + ')'}
-          </span>
-        </Link>
-      </li>
+      <Grid item xs={4} sm={2} key={tag.name}>
+        <Badge
+          badgeContent={tag.totalCount}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          color="primary"
+        >
+          <Button variant="outlined" startIcon={<FiTag />}>
+            <Link href={tag.path}>{tag.name}</Link>
+          </Button>
+        </Badge>
+      </Grid>
     );
   });
   return (
@@ -52,7 +58,11 @@ const TagsPage: NextPage<propsType> = (props) => {
       <CustomHead pageTitle={PAGE_TITLE} description={DESCRIPTION} />
       <section className={wrapperStyles.root}>
         <h1>{PAGE_TITLE}</h1>
-        <ul className={tagStyles.tagList}>{tagsList}</ul>
+        <ThemeProvider theme={muiTheme}>
+          <Grid container spacing={2}>
+            {tagsList}
+          </Grid>
+        </ThemeProvider>
       </section>
       <BackToTop />
     </Layout>
