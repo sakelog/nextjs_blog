@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 import config from '@component/config';
 
-export const muiTheme = createMuiTheme({
+let defaultTheme = createMuiTheme({
   palette: {
     primary: {
       main: config.themeColor,
@@ -17,5 +17,10 @@ export const muiTheme = createMuiTheme({
       'Meiryo',
       'sans-serif',
     ].join(','),
+    fontSize: 16,
   },
 });
+
+defaultTheme = responsiveFontSizes(defaultTheme);
+
+export default { defaultTheme };
