@@ -8,14 +8,14 @@ import { indexName, searchClient } from '@lib/algolia/client';
 import { ThemeProvider } from '@material-ui/core/styles';
 import muiTheme from '@lib/mui/theme';
 
-const MyApp = (props: AppProps) => {
+const MyApp: React.FC<AppProps> = (props) => {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
     jssStyles &&
       jssStyles.parentElement &&
       jssStyles.parentElement.removeChild(jssStyles);
   }, []);
-  const { Component, pageProps }: AppProps = props;
+  const { Component, pageProps } = props;
   return (
     <Provider store={createStore()}>
       <InstantSearch indexName={indexName} searchClient={searchClient}>
