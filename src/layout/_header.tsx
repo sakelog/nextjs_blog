@@ -29,8 +29,8 @@ const Header: React.FC = () => {
     </Link>
   );
   return (
-    <nav>
-      <AppBar position="sticky">
+    <>
+      <AppBar position="sticky" className={styles.root}>
         <Toolbar>
           {SiteTitle}
           <Search />
@@ -54,7 +54,7 @@ const Header: React.FC = () => {
           <DrawerList />
         </SwipeableDrawer>
       </Hidden>
-    </nav>
+    </>
   );
 };
 
