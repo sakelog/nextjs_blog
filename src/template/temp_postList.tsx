@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 import { Grid, Card, CardContent, Button } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
 
 import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
@@ -12,7 +11,6 @@ import PostDate from '@component/postDate';
 import Pagination from '@component/pagination/pagination';
 
 import styles from '@styles/project/_p-postList.module.scss';
-import { muiTheme } from '@lib/mui/theme';
 
 const Temp_PostList: React.FC<Template.postList.props> = (props) => {
   const postListTag = props.posts.map((post: contentful.post) => {
@@ -65,19 +63,17 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
     : '';
 
   return (
-    <ThemeProvider theme={muiTheme}>
-      <section>
-        <CustomHead pageTitle={pageTitle} description={description} />
-        <Grid container spacing={2}>
-          {postListTag}
-        </Grid>
-        <Pagination
-          currentPage={props.currentPage}
-          lastPage={props.lastPage}
-          pathBase={props.pathBase}
-        />
-      </section>
-    </ThemeProvider>
+    <section>
+      <CustomHead pageTitle={pageTitle} description={description} />
+      <Grid container spacing={2}>
+        {postListTag}
+      </Grid>
+      <Pagination
+        currentPage={props.currentPage}
+        lastPage={props.lastPage}
+        pathBase={props.pathBase}
+      />
+    </section>
   );
 };
 

@@ -6,7 +6,7 @@ import createStore from '@state/store';
 import { InstantSearch } from 'react-instantsearch-dom';
 import { indexName, searchClient } from '@lib/algolia/client';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { muiTheme } from '@lib/mui/theme';
+import muiTheme from '@lib/mui/theme';
 
 const MyApp = (props: AppProps) => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const MyApp = (props: AppProps) => {
   return (
     <Provider store={createStore()}>
       <InstantSearch indexName={indexName} searchClient={searchClient}>
-        <ThemeProvider theme={muiTheme}>
+        <ThemeProvider theme={muiTheme.defaultTheme}>
           <Component {...pageProps} />
         </ThemeProvider>
       </InstantSearch>

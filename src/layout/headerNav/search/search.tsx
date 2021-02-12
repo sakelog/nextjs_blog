@@ -14,7 +14,6 @@ import { Message } from './types';
 
 import { getRootPath } from '@lib/getPath';
 import config from '@component/config';
-import { muiTheme } from '@lib/mui/theme';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -76,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
 type Props = AutocompleteProvided<Message>;
 
 const Autocomplete: React.FC<Props> = ({ hits, currentRefinement, refine }) => {
-  const styles = useStyles(muiTheme);
+  const styles = useStyles();
   return (
     <div className={styles.root}>
       <div className={styles.search}>
