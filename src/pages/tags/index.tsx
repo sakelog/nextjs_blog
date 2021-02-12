@@ -2,7 +2,6 @@ import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 import { Grid, Button, Badge } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -17,7 +16,6 @@ import CustomHead from '@component/customHead';
 import BackToTop from '@component/pagination/backToTop';
 
 import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
-import { muiTheme } from '@lib/mui/theme';
 
 type propsType = {
   tagsInfo: { name: string; path: string; totalCount: number }[];
@@ -58,11 +56,9 @@ const TagsPage: NextPage<propsType> = (props) => {
       <CustomHead pageTitle={PAGE_TITLE} description={DESCRIPTION} />
       <section className={wrapperStyles.root}>
         <h1>{PAGE_TITLE}</h1>
-        <ThemeProvider theme={muiTheme}>
-          <Grid container spacing={2}>
-            {tagsList}
-          </Grid>
-        </ThemeProvider>
+        <Grid container spacing={2}>
+          {tagsList}
+        </Grid>
       </section>
       <BackToTop />
     </Layout>

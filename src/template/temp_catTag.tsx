@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { FiTag } from 'react-icons/fi';
 import { Grid, Card, CardContent, Button } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
 
 import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
@@ -12,7 +11,6 @@ import Pagination from '@component/pagination/pagination';
 import BackToTop from '@component/pagination/backToTop';
 
 import styles from '@styles/project/_p-postList.module.scss';
-import { muiTheme } from '@lib/mui/theme';
 
 const TAGS = 'tags';
 const CATEGORY = 'category';
@@ -69,28 +67,26 @@ const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
       })
     : null;
   return (
-    <ThemeProvider theme={muiTheme}>
-      <section>
-        <CustomHead
-          pageTitle={
-            pageTitle +
-            (props.currentPage > 1 ? '(' + props.currentPage + ')' : '')
-          }
-          description={description}
-        />
-        <h1>{pageTitle}</h1>
-        <p>投稿：{props.totalCount}件</p>
-        <Grid container spacing={2}>
-          {postListTag}
-        </Grid>
-        <Pagination
-          currentPage={props.currentPage}
-          lastPage={props.lastPage}
-          pathBase={props.pathBase}
-        />
-        <BackToTop />
-      </section>
-    </ThemeProvider>
+    <section>
+      <CustomHead
+        pageTitle={
+          pageTitle +
+          (props.currentPage > 1 ? '(' + props.currentPage + ')' : '')
+        }
+        description={description}
+      />
+      <h1>{pageTitle}</h1>
+      <p>投稿：{props.totalCount}件</p>
+      <Grid container spacing={2}>
+        {postListTag}
+      </Grid>
+      <Pagination
+        currentPage={props.currentPage}
+        lastPage={props.lastPage}
+        pathBase={props.pathBase}
+      />
+      <BackToTop />
+    </section>
   );
 };
 
