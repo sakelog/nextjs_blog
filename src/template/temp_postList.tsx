@@ -1,14 +1,19 @@
 import Link from 'next/link';
+import loadable from '@loadable/component';
 import { FiTag } from 'react-icons/fi';
-import { Grid, Card, CardContent, Button } from '@material-ui/core';
+
+const Grid = loadable(() => import('@material-ui/core/Grid'));
+const Card = loadable(() => import('@material-ui/core/Card'));
+const CardContent = loadable(() => import('@material-ui/core/CardContent'));
+const Button = loadable(() => import('@material-ui/core/Button'));
 
 import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
 import config from '@component/config';
 
 import CustomHead from '@component/customHead';
-import PostDate from '@component/postDate';
-import Pagination from '@component/pagination/pagination';
+const PostDate = loadable(() => import('@component/postDate'));
+const Pagination = loadable(() => import('@component/pagination/pagination'));
 
 import styles from '@styles/project/_p-postList.module.scss';
 
