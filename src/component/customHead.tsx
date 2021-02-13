@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import config from '@component/config';
-import GTMScript from '@scripts/gtmScript';
+const GTMScript = dynamic(() => import('@scripts/gtmScript'));
 
 type propsType = {
   pageTitle?: string | null;

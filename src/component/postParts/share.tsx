@@ -11,7 +11,6 @@ import {
 } from 'react-share';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Snackbar from '@material-ui/core/Snackbar';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { FiClipboard } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
 
@@ -48,11 +47,6 @@ const Share: React.FC<propsType> = (props) => {
   const handleChangeText = (text: string): void => {
     setCopiedText('コピー完了：' + text);
   };
-  const theme = createMuiTheme({
-    typography: {
-      fontSize: 30,
-    },
-  });
   return (
     <section className={styles.root}>
       <h2 className={headingStyles.flexLeft}>記事を共有する</h2>
@@ -84,23 +78,21 @@ const Share: React.FC<propsType> = (props) => {
           </CopyToClipboard>
         </div>
       </div>
-      <ThemeProvider theme={theme}>
-        <Snackbar
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          message={copiedText}
-          action={
-            <>
-              <MdClose onClick={handleClose} />
-            </>
-          }
-        />
-      </ThemeProvider>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={copiedText}
+        action={
+          <>
+            <MdClose onClick={handleClose} />
+          </>
+        }
+      />
     </section>
   );
 };

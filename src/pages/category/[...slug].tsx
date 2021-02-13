@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import loadable from '@loadable/component';
+import dynamic from 'next/dynamic';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { useEffect } from 'react';
@@ -22,8 +22,8 @@ const Loading = (
     <CircularProgress />
   </div>
 );
-const Temp_CatTag = loadable(() => import('@template/temp_catTag'), {
-  fallback: Loading,
+const Temp_CatTag = dynamic(() => import('@template/temp_catTag'), {
+  loading: () => Loading,
 });
 
 const POST_PER_LISTPAGE = 10;

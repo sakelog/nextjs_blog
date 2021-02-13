@@ -10,12 +10,14 @@ import PostDate from '@component/postDate';
 import Pagination from '@component/pagination/pagination';
 import BackToTop from '@component/pagination/backToTop';
 
-import styles from '@styles/project/_p-postList.module.scss';
+//import styles from '@styles/project/_p-postList.module.scss';
+import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
 
 const TAGS = 'tags';
 const CATEGORY = 'category';
 
 const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
+  const styles = useStyles();
   const pageTitle =
     (props.type === TAGS ? 'タグ：' : 'カテゴリー：') + props.name;
   const description =

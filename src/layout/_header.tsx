@@ -1,38 +1,30 @@
-import Link from 'next/link';
-import loadable from '@loadable/component';
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  SwipeableDrawer,
-  Hidden,
-} from '@material-ui/core';
+import { useState, useEffect } from 'react';
+import { Router } from 'next/router';
+import dynamic from 'next/dynamic';
+import { AppBar, Toolbar, Hidden } from '@material-ui/core';
+const IconButton = dynamic(() => import('@material-ui/core/IconButton'));
+const SwipeableDrawer = dynamic(
+  () => import('@material-ui/core/SwipeableDrawer')
+);
 import { MdMenu } from 'react-icons/md';
 
-import Search from '@layout/headerNav/search/search';
-const DrawerList = loadable(() => import('./headerNav/drawer'));
-
-import styles from '@styles/project/_p-header.module.scss';
-import { useDispatch } from 'react-redux';
-import state from '@state/ducks/index';
-import config from '@component/config';
+const SiteLogo = dynamic(() => import('./headerNav/siteLogo'));
+const Search = dynamic(() => import('@layout/headerNav/search/search'));
+const DrawerList = dynamic(() => import('./headerNav/drawer'));
 
 const Header: React.FC = () => {
-  const dispatch = useDispatch();
-  const drawerState = state.drawerState;
-  const handleOpen = () => dispatch(drawerState.drawerOperations.open());
-  const handleClose = () => dispatch(drawerState.drawerOperations.close());
-
-  const SiteTitle = (
-    <Link href="/">
-      <span className={styles.title}>{config.title}</span>
-    </Link>
-  );
+  const [drawerState, setDrawerState] = useState(false);
+  const handleOpen = () => setDrawerState(true);
+  const handleClose = () => setDrawerState(false);
+  useEffect(() => {
+    Router.events.on('routeChangeStart', () => handleClose());
+    return Router.events.off('routeChangeStart', () => handleClose());
+  }, []);
   return (
     <>
-      <AppBar position="sticky" className={styles.root}>
+      <AppBar position="sticky">
         <Toolbar>
-          {SiteTitle}
+          <SiteLogo />
           <Search />
           <Hidden smUp>
             <IconButton color="inherit" onClick={handleOpen}>
@@ -46,7 +38,7 @@ const Header: React.FC = () => {
       </AppBar>
       <Hidden smUp>
         <SwipeableDrawer
-          open={drawerState.drawerSelectors.drawerSelector()}
+          open={drawerState}
           onClose={handleClose}
           onOpen={handleOpen}
           anchor={'right'}

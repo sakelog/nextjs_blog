@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import loadable from '@loadable/component';
+import dynamic from 'next/dynamic';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { useEffect } from 'react';
@@ -26,14 +26,14 @@ const Loading = (
 );
 
 // Template
-const Temp_PostList = loadable(() => import('@template/temp_postList'), {
-  fallback: Loading,
+const Temp_PostList = dynamic(() => import('@template/temp_postList'), {
+  loading: () => Loading,
 });
-const Temp_Post = loadable(() => import('@template/temp_post'), {
-  fallback: Loading,
+const Temp_Post = dynamic(() => import('@template/temp_post'), {
+  loading: () => Loading,
 });
-const Temp_Page = loadable(() => import('@template/temp_page'), {
-  fallback: Loading,
+const Temp_Page = dynamic(() => import('@template/temp_page'), {
+  loading: () => Loading,
 });
 
 import Layout from '@layout/layout';

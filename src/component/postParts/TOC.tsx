@@ -3,10 +3,10 @@
 ============================================================*/
 
 import { Link } from 'react-scroll';
-import loadable from '@loadable/component';
-const List = loadable(() => import('@material-ui/core/List'));
-const ListItem = loadable(() => import('@material-ui/core/ListItem'));
-const ListItemText = loadable(() => import('@material-ui/core/ListItemText'));
+import dynamic from 'next/dynamic';
+const List = dynamic(() => import('@material-ui/core/List'));
+const ListItem = dynamic(() => import('@material-ui/core/ListItem'));
+const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
 
 import { TOCStyles as useStyles } from '@styles/component/toc.styles';
 

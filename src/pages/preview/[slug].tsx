@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Link from 'next/link';
 import ErrorPage from 'next/error';
-import loadable from '@loadable/component';
+import dynamic from 'next/dynamic';
 
 import { useEffect } from 'react';
 import PageInit from '@lib/pageInit';
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { getPreviewPostBySlug } from '@lib/contentful/exportContent/post';
 
 import Layout from '@layout/layout';
-const Temp_Post = loadable(() => import('@template/temp_post'));
+const Temp_Post = dynamic(() => import('@template/temp_post'));
 
 type propsType = {
   post: contentful.post;

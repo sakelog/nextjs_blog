@@ -1,11 +1,15 @@
 import Link from 'next/link';
-import { List, ListItem } from '@material-ui/core';
+import dynamic from 'next/dynamic';
+const List = dynamic(() => import('@material-ui/core/List'));
+const ListItem = dynamic(() => import('@material-ui/core/ListItem'));
 
 import { getRootPath } from '@lib/getPath';
 
-import styles from '@styles/project/_p-header.module.scss';
+//import styles from '@styles/project/_p-header.module.scss';
+import { headerStyles as useStyles } from '@styles/project/header.styles';
 
 const PageList: React.FC = () => {
+  const styles = useStyles();
   return (
     <List className={styles.pageList}>
       <Link href={getRootPath('tags')}>

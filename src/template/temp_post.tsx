@@ -1,8 +1,10 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import { FiTag } from 'react-icons/fi';
-import { List, ListItem, Button } from '@material-ui/core';
-import state from '@state/ducks/index';
+import { Hidden, ListItem } from '@material-ui/core';
+const List = dynamic(() => import('@material-ui/core/List'));
+const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
+const Button = dynamic(() => import('@material-ui/core/Button'));
 
 import { getCategoryPath, getTagPath } from '@lib/getPath';
 import RenderTOC from '@lib/renderTOC';
@@ -22,28 +24,24 @@ import BackToTop from '@component/pagination/backToTop';
 import styles from '@styles/component/_c-post.module.scss';
 
 const Temp_Post: React.FC<Template.post.props> = (props) => {
-  const windowSizeState = state.windowSizeState;
   const body = props.currentPost.fields.body;
   const category = props.currentPost.fields.category;
-  const MIN_WIDTH = config.mediaQuery.sm;
   const postCategory = (
     <ListItem>
       カテゴリー：
-      <Button variant="outlined">
-        <h5>
-          <Link href={getCategoryPath(category.fields.slug)}>
-            {category.fields.name}
-          </Link>
-        </h5>
+      <Button variant="outlined" href={getCategoryPath(category.fields.slug)}>
+        <h5>{category.fields.name}</h5>
       </Button>
     </ListItem>
   );
   const tagsList = props.currentPost.fields.tags.map((tag) => {
     return (
-      <Button startIcon={<FiTag />} key={tag.fields.slug}>
-        <h6>
-          <Link href={getTagPath(tag.fields.slug)}>{tag.fields.name}</Link>
-        </h6>
+      <Button
+        startIcon={<FiTag />}
+        key={tag.fields.slug}
+        href={getTagPath(tag.fields.slug)}
+      >
+        <h6>{tag.fields.name}</h6>
       </Button>
     );
   });
@@ -70,20 +68,18 @@ const Temp_Post: React.FC<Template.post.props> = (props) => {
             <h1>{props.currentPost.fields.title}</h1>
             <ArticleBody body={body} />
           </section>
-          {windowSizeState.windowSizeSelectors.widthSelector() >= MIN_WIDTH && (
+          <Hidden smDown>
             <aside className={styles.side}>
               <RenderTOC markdown={body} />
             </aside>
-          )}
+          </Hidden>
         </div>
         <aside className={styles.postInfo}>
           <List className={styles.inner}>
-            <ListItem>
-              <PostDate
-                postdate={props.currentPost.fields.date}
-                update={props.currentPost.fields.update}
-              />
-            </ListItem>
+            <PostDate
+              postdate={props.currentPost.fields.date}
+              update={props.currentPost.fields.update}
+            />
             {postCategory}
             {postTag}
           </List>

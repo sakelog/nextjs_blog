@@ -3,11 +3,12 @@ import { Divider } from '@material-ui/core';
 import PageList from '@layout/headerNav/pageList';
 import SocialIcon from '@component/socialIcon';
 
-import styles from '@styles/project/_p-header.module.scss';
+import { headerStyles as useStyles } from '@styles/project/header.styles';
 
 const Drawer: React.FC = () => {
+  const styles = useStyles();
   return (
-    <div className={styles.navDrawer}>
+    <div className={styles.drawerList}>
       <PageList />
       <Divider />
       <div className={styles.socialIcon}>

@@ -1,7 +1,12 @@
 import { GetStaticProps, NextPage } from 'next';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { FiTag } from 'react-icons/fi';
-import { Grid, Button, Badge } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
+const Grid = dynamic(() => import('@material-ui/core/Grid'), {
+  loading: () => <CircularProgress />,
+});
+const Button = dynamic(() => import('@material-ui/core/Button'));
+const Badge = dynamic(() => import('@material-ui/core/Badge'));
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -35,7 +40,7 @@ const TagsPage: NextPage<propsType> = (props) => {
 
   const tagsList = sortedList.map((tag) => {
     return (
-      <Grid item xs={4} sm={2} key={tag.name}>
+      <Grid item xs={6} sm={3} key={tag.name}>
         <Badge
           badgeContent={tag.totalCount}
           anchorOrigin={{
@@ -44,8 +49,8 @@ const TagsPage: NextPage<propsType> = (props) => {
           }}
           color="primary"
         >
-          <Button variant="outlined" startIcon={<FiTag />}>
-            <Link href={tag.path}>{tag.name}</Link>
+          <Button variant="outlined" startIcon={<FiTag />} href={tag.path}>
+            {tag.name}
           </Button>
         </Badge>
       </Grid>

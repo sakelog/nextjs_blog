@@ -1,31 +1,34 @@
 import Link from 'next/link';
-import loadable from '@loadable/component';
+import dynamic from 'next/dynamic';
 import { FiTag } from 'react-icons/fi';
 
-const Grid = loadable(() => import('@material-ui/core/Grid'));
-const Card = loadable(() => import('@material-ui/core/Card'));
-const CardContent = loadable(() => import('@material-ui/core/CardContent'));
-const Button = loadable(() => import('@material-ui/core/Button'));
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Card = dynamic(() => import('@material-ui/core/Card'));
+const CardContent = dynamic(() => import('@material-ui/core/CardContent'));
+const Button = dynamic(() => import('@material-ui/core/Button'));
 
 import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
 import config from '@component/config';
 
 import CustomHead from '@component/customHead';
-const PostDate = loadable(() => import('@component/postDate'));
-const Pagination = loadable(() => import('@component/pagination/pagination'));
+const PostDate = dynamic(() => import('@component/postDate'));
+const Pagination = dynamic(() => import('@component/pagination/pagination'));
 
-import styles from '@styles/project/_p-postList.module.scss';
+import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
 
 const Temp_PostList: React.FC<Template.postList.props> = (props) => {
+  const styles = useStyles();
   const postListTag = props.posts.map((post: contentful.post) => {
     const category = post.fields.category.fields;
     const tagList = post.fields.tags.map((tag) => {
       return (
-        <Button startIcon={<FiTag />} key={tag.fields.slug}>
-          <h4>
-            <Link href={getTagPath(tag.fields.slug)}>{tag.fields.name}</Link>
-          </h4>
+        <Button
+          startIcon={<FiTag />}
+          key={tag.fields.slug}
+          href={getTagPath(tag.fields.slug)}
+        >
+          <h4>{tag.fields.name}</h4>
         </Button>
       );
     });
@@ -36,12 +39,11 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
             <h2 className={styles.title}>{post.fields.title}</h2>
             <CardContent>
               <div className={styles.subItem}>
-                <Button variant="outlined">
-                  <h3>
-                    <Link href={getCategoryPath(category.slug)}>
-                      {category.name}
-                    </Link>
-                  </h3>
+                <Button
+                  variant="outlined"
+                  href={getCategoryPath(category.slug)}
+                >
+                  <h3>{category.name}</h3>
                 </Button>
                 <PostDate
                   postdate={post.fields.date}
