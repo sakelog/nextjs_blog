@@ -32,7 +32,7 @@ const CreateCategoryProps = async (
     ? allPosts.slice(skip, limit)
     : null;
 
-  const pathBase = getCategoryPath(slug[0]).slice(0, -1);
+  const pathBase = getCategoryPath(slug[0]);
 
   return {
     type: CATEGORY,

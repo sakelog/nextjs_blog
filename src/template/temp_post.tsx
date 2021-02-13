@@ -47,7 +47,9 @@ const Temp_Post: React.FC<Template.post.props> = (props) => {
       </Button>
     );
   });
-  const currentURL = config.url.slice(0, -1) + useRouter().asPath;
+  const currentURL =
+    (config.url.endsWith('/') ? config.url.slice(0, -1) : config.url) +
+    useRouter().asPath;
   const pageTitle = props.currentPost.fields.title;
   const postTag = tagsList && (
     <ListItem>

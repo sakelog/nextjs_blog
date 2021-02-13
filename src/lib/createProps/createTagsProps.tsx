@@ -30,7 +30,7 @@ const CreateTagsProps = async (
   const limit = skip + per_page;
   const targetPosts = allPosts ? allPosts.slice(skip, limit) : null;
 
-  const pathBase = getTagPath(slug[0]).slice(0, -1);
+  const pathBase = getTagPath(slug[0]);
 
   return {
     type: TAGS,
