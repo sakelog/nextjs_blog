@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Router } from 'next/router';
 import dynamic from 'next/dynamic';
-import { AppBar, Toolbar, Hidden } from '@material-ui/core';
-const IconButton = dynamic(() => import('@material-ui/core/IconButton'));
-const SwipeableDrawer = dynamic(
-  () => import('@material-ui/core/SwipeableDrawer')
-);
-import { MdMenu } from 'react-icons/md';
+import { Router } from 'next/router';
+import {
+  AppBar,
+  Toolbar,
+  Hidden,
+  SwipeableDrawer,
+  IconButton,
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const SiteLogo = dynamic(() => import('./headerNav/siteLogo'));
-const Search = dynamic(() => import('@layout/headerNav/search/search'));
-const DrawerList = dynamic(() => import('./headerNav/drawer'));
+const Search = dynamic(() => import('./headerNav/search/search'));
+const DrawerList = dynamic(() => import('./headerNav/drawerList'));
+
+import { headerStyles as useStyles } from '@styles/project/header.styles';
 
 const Header: React.FC = () => {
+  const styles = useStyles();
   const [drawerState, setDrawerState] = useState(false);
   const handleOpen = () => setDrawerState(true);
   const handleClose = () => setDrawerState(false);
@@ -26,13 +31,13 @@ const Header: React.FC = () => {
         <Toolbar>
           <SiteLogo />
           <Search />
-          <Hidden smUp>
-            <IconButton color="inherit" onClick={handleOpen}>
-              <MdMenu />
-            </IconButton>
-          </Hidden>
           <Hidden xsDown>
             <DrawerList />
+          </Hidden>
+          <Hidden smUp>
+            <IconButton color="inherit" onClick={handleOpen}>
+              <MenuIcon className={styles.menuIcon} />
+            </IconButton>
           </Hidden>
         </Toolbar>
       </AppBar>

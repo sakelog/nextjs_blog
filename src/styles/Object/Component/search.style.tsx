@@ -12,13 +12,14 @@ export const searchStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       flexShrink: 0,
       flexBasis: '30%',
-      margin: theme.spacing(0, 2),
+      margin: theme.spacing(0, 1),
     },
     search: {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      borderRadius: '6px',
+      borderRadius: theme.shape.borderRadius,
+      padding: theme.spacing(1),
       backgroundColor: fade(theme.palette.common.white, 0.15),
       '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.25),

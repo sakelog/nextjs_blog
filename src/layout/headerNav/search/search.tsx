@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { connectAutoComplete } from 'react-instantsearch-dom';
 import { AutocompleteProvided } from 'react-instantsearch-core';
 import { InputBase, List, ListItem } from '@material-ui/core';
 
-import { MdSearch } from 'react-icons/md';
-import Highlight from './Highlight';
+const SearchIcon = dynamic(() => import('@material-ui/icons/Search'));
+import Highlight from './highlight';
 import { Message } from './types';
 
 import { getRootPath } from '@lib/getPath';
@@ -17,7 +18,7 @@ const Autocomplete: React.FC<Props> = ({ hits, currentRefinement, refine }) => {
   return (
     <div className={styles.root}>
       <div className={styles.search}>
-        <MdSearch className={styles.searchIcon} />
+        <SearchIcon className={styles.searchIcon} />
         <InputBase
           placeholder="検索…"
           classes={{

@@ -1,22 +1,19 @@
-import state from '@state/ducks/index';
+import dynamic from 'next/dynamic';
+import { Container } from '@material-ui/core';
+const Header = dynamic(() => import('@layout/_header'));
+const Footer = dynamic(() => import('@layout/_footer'));
 
-import Header from './_header';
-import Footer from './_footer';
-
-import wrapperStyles from '@styles/layout/_l-wrapper.module.scss';
-import mainStyles from '@styles/layout/_l-main.module.scss';
+import { layoutStyles as useStyles } from '@styles/layout/layout.style';
 
 const Layout: React.FC = (props) => {
-  const windowSizeState = state.windowSizeState;
+  //const windowSizeState = state.windowSizeState;
+  const styles = useStyles();
   return (
-    <div
-      className={wrapperStyles.root}
-      style={{
-        minHeight: windowSizeState.windowSizeSelectors.heightSelector(),
-      }}
-    >
+    <div>
       <Header />
-      <main className={mainStyles.root}>{props.children}</main>
+      <Container className={styles.main}>
+        <main>{props.children}</main>
+      </Container>
       <Footer />
     </div>
   );

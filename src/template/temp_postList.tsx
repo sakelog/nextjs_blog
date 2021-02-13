@@ -1,18 +1,22 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { FiTag } from 'react-icons/fi';
+import {
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  List,
+  ListItem,
+} from '@material-ui/core';
 
-const Grid = dynamic(() => import('@material-ui/core/Grid'));
-const Card = dynamic(() => import('@material-ui/core/Card'));
-const CardContent = dynamic(() => import('@material-ui/core/CardContent'));
-const Button = dynamic(() => import('@material-ui/core/Button'));
+const LabelIcon = dynamic(() => import('@material-ui/icons/Label'));
 
 import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
 
 import config from '@component/config';
 
 import CustomHead from '@component/customHead';
-const PostDate = dynamic(() => import('@component/postDate'));
+//const PostDate = dynamic(() => import('@component/postDate'));
 const Pagination = dynamic(() => import('@component/pagination/pagination'));
 
 import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
@@ -24,7 +28,7 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
     const tagList = post.fields.tags.map((tag) => {
       return (
         <Button
-          startIcon={<FiTag />}
+          startIcon={<LabelIcon />}
           key={tag.fields.slug}
           href={getTagPath(tag.fields.slug)}
         >
@@ -38,19 +42,21 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
           <Card className={styles.post}>
             <h2 className={styles.title}>{post.fields.title}</h2>
             <CardContent>
-              <div className={styles.subItem}>
-                <Button
-                  variant="outlined"
-                  href={getCategoryPath(category.slug)}
-                >
-                  <h3>{category.name}</h3>
-                </Button>
-                <PostDate
+              <List className={styles.subItem}>
+                <ListItem>
+                  <Button
+                    variant="outlined"
+                    href={getCategoryPath(category.slug)}
+                  >
+                    <h3>{category.name}</h3>
+                  </Button>
+                </ListItem>
+                {/*<PostDate
                   postdate={post.fields.date}
                   update={post.fields.update}
-                />
-                {tagList}
-              </div>
+                />*/}
+                <ListItem>{tagList}</ListItem>
+              </List>
             </CardContent>
           </Card>
         </Link>
@@ -70,17 +76,19 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
     : '';
 
   return (
-    <section>
+    <>
       <CustomHead pageTitle={pageTitle} description={description} />
-      <Grid container spacing={2}>
-        {postListTag}
-      </Grid>
-      <Pagination
-        currentPage={props.currentPage}
-        lastPage={props.lastPage}
-        pathBase={props.pathBase}
-      />
-    </section>
+      <section>
+        <Grid container spacing={2}>
+          {postListTag}
+        </Grid>
+        <Pagination
+          currentPage={props.currentPage}
+          lastPage={props.lastPage}
+          pathBase={props.pathBase}
+        />
+      </section>
+    </>
   );
 };
 

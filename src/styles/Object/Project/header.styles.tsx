@@ -7,6 +7,9 @@ export const headerStyles = makeStyles((theme: Theme) =>
       fontFamily: ['"Press Start 2P"', 'cursive'].join(','),
       cursor: 'pointer',
     },
+    menuIcon: {
+      fontSize: '2rem',
+    },
     socialIcon: {
       '& > ul': {
         display: 'flex',

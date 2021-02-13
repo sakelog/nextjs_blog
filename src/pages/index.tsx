@@ -2,15 +2,9 @@ import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import PageInit from '@lib/pageInit';
-
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
-import { getURLSet } from '@lib/contentful/exportContent/urlSet';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
 import { getConcatPath, getRootPath } from '@lib/getPath';
-import { setSiteMap } from '@lib/setSitemap';
 
 import config from '@component/config';
 
@@ -20,19 +14,24 @@ const Loading = (
     <CircularProgress />
   </div>
 );
+const Layout = dynamic(() => import('@layout/layout'), {
+  loading: () => Loading,
+});
 // Template
 const Temp_PostList = dynamic(() => import('@template/temp_postList'), {
   loading: () => Loading,
 });
-import Layout from '@layout/layout';
+//import Layout from '@layout/layout';
 
 const POST_PER_LISTPAGE = 6;
 
 const TopPage: NextPage<{ posts: Template.postList.props }> = (props) => {
-  const dispatch = useDispatch();
+  {
+    /*  const dispatch = useDispatch();
   useEffect(() => {
     PageInit(dispatch);
-  }, []);
+  }, []);*/
+  }
   const TemplateTag = (
     <Temp_PostList
       posts={props.posts.posts}
@@ -58,7 +57,8 @@ export const getStaticProps: GetStaticProps = async () => {
     : null;
 
   // sitemap
-  if (process.env.NODE_ENV === 'production') {
+  {
+    /*if (process.env.NODE_ENV === 'production') {
     const fetchDate = new Date();
     const manualURLSet: sitemap.urlset = [
       {
@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
       },
     ];
     setSiteMap(fetchDate, manualURLSet.concat(await getURLSet()));
+  }*/
   }
 
   return {

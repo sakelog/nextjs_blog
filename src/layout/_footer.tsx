@@ -1,8 +1,10 @@
 import config from '@component/config';
 
-import styles from '@styles/layout/_l-footer.module.scss';
+//import styles from '@styles/layout/_l-footer.module.scss';
+import { footerStyles as useStyles } from '@styles/layout/footer.style';
 
 const Footer: React.FC = () => {
+  const styles = useStyles();
   const siteTitle = config.title;
   const startDate = new Date(config.createAt);
   const startYear = startDate.getFullYear();

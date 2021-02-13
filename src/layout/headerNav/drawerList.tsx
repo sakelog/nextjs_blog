@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic';
 import { Divider } from '@material-ui/core';
 
-import PageList from '@layout/headerNav/pageList';
-import SocialIcon from '@component/socialIcon';
+const PageList = dynamic(() => import('@layout/headerNav/pageList'));
+const SocialIcon = dynamic(() => import('@component/socialIcon'));
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';
 

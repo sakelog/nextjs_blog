@@ -19,7 +19,8 @@ let defaultTheme = createMuiTheme({
       'Meiryo',
       'sans-serif',
     ].join(','),
-    fontSize: 16,
+    htmlFontSize: 10,
+    fontSize: 1.6,
   },
 });
 
