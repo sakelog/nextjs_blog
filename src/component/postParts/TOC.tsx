@@ -3,7 +3,11 @@
 ============================================================*/
 
 import { Link } from 'react-scroll';
-import styles from '@styles/component/_c-post__TOC.module.scss';
+import loadable from '@loadable/component';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+const List = loadable(() => import('@material-ui/core/List'));
+const ListItem = loadable(() => import('@material-ui/core/ListItem'));
+const ListItemText = loadable(() => import('@material-ui/core/ListItemText'));
 
 type propsType = {
   toc: render.toc.iditem[];
@@ -12,31 +16,67 @@ type propsType = {
 
 const MAX_DEPTH = 3;
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      height: '100%',
+      width: '100%',
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      padding: theme.spacing(1),
+      '&::-webkit-scrollbar': {
+        width: '4px',
+      },
+      '&::-webkit-scrollbar-track': {
+        borderRadius: '6px',
+        border: 'none',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        borderRadius: '6px',
+        background: theme.palette.secondary.light,
+      },
+    },
+    list: {
+      color: theme.palette.secondary.main,
+    },
+    active: {
+      background: theme.palette.secondary.light,
+      color: theme.palette.secondary.contrastText,
+    },
+  })
+);
+
 const TOC: React.FC<propsType> = (props) => {
+  const styles = useStyles();
   const { toc, activeItemIds } = props;
   const TOCList = toc.map((item) => {
     return (
       item.depth <= MAX_DEPTH && (
-        <li
+        <Link
+          to={item.id}
+          smooth={true}
+          duration={500}
+          offset={-100}
           key={item.id}
-          style={{ marginLeft: `${(item.depth - 2) * 24}px` }}
-          className={
-            activeItemIds && activeItemIds.includes(item.id)
-              ? styles.active
-              : ''
-          }
         >
-          <Link to={item.id} smooth={true} duration={500}>
-            {item.value}
-          </Link>
-        </li>
+          <ListItem
+            style={{ marginLeft: `${(item.depth - 2) * 1}rem` }}
+            button
+            className={
+              activeItemIds && activeItemIds.includes(item.id)
+                ? styles.active
+                : styles.list
+            }
+          >
+            <ListItemText>{item.value}</ListItemText>
+          </ListItem>
+        </Link>
       )
     );
   });
   return (
     <>
-      <h2 className={styles.title}>目次</h2>
-      <ul className={styles.toc}>{TOCList}</ul>
+      <List className={styles.root}>{TOCList}</List>
     </>
   );
 };

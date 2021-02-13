@@ -12,7 +12,7 @@ const githubSlugger = new GithubSlugger();
 
 import TOC from '@component/postParts/TOC';
 
-const OFFSET_ACTIVE_IMTE = 160;
+const OFFSET_ACTIVE_ITEM = 100;
 const MAX_DEPTH = 3;
 
 const RenderTOC: React.FC<{ markdown: string }> = (props) => {
@@ -47,9 +47,9 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
 
       return next
         ? current &&
-            window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop &&
-            window.scrollY + OFFSET_ACTIVE_IMTE < next.offsetTop
-        : current && window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop;
+            window.scrollY + OFFSET_ACTIVE_ITEM >= current.offsetTop &&
+            window.scrollY + OFFSET_ACTIVE_ITEM < next.offsetTop
+        : current && window.scrollY + OFFSET_ACTIVE_ITEM >= current.offsetTop;
     });
     const nowActiveItemIds = item ? [item.id] : null;
 
