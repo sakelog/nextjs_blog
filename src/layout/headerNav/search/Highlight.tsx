@@ -1,22 +1,9 @@
 import React from 'react';
 import { HighlightProps } from 'react-instantsearch-core';
 import { connectHighlight } from 'react-instantsearch-dom';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import { Message } from './types';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    span: {
-      color: theme.palette.secondary.dark,
-    },
-    mark: {
-      background: theme.palette.primary.main,
-      color: '#ffffff',
-      padding: theme.spacing(0, 1),
-      margin: theme.spacing(1),
-    },
-  })
-);
+import { Message } from './types';
+import { searchHighlightStyles as useStyles } from '@styles/component/search--highlight.style';
 
 const HighlightHit: React.FC<HighlightProps<Message>> = ({
   hit,

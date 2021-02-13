@@ -4,10 +4,11 @@
 
 import { Link } from 'react-scroll';
 import loadable from '@loadable/component';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 const List = loadable(() => import('@material-ui/core/List'));
 const ListItem = loadable(() => import('@material-ui/core/ListItem'));
 const ListItemText = loadable(() => import('@material-ui/core/ListItemText'));
+
+import { TOCStyles as useStyles } from '@styles/component/toc.styles';
 
 type propsType = {
   toc: render.toc.iditem[];
@@ -15,36 +16,6 @@ type propsType = {
 };
 
 const MAX_DEPTH = 3;
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      height: '100%',
-      width: '100%',
-      overflowY: 'auto',
-      overflowX: 'hidden',
-      padding: theme.spacing(1),
-      '&::-webkit-scrollbar': {
-        width: '4px',
-      },
-      '&::-webkit-scrollbar-track': {
-        borderRadius: '6px',
-        border: 'none',
-      },
-      '&::-webkit-scrollbar-thumb': {
-        borderRadius: '6px',
-        background: theme.palette.secondary.light,
-      },
-    },
-    list: {
-      color: theme.palette.secondary.main,
-    },
-    active: {
-      background: theme.palette.secondary.light,
-      color: theme.palette.secondary.contrastText,
-    },
-  })
-);
 
 const TOC: React.FC<propsType> = (props) => {
   const styles = useStyles();
