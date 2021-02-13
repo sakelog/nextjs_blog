@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { FiTag } from 'react-icons/fi';
 import { Hidden, ListItem } from '@material-ui/core';
 const List = dynamic(() => import('@material-ui/core/List'));
-const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
 const Button = dynamic(() => import('@material-ui/core/Button'));
 
 import { getCategoryPath, getTagPath } from '@lib/getPath';
