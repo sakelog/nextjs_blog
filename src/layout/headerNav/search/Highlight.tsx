@@ -3,15 +3,14 @@ import { HighlightProps } from 'react-instantsearch-core';
 import { connectHighlight } from 'react-instantsearch-dom';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Message } from './types';
-import config from '@component/config';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     span: {
-      color: '#333333',
+      color: theme.palette.secondary.dark,
     },
     mark: {
-      background: config.themeColor,
+      background: theme.palette.primary.main,
       color: '#ffffff',
       padding: theme.spacing(0, 1),
       margin: theme.spacing(1),
