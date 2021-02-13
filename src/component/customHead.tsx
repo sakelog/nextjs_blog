@@ -38,9 +38,21 @@ const CustomHead: React.FC<propsType> = (props) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
         <meta name="theme-color" content={config.themeColor} />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://www.googletagmanager.com"
+          crossOrigin="anonymous"
+        />
         <link
           rel="stylesheet"
           href={
