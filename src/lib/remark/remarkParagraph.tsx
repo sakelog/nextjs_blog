@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { customBlockStyles } from '@styles/Object/Component/article__customBlock.style';
+import customBlockStyles from '@styles/component/article__customBlock.module.scss';
 
 type propsType = {
   className?: string;
@@ -32,7 +32,6 @@ const convertStrong = (text: string) => {
 };
 
 const createCustomBlock = (text: string, index: number) => {
-  const blockStyles = customBlockStyles();
   const customBlock = text.match(/\[\[(.*)\]\]\n(.*)/);
   const hasTitle = customBlock && customBlock[1].match(/\|/);
   const blockType = customBlock
@@ -44,7 +43,7 @@ const createCustomBlock = (text: string, index: number) => {
     React.createElement(
       'div',
       {
-        className: blockType === 'note' ? blockStyles.note : '',
+        className: blockType ? customBlockStyles[blockType] : '',
         key: 'customBlock_' + index,
       },
       [
@@ -53,7 +52,7 @@ const createCustomBlock = (text: string, index: number) => {
             'p',
             {
               key: 'customBLock_title' + index,
-              className: blockStyles.blockTitle,
+              className: customBlockStyles.blockTitle,
             },
             customBlock[1].split(' | ')[1]
           ),

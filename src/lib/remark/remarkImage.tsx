@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import state from '@state/ducks/index';
-import { imageStyles as useStyles } from '@styles/component/article__image.style';
+import styles from '@styles/component/article__image.module.scss';
 
 const RemarkImage: React.FC<JSX.IntrinsicElements['img']> = (props) => {
-  const styles = useStyles();
   const windowSizeState = state.windowSizeState;
   const isContentfulImg = props.src
     ? props.src.startsWith('//images.ctfassets.net')

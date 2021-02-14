@@ -1,7 +1,6 @@
-import { tableStyles as useStyles } from '@styles/component/article__table.style';
+import styles from '@styles/component/article__table.module.scss';
 
 const RemarkTable: React.FC<JSX.IntrinsicElements['table']> = (props) => {
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <table {...props} />

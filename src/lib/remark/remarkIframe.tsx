@@ -1,7 +1,6 @@
-import { iframeStyles as useStyles } from '@styles/component/article__iframe.style';
+import styles from '@styles/component/article__iframe.module.scss';
 
 const RemarkIframe: React.FC<JSX.IntrinsicElements['iframe']> = (props) => {
-  const styles = useStyles();
   const YOUTUBE_URL_NOCOOKIE = 'https://www.youtube-nocookie.com/embed/';
   const isYoutube = props.src
     ? props.src.startsWith(YOUTUBE_URL_NOCOOKIE)
