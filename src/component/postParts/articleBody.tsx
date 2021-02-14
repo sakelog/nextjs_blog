@@ -1,6 +1,6 @@
 import RenderMarkdownBody from '@lib/renderMarkdownBody';
 
-import styles from '@styles/component/_c-article__Body.module.scss';
+import styles from '@styles/component/article__body.module.scss';
 
 type propsType = {
   body: string;

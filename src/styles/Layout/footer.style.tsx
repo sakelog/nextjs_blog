@@ -9,6 +9,7 @@ export const footerStyles = makeStyles((theme: Theme) =>
       fontSize: '1.2rem',
       textAlign: 'center',
       padding: theme.spacing(1),
+      marginTop: 'auto',
     },
   })
 );

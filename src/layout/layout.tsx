@@ -9,7 +9,7 @@ const Layout: React.FC = (props) => {
   //const windowSizeState = state.windowSizeState;
   const styles = useStyles();
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Header />
       <Container className={styles.main}>
         <main>{props.children}</main>

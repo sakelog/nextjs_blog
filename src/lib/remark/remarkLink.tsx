@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { getRootPath } from '@lib/getPath';
 
 import config from '@component/config';
-
-import styles from '@styles/component/_c-article__Link.module.scss';
+import styles from '@styles/component/article__link.module.scss';
 
 const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
   let isExternalLink = props.href ? props.href.startsWith('http') : false;
@@ -20,7 +19,6 @@ const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
     : null;
   const target = props.target ? props.target : isExternalLink ? '_blank' : null;
   const className = props.className ? props.className : null;
-  const linkTo = isExternalLink ? 'external' : 'internal';
   const internalPath =
     !isExternalLink &&
     (isInternalLinkAbsolute && props.href
@@ -33,7 +31,7 @@ const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
           href={props.href}
           rel={rel ? rel : ''}
           target={target ? target : ''}
-          className={className + ' ' + styles[linkTo]}
+          className={className + ' ' + styles.external}
         >
           {props.children}
         </a>

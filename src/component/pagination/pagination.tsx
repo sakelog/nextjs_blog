@@ -1,14 +1,14 @@
-import {
-  MdChevronLeft,
-  MdChevronRight,
-  MdFirstPage,
-  MdLastPage,
-} from 'react-icons/md';
 import { ButtonGroup, Button } from '@material-ui/core';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import LastPageIcon from '@material-ui/icons/LastPage';
 
-import styles from '@styles/component/_c-pagination--pagination.module.scss';
+//import styles from '@styles/component/_c-pagination--pagination.module.scss';
+import { paginationStyles as useStyles } from '@styles/component/pagination--pagination.style';
 
 const Pagination: React.FC<pagination.pagination.props> = (props) => {
+  const styles = useStyles();
   const { currentPage, lastPage, pathBase } = props;
   const isFirst = currentPage === 1;
   const isLast = currentPage === lastPage;
@@ -26,7 +26,7 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
   const prevLink = (
     <Button
       href={prevPath}
-      startIcon={<MdChevronLeft />}
+      startIcon={<ChevronLeftIcon />}
       disabled={isFirst && true}
     >
       前へ
@@ -35,7 +35,7 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
   const nextLink = (
     <Button
       href={nextPath}
-      endIcon={<MdChevronRight />}
+      endIcon={<ChevronRightIcon />}
       disabled={isLast && true}
     >
       次へ
@@ -45,7 +45,7 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
   // 先頭ページ
   const firstLink = (
     <Button
-      startIcon={<MdFirstPage />}
+      startIcon={<FirstPageIcon />}
       href={firstPath}
       disabled={isFirst && true}
     >
@@ -54,7 +54,11 @@ const Pagination: React.FC<pagination.pagination.props> = (props) => {
   );
   // 最終ページ
   const lastLink = (
-    <Button href={lastPath} endIcon={<MdLastPage />} disabled={isLast && true}>
+    <Button
+      href={lastPath}
+      endIcon={<LastPageIcon />}
+      disabled={isLast && true}
+    >
       {lastPage.toString()}
     </Button>
   );

@@ -10,14 +10,16 @@ import {
   PocketIcon,
 } from 'react-share';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Snackbar from '@material-ui/core/Snackbar';
-import { FiClipboard } from 'react-icons/fi';
-import { MdClose } from 'react-icons/md';
+import { Snackbar, IconButton } from '@material-ui/core';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import CloseIcon from '@material-ui/icons/Close';
 
 import config from '@component/config';
 
-import styles from '@styles/component/_c-post__Share.module.scss';
-import headingStyles from '@styles/component/_c-heading.module.scss';
+import { shareStyles as useStyles } from '@styles/component/post__share.style';
+
+//import styles from '@styles/component/_c-post__Share.module.scss';
+//import headingStyles from '@styles/component/_c-heading.module.scss';
 
 type propsType = {
   url: string;
@@ -25,6 +27,7 @@ type propsType = {
 };
 
 const Share: React.FC<propsType> = (props) => {
+  const styles = useStyles();
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -49,7 +52,7 @@ const Share: React.FC<propsType> = (props) => {
   };
   return (
     <section className={styles.root}>
-      <h2 className={headingStyles.flexLeft}>記事を共有する</h2>
+      <h2 className="u-heading--flexLeft">記事を共有する</h2>
       <div className={styles.buttons}>
         <TwitterShareButton
           url={props.url}
@@ -74,7 +77,7 @@ const Share: React.FC<propsType> = (props) => {
           }}
         >
           <CopyToClipboard text={props.title + ' ' + props.url}>
-            <FiClipboard />
+            <AssignmentIcon className={styles.copyButtonIcon} />
           </CopyToClipboard>
         </div>
       </div>
@@ -88,9 +91,9 @@ const Share: React.FC<propsType> = (props) => {
         onClose={handleClose}
         message={copiedText}
         action={
-          <>
-            <MdClose onClick={handleClose} />
-          </>
+          <IconButton color="inherit" onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
         }
       />
     </section>

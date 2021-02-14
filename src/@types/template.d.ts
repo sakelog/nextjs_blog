@@ -10,8 +10,8 @@ declare namespace Template {
   declare namespace post {
     declare type props = {
       currentPost: contentful.post;
-      prevPost?: contentful.post | null;
-      nextPost?: contentful.post | null;
+      prevPost?: { title: string; slug: string } | null;
+      nextPost?: { title: string; slug: string } | null;
     };
   }
 

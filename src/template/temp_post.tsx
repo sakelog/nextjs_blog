@@ -1,90 +1,90 @@
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { FiTag } from 'react-icons/fi';
-import { Hidden, ListItem } from '@material-ui/core';
-const List = dynamic(() => import('@material-ui/core/List'));
-const Button = dynamic(() => import('@material-ui/core/Button'));
+import { Hidden, List, ListItem, Grid, Paper } from '@material-ui/core';
 
-import { getCategoryPath, getTagPath } from '@lib/getPath';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PageInit from '@lib/pageInit';
+
 import RenderTOC from '@lib/renderTOC';
-
 import CustomHead from '@component/customHead';
 
-import ArticleBody from '@component/postParts/articleBody';
-import Share from '@component/postParts/share';
-import Bio from '@component/postParts/bio/bio';
-import PostDate from '@component/postDate';
+const ArticleBody = dynamic(() => import('@component/postParts/articleBody'));
+const Share = dynamic(() => import('@component/postParts/share'));
+const Bio = dynamic(() => import('@component/postParts/bio/bio'));
+const PostDate = dynamic(() => import('@component/postDate'));
+const CategoryTag = dynamic(() => import('@component/categoryTag'));
+const TagList = dynamic(() => import('@component/tagList'));
 
 import config from '@component/config';
 
-import PrevNext from '@component/pagination/prevNext';
-import BackToTop from '@component/pagination/backToTop';
+const PrevNext = dynamic(() => import('@component/pagination/prevNext'));
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
 
-import styles from '@styles/component/_c-post.module.scss';
+import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
+import { postStyles as useStyles } from '@styles/component/post.style';
 
 const Temp_Post: React.FC<Template.post.props> = (props) => {
+  const wrapperStyles = pageWrapperStyles();
+  const styles = useStyles();
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    PageInit(dispatch);
+  }, []);
+
   const body = props.currentPost.fields.body;
-  const category = props.currentPost.fields.category;
   const postCategory = (
     <ListItem>
-      カテゴリー：
-      <Button variant="outlined" href={getCategoryPath(category.fields.slug)}>
-        <h5>{category.fields.name}</h5>
-      </Button>
+      <CategoryTag category={props.currentPost.fields.category} heading="h5" />
     </ListItem>
   );
-  const tagsList = props.currentPost.fields.tags.map((tag) => {
-    return (
-      <Button
-        startIcon={<FiTag />}
-        key={tag.fields.slug}
-        href={getTagPath(tag.fields.slug)}
-      >
-        <h6>{tag.fields.name}</h6>
-      </Button>
-    );
-  });
   const currentURL =
     (config.url.endsWith('/') ? config.url.slice(0, -1) : config.url) +
     useRouter().asPath;
   const pageTitle = props.currentPost.fields.title;
-  const postTag = tagsList && (
+  const postTag = (
     <ListItem>
-      タグ：
-      {tagsList}
+      <TagList tags={props.currentPost.fields.tags} heading="h6" />
     </ListItem>
   );
   return (
     <>
-      <article className={styles.root}>
+      <article>
         <CustomHead
           pageTitle={pageTitle}
           description={props.currentPost.fields.description}
           imgFLG={true}
         />
-        <div className={styles.articleWrapper}>
-          <section className={styles.main}>
-            <h1>{props.currentPost.fields.title}</h1>
-            <ArticleBody body={body} />
-          </section>
+        <Grid container spacing={2} className={styles.contentWrapper}>
+          <Grid item sm={12} md={9}>
+            <Paper elevation={3} className={wrapperStyles.root}>
+              <h1>{props.currentPost.fields.title}</h1>
+              <ArticleBody body={body} />
+            </Paper>
+          </Grid>
           <Hidden smDown>
-            <aside className={styles.side}>
-              <RenderTOC markdown={body} />
-            </aside>
+            <Grid item md={3}>
+              <aside className={styles.sidebar}>
+                <RenderTOC markdown={body} />
+              </aside>
+            </Grid>
           </Hidden>
-        </div>
-        <aside className={styles.postInfo}>
-          <List className={styles.inner}>
-            <PostDate
-              postdate={props.currentPost.fields.date}
-              update={props.currentPost.fields.update}
-            />
-            {postCategory}
-            {postTag}
-          </List>
-        </aside>
-        <Share url={currentURL} title={pageTitle} />
-        <Bio />
+        </Grid>
+        <Paper elevation={0} className={styles.subItem}>
+          <Paper elevation={1} className={styles.postInfo}>
+            <List>
+              <PostDate
+                postdate={props.currentPost.fields.date}
+                update={props.currentPost.fields.update}
+              />
+              {postCategory}
+              {postTag}
+            </List>
+          </Paper>
+          <Share url={currentURL} title={pageTitle} />
+          <Bio />
+        </Paper>
         <PrevNext prevPost={props.prevPost} nextPost={props.nextPost} />
         <BackToTop />
       </article>

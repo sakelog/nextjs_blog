@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic';
 import { format } from 'date-fns';
-import { MdEvent, MdUpdate } from 'react-icons/md';
-import { ListItem } from '@material-ui/core';
-const List = dynamic(() => import('@material-ui/core/List'));
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import UpdateIcon from '@material-ui/icons/Update';
+import { List, ListItem } from '@material-ui/core';
 
 type propsType = {
   postdate: string;
@@ -12,14 +11,14 @@ type propsType = {
 const PostDate: React.FC<propsType> = (props) => {
   const postDateTag = (
     <ListItem>
-      <MdEvent />
+      <CalendarTodayIcon style={{ fontSize: '1.4rem' }} />
       {getFormatDate(props.postdate)}
     </ListItem>
   );
   const updateTag = props.update && (
     <ListItem>
-      <MdUpdate />
-      getFormatDate(props.update)
+      <UpdateIcon style={{ fontSize: '1.4rem' }} />
+      {getFormatDate(props.update)}
     </ListItem>
   );
 

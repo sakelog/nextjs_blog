@@ -1,13 +1,4 @@
 declare namespace contentful {
-  declare type sys = {
-    type: any;
-    id: string;
-    name?: string;
-    locals?: [
-      { code: string; default: boolean; name: string; fallbackCode?: boolean }
-    ];
-  };
-
   declare interface postCollection extends EntryCollection {
     sys?: Sys;
     total?: number;

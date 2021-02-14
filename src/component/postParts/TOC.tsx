@@ -3,12 +3,9 @@
 ============================================================*/
 
 import { Link } from 'react-scroll';
-import dynamic from 'next/dynamic';
-const List = dynamic(() => import('@material-ui/core/List'));
-const ListItem = dynamic(() => import('@material-ui/core/ListItem'));
-const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
+import { List, ListItem } from '@material-ui/core';
 
-import { TOCStyles as useStyles } from '@styles/component/toc.styles';
+import { TOCStyles as useStyles } from '@styles/component/post__toc.style';
 
 type propsType = {
   toc: render.toc.iditem[];
@@ -39,7 +36,7 @@ const TOC: React.FC<propsType> = (props) => {
                 : styles.list
             }
           >
-            <ListItemText>{item.value}</ListItemText>
+            {item.value}
           </ListItem>
         </Link>
       )
