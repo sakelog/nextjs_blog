@@ -1,36 +1,41 @@
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { FiTag } from 'react-icons/fi';
-import CircularProgress from '@material-ui/core/CircularProgress';
-const Grid = dynamic(() => import('@material-ui/core/Grid'), {
-  loading: () => <CircularProgress />,
-});
-const Button = dynamic(() => import('@material-ui/core/Button'));
-const Badge = dynamic(() => import('@material-ui/core/Badge'));
-
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import PageInit from '@lib/pageInit';
+import {
+  Paper,
+  Button,
+  Badge,
+  List,
+  ListItem,
+  CircularProgress,
+} from '@material-ui/core/';
+import LabelIcon from '@material-ui/icons/Label';
 
 import { getAllTags, getPostByTag } from '@lib/contentful/exportContent/tag';
 import { getTagPath } from '@lib/getPath';
 
-import Layout from '@layout/layout';
+const Loading = (
+  <div>
+    Loading...
+    <CircularProgress />
+  </div>
+);
+
+const Layout = dynamic(() => import('@layout/layout'), {
+  loading: () => Loading,
+});
 import CustomHead from '@component/customHead';
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
 
-import BackToTop from '@component/pagination/backToTop';
-
-import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
+import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
+import { tagsPageStyles as useStyles } from '@styles/project/tagPage.style';
 
 type propsType = {
   tagsInfo: { name: string; path: string; totalCount: number }[];
 };
 
 const TagsPage: NextPage<propsType> = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    PageInit(dispatch);
-  }, []);
+  const wrapperStyles = pageWrapperStyles();
+  const styles = useStyles();
   const PAGE_TITLE = 'タグ一覧ページ';
   const DESCRIPTION = '全タグの一覧ページです';
 
@@ -40,7 +45,7 @@ const TagsPage: NextPage<propsType> = (props) => {
 
   const tagsList = sortedList.map((tag) => {
     return (
-      <Grid item xs={6} sm={3} key={tag.name}>
+      <ListItem key={tag.name} className={styles.item}>
         <Badge
           badgeContent={tag.totalCount}
           anchorOrigin={{
@@ -49,22 +54,25 @@ const TagsPage: NextPage<propsType> = (props) => {
           }}
           color="primary"
         >
-          <Button variant="outlined" startIcon={<FiTag />} href={tag.path}>
+          <Button
+            variant="outlined"
+            startIcon={<LabelIcon />}
+            href={tag.path}
+            style={{ textTransform: 'none' }}
+          >
             {tag.name}
           </Button>
         </Badge>
-      </Grid>
+      </ListItem>
     );
   });
   return (
     <Layout>
       <CustomHead pageTitle={PAGE_TITLE} description={DESCRIPTION} />
-      <section className={wrapperStyles.root}>
+      <Paper elevation={0} className={wrapperStyles.root}>
         <h1>{PAGE_TITLE}</h1>
-        <Grid container spacing={2}>
-          {tagsList}
-        </Grid>
-      </section>
+        <List className={styles.item}>{tagsList}</List>
+      </Paper>
       <BackToTop />
     </Layout>
   );
