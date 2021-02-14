@@ -2,9 +2,9 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { useEffect } from 'react';
-import PageInit from '@lib/pageInit';
-import { useDispatch } from 'react-redux';
+//import { useEffect } from 'react';
+//import PageInit from '@lib/pageInit';
+//import { useDispatch } from 'react-redux';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import { getAllPages } from '@lib/contentful/exportContent/page';
@@ -51,10 +51,6 @@ type propsType = {
 };
 
 const RootDirectory: NextPage<propsType> = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    PageInit(dispatch);
-  }, []);
   const TemplateTag =
     props.pathtype === POSTLIST ? (
       <Temp_PostList
@@ -93,16 +89,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
           slug,
         })
       : false;
-  pageProps = !postListProps
-    ? allpage && slug
-      ? await CreatePageProps({ allpage, slug })
-      : false
-    : false;
-  postProps = !pageProps
-    ? allpost && slug
-      ? await CreatePostProps({ allpost, slug })
-      : false
-    : false;
+  pageProps =
+    allpage && slug
+      ? !postListProps && (await CreatePageProps({ allpage, slug }))
+      : false;
+  postProps =
+    allpost && slug
+      ? !pageProps && (await CreatePostProps({ allpost, slug }))
+      : false;
 
   const pathtype = postListProps ? POSTLIST : pageProps ? PAGE : POST;
 
@@ -117,17 +111,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPosts();
-  const allPages = await getAllPages();
+  const allposts = await getAllPosts();
+  const allpages = await getAllPages();
 
   // postList
   const postListSlugs = getPostListSlugs(
-    getPostListNumPages({ posts: allPosts, per_page: POST_PER_LISTPAGE })
+    getPostListNumPages({ posts: allposts, per_page: POST_PER_LISTPAGE })
   );
   // post
-  const postSlugs = allPosts ? getPostSlugs(allPosts) : [];
+  const postSlugs = allposts ? getPostSlugs(allposts) : [];
   // page
-  const pageSlugs = allPages ? getPageSlugs(allPages) : [];
+  const pageSlugs = allpages ? getPageSlugs(allpages) : [];
 
   const allSlugs: string[] = [];
   postListSlugs.map((num) => {
