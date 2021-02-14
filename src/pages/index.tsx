@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
+import { setSiteMap } from '@lib/setSitemap';
 import { getConcatPath, getRootPath } from '@lib/getPath';
 
 import config from '@component/config';
@@ -57,18 +58,8 @@ export const getStaticProps: GetStaticProps = async () => {
     : null;
 
   // sitemap
-  {
-    /*if (process.env.NODE_ENV === 'production') {
-    const fetchDate = new Date();
-    const manualURLSet: sitemap.urlset = [
-      {
-        url: getConcatPath(config.url, getRootPath('contact')),
-        fetchDate,
-        priority: '0.4',
-      },
-    ];
-    setSiteMap(fetchDate, manualURLSet.concat(await getURLSet()));
-  }*/
+  if (process.env.NODE_ENV === 'production') {
+    await setSiteMap();
   }
 
   return {
