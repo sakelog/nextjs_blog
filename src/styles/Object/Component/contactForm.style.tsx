@@ -5,12 +5,13 @@ import {
   fade,
 } from '@material-ui/core/styles';
 
-export const contactStyles = makeStyles((theme: Theme) =>
+export const contactFormStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     label: {
       display: 'flex',
       alignItems: 'center',
+      fontSize: '1.4rem',
     },
     icon: {
       display: 'inline-flex',
@@ -28,6 +29,7 @@ export const contactStyles = makeStyles((theme: Theme) =>
       width: '100%',
       background: fade(theme.palette.primary.main, 0.15),
       padding: theme.spacing(1),
+      fontSize: '1.6rem',
     },
     textarea: {
       width: '100%',
@@ -35,6 +37,7 @@ export const contactStyles = makeStyles((theme: Theme) =>
       borderRadius: theme.shape.borderRadius,
       background: fade(theme.palette.primary.main, 0.15),
       padding: theme.spacing(1),
+      fontSize: '1.6rem',
     },
     privacy: {
       fontSize: '1.4rem',
