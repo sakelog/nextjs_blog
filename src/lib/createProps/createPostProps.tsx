@@ -27,7 +27,17 @@ const createPostProps = async (
     : null;
 
   return isPost && targetPost
-    ? { currentPost: targetPost, prevPost, nextPost }
+    ? {
+        currentPost: targetPost,
+        prevPost: prevPost && {
+          title: prevPost.fields.title,
+          slug: prevPost.fields.slug,
+        },
+        nextPost: nextPost && {
+          title: nextPost.fields.title,
+          slug: nextPost.fields.slug,
+        },
+      }
     : false;
 };
 
