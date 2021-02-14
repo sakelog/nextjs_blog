@@ -6,6 +6,7 @@ export const layoutStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
+      background: theme.palette.grey.A100,
     },
     main: {
       padding: theme.spacing(2),
