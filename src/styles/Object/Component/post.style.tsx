@@ -7,7 +7,7 @@ export const postStyles = makeStyles((theme: Theme) =>
     },
     sidebar: {
       height: 'auto',
-      maxHeight: '100vh',
+      maxHeight: '100%',
       overflow: 'hidden',
       position: 'sticky',
       top: '100px',
