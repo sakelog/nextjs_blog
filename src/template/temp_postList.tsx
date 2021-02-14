@@ -1,22 +1,15 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import {
-  Grid,
-  Card,
-  CardContent,
-  Button,
-  List,
-  ListItem,
-} from '@material-ui/core';
+import { Grid, Card, CardContent, List, ListItem } from '@material-ui/core';
 
-const LabelIcon = dynamic(() => import('@material-ui/icons/Label'));
-
-import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
+import { getRootPath } from '@lib/getPath';
 
 import config from '@component/config';
 
 import CustomHead from '@component/customHead';
-//const PostDate = dynamic(() => import('@component/postDate'));
+const PostDate = dynamic(() => import('@component/postDate'));
+const CategoryTag = dynamic(() => import('@component/categoryTag'));
+const TagList = dynamic(() => import('@component/tagList'));
 const Pagination = dynamic(() => import('@component/pagination/pagination'));
 
 import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
@@ -24,18 +17,7 @@ import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
 const Temp_PostList: React.FC<Template.postList.props> = (props) => {
   const styles = useStyles();
   const postListTag = props.posts.map((post: contentful.post) => {
-    const category = post.fields.category.fields;
-    const tagList = post.fields.tags.map((tag) => {
-      return (
-        <Button
-          startIcon={<LabelIcon />}
-          key={tag.fields.slug}
-          href={getTagPath(tag.fields.slug)}
-        >
-          <h4>{tag.fields.name}</h4>
-        </Button>
-      );
-    });
+    const tagList = <TagList tags={post.fields.tags} heading="h4" />;
     return (
       <Grid item xs={12} sm={6} key={post.fields.slug}>
         <Link href={getRootPath(post.fields.slug)}>
@@ -44,17 +26,12 @@ const Temp_PostList: React.FC<Template.postList.props> = (props) => {
             <CardContent>
               <List className={styles.subItem}>
                 <ListItem>
-                  <Button
-                    variant="outlined"
-                    href={getCategoryPath(category.slug)}
-                  >
-                    <h3>{category.name}</h3>
-                  </Button>
+                  <CategoryTag category={post.fields.category} heading="h3" />
                 </ListItem>
-                {/*<PostDate
+                <PostDate
                   postdate={post.fields.date}
                   update={post.fields.update}
-                />*/}
+                />
                 <ListItem>{tagList}</ListItem>
               </List>
             </CardContent>
