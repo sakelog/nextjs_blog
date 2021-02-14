@@ -10,21 +10,15 @@ import {
 } from '@material-ui/core/';
 import LabelIcon from '@material-ui/icons/Label';
 
-import { getAllTags, getPostByTag } from '@lib/contentful/exportContent/tag';
-import { getTagPath } from '@lib/getPath';
-
-const Loading = (
-  <div>
-    Loading...
-    <CircularProgress />
-  </div>
-);
+import CreateTagsPageProps from '@lib/createProps/createTagsPageProps';
 
 const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 import CustomHead from '@component/customHead';
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
 import { tagsPageStyles as useStyles } from '@styles/project/tagPage.style';
@@ -81,25 +75,10 @@ const TagsPage: NextPage<propsType> = (props) => {
 export default TagsPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allTags = await getAllTags();
-
-  let tagsInfo: { name: string; path: string; totalCount: number }[] = [];
-
-  if (allTags) {
-    for (let index = 0; index < allTags.length; index++) {
-      const targetPosts = await getPostByTag({ id: allTags[index].sys.id });
-      const totalCount = targetPosts ? targetPosts.length : 0;
-      const name = allTags[index].fields.name;
-      const path = getTagPath(allTags[index].fields.slug);
-      tagsInfo.push({ name: name, path: path, totalCount: totalCount });
-    }
-  }
-
-  tagsInfo = tagsInfo.filter((elm) => elm.totalCount > 0);
-
+  const tagsInfo = await CreateTagsPageProps();
   return {
     props: {
-      tagsInfo: tagsInfo,
+      tagsInfo,
     },
   };
 };
