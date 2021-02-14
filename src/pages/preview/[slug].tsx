@@ -3,10 +3,6 @@ import Link from 'next/link';
 import ErrorPage from 'next/error';
 import dynamic from 'next/dynamic';
 
-import { useEffect } from 'react';
-import PageInit from '@lib/pageInit';
-import { useDispatch } from 'react-redux';
-
 import { getPreviewPostBySlug } from '@lib/contentful/exportContent/post';
 
 import Layout from '@layout/layout';
@@ -18,10 +14,6 @@ type propsType = {
 };
 
 const PreviewPage: NextPage<propsType> = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    PageInit(dispatch);
-  }, []);
   return props.post && props.isPreviewPost ? (
     <Layout>
       <div>
