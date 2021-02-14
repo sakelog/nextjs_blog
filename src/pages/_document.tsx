@@ -3,10 +3,10 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
-  render() {
+  render(): JSX.Element {
     const GTMNoScript =
       process.env.NODE_ENV === 'production' &&
-      `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}"
+      `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}"
   height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
     return (
       <Html lang="ja">
