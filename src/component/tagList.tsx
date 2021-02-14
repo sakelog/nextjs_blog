@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Button, List, ListItem } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 
@@ -16,12 +17,10 @@ const TagList: React.FC<PropsType> = (props) => {
   const list = props.tags.map((tag) => {
     return (
       <ListItem key={tag.fields.slug} className={styles.item}>
-        <Button
-          startIcon={<LabelIcon />}
-          href={getTagPath(tag.fields.slug)}
-          style={{ textTransform: 'none' }}
-        >
-          {React.createElement(props.heading, {}, tag.fields.name)}
+        <Button startIcon={<LabelIcon />} style={{ textTransform: 'none' }}>
+          <Link href={getTagPath(tag.fields.slug)}>
+            {React.createElement(props.heading, {}, tag.fields.name)}
+          </Link>
         </Button>
       </ListItem>
     );

@@ -1,16 +1,17 @@
 import Link from 'next/link';
-import { FiTag } from 'react-icons/fi';
-import { Grid, Card, CardContent, Button } from '@material-ui/core';
+import dynamic from 'next/dynamic';
+import { Grid, Card, CardContent, List, ListItem } from '@material-ui/core';
 
-import { getRootPath, getCategoryPath, getTagPath } from '@lib/getPath';
+import { getRootPath } from '@lib/getPath';
 
 import CustomHead from '@component/customHead';
-import PostDate from '@component/postDate';
 
-import Pagination from '@component/pagination/pagination';
-import BackToTop from '@component/pagination/backToTop';
+const PostDate = dynamic(() => import('@component/postDate'));
+const CategoryTag = dynamic(() => import('@component/categoryTag'));
+const TagList = dynamic(() => import('@component/tagList'));
+const Pagination = dynamic(() => import('@component/pagination/pagination'));
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
 
-//import styles from '@styles/project/_p-postList.module.scss';
 import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
 
 const TAGS = 'tags';
@@ -26,27 +27,16 @@ const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
     (props.currentPage > 1 ? ':' + props.currentPage + 'ページ目' : '');
   const postListTag = props.posts
     ? props.posts.map((post: contentful.post) => {
-        const category = post.fields.category.fields;
         const categoryTag = props.type === TAGS && (
-          <Button variant="outlined">
-            <h3>
-              <Link href={getCategoryPath(category.slug)}>{category.name}</Link>
-            </h3>
-          </Button>
+          <ListItem>
+            <CategoryTag category={post.fields.category} heading="h3" />
+          </ListItem>
         );
 
-        const tagList = post.fields.tags.map((tag) => {
-          return (
-            <Button startIcon={<FiTag />} key={tag.fields.slug}>
-              <h4>
-                <Link href={getTagPath(tag.fields.slug)}>
-                  {tag.fields.name}
-                </Link>
-              </h4>
-            </Button>
-          );
-        });
-        const tagsTag = props.type === CATEGORY && tagList;
+        const tagList = <TagList tags={post.fields.tags} heading="h4" />;
+        const tagsTag = props.type === CATEGORY && (
+          <ListItem>{tagList}</ListItem>
+        );
         return (
           <Grid item xs={12} sm={6} key={post.fields.slug}>
             <Link href={getRootPath(post.fields.slug)}>
@@ -54,12 +44,14 @@ const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
                 <h2 className={styles.title}>{post.fields.title}</h2>
                 <CardContent>
                   <div className={styles.subItem}>
-                    {categoryTag}
-                    <PostDate
-                      postdate={post.fields.date}
-                      update={post.fields.update}
-                    />
-                    {tagsTag}
+                    <List>
+                      {categoryTag}
+                      <PostDate
+                        postdate={post.fields.date}
+                        update={post.fields.update}
+                      />
+                      {tagsTag}
+                    </List>
                   </div>
                 </CardContent>
               </Card>

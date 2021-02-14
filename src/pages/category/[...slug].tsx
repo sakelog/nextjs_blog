@@ -2,10 +2,6 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import PageInit from '@lib/pageInit';
-
 import {
   getAllCategory,
   getPostByCategory,
@@ -15,13 +11,15 @@ import { toKebabCase } from '@lib/toKebabCase';
 
 import CreateCategoryProps from '@lib/createProps/createCategoryProps';
 
-import Layout from '@layout/layout';
 const Loading = (
   <div>
     Loading...
     <CircularProgress />
   </div>
 );
+const Layout = dynamic(() => import('@layout/layout'), {
+  loading: () => Loading,
+});
 const Temp_CatTag = dynamic(() => import('@template/temp_catTag'), {
   loading: () => Loading,
 });
@@ -29,10 +27,6 @@ const Temp_CatTag = dynamic(() => import('@template/temp_catTag'), {
 const POST_PER_LISTPAGE = 10;
 
 const CategoryDirectory: NextPage<Template.catTagList.props> = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    PageInit(dispatch);
-  }, []);
   return (
     <Layout>
       <Temp_CatTag
