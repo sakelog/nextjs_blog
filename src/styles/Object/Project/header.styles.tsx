@@ -54,6 +54,9 @@ export const headerStyles = makeStyles((theme: Theme) =>
           width: '180px',
           fontSize: '1.4rem',
         },
+        '& a': {
+          color: '#ffffff',
+        },
       },
     },
   })

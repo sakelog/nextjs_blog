@@ -9,26 +9,18 @@ const PageList: React.FC = () => {
   const styles = useStyles();
   return (
     <List className={styles.pageList}>
-      <Link href={getRootPath('tags')}>
-        <ListItem key="tags" button>
-          タグ一覧
-        </ListItem>
-      </Link>
-      <Link href={getRootPath('about_this_site')}>
-        <ListItem key="about_this_site" button>
-          このサイトについて
-        </ListItem>
-      </Link>
-      <Link href={getRootPath('privacy')}>
-        <ListItem key="privacy" button>
-          プライバシーポリシー
-        </ListItem>
-      </Link>
-      <Link href={getRootPath('contact')}>
-        <ListItem key="contact" button>
-          お問い合わせ
-        </ListItem>
-      </Link>
+      <ListItem key="tags" button>
+        <Link href={getRootPath('tags')}>タグ一覧</Link>
+      </ListItem>
+      <ListItem key="about_this_site" button>
+        <Link href={getRootPath('about_this_site')}>このサイトについて</Link>
+      </ListItem>
+      <ListItem key="privacy" button>
+        <Link href={getRootPath('privacy')}>プライバシーポリシー</Link>
+      </ListItem>
+      <ListItem key="contact" button>
+        <Link href={getRootPath('contact')}>お問い合わせ</Link>
+      </ListItem>
     </List>
   );
 };
