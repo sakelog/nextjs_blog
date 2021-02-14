@@ -1,7 +1,9 @@
 import { format } from 'date-fns';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import UpdateIcon from '@material-ui/icons/Update';
-import { List, ListItem } from '@material-ui/core';
+import { ListItem } from '@material-ui/core';
+
+import { postDateStyles as useStyles } from '@styles/component/postDate.style';
 
 type propsType = {
   postdate: string;
@@ -9,24 +11,25 @@ type propsType = {
 };
 
 const PostDate: React.FC<propsType> = (props) => {
+  const styles = useStyles();
   const postDateTag = (
     <ListItem>
-      <CalendarTodayIcon style={{ fontSize: '1.4rem' }} />
+      <CalendarTodayIcon className={styles.icon} />
       {getFormatDate(props.postdate)}
     </ListItem>
   );
   const updateTag = props.update && (
     <ListItem>
-      <UpdateIcon style={{ fontSize: '1.4rem' }} />
+      <UpdateIcon className={styles.icon} />
       {getFormatDate(props.update)}
     </ListItem>
   );
 
   return (
-    <List>
+    <>
       {postDateTag}
       {updateTag}
-    </List>
+    </>
   );
 };
 

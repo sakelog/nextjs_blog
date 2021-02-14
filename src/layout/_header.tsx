@@ -43,7 +43,7 @@ const Header: React.FC = () => {
             <DrawerList />
           </Hidden>
           <Hidden smUp>
-            <IconButton color="inherit" onClick={handleOpen}>
+            <IconButton color="inherit" onClick={handleOpen} aria-label="Menu">
               <MenuIcon className={styles.menuIcon} />
             </IconButton>
           </Hidden>

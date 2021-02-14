@@ -10,6 +10,10 @@ export const tagListStyles = makeStyles((theme: Theme) =>
     item: {
       margin: theme.spacing(0, 1),
       width: 'auto',
+      padding: 0,
+      '&:first-of-type': {
+        marginLeft: 0,
+      },
     },
   })
 );

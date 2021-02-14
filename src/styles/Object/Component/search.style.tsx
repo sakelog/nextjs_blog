@@ -30,12 +30,14 @@ export const searchStyles = makeStyles((theme: Theme) =>
       fontSize: '2rem',
     },
     inputRoot: {
-      color: 'inherit',
+      color: theme.palette.grey[900],
       width: '100%',
+      '&::placeholder': {
+        color: theme.palette.grey[900],
+      },
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      transition: theme.transitions.create('width'),
       width: '100%',
     },
     hits: {
@@ -45,7 +47,7 @@ export const searchStyles = makeStyles((theme: Theme) =>
       left: 0,
       width: '100%',
       padding: theme.spacing(2),
-      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.26)',
+      boxShadow: theme.shadows[10],
     },
     hit: {
       borderBottom: '1px dashed #000000',
