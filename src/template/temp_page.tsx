@@ -1,11 +1,15 @@
+import dynamic from 'next/dynamic';
+import { Paper } from '@material-ui/core';
+
 import CustomHead from '@component/customHead';
-import ArticleBody from '@component/postParts/articleBody';
 
-import BackToTop from '@component/pagination/backToTop';
+const ArticleBody = dynamic(() => import('@component/postParts/articleBody'));
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
 
-import wrapperStyles from '@styles/layout/_l-pageWrapper.module.scss';
+import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
 
 const Temp_Page: React.FC<Template.page.props> = (props) => {
+  const wrapperStyles = pageWrapperStyles();
   const body = props.page.fields.body;
   return (
     <article>
@@ -13,10 +17,10 @@ const Temp_Page: React.FC<Template.page.props> = (props) => {
         pageTitle={props.page.fields.title}
         description={props.page.fields.description}
       />
-      <section className={wrapperStyles.root}>
+      <Paper elevation={0} className={wrapperStyles.root}>
         <h1>{props.page.fields.title}</h1>
         <ArticleBody body={body} />
-      </section>
+      </Paper>
       <BackToTop />
     </article>
   );
