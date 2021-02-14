@@ -76,7 +76,7 @@ const Temp_Post: React.FC<Template.post.props> = (props) => {
           imgFLG={true}
         />
         <Grid container spacing={2} className={styles.contentWrapper}>
-          <Grid item sm={12} md={9}>
+          <Grid item xs={12} md={9}>
             <Paper elevation={3} className={wrapperStyles.root}>
               <h1>{props.currentPost.fields.title}</h1>
               <ArticleBody body={body} />

@@ -20,7 +20,7 @@ let defaultTheme = createMuiTheme({
       'sans-serif',
     ].join(','),
     htmlFontSize: 10,
-    fontSize: 1.6,
+    fontSize: 16,
   },
 });
 
