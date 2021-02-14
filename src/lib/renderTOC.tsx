@@ -3,6 +3,8 @@
 ============================================================*/
 import React, { useState, useEffect } from 'react';
 import { throttle } from 'lodash';
+import dynamic from 'next/dynamic';
+import { CircularProgress } from '@material-ui/core';
 
 import remark from 'remark';
 import visit from 'unist-util-visit';
@@ -10,7 +12,9 @@ import mdastToString from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 const githubSlugger = new GithubSlugger();
 
-import TOC from '@component/postParts/TOC';
+const TOC = dynamic(() => import('@component/postParts/TOC'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 const OFFSET_ACTIVE_ITEM = 100;
 const MAX_DEPTH = 3;

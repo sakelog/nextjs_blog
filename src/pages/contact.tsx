@@ -4,18 +4,16 @@ import { Paper, Container, CircularProgress } from '@material-ui/core';
 
 import config from '@component/config';
 
-const Loading = (
-  <div>
-    Loading...
-    <CircularProgress />
-  </div>
-);
 const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 import CustomHead from '@component/customHead';
-const ContactForm = dynamic(() => import('@component/contactForm'));
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
+const ContactForm = dynamic(() => import('@component/contactForm'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
 

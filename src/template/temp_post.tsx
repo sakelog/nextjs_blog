@@ -1,6 +1,13 @@
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { Hidden, List, ListItem, Grid, Paper } from '@material-ui/core';
+import {
+  Hidden,
+  List,
+  ListItem,
+  Grid,
+  Paper,
+  CircularProgress,
+} from '@material-ui/core';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -9,12 +16,24 @@ import PageInit from '@lib/pageInit';
 import RenderTOC from '@lib/renderTOC';
 import CustomHead from '@component/customHead';
 
-const ArticleBody = dynamic(() => import('@component/postParts/articleBody'));
-const Share = dynamic(() => import('@component/postParts/share'));
-const Bio = dynamic(() => import('@component/postParts/bio/bio'));
-const PostDate = dynamic(() => import('@component/postDate'));
-const CategoryTag = dynamic(() => import('@component/categoryTag'));
-const TagList = dynamic(() => import('@component/tagList'));
+const ArticleBody = dynamic(() => import('@component/postParts/articleBody'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const Share = dynamic(() => import('@component/postParts/share'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const Bio = dynamic(() => import('@component/postParts/bio/bio'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const PostDate = dynamic(() => import('@component/postDate'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const CategoryTag = dynamic(() => import('@component/categoryTag'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const TagList = dynamic(() => import('@component/tagList'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 import config from '@component/config';
 

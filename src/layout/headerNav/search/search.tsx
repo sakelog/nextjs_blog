@@ -2,10 +2,12 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { connectAutoComplete } from 'react-instantsearch-dom';
 import { AutocompleteProvided } from 'react-instantsearch-core';
-import { InputBase, List, ListItem } from '@material-ui/core';
+import { InputBase, List, ListItem, CircularProgress } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
-const SearchIcon = dynamic(() => import('@material-ui/icons/Search'));
-import Highlight from './highlight';
+const Highlight = dynamic(() => import('./highlight'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 import { Message } from './types';
 
 import { getRootPath } from '@lib/getPath';

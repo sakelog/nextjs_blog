@@ -7,17 +7,11 @@ import { getPostListNumPages, getPostListSlugs } from '@lib/getSlugs';
 import { toKebabCase } from '@lib/toKebabCase';
 import CreateTagsProps from '@lib/createProps/createTagsProps';
 
-const Loading = (
-  <div>
-    Loading...
-    <CircularProgress />
-  </div>
-);
 const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 const Temp_CatTag = dynamic(() => import('@template/temp_catTag'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 
 const POST_PER_LISTPAGE = 10;

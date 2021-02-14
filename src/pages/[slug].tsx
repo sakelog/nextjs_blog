@@ -2,10 +2,6 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-//import { useEffect } from 'react';
-//import PageInit from '@lib/pageInit';
-//import { useDispatch } from 'react-redux';
-
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import { getAllPages } from '@lib/contentful/exportContent/page';
 import {
@@ -18,25 +14,20 @@ import CreatePostListProps from '@lib/createProps/createPostListProps';
 import CreatePageProps from '@lib/createProps/createPageProps';
 import CreatePostProps from '@lib/createProps/createPostProps';
 
-const Loading = (
-  <div>
-    Loading...
-    <CircularProgress />
-  </div>
-);
-
 // Template
 const Temp_PostList = dynamic(() => import('@template/temp_postList'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 const Temp_Post = dynamic(() => import('@template/temp_post'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 const Temp_Page = dynamic(() => import('@template/temp_page'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 
-import Layout from '@layout/layout';
+const Layout = dynamic(() => import('@layout/layout'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 const POST_PER_LISTPAGE = 6;
 const POSTLIST = 'postlist';

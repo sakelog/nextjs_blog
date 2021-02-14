@@ -1,16 +1,31 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Grid, Card, CardContent, List, ListItem } from '@material-ui/core';
+import {
+  Grid,
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  CircularProgress,
+} from '@material-ui/core';
 
 import { getRootPath } from '@lib/getPath';
 
 import CustomHead from '@component/customHead';
 
-const PostDate = dynamic(() => import('@component/postDate'));
-const CategoryTag = dynamic(() => import('@component/categoryTag'));
+const PostDate = dynamic(() => import('@component/postDate'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const CategoryTag = dynamic(() => import('@component/categoryTag'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 const TagList = dynamic(() => import('@component/tagList'));
-const Pagination = dynamic(() => import('@component/pagination/pagination'));
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
+const Pagination = dynamic(() => import('@component/pagination/pagination'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
 

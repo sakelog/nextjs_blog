@@ -7,12 +7,20 @@ import {
   Hidden,
   SwipeableDrawer,
   IconButton,
+  CircularProgress,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import config from '@component/config';
 
-const SiteLogo = dynamic(() => import('./headerNav/siteLogo'));
-const Search = dynamic(() => import('./headerNav/search/search'));
-const DrawerList = dynamic(() => import('./headerNav/drawerList'));
+const SiteLogo = dynamic(() => import('./headerNav/siteLogo'), {
+  loading: () => <>{config.title}</>,
+});
+const Search = dynamic(() => import('./headerNav/search/search'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
+const DrawerList = dynamic(() => import('./headerNav/drawerList'), {
+  loading: () => <CircularProgress color="secondary" />,
+});
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';
 

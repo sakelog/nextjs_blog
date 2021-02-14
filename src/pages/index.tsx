@@ -6,30 +6,17 @@ import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
 import { setSiteMap } from '@lib/setSitemap';
 
-const Loading = (
-  <div>
-    Loading...
-    <CircularProgress />
-  </div>
-);
 const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
 // Template
 const Temp_PostList = dynamic(() => import('@template/temp_postList'), {
-  loading: () => Loading,
+  loading: () => <CircularProgress color="secondary" />,
 });
-//import Layout from '@layout/layout';
 
 const POST_PER_LISTPAGE = 6;
 
 const TopPage: NextPage<{ posts: Template.postList.props }> = (props) => {
-  {
-    /*  const dispatch = useDispatch();
-  useEffect(() => {
-    PageInit(dispatch);
-  }, []);*/
-  }
   const TemplateTag = (
     <Temp_PostList
       posts={props.posts.posts}
