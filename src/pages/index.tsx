@@ -5,9 +5,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
 import { setSiteMap } from '@lib/setSitemap';
-import { getConcatPath, getRootPath } from '@lib/getPath';
-
-import config from '@component/config';
 
 const Loading = (
   <div>
