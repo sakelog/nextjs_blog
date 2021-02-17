@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
-    "@types/node": "^14.14.26",
+    "@types/node": "^14.14.28",
     "@types/react": "^17.0.0",
     "@types/react-copy-to-clipboard": "^5.0.0",
     "@types/react-dom": "^17.0.1",
@@ -60,7 +60,7 @@
     "@types/react-scroll": "^1.8.2",
     "@types/react-share": "^3.0.3",
     "@types/redux-logger": "^3.0.8",
-    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
