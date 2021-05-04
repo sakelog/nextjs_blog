@@ -57,7 +57,7 @@
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@types/react-copy-to-clipboard": "^5.0.0",
-    "@types/react-dom": "^17.0.1",
+    "@types/react-dom": "^17.0.3",
     "@types/react-instantsearch-dom": "^6.8.0",
     "@types/react-scroll": "^1.8.2",
     "@types/react-share": "^3.0.3",
