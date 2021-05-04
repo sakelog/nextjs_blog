@@ -4,21 +4,23 @@ import { client } from './client';
 export const getAllCategory = async (): Promise<
   contentful.category[] | null
 > => {
-  const res: contentful.categoryCollection = await client.getEntries({
+  const res:
+    | contentful.categoryCollection
+    | undefined = await client?.getEntries({
     content_type: 'category',
   });
-  const categories = res.items;
+  const categories = res?.items;
   return typeof categories === 'undefined' ? null : categories;
 };
 
 export const getPostByCategory = async (
   props: contentful.MyLib.getPostByCategory.props
 ): Promise<contentful.post[] | null> => {
-  const res: contentful.postCollection = await client.getEntries({
+  const res: contentful.postCollection | undefined = await client?.getEntries({
     content_type: 'post',
     order: '-fields.date',
     'fields.category.sys.id': props.id,
   });
-  const post = res.items;
+  const post = res?.items;
   return typeof post === 'undefined' ? null : post;
 };

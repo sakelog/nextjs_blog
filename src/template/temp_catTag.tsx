@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import {
   Grid,
   Card,
@@ -13,18 +13,18 @@ import { getRootPath } from '@lib/getPath';
 
 import CustomHead from '@component/customHead';
 
-const PostDate = dynamic(() => import('@component/postDate'), {
-  loading: () => <CircularProgress color="secondary" />,
+const PostDate = loadable(() => import('@component/postDate'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const CategoryTag = dynamic(() => import('@component/categoryTag'), {
-  loading: () => <CircularProgress color="secondary" />,
+const CategoryTag = loadable(() => import('@component/categoryTag'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const TagList = dynamic(() => import('@component/tagList'));
-const Pagination = dynamic(() => import('@component/pagination/pagination'), {
-  loading: () => <CircularProgress color="secondary" />,
+const TagList = loadable(() => import('@component/tagList'));
+const Pagination = loadable(() => import('@component/pagination/pagination'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
-  loading: () => <CircularProgress color="secondary" />,
+const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { postlistStyles as useStyles } from '@styles/project/postlist.styles';

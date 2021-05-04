@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import {
   Paper,
   Button,
@@ -12,12 +12,12 @@ import LabelIcon from '@material-ui/icons/Label';
 
 import CreateTagsPageProps from '@lib/createProps/createTagsPageProps';
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 import CustomHead from '@component/customHead';
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
-  loading: () => <CircularProgress color="secondary" />,
+const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';

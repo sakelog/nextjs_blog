@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { connectAutoComplete } from 'react-instantsearch-dom';
 import { AutocompleteProvided } from 'react-instantsearch-core';
 import { InputBase, List, ListItem, CircularProgress } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
-const Highlight = dynamic(() => import('./highlight'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Highlight = loadable(() => import('./highlight'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 import { Message } from './types';
 

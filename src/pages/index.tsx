@@ -1,17 +1,17 @@
 import { GetStaticProps, NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
 import { setSiteMap } from '@lib/setSitemap';
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 // Template
-const Temp_PostList = dynamic(() => import('@template/temp_postList'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_PostList = loadable(() => import('@template/temp_postList'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 const POST_PER_LISTPAGE = 6;

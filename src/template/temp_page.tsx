@@ -1,13 +1,13 @@
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { Paper, CircularProgress } from '@material-ui/core';
 
 import CustomHead from '@component/customHead';
 
-const ArticleBody = dynamic(() => import('@component/postParts/articleBody'), {
-  loading: () => <CircularProgress color="secondary" />,
+const ArticleBody = loadable(() => import('@component/postParts/articleBody'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
-  loading: () => <CircularProgress color="secondary" />,
+const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';

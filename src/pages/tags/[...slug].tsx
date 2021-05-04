@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllTags, getPostByTag } from '@lib/contentful/exportContent/tag';
@@ -7,11 +7,11 @@ import { getPostListNumPages, getPostListSlugs } from '@lib/getSlugs';
 import { toKebabCase } from '@lib/toKebabCase';
 import CreateTagsProps from '@lib/createProps/createTagsProps';
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Temp_CatTag = dynamic(() => import('@template/temp_catTag'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_CatTag = loadable(() => import('@template/temp_catTag'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 const POST_PER_LISTPAGE = 10;

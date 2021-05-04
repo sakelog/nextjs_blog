@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
@@ -15,18 +15,18 @@ import CreatePageProps from '@lib/createProps/createPageProps';
 import CreatePostProps from '@lib/createProps/createPostProps';
 
 // Template
-const Temp_PostList = dynamic(() => import('@template/temp_postList'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_PostList = loadable(() => import('@template/temp_postList'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Temp_Post = dynamic(() => import('@template/temp_post'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_Post = loadable(() => import('@template/temp_post'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Temp_Page = dynamic(() => import('@template/temp_page'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_Page = loadable(() => import('@template/temp_page'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 const POST_PER_LISTPAGE = 6;

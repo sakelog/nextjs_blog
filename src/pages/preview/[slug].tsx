@@ -1,16 +1,16 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Link from 'next/link';
 import ErrorPage from 'next/error';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { CircularProgress } from '@material-ui/core';
 
 import { getPreviewPostBySlug } from '@lib/contentful/exportContent/post';
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Temp_Post = dynamic(() => import('@template/temp_post'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_Post = loadable(() => import('@template/temp_post'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 type propsType = {

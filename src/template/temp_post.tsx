@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import {
   Hidden,
   List,
@@ -16,29 +16,29 @@ import PageInit from '@lib/pageInit';
 import RenderTOC from '@lib/renderTOC';
 import CustomHead from '@component/customHead';
 
-const ArticleBody = dynamic(() => import('@component/postParts/articleBody'), {
-  loading: () => <CircularProgress color="secondary" />,
+const ArticleBody = loadable(() => import('@component/postParts/articleBody'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Share = dynamic(() => import('@component/postParts/share'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Share = loadable(() => import('@component/postParts/share'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Bio = dynamic(() => import('@component/postParts/bio/bio'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Bio = loadable(() => import('@component/postParts/bio/bio'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const PostDate = dynamic(() => import('@component/postDate'), {
-  loading: () => <CircularProgress color="secondary" />,
+const PostDate = loadable(() => import('@component/postDate'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const CategoryTag = dynamic(() => import('@component/categoryTag'), {
-  loading: () => <CircularProgress color="secondary" />,
+const CategoryTag = loadable(() => import('@component/categoryTag'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const TagList = dynamic(() => import('@component/tagList'), {
-  loading: () => <CircularProgress color="secondary" />,
+const TagList = loadable(() => import('@component/tagList'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import config from '@component/config';
 
-const PrevNext = dynamic(() => import('@component/pagination/prevNext'));
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'));
+const PrevNext = loadable(() => import('@component/pagination/prevNext'));
+const BackToTop = loadable(() => import('@component/pagination/backToTop'));
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
 import { postStyles as useStyles } from '@styles/component/post.style';
