@@ -1,11 +1,11 @@
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { Divider, CircularProgress } from '@material-ui/core';
 
-const PageList = dynamic(() => import('@layout/headerNav/pageList'), {
-  loading: () => <CircularProgress color="secondary" />,
+const PageList = loadable(() => import('@layout/headerNav/pageList'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const SocialIcon = dynamic(() => import('@component/socialIcon'), {
-  loading: () => <CircularProgress color="secondary" />,
+const SocialIcon = loadable(() => import('@component/socialIcon'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';

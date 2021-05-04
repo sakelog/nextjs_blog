@@ -1,18 +1,18 @@
 import { NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { Paper, Container, CircularProgress } from '@material-ui/core';
 
 import config from '@component/config';
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 import CustomHead from '@component/customHead';
-const ContactForm = dynamic(() => import('@component/contactForm'), {
-  loading: () => <CircularProgress color="secondary" />,
+const ContactForm = loadable(() => import('@component/contactForm'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const BackToTop = dynamic(() => import('@component/pagination/backToTop'), {
-  loading: () => <CircularProgress color="secondary" />,
+const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';

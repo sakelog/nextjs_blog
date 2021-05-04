@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { Router } from 'next/router';
 import {
   AppBar,
@@ -12,14 +12,14 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import config from '@component/config';
 
-const SiteLogo = dynamic(() => import('./headerNav/siteLogo'), {
-  loading: () => <>{config.title}</>,
+const SiteLogo = loadable(() => import('./headerNav/siteLogo'), {
+  fallback: <>{config.title}</>,
 });
-const Search = dynamic(() => import('./headerNav/search/search'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Search = loadable(() => import('./headerNav/search/search'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const DrawerList = dynamic(() => import('./headerNav/drawerList'), {
-  loading: () => <CircularProgress color="secondary" />,
+const DrawerList = loadable(() => import('./headerNav/drawerList'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';

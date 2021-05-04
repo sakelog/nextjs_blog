@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
@@ -11,11 +11,11 @@ import { toKebabCase } from '@lib/toKebabCase';
 
 import CreateCategoryProps from '@lib/createProps/createCategoryProps';
 
-const Layout = dynamic(() => import('@layout/layout'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Layout = loadable(() => import('@layout/layout'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Temp_CatTag = dynamic(() => import('@template/temp_catTag'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Temp_CatTag = loadable(() => import('@template/temp_catTag'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 const POST_PER_LISTPAGE = 10;

@@ -1,10 +1,10 @@
-import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
 import { Container, CircularProgress } from '@material-ui/core';
-const Header = dynamic(() => import('@layout/_header'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Header = loadable(() => import('@layout/_header'), {
+  fallback: <CircularProgress color="secondary" />,
 });
-const Footer = dynamic(() => import('@layout/_footer'), {
-  loading: () => <CircularProgress color="secondary" />,
+const Footer = loadable(() => import('@layout/_footer'), {
+  fallback: <CircularProgress color="secondary" />,
 });
 
 import { layoutStyles as useStyles } from '@styles/layout/layout.style';
