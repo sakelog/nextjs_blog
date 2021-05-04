@@ -4,16 +4,16 @@ import { client, previewClient } from './client';
 export const getPostBySlug = async (
   props: contentful.MyLib.getPostBySlug.props
 ): Promise<contentful.post | null> => {
-  const res: contentful.postCollection = !props.preview
-    ? await client.getEntries({
+  const res: contentful.postCollection | undefined = !props.preview
+    ? await client?.getEntries({
         content_type: 'post',
         'fields.slug': props.slug,
       })
-    : await previewClient.getEntries({
+    : await previewClient?.getEntries({
         content_type: 'post',
         'fields.slug': props.slug,
       });
-  const post = typeof res.items === 'undefined' ? null : res.items[0];
+  const post = typeof res?.items === 'undefined' ? null : res.items[0];
   return post;
 };
 
