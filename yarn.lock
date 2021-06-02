@@ -5548,12 +5548,12 @@ react-share@^4.4.0:
     classnames "^2.2.5"
     jsonp "^0.2.1"
 
-react-social-icons@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.2.0.tgz#351a0b124a088feeabb61ad10277794caf6d772c"
-  integrity sha512-EvGOikkDhgQqkrifLZcnkv69Z63y04d3kO4+UE6ilos4nN0nk4SEknkTG3fPjYkVtAeMfo6rQXlZL1iSDOt25w==
+react-social-icons@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.4.1.tgz#8aaa43618ed5c08702d8d6b70ed9f1f75276f255"
+  integrity sha512-pnPU8UmFQaK2MRITzU7Y80a068z40H5LFQSoBU8wWWu6cxJDnm8XuuEEpdrTiPCPEVTYnGvwSLbuHO5jB151dA==
   dependencies:
-    prop-types "^15.6.2"
+    prop-types "^15.7.2"
 
 react-syntax-highlighter@^15.4.3:
   version "15.4.3"
