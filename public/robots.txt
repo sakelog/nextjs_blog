@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sake-log.website/
+
+# Sitemaps
+Sitemap: https://sake-log.website/sitemap.xml

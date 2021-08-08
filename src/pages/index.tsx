@@ -4,7 +4,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
-import { setSiteMap } from '@lib/setSitemap';
 
 const Layout = loadable(() => import('@layout/layout'), {
   fallback: <CircularProgress color="secondary" />,
@@ -40,11 +39,6 @@ export const getStaticProps: GetStaticProps = async () => {
         slug: '/',
       })
     : null;
-
-  // sitemap
-  if (process.env.NODE_ENV === 'production') {
-    await setSiteMap();
-  }
 
   return {
     props: {
