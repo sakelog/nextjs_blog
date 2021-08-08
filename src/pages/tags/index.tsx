@@ -15,16 +15,23 @@ import CreateTagsPageProps from '@lib/createProps/createTagsPageProps';
 const Layout = loadable(() => import('@layout/layout'), {
   fallback: <CircularProgress color="secondary" />,
 });
-import CustomHead from '@component/customHead';
-const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+import CustomHead from '@components/customHead';
+const BackToTop = loadable(
+  () => import('@components/pagination/backToTop'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
 import { tagsPageStyles as useStyles } from '@styles/project/tagPage.style';
 
 type propsType = {
-  tagsInfo: { name: string; path: string; totalCount: number }[];
+  tagsInfo: {
+    name: string;
+    path: string;
+    totalCount: number;
+  }[];
 };
 
 const TagsPage: NextPage<propsType> = (props) => {
@@ -62,7 +69,10 @@ const TagsPage: NextPage<propsType> = (props) => {
   });
   return (
     <Layout>
-      <CustomHead pageTitle={PAGE_TITLE} description={DESCRIPTION} />
+      <CustomHead
+        pageTitle={PAGE_TITLE}
+        description={DESCRIPTION}
+      />
       <Paper elevation={0} className={wrapperStyles.root}>
         <h1>{PAGE_TITLE}</h1>
         <List className={styles.item}>{tagsList}</List>

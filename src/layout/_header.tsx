@@ -10,17 +10,26 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import config from '@component/config';
+import config from '@components/config';
 
-const SiteLogo = loadable(() => import('./headerNav/siteLogo'), {
-  fallback: <>{config.title}</>,
-});
-const Search = loadable(() => import('./headerNav/search/search'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const DrawerList = loadable(() => import('./headerNav/drawerList'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+const SiteLogo = loadable(
+  () => import('./headerNav/siteLogo'),
+  {
+    fallback: <>{config.title}</>,
+  }
+);
+const Search = loadable(
+  () => import('./headerNav/search/search'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
+const DrawerList = loadable(
+  () => import('./headerNav/drawerList'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';
 
@@ -30,8 +39,12 @@ const Header: React.FC = () => {
   const handleOpen = () => setDrawerState(true);
   const handleClose = () => setDrawerState(false);
   useEffect(() => {
-    Router.events.on('routeChangeStart', () => handleClose());
-    return Router.events.off('routeChangeStart', () => handleClose());
+    Router.events.on('routeChangeStart', () =>
+      handleClose()
+    );
+    return Router.events.off('routeChangeStart', () =>
+      handleClose()
+    );
   }, []);
   return (
     <>
@@ -43,7 +56,11 @@ const Header: React.FC = () => {
             <DrawerList />
           </Hidden>
           <Hidden smUp>
-            <IconButton color="inherit" onClick={handleOpen} aria-label="Menu">
+            <IconButton
+              color="inherit"
+              onClick={handleOpen}
+              aria-label="Menu"
+            >
               <MenuIcon className={styles.menuIcon} />
             </IconButton>
           </Hidden>

@@ -2,23 +2,35 @@ import Link from 'next/link';
 
 import { getRootPath } from '@lib/getPath';
 
-import config from '@component/config';
+import config from '@components/config';
 import styles from '@styles/component/article__link.module.scss';
 
-const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (props) => {
-  let isExternalLink = props.href ? props.href.startsWith('http') : false;
+const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (
+  props
+) => {
+  let isExternalLink = props.href
+    ? props.href.startsWith('http')
+    : false;
   const isInternalLinkAbsolute = props.href
     ? props.href.startsWith(config.url)
     : false;
   isExternalLink =
-    isExternalLink && isInternalLinkAbsolute ? false : isExternalLink;
+    isExternalLink && isInternalLinkAbsolute
+      ? false
+      : isExternalLink;
   const rel = props.rel
     ? props.rel
     : isExternalLink
     ? 'noopener noreferrer'
     : null;
-  const target = props.target ? props.target : isExternalLink ? '_blank' : null;
-  const className = props.className ? props.className : null;
+  const target = props.target
+    ? props.target
+    : isExternalLink
+    ? '_blank'
+    : null;
+  const className = props.className
+    ? props.className
+    : null;
   const internalPath =
     !isExternalLink &&
     (isInternalLinkAbsolute && props.href

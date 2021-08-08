@@ -1,4 +1,4 @@
-import config from '@component/config';
+import config from '@components/config';
 
 //import styles from '@styles/layout/_l-footer.module.scss';
 import { footerStyles as useStyles } from '@styles/layout/footer.style';

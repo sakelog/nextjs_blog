@@ -1,7 +1,10 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+} from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 
-import config from '@component/config';
+import config from '@components/config';
 
 let defaultTheme = createMuiTheme({
   palette: {

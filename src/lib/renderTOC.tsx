@@ -12,21 +12,23 @@ import mdastToString from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 const githubSlugger = new GithubSlugger();
 
-const TOC = loadable(() => import('@component/postParts/TOC'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+const TOC = loadable(
+  () => import('@components/postParts/TOC'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
 
 const OFFSET_ACTIVE_ITEM = 100;
 const MAX_DEPTH = 3;
 
-const RenderTOC: React.FC<{ markdown: string }> = (props) => {
-  const [activeItemIds, setActiveItemIds] = useState<render.toc.activeItemIds>(
-    []
-  );
-  const [
-    itemTopOffsets,
-    setItemTopOffsets,
-  ] = useState<render.toc.itemTopOffsets>([]);
+const RenderTOC: React.FC<{ markdown: string }> = (
+  props
+) => {
+  const [activeItemIds, setActiveItemIds] =
+    useState<render.toc.activeItemIds>([]);
+  const [itemTopOffsets, setItemTopOffsets] =
+    useState<render.toc.itemTopOffsets>([]);
 
   const toc = _getToc(props.markdown);
 
@@ -34,9 +36,15 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
     calculateItemTopOffsets();
   }, []);
   useEffect(() => {
-    window.addEventListener('scroll', throttledHandleScroll);
+    window.addEventListener(
+      'scroll',
+      throttledHandleScroll
+    );
     return () => {
-      window.removeEventListener('scroll', throttledHandleScroll);
+      window.removeEventListener(
+        'scroll',
+        throttledHandleScroll
+      );
     };
   }, [itemTopOffsets]);
 
@@ -44,23 +52,36 @@ const RenderTOC: React.FC<{ markdown: string }> = (props) => {
     setItemTopOffsets(_getElementTopOffsetsById(toc));
   };
 
-  const throttledHandleScroll = throttle(() => handleScroll(), 100);
+  const throttledHandleScroll = throttle(
+    () => handleScroll(),
+    100
+  );
   const handleScroll = () => {
     const item = itemTopOffsets.find((current, i) => {
       const next = itemTopOffsets[i + 1];
 
       return next
         ? current &&
-            window.scrollY + OFFSET_ACTIVE_ITEM >= current.offsetTop &&
-            window.scrollY + OFFSET_ACTIVE_ITEM < next.offsetTop
-        : current && window.scrollY + OFFSET_ACTIVE_ITEM >= current.offsetTop;
+            window.scrollY + OFFSET_ACTIVE_ITEM >=
+              current.offsetTop &&
+            window.scrollY + OFFSET_ACTIVE_ITEM <
+              next.offsetTop
+        : current &&
+            window.scrollY + OFFSET_ACTIVE_ITEM >=
+              current.offsetTop;
     });
     const nowActiveItemIds = item ? [item.id] : null;
 
     setActiveItemIds(nowActiveItemIds);
   };
 
-  return <TOC activeItemIds={activeItemIds} toc={toc} {...props} />;
+  return (
+    <TOC
+      activeItemIds={activeItemIds}
+      toc={toc}
+      {...props}
+    />
+  );
 };
 export default RenderTOC;
 
@@ -72,7 +93,9 @@ const _getToc: render.toc.getToc = (rawMarkdownBody) => {
   const ast = remark().parse(rawMarkdownBody);
   visit<any>(ast, 'heading', (child) => {
     const value = child.children[0].value;
-    const id = githubSlugger.slug(value || mdastToString(child));
+    const id = githubSlugger.slug(
+      value || mdastToString(child)
+    );
     const depth = child.depth ? child.depth : 0;
     result.push({
       value,
@@ -83,18 +106,17 @@ const _getToc: render.toc.getToc = (rawMarkdownBody) => {
 
   return result;
 };
-const _getElementTopOffsetsById: render.toc.getElementTopOffsetsById = (
-  ids
-) => {
-  return ids
-    .map((item) => {
-      const element = document.getElementById(item.id);
-      return item.depth <= MAX_DEPTH && element
-        ? {
-            id: item.id,
-            offsetTop: element.offsetTop,
-          }
-        : null;
-    })
-    .filter((item) => item);
-};
+const _getElementTopOffsetsById: render.toc.getElementTopOffsetsById =
+  (ids) => {
+    return ids
+      .map((item) => {
+        const element = document.getElementById(item.id);
+        return item.depth <= MAX_DEPTH && element
+          ? {
+              id: item.id,
+              offsetTop: element.offsetTop,
+            }
+          : null;
+      })
+      .filter((item) => item);
+  };

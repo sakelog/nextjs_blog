@@ -1,6 +1,6 @@
 import { SocialIcon } from 'react-social-icons';
 
-import config from '@component/config';
+import config from '@components/config';
 
 const RenderSocialIcon: React.FC = () => {
   const githubBase = 'https://github.com/';
@@ -11,7 +11,11 @@ const RenderSocialIcon: React.FC = () => {
   return (
     <ul>
       <li key="github">
-        <SocialIcon url={githubPath} fgColor="#ffffff" bgColor="#333333" />
+        <SocialIcon
+          url={githubPath}
+          fgColor="#ffffff"
+          bgColor="#333333"
+        />
       </li>
       <li key="twitter">
         <SocialIcon url={twitterPath} fgColor="#ffffff" />

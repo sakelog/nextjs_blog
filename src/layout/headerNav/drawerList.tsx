@@ -1,12 +1,21 @@
 import loadable from '@loadable/component';
-import { Divider, CircularProgress } from '@material-ui/core';
+import {
+  Divider,
+  CircularProgress,
+} from '@material-ui/core';
 
-const PageList = loadable(() => import('@layout/headerNav/pageList'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const SocialIcon = loadable(() => import('@component/socialIcon'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+const PageList = loadable(
+  () => import('@layout/headerNav/pageList'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
+const SocialIcon = loadable(
+  () => import('@components/socialIcon'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';
 

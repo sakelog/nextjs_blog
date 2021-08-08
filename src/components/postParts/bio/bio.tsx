@@ -1,8 +1,8 @@
 import { Grid } from '@material-ui/core';
 
-import config from '@component/config';
+import config from '@components/config';
 import ProfileIcon from './_profileIcon';
-import SocialIcon from '@component/socialIcon';
+import SocialIcon from '@components/socialIcon';
 
 import { bioStyles as useStyles } from '@styles/component/post__bio.style';
 
@@ -18,14 +18,19 @@ const Bio: React.FC = () => {
           </div>
         </Grid>
         <Grid item xs={12} sm={9}>
-          <div className={styles.author}>{config.author}</div>
+          <div className={styles.author}>
+            {config.author}
+          </div>
           <div className={styles.socialIcon}>
             <SocialIcon />
           </div>
         </Grid>
       </Grid>
       <div>
-        <p>現役システムエンジニア。 普段はホスト系のお仕事してます。</p>
+        <p>
+          現役システムエンジニア。
+          普段はホスト系のお仕事してます。
+        </p>
         <p>
           ブログでは主にWeb関係の技術について、勉強したことや実際にコーディングしてみた内容を発信していきます。
         </p>

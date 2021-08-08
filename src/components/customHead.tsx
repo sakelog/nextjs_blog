@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import config from '@component/config';
-const GTMScript = dynamic(() => import('@scripts/gtmScript'));
+import config from '@components/config';
+const GTMScript = dynamic(
+  () => import('@scripts/gtmScript')
+);
 
 type propsType = {
   pageTitle?: string | null;
@@ -12,7 +14,8 @@ type propsType = {
 
 const CustomHead: React.FC<propsType> = (props) => {
   const metaTitle =
-    (props.pageTitle ? props.pageTitle + ' | ' : '') + config.title;
+    (props.pageTitle ? props.pageTitle + ' | ' : '') +
+    config.title;
   const metaDiscription = props.description
     ? props.description
     : config.description;
@@ -26,19 +29,37 @@ const CustomHead: React.FC<propsType> = (props) => {
     <>
       <Head>
         <title>{metaTitle}</title>
-        <meta name="description" content={metaDiscription} />
+        <meta
+          name="description"
+          content={metaDiscription}
+        />
         <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDiscription} />
+        <meta
+          property="og:description"
+          content={metaDiscription}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={ogpImageSrc} />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content={metaTitle} />
-        <meta property="twitter:description" content={metaDiscription} />
+        <meta
+          property="twitter:card"
+          content="summary_large_image"
+        />
+        <meta
+          property="twitter:title"
+          content={metaTitle}
+        />
+        <meta
+          property="twitter:description"
+          content={metaDiscription}
+        />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <meta name="theme-color" content={config.themeColor} />
+        <meta
+          name="theme-color"
+          content={config.themeColor}
+        />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"

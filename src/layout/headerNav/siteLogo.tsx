@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import config from '@component/config';
+import config from '@components/config';
 import { Hidden } from '@material-ui/core';
 
 import { headerStyles as useStyles } from '@styles/project/header.styles';

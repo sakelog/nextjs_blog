@@ -1,18 +1,26 @@
 import loadable from '@loadable/component';
 import { Paper, CircularProgress } from '@material-ui/core';
 
-import CustomHead from '@component/customHead';
+import CustomHead from '@components/customHead';
 
-const ArticleBody = loadable(() => import('@component/postParts/articleBody'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+const ArticleBody = loadable(
+  () => import('@components/postParts/articleBody'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
+const BackToTop = loadable(
+  () => import('@components/pagination/backToTop'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
 
 import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
 
-const Temp_Page: React.FC<Template.page.props> = (props) => {
+const Temp_Page: React.FC<Template.page.props> = (
+  props
+) => {
   const wrapperStyles = pageWrapperStyles();
   const body = props.page.fields.body;
   return (

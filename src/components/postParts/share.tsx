@@ -14,7 +14,7 @@ import { Snackbar, IconButton } from '@material-ui/core';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CloseIcon from '@material-ui/icons/Close';
 
-import config from '@component/config';
+import config from '@components/config';
 
 import { shareStyles as useStyles } from '@styles/component/post__share.style';
 
@@ -52,7 +52,9 @@ const Share: React.FC<propsType> = (props) => {
   };
   return (
     <section className={styles.root}>
-      <h2 className="u-heading--flexLeft">記事を共有する</h2>
+      <h2 className="u-heading--flexLeft">
+        記事を共有する
+      </h2>
       <div className={styles.buttons}>
         <TwitterShareButton
           url={props.url}
@@ -61,23 +63,39 @@ const Share: React.FC<propsType> = (props) => {
         >
           <TwitterIcon round={true} />
         </TwitterShareButton>
-        <LineShareButton url={props.url} title={props.title}>
+        <LineShareButton
+          url={props.url}
+          title={props.title}
+        >
           <LineIcon round={true} />
         </LineShareButton>
-        <HatenaShareButton url={props.url} title={props.title}>
+        <HatenaShareButton
+          url={props.url}
+          title={props.title}
+        >
           <HatenaIcon round={true} />
         </HatenaShareButton>
-        <PocketShareButton url={props.url} title={props.title}>
+        <PocketShareButton
+          url={props.url}
+          title={props.title}
+        >
           <PocketIcon round={true} />
         </PocketShareButton>
         <div
           className={styles.copyButton}
           onClick={() => {
-            handleClick(), handleChangeText(props.title + ' ' + props.url);
+            handleClick(),
+              handleChangeText(
+                props.title + ' ' + props.url
+              );
           }}
         >
-          <CopyToClipboard text={props.title + ' ' + props.url}>
-            <AssignmentIcon className={styles.copyButtonIcon} />
+          <CopyToClipboard
+            text={props.title + ' ' + props.url}
+          >
+            <AssignmentIcon
+              className={styles.copyButtonIcon}
+            />
           </CopyToClipboard>
         </div>
       </div>

@@ -4,7 +4,7 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "printWidth":80,
+  "printWidth":60,
   "proseWrap":"preserve",
   "arrowParens": "always"
 }

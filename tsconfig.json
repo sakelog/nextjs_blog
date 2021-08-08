@@ -22,8 +22,8 @@
       "@layout/*": [
         "layout/*"
       ],
-      "@component/*": [
-        "component/*"
+      "@components/*": [
+        "components/*"
       ],
       "@lib/*": [
         "lib/*"

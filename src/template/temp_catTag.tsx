@@ -11,44 +11,68 @@ import {
 
 import { getRootPath } from '@lib/getPath';
 
-import CustomHead from '@component/customHead';
+import CustomHead from '@components/customHead';
 
-const PostDate = loadable(() => import('@component/postDate'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const CategoryTag = loadable(() => import('@component/categoryTag'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const TagList = loadable(() => import('@component/tagList'));
-const Pagination = loadable(() => import('@component/pagination/pagination'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const BackToTop = loadable(() => import('@component/pagination/backToTop'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+const PostDate = loadable(
+  () => import('@components/postDate'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
+const CategoryTag = loadable(
+  () => import('@components/categoryTag'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
+const TagList = loadable(
+  () => import('@components/tagList')
+);
+const Pagination = loadable(
+  () => import('@components/pagination/pagination'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
+const BackToTop = loadable(
+  () => import('@components/pagination/backToTop'),
+  {
+    fallback: <CircularProgress color="secondary" />,
+  }
+);
 
 import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
 
 const TAGS = 'tags';
 const CATEGORY = 'category';
 
-const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
+const Temp_CatTag: React.FC<Template.catTagList.props> = (
+  props
+) => {
   const styles = useStyles();
   const pageTitle =
-    (props.type === TAGS ? 'タグ：' : 'カテゴリー：') + props.name;
+    (props.type === TAGS ? 'タグ：' : 'カテゴリー：') +
+    props.name;
   const description =
     pageTitle +
     'についての一覧ページ' +
-    (props.currentPage > 1 ? ':' + props.currentPage + 'ページ目' : '');
+    (props.currentPage > 1
+      ? ':' + props.currentPage + 'ページ目'
+      : '');
   const postListTag = props.posts
     ? props.posts.map((post: contentful.post) => {
         const categoryTag = props.type === TAGS && (
           <ListItem>
-            <CategoryTag category={post.fields.category} heading="h3" />
+            <CategoryTag
+              category={post.fields.category}
+              heading="h3"
+            />
           </ListItem>
         );
 
-        const tagList = <TagList tags={post.fields.tags} heading="h4" />;
+        const tagList = (
+          <TagList tags={post.fields.tags} heading="h4" />
+        );
         const tagsTag = props.type === CATEGORY && (
           <ListItem>{tagList}</ListItem>
         );
@@ -56,7 +80,9 @@ const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
           <Grid item xs={12} sm={6} key={post.fields.slug}>
             <Link href={getRootPath(post.fields.slug)}>
               <Card className={styles.post}>
-                <h2 className={styles.title}>{post.fields.title}</h2>
+                <h2 className={styles.title}>
+                  {post.fields.title}
+                </h2>
                 <CardContent>
                   <div className={styles.subItem}>
                     <List>
@@ -80,7 +106,9 @@ const Temp_CatTag: React.FC<Template.catTagList.props> = (props) => {
       <CustomHead
         pageTitle={
           pageTitle +
-          (props.currentPage > 1 ? '(' + props.currentPage + ')' : '')
+          (props.currentPage > 1
+            ? '(' + props.currentPage + ')'
+            : '')
         }
         description={description}
       />
