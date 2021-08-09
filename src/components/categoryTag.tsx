@@ -1,6 +1,6 @@
-import React from 'react';
+import { createElement } from 'react';
 import Link from 'next/link';
-import { Button } from '@material-ui/core';
+
 import { getCategoryPath } from '@lib/getPath';
 
 type PropsType = {
@@ -8,13 +8,22 @@ type PropsType = {
   heading: string;
 };
 
-const CategoryTag: React.FC<PropsType> = (props) => {
+const CategoryTag = (props: PropsType) => {
   return (
-    <Button variant="outlined">
-      <Link href={getCategoryPath(props.category.fields.slug)}>
-        {React.createElement(props.heading, {}, props.category.fields.name)}
-      </Link>
-    </Button>
+    <Link
+      href={getCategoryPath(props.category.fields.slug)}
+    >
+      <a
+        className="border border-gray-400 rounded py-2 px-4 inline-block text-sm
+                  hover:bg-gray-200"
+      >
+        {createElement(
+          props.heading,
+          {},
+          props.category.fields.name
+        )}
+      </a>
+    </Link>
   );
 };
 

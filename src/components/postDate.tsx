@@ -1,28 +1,28 @@
 import { format } from 'date-fns';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import UpdateIcon from '@material-ui/icons/Update';
-import { ListItem } from '@material-ui/core';
+import {
+  HiOutlineCalendar,
+  HiOutlineRefresh,
+} from 'react-icons/hi';
 
-import { postDateStyles as useStyles } from '@styles/component/postDate.style';
+import style from '@styles/postDate.module.scss';
 
 type propsType = {
   postdate: string;
   update?: string;
 };
 
-const PostDate: React.FC<propsType> = (props) => {
-  const styles = useStyles();
+const PostDate = (props: propsType) => {
   const postDateTag = (
-    <ListItem>
-      <CalendarTodayIcon className={styles.icon} />
+    <li className={style.listItem}>
+      <HiOutlineCalendar />
       {getFormatDate(props.postdate)}
-    </ListItem>
+    </li>
   );
   const updateTag = props.update && (
-    <ListItem>
-      <UpdateIcon className={styles.icon} />
+    <li className={style.listItem}>
+      <HiOutlineRefresh />
       {getFormatDate(props.update)}
-    </ListItem>
+    </li>
   );
 
   return (
@@ -35,8 +35,8 @@ const PostDate: React.FC<propsType> = (props) => {
 
 export default PostDate;
 
-function getFormatDate(date: string) {
+const getFormatDate = (date: string) => {
   const formatDate = format(new Date(date), 'yyyy年M月d日');
 
   return formatDate;
-}
+};

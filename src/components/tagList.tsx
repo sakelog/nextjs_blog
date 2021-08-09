@@ -1,3 +1,42 @@
+import { createElement } from 'react';
+import Link from 'next/link';
+import { HiOutlineTag } from 'react-icons/hi';
+
+import { getTagPath } from '@lib/getPath';
+
+type PropsType = {
+  tags: contentful.tags[];
+  heading: string;
+};
+
+const TagList = (props: PropsType) => {
+  const listItems = props.tags.map((tag) => {
+    return (
+      <li key={tag.fields.slug} className="w-auto">
+        <Link href={getTagPath(tag.fields.slug)}>
+          <a className="rounded hover:bg-gray-200 flex items-center">
+            <HiOutlineTag />
+            {createElement(
+              props.heading,
+              {},
+              tag.fields.name
+            )}
+          </a>
+        </Link>
+      </li>
+    );
+  });
+
+  return (
+    <ul className="inline-flex justify-start flex-wrap text-sm space-x-2">
+      {listItems}
+    </ul>
+  );
+};
+
+export default TagList;
+
+/*
 import React from 'react';
 import Link from 'next/link';
 import { Button, List, ListItem } from '@material-ui/core';
@@ -29,3 +68,4 @@ const TagList: React.FC<PropsType> = (props) => {
 };
 
 export default TagList;
+*/
