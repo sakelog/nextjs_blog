@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
-
-import RenderTOC from '@lib/renderTOC';
+import loadable from '@loadable/component';
+const RenderTOC = loadable(
+  () => import('@lib/renderTOC'),
+  {}
+);
 
 import CustomHead from '@components/customHead';
 import ArticleBody from '@components/postParts/articleBody';

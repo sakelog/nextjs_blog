@@ -76,18 +76,6 @@ const CustomHead: React.FC<propsType> = (props) => {
           crossOrigin="anonymous"
         />
         <link
-          rel="stylesheet"
-          href={
-            'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
-          }
-        />
-        <link
-          href={
-            'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'
-          }
-          rel="stylesheet"
-        />
-        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/img/icons/apple-touch-icon.png"

@@ -1,5 +1,10 @@
 import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
@@ -10,12 +15,29 @@ export default class MyDocument extends Document {
   height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
     return (
       <Html lang="ja">
-        <Head />
+        <Head>
+          <link
+            rel="stylesheet"
+            href={
+              'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+            }
+          />
+          <link
+            href={
+              'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'
+            }
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
           {GTMNoScript && (
-            <noscript dangerouslySetInnerHTML={{ __html: GTMNoScript }} />
+            <noscript
+              dangerouslySetInnerHTML={{
+                __html: GTMNoScript,
+              }}
+            />
           )}
         </body>
       </Html>
@@ -54,7 +76,8 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props) =>
+        sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);

@@ -1,7 +1,11 @@
 /*==========================================================
 参考：https://github.com/Takumon/react-markdown-sync-toc
 ============================================================*/
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 import { throttle } from 'lodash';
 import loadable from '@loadable/component';
 import { CircularProgress } from '@material-ui/core';
@@ -32,31 +36,10 @@ const RenderTOC: React.FC<{ markdown: string }> = (
 
   const toc = _getToc(props.markdown);
 
-  useEffect(() => {
-    calculateItemTopOffsets();
-  }, []);
-  useEffect(() => {
-    window.addEventListener(
-      'scroll',
-      throttledHandleScroll
-    );
-    return () => {
-      window.removeEventListener(
-        'scroll',
-        throttledHandleScroll
-      );
-    };
-  }, [itemTopOffsets]);
-
-  const calculateItemTopOffsets = () => {
+  const calculateItemTopOffsets = useCallback(() => {
     setItemTopOffsets(_getElementTopOffsetsById(toc));
-  };
-
-  const throttledHandleScroll = throttle(
-    () => handleScroll(),
-    100
-  );
-  const handleScroll = () => {
+  }, [toc]);
+  const handleScroll = useCallback(() => {
     const item = itemTopOffsets.find((current, i) => {
       const next = itemTopOffsets[i + 1];
 
@@ -73,7 +56,26 @@ const RenderTOC: React.FC<{ markdown: string }> = (
     const nowActiveItemIds = item ? [item.id] : null;
 
     setActiveItemIds(nowActiveItemIds);
-  };
+  }, [itemTopOffsets]);
+  const throttledHandleScroll = useCallback(() => {
+    throttle(() => handleScroll(), 100);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    calculateItemTopOffsets;
+  }, [calculateItemTopOffsets]);
+  useEffect(() => {
+    window.addEventListener(
+      'scroll',
+      throttledHandleScroll
+    );
+    return () => {
+      window.removeEventListener(
+        'scroll',
+        throttledHandleScroll
+      );
+    };
+  }, [throttledHandleScroll]);
 
   return (
     <TOC

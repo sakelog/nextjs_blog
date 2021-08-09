@@ -5,6 +5,7 @@ const ProfileIcon = () => {
     <>
       <Image
         src="/img/profile.png"
+        alt="プロフィール画像"
         width={200}
         height={200}
         layout="intrinsic"
