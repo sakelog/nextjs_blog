@@ -1,3 +1,7 @@
+@use './Object/Component/c-article__appreach';
+@use './Object/Component/c-article__yomereba';
+@use './Object/Utility/u-heading.scss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,13 +17,3 @@
     @apply text-theme hover:underline;
   }
 }
-/*
-// Foundation-----------------------------------------------------------------------
-@use './Foundation/base';
-// Object--------------------------------------------------------------------------
-// -- Component--------------------------------------------------------------------
-@use './Object/Component/c-article__appreach';
-@use './Object/Component/c-article__yomereba';
-// -- Utility----------------------------------------------------------------------
-@use './Object/Utility/u-heading.scss';
-*/

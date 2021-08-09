@@ -27,6 +27,9 @@ module.exports = {
         ],
         logo: ['"Press Start 2P"', 'cursive'],
       },
+      backgroundImage: (theme) => ({
+        external: "url('/img/external-link.svg')",
+      }),
     },
   },
   variants: {
