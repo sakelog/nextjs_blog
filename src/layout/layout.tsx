@@ -1,22 +1,17 @@
-import loadable from '@loadable/component';
-import { Container, CircularProgress } from '@material-ui/core';
-const Header = loadable(() => import('@layout/_header'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-const Footer = loadable(() => import('@layout/_footer'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+import Header from '@layout/_header';
+import Footer from '@layout/_footer';
 
-import { layoutStyles as useStyles } from '@styles/layout/layout.style';
-
-const Layout: React.FC = (props) => {
-  const styles = useStyles();
+const Layout = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return (
-    <div className={styles.wrapper}>
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <Container className={styles.main}>
-        <main>{props.children}</main>
-      </Container>
+      <div className="container mx-auto flex-1">
+        <main>{children}</main>
+      </div>
       <Footer />
     </div>
   );

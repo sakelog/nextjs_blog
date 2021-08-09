@@ -1,84 +1,14 @@
 import Link from 'next/link';
-import loadable from '@loadable/component';
-import {
-  Grid,
-  Card,
-  CardContent,
-  List,
-  ListItem,
-  CircularProgress,
-} from '@material-ui/core';
-
-import { getRootPath } from '@lib/getPath';
 
 import config from '@components/config';
 
 import CustomHead from '@components/customHead';
-const PostDate = loadable(
-  () => import('@components/postDate'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-const CategoryTag = loadable(
-  () => import('@components/categoryTag'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-const TagList = loadable(
-  () => import('@components/tagList'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-const Pagination = loadable(
-  () => import('@components/pagination/pagination'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
+import Pagination from '@components/pagination/pagination';
+import TagList from '@components/tagList';
+import CategoryTag from '@components/categoryTag';
+import PostDate from '@components/postDate';
 
-import { postlistStyles as useStyles } from '@styles/project/postlist.styles';
-
-const Temp_PostList: React.FC<Template.postList.props> = (
-  props
-) => {
-  const styles = useStyles();
-  const postListTag = props.posts.map(
-    (post: contentful.post) => {
-      const tagList = (
-        <TagList tags={post.fields.tags} heading="h4" />
-      );
-      return (
-        <Grid item xs={12} sm={6} key={post.fields.slug}>
-          <Link href={getRootPath(post.fields.slug)}>
-            <Card className={styles.post}>
-              <h2 className={styles.title}>
-                {post.fields.title}
-              </h2>
-              <CardContent>
-                <List className={styles.subItem}>
-                  <ListItem>
-                    <CategoryTag
-                      category={post.fields.category}
-                      heading="h3"
-                    />
-                  </ListItem>
-                  <PostDate
-                    postdate={post.fields.date}
-                    update={post.fields.update}
-                  />
-                  <ListItem>{tagList}</ListItem>
-                </List>
-              </CardContent>
-            </Card>
-          </Link>
-        </Grid>
-      );
-    }
-  );
-
+const TempPostList = (props: Template.postList.props) => {
   const pageTitle = props.currentPage
     ? props.currentPage > 1
       ? '記事一覧：' + props.currentPage + 'ページ目'
@@ -90,16 +20,52 @@ const Temp_PostList: React.FC<Template.postList.props> = (
       : config.description
     : '';
 
+  const postListTag = props.posts.map(
+    (post: contentful.post) => {
+      const tagList = (
+        <TagList tags={post.fields.tags} heading="h4" />
+      );
+      return (
+        <div
+          key={post.fields.slug}
+          className="bg-white p-2 rounded shadow"
+        >
+          <Link href={'/' + post.fields.slug}>
+            <a>
+              <div>
+                <h2 className="text-xl font-semibold my-2">
+                  {post.fields.title}
+                </h2>
+                <ul className="p-2">
+                  <li>
+                    <CategoryTag
+                      category={post.fields.category}
+                      heading="h3"
+                    />
+                  </li>
+                  <PostDate
+                    postdate={post.fields.date}
+                    update={post.fields.update}
+                  />
+                  <li>{tagList}</li>
+                </ul>
+              </div>
+            </a>
+          </Link>
+        </div>
+      );
+    }
+  );
   return (
     <>
       <CustomHead
         pageTitle={pageTitle}
         description={description}
       />
-      <section>
-        <Grid container spacing={2}>
+      <section className="p-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {postListTag}
-        </Grid>
+        </div>
         <Pagination
           currentPage={props.currentPage}
           lastPage={props.lastPage}
@@ -110,4 +76,4 @@ const Temp_PostList: React.FC<Template.postList.props> = (
   );
 };
 
-export default Temp_PostList;
+export default TempPostList;
