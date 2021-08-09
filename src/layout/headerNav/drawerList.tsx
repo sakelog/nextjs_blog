@@ -1,15 +1,25 @@
+import PageList from '@layout/headerNav/pageList';
+import SocialIcon from '@components/socialIcon';
+
+import style from '@styles/drawerList.module.scss';
+
+const DrawerList = () => {
+  return (
+    <div className={style.wrapper}>
+      <PageList />
+      <div className={style.socialIcon}>
+        <SocialIcon />
+      </div>
+    </div>
+  );
+};
+/*
 import loadable from '@loadable/component';
 import {
   Divider,
   CircularProgress,
 } from '@material-ui/core';
 
-const PageList = loadable(
-  () => import('@layout/headerNav/pageList'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
 const SocialIcon = loadable(
   () => import('@components/socialIcon'),
   {
@@ -23,7 +33,6 @@ const Drawer: React.FC = () => {
   const styles = useStyles();
   return (
     <div className={styles.drawerList}>
-      <PageList />
       <Divider />
       <div className={styles.socialIcon}>
         <SocialIcon />
@@ -31,5 +40,6 @@ const Drawer: React.FC = () => {
     </div>
   );
 };
+*/
 
-export default Drawer;
+export default DrawerList;

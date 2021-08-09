@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-800 font-sans;
+  }
+}
+/*
 // Foundation-----------------------------------------------------------------------
 @use './Foundation/reset';
 @use './Foundation/base';
@@ -7,3 +17,4 @@
 @use './Object/Component/c-article__yomereba';
 // -- Utility----------------------------------------------------------------------
 @use './Object/Utility/u-heading.scss';
+*/

@@ -1,19 +1,16 @@
 import Link from 'next/link';
 import config from '@components/config';
-import { Hidden } from '@material-ui/core';
 
-import { headerStyles as useStyles } from '@styles/project/header.styles';
-
-const SiteLogo: React.FC = () => {
-  const styles = useStyles();
+const SiteLogo = () => {
   const firstChar = config.title.slice(0, 1);
   const remain = config.title.slice(1);
+
   return (
     <Link href="/">
-      <span className={styles.title}>
-        {firstChar}
-        <Hidden xsDown>{remain}</Hidden>
-      </span>
+      <a className="text-white font-logo">
+        <span>{firstChar}</span>
+        <span className="hidden sm:inline">{remain}</span>
+      </a>
     </Link>
   );
 };

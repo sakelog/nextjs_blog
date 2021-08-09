@@ -1,10 +1,6 @@
 import config from '@components/config';
 
-//import styles from '@styles/layout/_l-footer.module.scss';
-import { footerStyles as useStyles } from '@styles/layout/footer.style';
-
-const Footer: React.FC = () => {
-  const styles = useStyles();
+const Footer = () => {
   const siteTitle = config.title;
   const startDate = new Date(config.createAt);
   const startYear = startDate.getFullYear();
@@ -17,10 +13,11 @@ const Footer: React.FC = () => {
       ? startYear + '-' + nowYear + siteTitle
       : startYear + siteTitle;
   return (
-    <footer className={styles.root}>
-      <small>
-        <p>&copy;{copyText}</p>
-      </small>
+    <footer
+      className="bg-gray-600 text-white 
+                  flex items-center justify-center p-2 mt-auto"
+    >
+      <p className="text-sm">&copy;{copyText}</p>
     </footer>
   );
 };

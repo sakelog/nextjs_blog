@@ -1,0 +1,21 @@
+.wrapper {
+  width: 80vw;
+  @apply sm:w-auto sm:flex sm:items-center sm:justify-between;
+  @apply sm:relative sm:overflow-x-auto sm:overflow-y-hidden;
+  @apply p-2 space-y-2 sm:space-y-0 divide-y divide-gray-400 sm:divide-y-0;
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    @apply rounded-sm border-0;
+  }
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-gray-200;
+  }
+}
+.socialIcon {
+  > ul {
+    @apply flex flex-wrap py-2 px-1 space-x-2;
+    @apply sm:flex-1;
+  }
+}

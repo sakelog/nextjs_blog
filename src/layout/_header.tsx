@@ -1,43 +1,18 @@
 import { useState, useEffect } from 'react';
-import loadable from '@loadable/component';
 import { Router } from 'next/router';
-import {
-  AppBar,
-  Toolbar,
-  Hidden,
-  SwipeableDrawer,
-  IconButton,
-  CircularProgress,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import config from '@components/config';
+import { SwipeableDrawer } from '@material-ui/core';
 
-const SiteLogo = loadable(
-  () => import('./headerNav/siteLogo'),
-  {
-    fallback: <>{config.title}</>,
-  }
-);
-const Search = loadable(
-  () => import('./headerNav/search/search'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-const DrawerList = loadable(
-  () => import('./headerNav/drawerList'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
+import SiteLogo from '@layout/headerNav/siteLogo';
+import Search from '@layout/headerNav/search/search';
+import DrawerList from '@layout/headerNav/drawerList';
 
-import { headerStyles as useStyles } from '@styles/project/header.styles';
+import { HiMenu } from 'react-icons/hi';
 
-const Header: React.FC = () => {
-  const styles = useStyles();
+const Header = () => {
   const [drawerState, setDrawerState] = useState(false);
   const handleOpen = () => setDrawerState(true);
   const handleClose = () => setDrawerState(false);
+
   useEffect(() => {
     Router.events.on('routeChangeStart', () =>
       handleClose()
@@ -47,25 +22,42 @@ const Header: React.FC = () => {
     );
   }, []);
   return (
-    <>
-      <AppBar position="sticky">
-        <Toolbar>
-          <SiteLogo />
-          <Search />
-          <Hidden xsDown>
+    <header className="sticky top-0 z-40">
+      <nav
+        className="text-white bg-theme flex items-center space-x-2
+                    overflow-x-hidden p-2"
+      >
+        <SiteLogo />
+        <Search />
+        <div className="hidden sm:block">
+          <DrawerList />
+        </div>
+        <div className="sm:hidden">
+          <HiMenu aria-label="Menu" onClick={handleOpen} />
+        </div>
+        <div className="sm:hidden">
+          <SwipeableDrawer
+            open={drawerState}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            anchor={'right'}
+          >
             <DrawerList />
-          </Hidden>
-          <Hidden smUp>
-            <IconButton
-              color="inherit"
-              onClick={handleOpen}
-              aria-label="Menu"
-            >
-              <MenuIcon className={styles.menuIcon} />
-            </IconButton>
-          </Hidden>
-        </Toolbar>
-      </AppBar>
+          </SwipeableDrawer>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
+/*
+import config from '@components/config';
+
+const Header: React.FC = () => {
+
+  return (
+    <>
       <Hidden smUp>
         <SwipeableDrawer
           open={drawerState}
@@ -81,3 +73,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+*/

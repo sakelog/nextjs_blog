@@ -13,18 +13,6 @@ let defaultTheme = createMuiTheme({
     },
     secondary: grey,
   },
-  typography: {
-    fontFamily: [
-      'Roboto',
-      '"Hiragino Sans"',
-      '"Hiragino Kaku Gothic ProN"',
-      '"Yu Gothic"',
-      'Meiryo',
-      'sans-serif',
-    ].join(','),
-    htmlFontSize: 10,
-    fontSize: 16,
-  },
 });
 
 defaultTheme = responsiveFontSizes(defaultTheme);

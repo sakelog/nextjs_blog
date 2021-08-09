@@ -1,27 +1,48 @@
 import Link from 'next/link';
-import { List, ListItem } from '@material-ui/core';
 
-import { getRootPath } from '@lib/getPath';
+const PageList = () => {
+  const PATH_TAG = '/tags';
+  const NAME_TAG = 'タグ一覧';
+  const PATH_ABOUT = '/about_this_site';
+  const NAME_ABOUT = 'このサイトについて';
+  const PATH_PRIVACY = '/privacy';
+  const NAME_PRIVACY = 'プライバシーポリシー';
+  const PATH_CONTACT = '/contact';
+  const NAME_CONTACT = 'お問い合わせ';
 
-import { headerStyles as useStyles } from '@styles/project/header.styles';
-
-const PageList: React.FC = () => {
-  const styles = useStyles();
   return (
-    <List className={styles.pageList}>
-      <ListItem key="tags" button>
-        <Link href={getRootPath('tags')}>タグ一覧</Link>
-      </ListItem>
-      <ListItem key="about_this_site" button>
-        <Link href={getRootPath('about_this_site')}>このサイトについて</Link>
-      </ListItem>
-      <ListItem key="privacy" button>
-        <Link href={getRootPath('privacy')}>プライバシーポリシー</Link>
-      </ListItem>
-      <ListItem key="contact" button>
-        <Link href={getRootPath('contact')}>お問い合わせ</Link>
-      </ListItem>
-    </List>
+    <>
+      <ul className="sm:flex sm:space-x-2">
+        <li>
+          <Link href={PATH_TAG}>
+            <a className="hover:bg-gray-600 p-2">
+              {NAME_TAG}
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href={PATH_ABOUT}>
+            <a className="hover:bg-gray-600 p-2">
+              {NAME_ABOUT}
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href={PATH_PRIVACY}>
+            <a className="hover:bg-gray-600 p-2">
+              {NAME_PRIVACY}
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href={PATH_CONTACT}>
+            <a className="hover:bg-gray-600 p-2">
+              {NAME_CONTACT}
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </>
   );
 };
 

@@ -11,9 +11,8 @@ module.exports = {
     extend: {
       colors: {
         gray: colors.blueGray,
-        main: {
-          DEFAULT: '#001e43',
-          light: '#004599',
+        theme: {
+          DEFAULT: '#5b7e91',
         },
       },
       fontFamily: {
@@ -30,6 +29,7 @@ module.exports = {
           'Meiryo',
           'sans-serif',
         ],
+        logo: ['"Press Start 2P"', 'cursive'],
       },
     },
   },
