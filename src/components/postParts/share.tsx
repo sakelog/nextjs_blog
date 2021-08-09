@@ -11,15 +11,12 @@ import {
 } from 'react-share';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Snackbar, IconButton } from '@material-ui/core';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import CloseIcon from '@material-ui/icons/Close';
+import {
+  HiOutlineClipboardList,
+  HiOutlineXCircle,
+} from 'react-icons/hi';
 
 import config from '@components/config';
-
-import { shareStyles as useStyles } from '@styles/component/post__share.style';
-
-//import styles from '@styles/component/_c-post__Share.module.scss';
-//import headingStyles from '@styles/component/_c-heading.module.scss';
 
 type propsType = {
   url: string;
@@ -27,7 +24,6 @@ type propsType = {
 };
 
 const Share: React.FC<propsType> = (props) => {
-  const styles = useStyles();
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -51,11 +47,11 @@ const Share: React.FC<propsType> = (props) => {
     setCopiedText('コピー完了：' + text);
   };
   return (
-    <section className={styles.root}>
+    <section>
       <h2 className="u-heading--flexLeft">
         記事を共有する
       </h2>
-      <div className={styles.buttons}>
+      <div className="flex items-center space-x-4 my-2">
         <TwitterShareButton
           url={props.url}
           title={props.title}
@@ -82,7 +78,8 @@ const Share: React.FC<propsType> = (props) => {
           <PocketIcon round={true} />
         </PocketShareButton>
         <div
-          className={styles.copyButton}
+          className="h-16 w-16 flex items-center justify-center bg-gray-600 text-white
+          rounded-full"
           onClick={() => {
             handleClick(),
               handleChangeText(
@@ -93,9 +90,9 @@ const Share: React.FC<propsType> = (props) => {
           <CopyToClipboard
             text={props.title + ' ' + props.url}
           >
-            <AssignmentIcon
-              className={styles.copyButtonIcon}
-            />
+            <span className="text-3xl">
+              <HiOutlineClipboardList />
+            </span>
           </CopyToClipboard>
         </div>
       </div>
@@ -110,7 +107,7 @@ const Share: React.FC<propsType> = (props) => {
         message={copiedText}
         action={
           <IconButton color="inherit" onClick={handleClose}>
-            <CloseIcon />
+            <HiOutlineXCircle />
           </IconButton>
         }
       />

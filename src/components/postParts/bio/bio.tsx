@@ -1,32 +1,27 @@
-import { Grid } from '@material-ui/core';
-
 import config from '@components/config';
 import ProfileIcon from './_profileIcon';
 import SocialIcon from '@components/socialIcon';
 
-import { bioStyles as useStyles } from '@styles/component/post__bio.style';
+import style from '@styles/bio.module.scss';
 
-const Bio: React.FC = () => {
-  const styles = useStyles();
+const Bio = () => {
   return (
-    <section className={styles.root}>
+    <section className="">
       <h2 className="u-heading--flexLeft">執筆者</h2>
-      <Grid container>
-        <Grid item xs={12} sm={3}>
-          <div className={styles.profileIcon}>
-            <ProfileIcon />
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={9}>
-          <div className={styles.author}>
+      <div className="grid grd-cols-1 sm:grid-cols-4 gap-2">
+        <div>
+          <ProfileIcon />
+        </div>
+        <div className="col-span-3">
+          <div className="font-semibold text-lg">
             {config.author}
           </div>
-          <div className={styles.socialIcon}>
+          <div className={style.socialIcon}>
             <SocialIcon />
           </div>
-        </Grid>
-      </Grid>
-      <div>
+        </div>
+      </div>
+      <div className="text-sm">
         <p>
           現役システムエンジニア。
           普段はホスト系のお仕事してます。

@@ -3,9 +3,7 @@
 ============================================================*/
 
 import { Link } from 'react-scroll';
-import { List, ListItem } from '@material-ui/core';
-
-import { TOCStyles as useStyles } from '@styles/component/post__toc.style';
+import style from '@styles/TOC.module.scss';
 
 type propsType = {
   toc: render.toc.iditem[];
@@ -15,7 +13,6 @@ type propsType = {
 const MAX_DEPTH = 3;
 
 const TOC: React.FC<propsType> = (props) => {
-  const styles = useStyles();
   const { toc, activeItemIds } = props;
   const TOCList = toc.map((item) => {
     return (
@@ -27,24 +24,26 @@ const TOC: React.FC<propsType> = (props) => {
           offset={-100}
           key={item.id}
         >
-          <ListItem
-            style={{ marginLeft: `${(item.depth - 2) * 1}rem` }}
-            button
+          <li
+            style={{
+              marginLeft: `${(item.depth - 2) * 1}rem`,
+            }}
             className={
-              activeItemIds && activeItemIds.includes(item.id)
-                ? styles.active
-                : styles.list
+              activeItemIds &&
+              activeItemIds.includes(item.id)
+                ? style.active
+                : style.notActive
             }
           >
             {item.value}
-          </ListItem>
+          </li>
         </Link>
       )
     );
   });
   return (
     <>
-      <List className={styles.root}>{TOCList}</List>
+      <ul className={style.root}>{TOCList}</ul>
     </>
   );
 };
