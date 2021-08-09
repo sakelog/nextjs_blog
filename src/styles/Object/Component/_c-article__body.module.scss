@@ -1,0 +1,38 @@
+.root {
+  @apply leading-loose;
+  > div > div {
+    @apply my-4;
+  }
+  strong {
+    @apply font-bold;
+  }
+  blockquote {
+    @apply my-2 mx-4 p-2 bg-gray-200 rounded;
+  }
+  h2 {
+    @apply text-xl border-b border-gray-600 my-4;
+  }
+  h3 {
+    @apply text-lg border-l-4 border-gray-600 pl-2 my-4;
+  }
+  h4 {
+    @apply font-bold my-4;
+  }
+  h5,
+  h6 {
+    @apply my-4;
+  }
+  ul,
+  ol {
+    @apply list-inside;
+    li {
+      @apply ml-4;
+    }
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+}

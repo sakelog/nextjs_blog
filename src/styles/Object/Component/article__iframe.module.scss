@@ -1,25 +1,14 @@
-@use '../../Foundation/variables' as *;
 @use "sass:math";
 
 .default {
-  position: relative;
-  width: 100%;
-  max-width: $sm;
-  overflow: hidden;
-  margin: 2rem;
+  @apply relative w-full max-w-screen-sm overflow-hidden m-4;
   &::before {
     content: '';
-    display: block;
-    width: 100%;
-    position: relative;
+    @apply block w-full relative;
     padding-top: 100%;
   }
   iframe {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    @apply w-full h-full absolute top-0 left-0;
   }
 }
 .youtube {
