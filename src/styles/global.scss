@@ -6,10 +6,15 @@
   body {
     @apply bg-gray-50 text-gray-800 font-sans;
   }
+  h1 {
+    @apply text-xl mb-2;
+  }
+  a {
+    @apply text-theme hover:underline;
+  }
 }
 /*
 // Foundation-----------------------------------------------------------------------
-@use './Foundation/reset';
 @use './Foundation/base';
 // Object--------------------------------------------------------------------------
 // -- Component--------------------------------------------------------------------

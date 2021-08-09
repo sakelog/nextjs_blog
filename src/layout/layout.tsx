@@ -9,7 +9,7 @@ const Layout = ({
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <div className="container mx-auto flex-1">
+      <div className="container mx-auto my-2 flex-1">
         <main>{children}</main>
       </div>
       <Footer />

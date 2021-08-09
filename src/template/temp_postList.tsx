@@ -33,7 +33,7 @@ const TempPostList = (props: Template.postList.props) => {
           className="bg-white p-2 rounded shadow"
         >
           <Link href={getRootPath(post.fields.slug)}>
-            <a>
+            <a className="hover:no-underline text-gray-800">
               <div>
                 <h2 className="text-xl font-semibold my-2">
                   {post.fields.title}

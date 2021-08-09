@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getRootPath } from '@lib/getPath';
+import style from '@styles/pageList.module.scss';
 
 const PageList = () => {
   const PATH_TAG = 'tags';
@@ -16,30 +17,22 @@ const PageList = () => {
       <ul className="sm:flex sm:space-x-2">
         <li>
           <Link href={getRootPath(PATH_TAG)}>
-            <a className="hover:bg-gray-600 p-2">
-              {NAME_TAG}
-            </a>
+            <a className={style.linkItem}>{NAME_TAG}</a>
           </Link>
         </li>
         <li>
           <Link href={getRootPath(PATH_ABOUT)}>
-            <a className="hover:bg-gray-600 p-2">
-              {NAME_ABOUT}
-            </a>
+            <a className={style.linkItem}>{NAME_ABOUT}</a>
           </Link>
         </li>
         <li>
           <Link href={getRootPath(PATH_PRIVACY)}>
-            <a className="hover:bg-gray-600 p-2">
-              {NAME_PRIVACY}
-            </a>
+            <a className={style.linkItem}>{NAME_PRIVACY}</a>
           </Link>
         </li>
         <li>
           <Link href={getRootPath(PATH_CONTACT)}>
-            <a className="hover:bg-gray-600 p-2">
-              {NAME_CONTACT}
-            </a>
+            <a className={style.linkItem}>{NAME_CONTACT}</a>
           </Link>
         </li>
       </ul>

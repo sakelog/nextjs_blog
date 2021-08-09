@@ -1,30 +1,12 @@
 import { GetStaticProps, NextPage } from 'next';
-import loadable from '@loadable/component';
-import {
-  Paper,
-  Button,
-  Badge,
-  List,
-  ListItem,
-  CircularProgress,
-} from '@material-ui/core/';
-import LabelIcon from '@material-ui/icons/Label';
+import Link from 'next/link';
+import { HiOutlineTag } from 'react-icons/hi';
+
+import CustomHead from '@components/customHead';
+import Layout from '@layout/layout';
+import BackToTop from '@components/pagination/backToTop';
 
 import CreateTagsPageProps from '@lib/createProps/createTagsPageProps';
-
-const Layout = loadable(() => import('@layout/layout'), {
-  fallback: <CircularProgress color="secondary" />,
-});
-import CustomHead from '@components/customHead';
-const BackToTop = loadable(
-  () => import('@components/pagination/backToTop'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-
-import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
-import { tagsPageStyles as useStyles } from '@styles/project/tagPage.style';
 
 type propsType = {
   tagsInfo: {
@@ -35,8 +17,6 @@ type propsType = {
 };
 
 const TagsPage: NextPage<propsType> = (props) => {
-  const wrapperStyles = pageWrapperStyles();
-  const styles = useStyles();
   const PAGE_TITLE = 'タグ一覧ページ';
   const DESCRIPTION = '全タグの一覧ページです';
 
@@ -46,25 +26,25 @@ const TagsPage: NextPage<propsType> = (props) => {
 
   const tagsList = sortedList.map((tag) => {
     return (
-      <ListItem key={tag.name} className={styles.item}>
-        <Badge
-          badgeContent={tag.totalCount}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-          color="primary"
-        >
-          <Button
-            variant="outlined"
-            startIcon={<LabelIcon />}
-            href={tag.path}
-            style={{ textTransform: 'none' }}
+      <li key={tag.name} className="mx-2 my-2">
+        <div className="relative">
+          <Link href={tag.path}>
+            <a
+              className="flex items-center p-2 
+                           border border-gray-400 rounded hover:bg-gray-200"
+            >
+              <HiOutlineTag />
+              {tag.name}
+            </a>
+          </Link>
+          <span
+            className="bg-gray-600 text-white text-sm rounded-full h-6 w-6
+                        flex items-center justify-center absolute -top-2 -left-2"
           >
-            {tag.name}
-          </Button>
-        </Badge>
-      </ListItem>
+            {tag.totalCount}
+          </span>
+        </div>
+      </li>
     );
   });
   return (
@@ -73,10 +53,10 @@ const TagsPage: NextPage<propsType> = (props) => {
         pageTitle={PAGE_TITLE}
         description={DESCRIPTION}
       />
-      <Paper elevation={0} className={wrapperStyles.root}>
+      <div className="bg-white p-4">
         <h1>{PAGE_TITLE}</h1>
-        <List className={styles.item}>{tagsList}</List>
-      </Paper>
+        <ul className="flex flex-wrap">{tagsList}</ul>
+      </div>
       <BackToTop />
     </Layout>
   );

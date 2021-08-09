@@ -18,15 +18,10 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Helvetica Neue"',
-          '"Segoe UI"',
-          '"Hiragino Kaku Gothic ProN"',
+          'Roboto',
           '"Hiragino Sans"',
-          '"ヒラギノ角ゴ ProN W3"',
-          'Arial',
-          'メイリオ',
+          '"Hiragino Kaku Gothic ProN"',
+          '"Yu Gothic"',
           'Meiryo',
           'sans-serif',
         ],
