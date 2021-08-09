@@ -1,4 +1,5 @@
 @use '../../Foundation/variables' as *;
+@use "sass:math";
 
 .default {
   position: relative;
@@ -24,6 +25,6 @@
 .youtube {
   @extend .default;
   &::before {
-    padding-top: (9/16) * 100%;
+    padding-top: math.div(9, 16) * 100%;
   }
 }
