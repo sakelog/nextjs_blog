@@ -1,8 +1,9 @@
-import {
+import type {
   GetStaticProps,
   GetStaticPaths,
   NextPage,
 } from 'next';
+import loadable from '@loadable/component';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import { getAllPages } from '@lib/contentful/exportContent/page';
@@ -17,9 +18,17 @@ import CreatePageProps from '@lib/createProps/createPageProps';
 import CreatePostProps from '@lib/createProps/createPostProps';
 
 // Template
-import TempPostList from '@template/temp_postList';
-import TempPost from '@template/temp_post';
-import TempPage from '@template/temp_page';
+const TempPostList = loadable(
+  () => import('@template/temp_postList')
+);
+const TempPost = loadable(
+  () => import('@template/temp_post'),
+  {}
+);
+const TempPage = loadable(
+  () => import('@template/temp_page'),
+  {}
+);
 
 import Layout from '@layout/layout';
 

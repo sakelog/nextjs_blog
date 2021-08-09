@@ -1,10 +1,14 @@
 import { GetStaticProps, NextPage } from 'next';
+import loadable from '@loadable/component';
 
 import { getAllPosts } from '@lib/contentful/exportContent/postList';
 import CreatePostListProps from '@lib/createProps/createPostListProps';
 
 import Layout from '@layout/layout';
-import TempPostList from '@template/temp_postList';
+const TempPostList = loadable(
+  () => import('@template/temp_postList'),
+  {}
+);
 
 const POST_PER_LISTPAGE = 6;
 

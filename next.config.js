@@ -6,9 +6,7 @@ const nextConfig = {
   },
   pwa: {
     dest: 'public',
-    maximumFileSizeToCacheInBytes: 3000000,
   },
-  productionBrowserSourceMaps: true,
 };
 
 module.exports = withPWA(nextConfig);

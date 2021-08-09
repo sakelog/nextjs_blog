@@ -1,34 +1,13 @@
-import { NextPage } from 'next';
-import loadable from '@loadable/component';
-import {
-  Paper,
-  Container,
-  CircularProgress,
-} from '@material-ui/core';
+import type { NextPage } from 'next';
 
 import config from '@components/config';
 
-const Layout = loadable(() => import('@layout/layout'), {
-  fallback: <CircularProgress color="secondary" />,
-});
+import Layout from '@layout/layout';
 import CustomHead from '@components/customHead';
-const ContactForm = loadable(
-  () => import('@components/contactForm'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-const BackToTop = loadable(
-  () => import('@components/pagination/backToTop'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
-);
-
-import { pageWrapperStyles } from '@styles/layout/pageWrapper.style';
+import ContactForm from '@components/contactForm';
+import BackToTop from '@components/pagination/backToTop';
 
 const Contact: NextPage = () => {
-  const wrapperStyles = pageWrapperStyles();
   const PAGE_TITLE = 'お問い合わせ';
   const description =
     config.title + 'についてのお問い合わせページ';
@@ -39,12 +18,12 @@ const Contact: NextPage = () => {
         pageTitle={PAGE_TITLE}
         description={description}
       />
-      <Paper elevation={0} className={wrapperStyles.root}>
+      <div className="bg-white p-4">
         <h1>{PAGE_TITLE}</h1>
-        <Container maxWidth="sm">
+        <div className="max-w-screen-sm mx-auto">
           <ContactForm />
-        </Container>
-      </Paper>
+        </div>
+      </div>
       <BackToTop />
     </Layout>
   );
