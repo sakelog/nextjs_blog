@@ -1,0 +1,14 @@
+.current {
+  @apply bg-gray-300 rounded;
+  @apply flex justify-center items-center;
+  @apply py-1 px-2;
+}
+.disabled {
+  @apply text-gray-400;
+  @apply flex items-center space-x-1;
+}
+.paginationItem {
+  @apply font-semibold text-theme;
+  @apply hover:underline;
+  @apply flex items-center space-x-1;
+}
