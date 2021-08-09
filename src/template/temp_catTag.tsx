@@ -9,6 +9,8 @@ import PostDate from '@components/postDate';
 import Pagination from '@components/pagination/pagination';
 import BackToTop from '@components/pagination/backToTop';
 
+import { getRootPath } from '@lib/getPath';
+
 const TAGS = 'tags';
 const CATEGORY = 'category';
 
@@ -44,7 +46,7 @@ const TempCatTag = (props: Template.catTagList.props) => {
             key={post.fields.slug}
             className="bg-white p-2 rounded shadow"
           >
-            <Link href={'/' + post.fields.slug}>
+            <Link href={getRootPath(post.fields.slug)}>
               <a>
                 <div>
                   <h2 className="text-xl font-semibold my-2">

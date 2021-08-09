@@ -8,6 +8,8 @@ import TagList from '@components/tagList';
 import CategoryTag from '@components/categoryTag';
 import PostDate from '@components/postDate';
 
+import { getRootPath } from '@lib/getPath';
+
 const TempPostList = (props: Template.postList.props) => {
   const pageTitle = props.currentPage
     ? props.currentPage > 1
@@ -30,7 +32,7 @@ const TempPostList = (props: Template.postList.props) => {
           key={post.fields.slug}
           className="bg-white p-2 rounded shadow"
         >
-          <Link href={'/' + post.fields.slug}>
+          <Link href={getRootPath(post.fields.slug)}>
             <a>
               <div>
                 <h2 className="text-xl font-semibold my-2">
