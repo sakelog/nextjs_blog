@@ -6,10 +6,10 @@ import style from '@styles/drawerList.module.scss';
 const DrawerList = () => {
   return (
     <div className={style.wrapper}>
-      <PageList />
       <div className={style.socialIcon}>
         <SocialIcon />
       </div>
+      <PageList />
     </div>
   );
 };

@@ -13,30 +13,30 @@ const PageList = () => {
   const NAME_CONTACT = 'お問い合わせ';
 
   return (
-    <>
+    <div className={style.wrapper}>
       <ul className="sm:flex sm:space-x-2">
-        <li>
+        <li className="flex-none">
           <Link href={getRootPath(PATH_TAG)}>
             <a className={style.linkItem}>{NAME_TAG}</a>
           </Link>
         </li>
-        <li>
+        <li className="flex-none">
           <Link href={getRootPath(PATH_ABOUT)}>
             <a className={style.linkItem}>{NAME_ABOUT}</a>
           </Link>
         </li>
-        <li>
+        <li className="flex-none">
           <Link href={getRootPath(PATH_PRIVACY)}>
             <a className={style.linkItem}>{NAME_PRIVACY}</a>
           </Link>
         </li>
-        <li>
+        <li className="flex-none">
           <Link href={getRootPath(PATH_CONTACT)}>
             <a className={style.linkItem}>{NAME_CONTACT}</a>
           </Link>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 
