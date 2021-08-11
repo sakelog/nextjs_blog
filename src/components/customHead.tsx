@@ -1,10 +1,6 @@
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 
 import config from '@components/config';
-const GTMScript = dynamic(
-  () => import('@scripts/gtmScript')
-);
 
 type propsType = {
   pageTitle?: string | null;
@@ -94,7 +90,6 @@ const CustomHead: React.FC<propsType> = (props) => {
         />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <GTMScript />
     </>
   );
 };
