@@ -5184,10 +5184,10 @@ react-share@*, react-share@^4.4.0:
     classnames "^2.2.5"
     jsonp "^0.2.1"
 
-react-social-icons@^5.2.0:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.5.1.tgz#dcac503c91f25737e2dcd90f69489401c972e417"
-  integrity sha512-JBq4dbtthfN+PSUOw4mCu8VDvx+tCce3GcGlAb0xipfd4xmwwVBTLLYpNhkYcMFfCyK6E75XHeY/EwvIRdYJiA==
+react-social-icons@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.6.0.tgz#c29a66ad321d7afcff9203ebd01f8a15cb72eb7e"
+  integrity sha512-M+HsaGezxRGiCMgRZJVBwQX36nXL2QTYXdReTUYK8/F0PCH3ihyI+Y2AvacCcSvuI+6k7/VvKKz312tNuemA1g==
   dependencies:
     prop-types "^15.7.2"
 
