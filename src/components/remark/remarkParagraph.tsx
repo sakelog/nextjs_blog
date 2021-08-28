@@ -1,15 +1,16 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 import customBlockStyles from '@styles/component/article__customBlock.module.scss';
 
-type propsType = {
-  className?: string;
-  children?: ReactNode[];
-};
+type PropsType = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLParagraphElement>,
+  HTMLParagraphElement
+>;
 
-const RemarkParagraph: React.FC<propsType> = (props) => {
+const RemarkParagraph = (props: PropsType) => {
   const newChildren =
     props.children &&
+    Array.isArray(props.children) &&
     props.children.map((child, i) => {
       return typeof child === 'string'
         ? child.match(/\*\*.*\*\*/)
@@ -20,7 +21,9 @@ const RemarkParagraph: React.FC<propsType> = (props) => {
         : child;
     });
   return (
-    <div className={props.className ? props.className : ''}>{newChildren}</div>
+    <div className={props.className ? props.className : ''}>
+      {newChildren}
+    </div>
   );
 };
 
@@ -28,12 +31,14 @@ export default RemarkParagraph;
 
 const convertStrong = (text: string) => {
   const targetText = text.match(/\*\*(.*)\*\*/);
-  targetText && React.createElement('strong', [targetText[1]]);
+  targetText &&
+    React.createElement('strong', [targetText[1]]);
 };
 
 const createCustomBlock = (text: string, index: number) => {
   const customBlock = text.match(/\[\[(.*)\]\]\n(.*)/);
-  const hasTitle = customBlock && customBlock[1].match(/\|/);
+  const hasTitle =
+    customBlock && customBlock[1].match(/\|/);
   const blockType = customBlock
     ? hasTitle
       ? customBlock[1].split(' | ')[0]
@@ -43,7 +48,9 @@ const createCustomBlock = (text: string, index: number) => {
     React.createElement(
       'div',
       {
-        className: blockType ? customBlockStyles[blockType] : '',
+        className: blockType
+          ? customBlockStyles[blockType]
+          : '',
         key: 'customBlock_' + index,
       },
       [
@@ -56,13 +63,21 @@ const createCustomBlock = (text: string, index: number) => {
             },
             customBlock[1].split(' | ')[1]
           ),
-        customBlock[2].split('|').map((item, splitIndex) => {
-          return React.createElement(
-            'p',
-            { key: 'customBlock_children_' + index + '_' + splitIndex },
-            [item]
-          );
-        }),
+        customBlock[2]
+          .split('|')
+          .map((item, splitIndex) => {
+            return React.createElement(
+              'p',
+              {
+                key:
+                  'customBlock_children_' +
+                  index +
+                  '_' +
+                  splitIndex,
+              },
+              [item]
+            );
+          }),
       ]
     );
 };

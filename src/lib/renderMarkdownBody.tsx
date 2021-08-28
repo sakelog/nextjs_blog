@@ -35,8 +35,8 @@ const renderMarkdownBody = (props: {
       createElement: React.createElement,
       components: {
         p: RemarkParagraph,
-        img: RemarkImage,
         a: RemarkLink,
+        img: RemarkImage,
         table: RemarkTable,
         iframe: RemarkIframe,
       },
