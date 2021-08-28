@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import Link from 'next/link';
 import { HiOutlineTag } from 'react-icons/hi';
 
-import { getTagPath } from '@lib/getPath';
+import { getTagsPath } from '@lib/util/getPath';
 
 type PropsType = {
   tags: Contentful.tags[];
@@ -14,7 +14,7 @@ const TagList = (props: PropsType) => {
     <ul className="inline-flex justify-start flex-wrap text-sm">
       {props.tags.map((tag) => (
         <li key={tag.fields.slug} className="w-auto m-1">
-          <Link href={getTagPath(tag.fields.slug)}>
+          <Link href={getTagsPath(tag.fields.slug)}>
             <a
               className="rounded-full bg-gray-200 text-gray-800 hover:text-white hover:bg-gray-600
                          flex items-center py-1 px-2 space-x-1"

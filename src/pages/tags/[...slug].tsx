@@ -10,16 +10,9 @@ import IndexList from '@components/indexList';
 import Pagination from '@components/pagination/pagination';
 import BackToTop from '@components/pagination/backToTop';
 
-import {
-  getAllTags,
-  getPostByTag,
-} from '@lib/contentful/exportContent/tag';
-import {
-  getPostListNumPages,
-  getPostListSlugs,
-} from '@lib/getSlugs';
-import { toKebabCase } from '@lib/toKebabCase';
-import CreateTagsProps from '@lib/createProps/createTagsProps';
+import { tagsControler } from '@lib/contentful/exportContent';
+import { toKebabCase } from '@lib/util/toKebabCase';
+import { getTagsPath } from '@lib/util/getPath';
 
 const POST_PER_LISTPAGE = 10;
 
@@ -77,32 +70,34 @@ export default TagsDirectory;
 //-----------------------------------------------------------------------------
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allTags = await getAllTags();
+  const allTags = await tagsControler.getAllTags();
 
   const allSlugs = [];
 
   if (allTags) {
     for (let index = 0; index < allTags.length; index++) {
-      const targetPost = await getPostByTag({
-        id: allTags[index].sys.id,
-      });
-      targetPost &&
-        targetPost.length > 0 &&
+      const targetPosts =
+        await tagsControler.getPostsByTags(
+          allTags[index].sys.id
+        );
+      targetPosts &&
+        targetPosts.length > 0 &&
         allSlugs.push([
           toKebabCase(allTags[index].fields.slug),
         ]);
-      const ListNum = getPostListNumPages({
-        posts: targetPost,
-        per_page: POST_PER_LISTPAGE,
+      const lastPage = targetPosts
+        ? Math.ceil(targetPosts.length / POST_PER_LISTPAGE)
+        : 0;
+      const numList =
+        lastPage > 1
+          ? [...Array(lastPage - 1)].map((_, i) => i + 2)
+          : [];
+      numList.map((number) => {
+        allSlugs.push([
+          toKebabCase(allTags[index].fields.slug),
+          number,
+        ]);
       });
-      const ListSlugs = getPostListSlugs(ListNum);
-      ListSlugs &&
-        ListSlugs.map((slug) => {
-          allSlugs.push([
-            toKebabCase(allTags[index].fields.slug),
-            slug,
-          ]);
-        });
     }
   }
 
@@ -117,27 +112,35 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<PageProps> =
   async (context) => {
-    const alltags = await getAllTags();
     const slug = context.params ? context.params.slug : '';
+    const baseSlug = slug ? slug[0] : '';
 
-    const tagsProps =
-      alltags && slug
-        ? await CreateTagsProps({
-            alltags,
-            slug,
-            per_page: POST_PER_LISTPAGE,
-          })
-        : {
-            name: '',
-            posts: null,
-            type: '',
-            totalCount: 0,
-            currentPage: 0,
-            lastPage: 0,
-            pathBase: '',
-          };
+    const targetTags = await tagsControler.getTagsBySlug(
+      baseSlug
+    );
+    const targetPosts = targetTags?.sys.id
+      ? await tagsControler.getPostsByTags(
+          targetTags?.sys.id
+        )
+      : null;
+    const lastPage = targetPosts
+      ? Math.ceil(targetPosts.length / POST_PER_LISTPAGE)
+      : 0;
+    const pathBase = getTagsPath(baseSlug);
+    const currentPage = slug
+      ? slug.length > 1
+        ? Number(slug[slug.length - 1])
+        : 1
+      : 0;
 
     return {
-      props: tagsProps,
+      props: {
+        name: targetTags?.fields.name || '',
+        posts: targetPosts,
+        lastPage,
+        totalCount: targetPosts ? targetPosts.length : 0,
+        currentPage,
+        pathBase,
+      },
     };
   };

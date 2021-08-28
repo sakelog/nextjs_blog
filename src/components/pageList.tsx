@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { getRootPath } from '@lib/getPath';
+import {
+  getPagePath,
+  getTagsPath,
+} from '@lib/util/getPath';
 import style from '@styles/pageList.module.scss';
 
 const PageList = () => {
-  const PATH_TAG = 'tags';
   const NAME_TAG = 'タグ一覧';
-  const PATH_ABOUT = 'about_this_site';
+  const PATH_ABOUT = 'about-this-site';
   const NAME_ABOUT = 'このサイトについて';
   const PATH_PRIVACY = 'privacy';
   const NAME_PRIVACY = 'プライバシーポリシー';
@@ -15,22 +17,22 @@ const PageList = () => {
   return (
     <ul className="space-y-2">
       <li>
-        <Link href={getRootPath(PATH_TAG)}>
+        <Link href={getTagsPath('')}>
           <a className={style.linkItem}>{NAME_TAG}</a>
         </Link>
       </li>
       <li>
-        <Link href={getRootPath(PATH_ABOUT)}>
+        <Link href={getPagePath(PATH_ABOUT)}>
           <a className={style.linkItem}>{NAME_ABOUT}</a>
         </Link>
       </li>
       <li>
-        <Link href={getRootPath(PATH_PRIVACY)}>
+        <Link href={getPagePath(PATH_PRIVACY)}>
           <a className={style.linkItem}>{NAME_PRIVACY}</a>
         </Link>
       </li>
       <li>
-        <Link href={getRootPath(PATH_CONTACT)}>
+        <Link href={getPagePath(PATH_CONTACT)}>
           <a className={style.linkItem}>{NAME_CONTACT}</a>
         </Link>
       </li>

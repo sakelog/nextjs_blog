@@ -6,9 +6,10 @@ import CustomHead from '@components/customHead';
 import Layout from '@layout/layout';
 import BackToTop from '@components/pagination/backToTop';
 
-import CreateTagsPageProps from '@lib/createProps/createTagsPageProps';
+import { tagsControler } from '@lib/contentful/exportContent';
+import { getTagsPath } from '@lib/util/getPath';
 
-type PropsType = {
+type PageProps = {
   tagsInfo: {
     name: string;
     path: string;
@@ -16,7 +17,7 @@ type PropsType = {
   }[];
 };
 
-const TagsPage: NextPage<PropsType> = (props) => {
+const TagsPage: NextPage<PageProps> = (props) => {
   const PAGE_TITLE = 'タグ一覧ページ';
   const DESCRIPTION = '全タグの一覧ページです';
   const sortedTagsInfo = props.tagsInfo.sort(function (
@@ -60,9 +61,30 @@ const TagsPage: NextPage<PropsType> = (props) => {
 
 export default TagsPage;
 
-export const getStaticProps: GetStaticProps<PropsType> =
+export const getStaticProps: GetStaticProps<PageProps> =
   async () => {
-    const tagsInfo = await CreateTagsPageProps();
+    const allTags = await tagsControler.getAllTags();
+    let tagsInfo: {
+      name: string;
+      path: string;
+      totalCount: number;
+    }[] = [];
+    if (allTags) {
+      for (let index = 0; index < allTags.length; index++) {
+        const targetTag = allTags[index];
+        const name = targetTag?.fields.name || '';
+        const path = getTagsPath(targetTag?.fields.slug);
+        const targetPosts =
+          await tagsControler.getPostsByTags(
+            targetTag?.sys.id
+          );
+        const totalCount = targetPosts
+          ? targetPosts.length
+          : 0;
+        totalCount > 0 &&
+          tagsInfo.push({ name, path, totalCount });
+      }
+    }
     return {
       props: {
         tagsInfo,

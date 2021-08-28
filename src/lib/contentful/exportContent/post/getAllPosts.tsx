@@ -1,6 +1,5 @@
-import { client } from './client';
+import { client } from '@lib/contentful/exportContent/client';
 
-// PostList
 export const getAllPosts = async (): Promise<
   Contentful.post[] | null
 > => {

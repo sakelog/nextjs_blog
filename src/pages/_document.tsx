@@ -38,6 +38,7 @@ export default class MyDocument extends Document {
           <link
             rel="preconnect"
             href="https://fonts.googleapis.com"
+            crossOrigin="anonymous"
           />
           <link
             rel="preconnect"

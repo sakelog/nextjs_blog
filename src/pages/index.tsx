@@ -1,47 +1,64 @@
 import { GetStaticProps, NextPage } from 'next';
-import loadable from '@loadable/component';
-
-import { getAllPosts } from '@lib/contentful/exportContent/postList';
-import CreatePostListProps from '@lib/createProps/createPostListProps';
 
 import Layout from '@layout/layout';
-const TempPostList = loadable(
-  () => import('@template/temp_postList'),
-  {}
-);
+import CustomHead from '@components/customHead';
+import IndexList from '@components/indexList';
+import Pagination from '@components/pagination/pagination';
+import config from '@components/config';
+
+import { postControler } from '@lib/contentful/exportContent';
 
 const POST_PER_LISTPAGE = 6;
 
-const TopPage: NextPage<{
-  posts: Template.postList.props;
-}> = (props) => {
-  const TemplateTag = (
-    <TempPostList
-      posts={props.posts.posts}
-      currentPage={props.posts.currentPage}
-      lastPage={props.posts.lastPage}
-      pathBase={props.posts.pathBase}
-    />
+type PageProps = {
+  postIndex: {
+    posts: Contentful.post[] | null;
+    currentPage: number;
+    lastPage: number;
+    pathBase: string;
+  };
+};
+
+const TopPage: NextPage<PageProps> = (props) => {
+  return (
+    <Layout>
+      <CustomHead
+        pageTitle={config.title}
+        description={config.description}
+      />
+      <section className="p-2">
+        <IndexList posts={props.postIndex.posts} />
+        <Pagination
+          currentPage={props.postIndex.currentPage}
+          lastPage={props.postIndex.lastPage}
+          pathBase={props.postIndex.pathBase}
+        />
+      </section>
+    </Layout>
   );
-  return <Layout>{TemplateTag}</Layout>;
 };
 
 export default TopPage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const allpost = await getAllPosts();
-  // postList
-  const postListProps = allpost
-    ? await CreatePostListProps({
-        allpost,
-        per_page: POST_PER_LISTPAGE,
-        slug: '/',
-      })
-    : null;
+export const getStaticProps: GetStaticProps<PageProps> =
+  async () => {
+    const allPosts = await postControler.getAllPosts();
+    const skip = 0;
+    const targetPosts =
+      allPosts?.slice(skip, skip + POST_PER_LISTPAGE) ||
+      null;
+    const lastPage = allPosts
+      ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
+      : 0;
 
-  return {
-    props: {
-      posts: postListProps,
-    },
+    return {
+      props: {
+        postIndex: {
+          posts: targetPosts,
+          currentPage: 1,
+          lastPage,
+          pathBase: '/',
+        },
+      },
+    };
   };
-};

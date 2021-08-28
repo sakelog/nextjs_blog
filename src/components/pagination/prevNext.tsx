@@ -5,19 +5,22 @@ import {
   HiOutlineChevronRight,
 } from 'react-icons/hi';
 
-import { getRootPath } from '@lib/getPath';
+import { getPostPath } from '@lib/util/getPath';
 
-const PrevNext: React.FC<pagination.prevNext.props> = (
-  props
-) => {
+type PropsType = {
+  prevPost: Contentful.post | null;
+  nextPost: Contentful.post | null;
+};
+
+const PrevNext = (props: PropsType) => {
   const { prevPost, nextPost } = props;
   const prevLink = (
     <div className="p-1">
       {prevPost && (
-        <Link href={getRootPath(prevPost.slug)}>
+        <Link href={getPostPath(prevPost.fields.slug)}>
           <a className="flex items-center space-x-2">
             <HiOutlineChevronLeft />
-            {prevPost.title}
+            {prevPost.fields.title}
           </a>
         </Link>
       )}
@@ -26,9 +29,9 @@ const PrevNext: React.FC<pagination.prevNext.props> = (
   const nextLink = (
     <div className="p-1">
       {nextPost && (
-        <Link href={getRootPath(nextPost.slug)}>
+        <Link href={getPostPath(nextPost.fields.slug)}>
           <a className="flex items-center space-x-2 justify-end">
-            {nextPost.title}
+            {nextPost.fields.title}
             <HiOutlineChevronRight />
           </a>
         </Link>

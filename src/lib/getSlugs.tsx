@@ -1,4 +1,4 @@
-import { toKebabCase } from '@lib/toKebabCase';
+import { toKebabCase } from '@lib/util/toKebabCase';
 
 // post slug一覧
 export const getPostSlugs = (

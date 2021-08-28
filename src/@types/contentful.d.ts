@@ -1,4 +1,7 @@
 declare namespace Contentful {
+  declare type Sys = {
+    id: string;
+  }
   declare interface postCollection extends EntryCollection {
     sys?: Sys;
     total?: number;
