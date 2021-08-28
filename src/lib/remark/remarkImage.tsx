@@ -7,7 +7,7 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> =
     const isContentfulImg = props.src
       ? props.src.startsWith('//images.ctfassets.net')
       : false;
-    const alt = props.alt ? props.alt : null;
+    const alt = props.alt ? props.alt : '';
 
     const [showState, setShowState] =
       useState<string>('hide');

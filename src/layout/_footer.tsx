@@ -1,4 +1,6 @@
 import config from '@components/config';
+import PageList from '@components/pageList';
+import SocialIcon from '@components/socialIcon';
 
 const Footer = () => {
   const siteTitle = config.title;
@@ -15,9 +17,19 @@ const Footer = () => {
   return (
     <footer
       className="bg-gray-600 text-white 
-                  flex items-center justify-center p-2 mt-auto"
+                  p-2 mt-auto"
     >
-      <p className="text-sm">&copy;{copyText}</p>
+      <nav className="my-2 grid grid-cols-1 lg:grid-cols-3 gap-2">
+        <section className="text-sm">
+          <PageList />
+        </section>
+        <section className="flex justify-center items-center">
+          <SocialIcon />
+        </section>
+      </nav>
+      <div className="text-sm text-center">
+        &copy;{copyText}
+      </div>
     </footer>
   );
 };

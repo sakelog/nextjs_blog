@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 
 import CustomHead from '@components/customHead';
 import ArticleBody from '@components/postParts/articleBody';
-import ShareButton from '@components/postParts/share';
 import Bio from '@components/postParts/bio';
 import PostDate from '@components/postDate';
 import CategoryTag from '@components/categoryTag';

@@ -9,7 +9,7 @@ const RenderSocialIcon: React.FC = () => {
   const twitterPath = twitterBase + config.social.twitter;
 
   return (
-    <ul>
+    <ul className="flex space-x-2">
       <li key="github">
         <SocialIcon
           url={githubPath}

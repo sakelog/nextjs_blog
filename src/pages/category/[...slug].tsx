@@ -4,7 +4,6 @@ import {
   NextPage,
 } from 'next';
 import loadable from '@loadable/component';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   getAllCategory,
@@ -20,10 +19,7 @@ import CreateCategoryProps from '@lib/createProps/createCategoryProps';
 
 import Layout from '@layout/layout';
 const Temp_CatTag = loadable(
-  () => import('@template/temp_catTag'),
-  {
-    fallback: <CircularProgress color="secondary" />,
-  }
+  () => import('@template/temp_catTag')
 );
 
 const POST_PER_LISTPAGE = 10;
