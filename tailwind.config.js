@@ -19,7 +19,8 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          'Roboto',
+          'Lato',
+          '"Noto Sans JP"',
           '"Hiragino Sans"',
           '"Hiragino Kaku Gothic ProN"',
           '"Yu Gothic"',
