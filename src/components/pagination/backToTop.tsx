@@ -1,16 +1,19 @@
-//import { Button } from '@material-ui/core';
 import Link from 'next/link';
 
-const BackToTop = () => {
+type PropsType = {
+  slug?: string;
+  title?: string;
+};
+
+const BackToTop = (props: PropsType) => {
   return (
-    <Link href="/">
-      <a
-        className="bg-gray-800 text-gray-50 p-4 inline-block my-4 rounded font-semibold
-                  hover:bg-gray-200 hover:text-gray-800"
-      >
-        トップへ戻る
-      </a>
-    </Link>
+    <div className="my-4 space-x-1 text-sm text-gray-600">
+      <span>{'['}</span>
+      <Link href={'/' + (props.slug || '')}>
+        {props.title || 'Topへ戻る'}
+      </Link>
+      <span>{']'}</span>
+    </div>
   );
 };
 
