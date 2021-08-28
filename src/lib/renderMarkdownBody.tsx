@@ -10,11 +10,11 @@ import slug from 'rehype-slug';
 import toc from '@jsdevtools/rehype-toc';
 import rehypeReact from 'rehype-react';
 
-import RemarkParagraph from '@lib/remark/remarkParagraph';
-import RemarkLink from '@lib/remark/remarkLink';
-import RemarkImage from '@lib/remark/remarkImage';
-import RemarkTable from '@lib/remark/remarkTable';
-import RemarkIframe from '@lib/remark/remarkIframe';
+import RemarkParagraph from '@components/remark/remarkParagraph';
+import RemarkLink from '@components/remark/remarkLink';
+import RemarkImage from '@components/remark/remarkImage';
+import RemarkTable from '@components/remark/remarkTable';
+import RemarkIframe from '@components/remark/remarkIframe';
 
 import powershell from 'highlight.js/lib/languages/powershell';
 

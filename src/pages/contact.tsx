@@ -18,7 +18,7 @@ const Contact: NextPage = () => {
         pageTitle={PAGE_TITLE}
         description={description}
       />
-      <div className="bg-white p-4">
+      <div className="p-4">
         <h1>{PAGE_TITLE}</h1>
         <div className="max-w-screen-sm mx-auto">
           <ContactForm />

@@ -1,7 +1,8 @@
 .appreach {
   @apply bg-gray-200 w-full max-w-screen-sm rounded p-4 my-4 mx-auto;
   a {
-    &::after {
+    @apply inline-block #{!important};
+    .externalIcon {
       @apply hidden;
     }
   }
@@ -21,18 +22,18 @@
   .appreach__links {
     .appreach__aslink,
     .appreach__gplink {
-      @apply m-1;
+      @apply m-1 inline-block;
     }
     .appreach__aslink {
       img {
-        height: 60px;
+        height: 40px;
         width: 135px;
       }
     }
     .appreach__gplink {
       img {
         height: 40px;
-        width: 140px;
+        width: 134.5px;
       }
     }
     @apply md:flex md:items-center;

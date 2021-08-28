@@ -32,7 +32,7 @@ const TagsPage: NextPage<PropsType> = (props) => {
         pageTitle={PAGE_TITLE}
         description={DESCRIPTION}
       />
-      <div className="bg-white p-4">
+      <div className="p-4">
         <h1>{PAGE_TITLE}</h1>
         <ul className="flex flex-wrap">
           {sortedTagsInfo.map((info) => (

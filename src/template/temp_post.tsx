@@ -23,7 +23,7 @@ const TempPost = (props: Template.post.props) => {
         prevPost={props.prevPost}
         nextPost={props.nextPost}
       />
-      <article className="bg-white p-2">
+      <article className="p-2">
         <CustomHead
           pageTitle={pageTitle}
           description={props.currentPost.fields.description}

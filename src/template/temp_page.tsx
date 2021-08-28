@@ -10,7 +10,7 @@ const TempPage = (props: Template.page.props) => {
         pageTitle={props.page.fields.title}
         description={props.page.fields.description}
       />
-      <div className="bg-white p-4">
+      <div className="p-4">
         <h1>{props.page.fields.title}</h1>
         <ArticleBody body={body} />
       </div>

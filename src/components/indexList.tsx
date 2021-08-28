@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import PostDate from '@components/postDate';
 import TagList from '@components/tagList';
 
 import { getRootPath } from '@lib/getPath';
+import { getFormatDate } from '@lib/util/getFormatDate';
 
 type PropsType = {
   posts: Contentful.post[];
@@ -14,20 +14,32 @@ const IndexList = (props: PropsType) => {
     <ul className="grid grid-cols-1 lg:grid-cols-3 gap-4">
       {props.posts.map((post) => {
         return (
-          <li
-            key={post.fields.slug}
-            className="p-8 bg-white"
-          >
+          <li key={post.fields.slug} className="p-8">
+            <section className="text-xs font-bold flex items-center space-x-2">
+              <time
+                dateTime={post.fields.date}
+                itemProp="datepublished"
+              >
+                {getFormatDate(post.fields.date)}
+              </time>
+              {post.fields.update && (
+                <>
+                  <span className="text-gray-400">/</span>
+                  <time
+                    dateTime={post.fields.update}
+                    itemProp="dateupdated"
+                  >
+                    {getFormatDate(post.fields.update)}
+                  </time>
+                </>
+              )}
+            </section>
             <Link href={getRootPath(post.fields.slug)}>
               <a className="text-black text-xl font-bold">
                 <h2>{post.fields.title}</h2>
               </a>
             </Link>
             <ul className="my-4 space-y-2">
-              <PostDate
-                postdate={post.fields.date}
-                update={post.fields.update}
-              />
               <li>
                 <TagList
                   tags={post.fields.tags}

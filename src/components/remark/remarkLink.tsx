@@ -5,6 +5,8 @@ import { getRootPath } from '@lib/getPath';
 import config from '@components/config';
 import styles from '@styles/component/article__link.module.scss';
 
+import { HiOutlineExternalLink } from 'react-icons/hi';
+
 const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (
   props
 ) => {
@@ -43,9 +45,12 @@ const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (
           href={props.href}
           rel={rel ? rel : ''}
           target={target ? target : ''}
-          className={className + ' ' + styles.external}
+          className={props.className + ' inline-block'}
         >
           {props.children}
+          {
+            <HiOutlineExternalLink className="inline ml-1 externalIcon" />
+          }
         </a>
       ) : (
         internalPath && (

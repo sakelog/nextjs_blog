@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         gray: colors.blueGray,
         theme: {
-          DEFAULT: '#5b7e91',
+          DEFAULT: '#d9a62e',
+          dark: '#997520',
         },
       },
       fontFamily: {
@@ -27,9 +28,7 @@ module.exports = {
         ],
         logo: ['"Press Start 2P"', 'cursive'],
       },
-      backgroundImage: (theme) => ({
-        external: "url('/img/external-link.svg')",
-      }),
+      backgroundImage: (theme) => ({}),
     },
   },
   variants: {
