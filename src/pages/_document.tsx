@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <GTMScript />
           <link
             rel="preconnect"
             href="https://fonts.googleapis.com"
@@ -58,7 +59,6 @@ export default class MyDocument extends Document {
             }
             rel="stylesheet"
           />
-          <GTMScript />
         </Head>
         <body>
           <Main />
