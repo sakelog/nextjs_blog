@@ -30,7 +30,7 @@
     "react-icons": "^4.2.0",
     "react-social-icons": "^5.2.0",
     "rehype-highlight": "^5.0.0",
-    "rehype-raw": "^5.1.0",
+    "rehype-raw": "^6.1.0",
     "rehype-react": "^6.2.0",
     "rehype-sanitize": "^5.0.0",
     "rehype-slug": "^5.0.0",
