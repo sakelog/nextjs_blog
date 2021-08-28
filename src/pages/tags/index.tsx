@@ -8,7 +8,7 @@ import BackToTop from '@components/pagination/backToTop';
 
 import CreateTagsPageProps from '@lib/createProps/createTagsPageProps';
 
-type propsType = {
+type PropsType = {
   tagsInfo: {
     name: string;
     path: string;
@@ -16,37 +16,16 @@ type propsType = {
   }[];
 };
 
-const TagsPage: NextPage<propsType> = (props) => {
+const TagsPage: NextPage<PropsType> = (props) => {
   const PAGE_TITLE = 'タグ一覧ページ';
   const DESCRIPTION = '全タグの一覧ページです';
-
-  const sortedList = props.tagsInfo.sort(function (a, b) {
+  const sortedTagsInfo = props.tagsInfo.sort(function (
+    a,
+    b
+  ) {
     return b.totalCount - a.totalCount;
   });
 
-  const tagsList = sortedList.map((tag) => {
-    return (
-      <li key={tag.name} className="mx-2 my-2">
-        <div className="relative">
-          <Link href={tag.path}>
-            <a
-              className="flex items-center p-2 
-                           border border-gray-400 rounded hover:bg-gray-200"
-            >
-              <HiOutlineTag />
-              {tag.name}
-            </a>
-          </Link>
-          <span
-            className="bg-gray-600 text-white text-sm rounded-full h-6 w-6
-                        flex items-center justify-center absolute -top-2 -left-2"
-          >
-            {tag.totalCount}
-          </span>
-        </div>
-      </li>
-    );
-  });
   return (
     <Layout>
       <CustomHead
@@ -55,7 +34,24 @@ const TagsPage: NextPage<propsType> = (props) => {
       />
       <div className="bg-white p-4">
         <h1>{PAGE_TITLE}</h1>
-        <ul className="flex flex-wrap">{tagsList}</ul>
+        <ul className="flex flex-wrap">
+          {sortedTagsInfo.map((info) => (
+            <li key={info.name} className="m-2">
+              <Link href={info.path}>
+                <a
+                  className="space-x-2 bg-gray-200 text-gray-800 hover:bg-gray-600 hover:text-white
+                             hover:no-underline py-1 px-2 rounded-full text-sm flex items-center"
+                >
+                  <HiOutlineTag />
+                  <span>{info.name}</span>
+                  <span className="text-xs bg-black text-white py-0.5 px-1 rounded-full">
+                    {info.totalCount}
+                  </span>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
       <BackToTop />
     </Layout>
@@ -64,11 +60,12 @@ const TagsPage: NextPage<propsType> = (props) => {
 
 export default TagsPage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const tagsInfo = await CreateTagsPageProps();
-  return {
-    props: {
-      tagsInfo,
-    },
+export const getStaticProps: GetStaticProps<PropsType> =
+  async () => {
+    const tagsInfo = await CreateTagsPageProps();
+    return {
+      props: {
+        tagsInfo,
+      },
+    };
   };
-};
