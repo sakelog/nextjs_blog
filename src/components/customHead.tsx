@@ -9,9 +9,9 @@ type propsType = {
 };
 
 const CustomHead: React.FC<propsType> = (props) => {
-  const metaTitle =
-    (props.pageTitle ? props.pageTitle + ' | ' : '') +
-    config.title;
+  const metaTitle = props.pageTitle
+    ? props.pageTitle + ' | ' + config.title
+    : config.title;
   const metaDiscription = props.description
     ? props.description
     : config.description;

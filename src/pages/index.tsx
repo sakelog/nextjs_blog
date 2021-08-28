@@ -22,10 +22,7 @@ type PageProps = {
 const TopPage: NextPage<PageProps> = (props) => {
   return (
     <Layout>
-      <CustomHead
-        pageTitle={config.title}
-        description={config.description}
-      />
+      <CustomHead description={config.description} />
       <section className="p-2">
         <IndexList posts={props.postIndex.posts} />
         <Pagination
