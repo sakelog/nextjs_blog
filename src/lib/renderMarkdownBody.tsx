@@ -1,30 +1,40 @@
 import React, { ReactElement } from 'react';
 
-import remark from 'remark';
-import gfm from 'remark-gfm';
-import slug from 'remark-slug';
-import remark2rehype from 'remark-rehype';
-import raw from 'rehype-raw';
-import rehype2react from 'rehype-react';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
+import slug from 'rehype-slug';
+import toc from '@jsdevtools/rehype-toc';
+import rehypeReact from 'rehype-react';
 
 import RemarkParagraph from '@lib/remark/remarkParagraph';
 import RemarkLink from '@lib/remark/remarkLink';
-import RemarkSyntaxHighlight from '@lib/remark/remarkSyntaxHighlight';
 import RemarkImage from '@lib/remark/remarkImage';
 import RemarkTable from '@lib/remark/remarkTable';
 import RemarkIframe from '@lib/remark/remarkIframe';
 
-const renderMarkdownBody = (props: { markdown: string }): ReactElement => {
-  const parsedMarkdown = remark()
-    .use(gfm)
+import powershell from 'highlight.js/lib/languages/powershell';
+
+const renderMarkdownBody = (props: {
+  markdown: string;
+}): ReactElement => {
+  const parsedMarkdown = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(slug)
-    .use(remark2rehype, { allowDangerousHtml: true })
-    .use(raw)
-    .use(rehype2react, {
+    .use(toc, { headings: ['h2', 'h3'] })
+    .use(rehypeHighlight, {
+      languages: { powershell: powershell },
+    })
+    .use(rehypeRaw)
+    .use(rehypeReact, {
       createElement: React.createElement,
       components: {
         p: RemarkParagraph,
-        code: RemarkSyntaxHighlight,
         img: RemarkImage,
         a: RemarkLink,
         table: RemarkTable,
