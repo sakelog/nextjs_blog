@@ -61,9 +61,9 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <GTMNoScript />
           <Main />
           <NextScript />
-          <GTMNoScript />
         </body>
       </Html>
     );
