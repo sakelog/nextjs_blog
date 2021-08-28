@@ -37,36 +37,34 @@ const TempPost = (props: Template.post.props) => {
   );
   return (
     <>
-      <article>
+      <PrevNext
+        prevPost={props.prevPost}
+        nextPost={props.nextPost}
+      />
+      <article className="bg-white p-2">
         <CustomHead
           pageTitle={pageTitle}
           description={props.currentPost.fields.description}
           imgFLG={true}
         />
-        <div className="bg-white p-4">
+        <section className="p-4">
           <h1>{props.currentPost.fields.title}</h1>
+          <ul className="flex flex-col items-center">
+            <PostDate
+              postdate={props.currentPost.fields.date}
+              update={props.currentPost.fields.update}
+            />
+            {postTag}
+          </ul>
           <ArticleBody body={body} />
-        </div>
-        <div className="bg-white my-2 p-4">
-          <div className="bg-gray-200 p-2 rounded">
-            <ul className="space-y-2">
-              <PostDate
-                postdate={props.currentPost.fields.date}
-                update={props.currentPost.fields.update}
-              />
-              {postCategory}
-              {postTag}
-            </ul>
-          </div>
-          <ShareButton url={currentURL} title={pageTitle} />
-          <Bio />
-        </div>
-        <PrevNext
-          prevPost={props.prevPost}
-          nextPost={props.nextPost}
-        />
-        <BackToTop />
+        </section>
+        <Bio />
       </article>
+      <PrevNext
+        prevPost={props.prevPost}
+        nextPost={props.nextPost}
+      />
+      <BackToTop />
     </>
   );
 };

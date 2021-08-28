@@ -10,13 +10,13 @@
     @apply my-2 mx-4 p-2 bg-gray-200 rounded;
   }
   h2 {
-    @apply text-xl border-b border-gray-600 my-4;
+    @apply text-xl font-bold text-center mb-4 mt-12;
   }
   h3 {
-    @apply text-lg border-l-4 border-gray-600 pl-2 my-4;
+    @apply text-xl font-bold mb-4 mt-8;
   }
   h4 {
-    @apply font-bold my-4;
+    @apply font-bold mb-4 mt-8;
   }
   h5,
   h6 {
@@ -39,7 +39,8 @@
     @apply bg-gray-800 text-white text-sm p-1 mx-2 rounded;
   }
   :global(.toc) {
-    @apply my-2 p-2 text-sm leading-relaxed max-w-screen-sm mx-auto;
+    @apply my-4 p-2 text-sm leading-relaxed max-w-screen-sm mx-auto;
+    @apply bg-gray-50;
     ol {
       @apply list-none;
       counter-reset: toc-number;

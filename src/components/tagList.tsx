@@ -14,7 +14,10 @@ const TagList = (props: PropsType) => {
     return (
       <li key={tag.fields.slug} className="w-auto">
         <Link href={getTagPath(tag.fields.slug)}>
-          <a className="rounded hover:bg-gray-200 flex items-center">
+          <a
+            className="rounded-full bg-gray-200 text-gray-800 hover:text-white hover:bg-gray-600
+           flex items-center p-1"
+          >
             <HiOutlineTag />
             {createElement(
               props.heading,

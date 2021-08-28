@@ -47,54 +47,45 @@ const Share: React.FC<propsType> = (props) => {
     setCopiedText('コピー完了：' + text);
   };
   return (
-    <section>
-      <h2 className="u-heading--flexLeft">
-        記事を共有する
-      </h2>
-      <div className="flex items-center space-x-4 my-2">
-        <TwitterShareButton
-          url={props.url}
-          title={props.title}
-          via={config.social.twitter}
-        >
-          <TwitterIcon round={true} />
-        </TwitterShareButton>
-        <LineShareButton
-          url={props.url}
-          title={props.title}
-        >
-          <LineIcon round={true} />
-        </LineShareButton>
-        <HatenaShareButton
-          url={props.url}
-          title={props.title}
-        >
-          <HatenaIcon round={true} />
-        </HatenaShareButton>
-        <PocketShareButton
-          url={props.url}
-          title={props.title}
-        >
-          <PocketIcon round={true} />
-        </PocketShareButton>
-        <div
-          className="h-16 w-16 flex items-center justify-center bg-gray-600 text-white
+    <section className="my-2 flex items-center space-x-4">
+      <TwitterShareButton
+        url={props.url}
+        title={props.title}
+        via={config.social.twitter}
+      >
+        <TwitterIcon round={true} />
+      </TwitterShareButton>
+      <LineShareButton url={props.url} title={props.title}>
+        <LineIcon round={true} />
+      </LineShareButton>
+      <HatenaShareButton
+        url={props.url}
+        title={props.title}
+      >
+        <HatenaIcon round={true} />
+      </HatenaShareButton>
+      <PocketShareButton
+        url={props.url}
+        title={props.title}
+      >
+        <PocketIcon round={true} />
+      </PocketShareButton>
+      <div
+        id="copyButton"
+        className="h-16 w-16 flex items-center justify-center bg-gray-600 text-white
           rounded-full"
-          onClick={() => {
-            handleClick(),
-              handleChangeText(
-                props.title + ' ' + props.url
-              );
-          }}
+        onClick={() => {
+          handleClick(),
+            handleChangeText(props.title + ' ' + props.url);
+        }}
+      >
+        <CopyToClipboard
+          text={props.title + ' ' + props.url}
         >
-          <CopyToClipboard
-            text={props.title + ' ' + props.url}
-          >
-            <span className="text-3xl">
-              <HiOutlineClipboardList />
-            </span>
-          </CopyToClipboard>
-        </div>
+          <span className="text-3xl">
+            <HiOutlineClipboardList />
+          </span>
+        </CopyToClipboard>
       </div>
       <Snackbar
         anchorOrigin={{
