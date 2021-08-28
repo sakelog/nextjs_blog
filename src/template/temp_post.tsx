@@ -1,9 +1,4 @@
 import { useRouter } from 'next/router';
-import loadable from '@loadable/component';
-const RenderTOC = loadable(
-  () => import('@lib/renderTOC'),
-  {}
-);
 
 import CustomHead from '@components/customHead';
 import ArticleBody from '@components/postParts/articleBody';
@@ -48,18 +43,9 @@ const TempPost = (props: Template.post.props) => {
           description={props.currentPost.fields.description}
           imgFLG={true}
         />
-        <div className="grid grid-cols-1 md:grid-cols-4">
-          <div className="col-span-3">
-            <div className="bg-white p-4">
-              <h1>{props.currentPost.fields.title}</h1>
-              <ArticleBody body={body} />
-            </div>
-          </div>
-          <div className="hidden md:block">
-            <aside className="h-auto max-h-full w-full overflow-hidden sticky top-28">
-              <RenderTOC markdown={body} />
-            </aside>
-          </div>
+        <div className="bg-white p-4">
+          <h1>{props.currentPost.fields.title}</h1>
+          <ArticleBody body={body} />
         </div>
         <div className="bg-white my-2 p-4">
           <div className="bg-gray-200 p-2 rounded">

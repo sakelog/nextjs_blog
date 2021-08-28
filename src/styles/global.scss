@@ -1,6 +1,7 @@
 @use './Object/Component/c-article__appreach';
 @use './Object/Component/c-article__yomereba';
 @use './Object/Utility/u-heading.scss';
+@use '~highlight.js/scss/github-dark-dimmed.scss';
 
 @tailwind base;
 @tailwind components;
@@ -15,5 +16,9 @@
   }
   a {
     @apply text-theme hover:underline;
+  }
+  .hljs {
+    @apply leading-tight #{!important};
+    @apply my-2;
   }
 }
