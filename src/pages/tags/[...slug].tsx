@@ -3,7 +3,12 @@ import {
   GetStaticPaths,
   NextPage,
 } from 'next';
-import loadable from '@loadable/component';
+
+import CustomHead from '@components/customHead';
+import Layout from '@layout/layout';
+import IndexList from '@components/indexList';
+import Pagination from '@components/pagination/pagination';
+import BackToTop from '@components/pagination/backToTop';
 
 import {
   getAllTags,
@@ -16,61 +21,60 @@ import {
 import { toKebabCase } from '@lib/toKebabCase';
 import CreateTagsProps from '@lib/createProps/createTagsProps';
 
-import Layout from '@layout/layout';
-const Temp_CatTag = loadable(
-  () => import('@template/temp_catTag')
-);
-
 const POST_PER_LISTPAGE = 10;
-const TAGS = 'tags';
 
-const TagsDirectory: NextPage<Template.catTagList.props> = (
-  props
-) => {
+type PageProps = {
+  name: string;
+  posts: Contentful.post[] | null;
+  totalCount: number;
+  currentPage: number;
+  lastPage: number;
+  pathBase: string;
+};
+
+const TagsDirectory: NextPage<PageProps> = (props) => {
+  const pageTitle = 'タグ：' + props.name;
+  const description =
+    pageTitle +
+    'についての一覧ページ' +
+    (props.currentPage > 1
+      ? ':' + props.currentPage + 'ページ目'
+      : '');
   return (
     <Layout>
-      <Temp_CatTag
-        name={props.name}
-        posts={props.posts}
-        type={TAGS}
-        totalCount={props.totalCount}
+      <CustomHead
+        pageTitle={
+          pageTitle +
+          (props.currentPage > 1
+            ? '(' + props.currentPage + ')'
+            : '')
+        }
+        description={description}
+      />
+      <section>
+        <h1>{pageTitle}</h1>
+        <p className="my-2 text-sm">
+          投稿：{props.totalCount}件
+        </p>
+        {props.posts && <IndexList posts={props.posts} />}
+      </section>
+      <Pagination
         currentPage={props.currentPage}
         lastPage={props.lastPage}
         pathBase={props.pathBase}
       />
+      <nav className="flex items-center space-x-2">
+        <BackToTop slug="tags" title="タグ一覧" />
+        <span className="text-gray-400">/</span>
+        <BackToTop />
+      </nav>
     </Layout>
   );
 };
 
 export default TagsDirectory;
 
-export const getStaticProps: GetStaticProps = async (
-  context
-) => {
-  const alltags = await getAllTags();
-  const slug = context.params ? context.params.slug : '';
-
-  const tagsProps =
-    alltags && slug
-      ? await CreateTagsProps({
-          alltags,
-          slug,
-          per_page: POST_PER_LISTPAGE,
-        })
-      : {
-          name: '',
-          posts: null,
-          type: '',
-          totalCount: 0,
-          currentPage: 0,
-          lastPage: 0,
-          pathBase: '',
-        };
-
-  return {
-    props: tagsProps,
-  };
-};
+//-----------------------------------------------------------------------------
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allTags = await getAllTags();
@@ -108,3 +112,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
+
+//-----------------------------------------------------------------------------
+
+export const getStaticProps: GetStaticProps<PageProps> =
+  async (context) => {
+    const alltags = await getAllTags();
+    const slug = context.params ? context.params.slug : '';
+
+    const tagsProps =
+      alltags && slug
+        ? await CreateTagsProps({
+            alltags,
+            slug,
+            per_page: POST_PER_LISTPAGE,
+          })
+        : {
+            name: '',
+            posts: null,
+            type: '',
+            totalCount: 0,
+            currentPage: 0,
+            lastPage: 0,
+            pathBase: '',
+          };
+
+    return {
+      props: tagsProps,
+    };
+  };

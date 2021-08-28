@@ -1,14 +1,8 @@
-import Link from 'next/link';
-
 import config from '@components/config';
 
 import CustomHead from '@components/customHead';
+import IndexList from '@components/indexList';
 import Pagination from '@components/pagination/pagination';
-import TagList from '@components/tagList';
-import CategoryTag from '@components/categoryTag';
-import PostDate from '@components/postDate';
-
-import { getRootPath } from '@lib/getPath';
 
 const TempPostList = (props: Template.postList.props) => {
   const pageTitle = props.currentPage
@@ -22,42 +16,6 @@ const TempPostList = (props: Template.postList.props) => {
       : config.description
     : '';
 
-  const postListTag = props.posts.map(
-    (post: contentful.post) => {
-      const tagList = (
-        <TagList tags={post.fields.tags} heading="h4" />
-      );
-      return (
-        <div
-          key={post.fields.slug}
-          className="bg-white p-2 rounded shadow"
-        >
-          <Link href={getRootPath(post.fields.slug)}>
-            <a className="hover:no-underline text-gray-800">
-              <div>
-                <h2 className="text-xl font-semibold my-2">
-                  {post.fields.title}
-                </h2>
-                <ul className="p-2">
-                  <li>
-                    <CategoryTag
-                      category={post.fields.category}
-                      heading="h3"
-                    />
-                  </li>
-                  <PostDate
-                    postdate={post.fields.date}
-                    update={post.fields.update}
-                  />
-                  <li>{tagList}</li>
-                </ul>
-              </div>
-            </a>
-          </Link>
-        </div>
-      );
-    }
-  );
   return (
     <>
       <CustomHead
@@ -65,9 +23,7 @@ const TempPostList = (props: Template.postList.props) => {
         description={description}
       />
       <section className="p-2">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {postListTag}
-        </div>
+        <IndexList posts={props.posts} />
         <Pagination
           currentPage={props.currentPage}
           lastPage={props.lastPage}

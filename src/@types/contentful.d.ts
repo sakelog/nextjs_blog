@@ -1,4 +1,4 @@
-declare namespace contentful {
+declare namespace Contentful {
   declare interface postCollection extends EntryCollection {
     sys?: Sys;
     total?: number;

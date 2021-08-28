@@ -54,7 +54,7 @@ const RemarkImage: React.FC<JSX.IntrinsicElements['img']> =
         {ContentfulTitle}
       </div>
     ) : (
-      <img {...props} />
+      <img {...props} alt={props.alt || ''} />
     );
     return <>{customImgTag}</>;
   };

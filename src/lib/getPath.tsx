@@ -1,10 +1,5 @@
 import { toKebabCase } from '@lib/toKebabCase';
 
-export function getCategoryPath(slug: string): string {
-  const basePath = '/category/';
-  return setPath(slug, basePath);
-}
-
 export function getTagPath(slug: string): string {
   const basePath = '/tags/';
   return setPath(slug, basePath);
@@ -22,8 +17,13 @@ function setPath(slug: string, basePath: string): string {
   return combinePath;
 }
 
-export function getConcatPath(domain: string, path: string): string {
-  let combinePath = domain.endsWith('/') ? domain.slice(0, -1) : domain;
+export function getConcatPath(
+  domain: string,
+  path: string
+): string {
+  let combinePath = domain.endsWith('/')
+    ? domain.slice(0, -1)
+    : domain;
   combinePath += path;
 
   return combinePath;

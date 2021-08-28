@@ -41,7 +41,7 @@ type propsType = {
   pathtype: 'postlist' | 'post' | 'page';
   posts: Template.postList.props;
   singlePost: Template.post.props;
-  singlePage: contentful.page;
+  singlePage: Contentful.page;
 };
 
 const RootDirectory: NextPage<propsType> = (props) => {
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps = async (
 
   let postListProps: Template.postList.props | boolean =
     false;
-  let pageProps: contentful.page | boolean = false;
+  let pageProps: Contentful.page | boolean = false;
   let postProps: Template.post.props | boolean = false;
   postListProps =
     allpost && slug

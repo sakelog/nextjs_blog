@@ -1,23 +1,16 @@
-@use '../../Foundation/variables' as *;
-
 .root {
-  overflow-x: auto;
-  width: 100%;
+  @apply overflow-x-auto w-full;
   table {
     min-width: 768px;
-    background: $light-gray;
-    border-collapse: collapse;
+    @apply bg-gray-100 border-collapse;
     th {
-      background: $dark-gray;
-      color: #ffffff;
-      padding: 1rem 2rem;
-      font-weight: bold;
+      @apply bg-gray-600 text-white py-2 px-4 font-bold;
     }
     tr {
-      border-bottom: $dark-gray solid 1px;
+      @apply border-b border-gray-600;
     }
     td {
-      padding: 0.6rem 2rem;
+      @apply py-1 px-4;
     }
   }
 }
