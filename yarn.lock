@@ -5237,10 +5237,10 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-react-social-icons@^5.2.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.6.0.tgz#c29a66ad321d7afcff9203ebd01f8a15cb72eb7e"
-  integrity sha512-M+HsaGezxRGiCMgRZJVBwQX36nXL2QTYXdReTUYK8/F0PCH3ihyI+Y2AvacCcSvuI+6k7/VvKKz312tNuemA1g==
+react-social-icons@^5.6.1:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.6.1.tgz#e185311536370b5afb152664692f1e41b7079251"
+  integrity sha512-gQJgBBn0GnV+e+IiZecTfuH2OPGV22G1yWD/ieCUhkHxJWZF2DhRtkTpOpe5+Ao+uWkOf3/jO2u2MjYdTEWFdA==
   dependencies:
     prop-types "^15.7.2"
 
