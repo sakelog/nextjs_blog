@@ -4,7 +4,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
-import rehypeHighlight from 'rehype-highlight';
+import rehypePrism from '@mapbox/rehype-prism';
 import rehypeRaw from 'rehype-raw';
 import slug from 'rehype-slug';
 import toc from '@jsdevtools/rehype-toc';
@@ -16,8 +16,6 @@ import RemarkImage from '@components/remark/remarkImage';
 import RemarkTable from '@components/remark/remarkTable';
 import RemarkIframe from '@components/remark/remarkIframe';
 
-import powershell from 'highlight.js/lib/languages/powershell';
-
 const renderMarkdownBody = (props: {
   markdown: string;
 }): ReactElement => {
@@ -27,9 +25,7 @@ const renderMarkdownBody = (props: {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(slug)
     .use(toc, { headings: ['h2', 'h3'] })
-    .use(rehypeHighlight, {
-      languages: { powershell: powershell },
-    })
+    .use(rehypePrism, [])
     .use(rehypeRaw)
     .use(rehypeReact, {
       createElement: React.createElement,
