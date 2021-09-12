@@ -20,6 +20,7 @@
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@loadable/component": "^5.14.1",
+    "@mapbox/rehype-prism": "^0.7.0",
     "contentful": "^8.5.0",
     "date-fns": "^2.21.1",
     "highlight.js": "^11.2.0",
@@ -29,7 +30,6 @@
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-social-icons": "^5.2.0",
-    "rehype-highlight": "^5.0.0",
     "rehype-raw": "^6.1.0",
     "rehype-react": "^7.0.1",
     "rehype-sanitize": "^5.0.0",
