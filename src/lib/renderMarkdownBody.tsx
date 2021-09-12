@@ -4,7 +4,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
-import rehypePrism from '@mapbox/rehype-prism';
+const rehypePrism = require('@mapbox/rehype-prism');
 import rehypeRaw from 'rehype-raw';
 import slug from 'rehype-slug';
 import toc from '@jsdevtools/rehype-toc';
