@@ -43,11 +43,11 @@ const SinglePost: NextPage<PropsType> = (props) => {
           <article className="p-2">
             <section className="p-4">
               <h1>{props.currentPost.fields.title}</h1>
+              <PostDate
+                postdate={props.currentPost.fields.date}
+                update={props.currentPost.fields.update}
+              />
               <ul className="flex flex-col items-center">
-                <PostDate
-                  postdate={props.currentPost.fields.date}
-                  update={props.currentPost.fields.update}
-                />
                 <li>
                   <TagList
                     tags={props.currentPost.fields.tags}
