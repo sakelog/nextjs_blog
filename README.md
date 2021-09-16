@@ -1,4 +1,6 @@
-## nextjs_blog
+# nextjs_blog
+
+※2021/9/16 ReadMe記載内容修正中
 
 ## 概要
 
