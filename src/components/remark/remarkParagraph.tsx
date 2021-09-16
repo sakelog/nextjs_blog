@@ -1,11 +1,8 @@
 import React from 'react';
 
-import customBlockStyles from '@styles/component/article__customBlock.module.scss';
+import customBlockStyles from '@styles/Object/Component/_c-customBlock.module.scss';
 
-type PropsType = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLParagraphElement>,
-  HTMLParagraphElement
->;
+type PropsType = JSX.IntrinsicElements['p'];
 
 const RemarkParagraph = (props: PropsType) => {
   const newChildren =

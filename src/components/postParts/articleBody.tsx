@@ -1,9 +1,9 @@
 import loadable from '@loadable/component';
-const RenderMarkdownBody = loadable(
-  () => import('@lib/renderMarkdownBody')
+const MarkdownBody = loadable(
+  () => import('@components/markdownBody')
 );
 
-import styles from '@styles/component/_c-article__body.module.scss';
+import styles from '@styles/Object/Project/_p-article.module.scss';
 
 type PropsType = {
   body: string;
@@ -12,7 +12,7 @@ type PropsType = {
 const ArticleBody = (props: PropsType) => {
   return (
     <section className={styles.root}>
-      <RenderMarkdownBody markdown={props.body} />
+      <MarkdownBody markdown={props.body} />
     </section>
   );
 };

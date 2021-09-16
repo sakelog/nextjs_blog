@@ -1,6 +1,8 @@
-import styles from '@styles/component/article__table.module.scss';
+import styles from '@styles/Object/Component/_c-table.module.scss';
 
-const RemarkTable: React.FC<JSX.IntrinsicElements['table']> = (props) => {
+type PropsType = JSX.IntrinsicElements['table'];
+
+const RemarkTable = (props: PropsType) => {
   return (
     <div className={styles.root}>
       <table {...props} />

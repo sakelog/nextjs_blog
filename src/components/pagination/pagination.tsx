@@ -6,7 +6,7 @@ import {
   HiOutlineChevronDoubleRight,
 } from 'react-icons/hi';
 
-import style from '@styles/Object/Project/_p__pagination.module.scss';
+import style from '@styles/Object/Project/_p-pagination.module.scss';
 
 const Pagination = (props: pagination.pagination.props) => {
   const { currentPage, lastPage, pathBase } = props;

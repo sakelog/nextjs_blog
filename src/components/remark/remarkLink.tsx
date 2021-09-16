@@ -4,9 +4,9 @@ import config from '@components/config';
 
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
-const RemarkLink: React.FC<JSX.IntrinsicElements['a']> = (
-  props
-) => {
+type PropsType = JSX.IntrinsicElements['a'];
+
+const RemarkLink = (props: PropsType) => {
   const isExternalLink =
     props.href?.startsWith('http') || false;
   const EXTERNAL_REL = 'noopener noreferrer';
