@@ -2,14 +2,23 @@ import { SocialIcon } from 'react-social-icons';
 
 import config from '@components/config';
 
-const RenderSocialIcon: React.FC = () => {
+type PropsType = {
+  className?: string;
+};
+
+const RenderSocialIcon = (props: PropsType) => {
   const githubBase = 'https://github.com/';
   const githubPath = githubBase + config.social.github;
   const twitterBase = 'https://twitter.com/';
   const twitterPath = twitterBase + config.social.twitter;
 
   return (
-    <ul className="flex space-x-2">
+    <ul
+      className={
+        'flex space-x-2' + props.className &&
+        ' ' + props.className
+      }
+    >
       <li key="github">
         <SocialIcon
           url={githubPath}

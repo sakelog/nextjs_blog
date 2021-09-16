@@ -3,7 +3,6 @@ import {
   getPagePath,
   getTagsPath,
 } from '@lib/util/getPath';
-import style from '@styles/pageList.module.scss';
 
 const PageList = () => {
   const NAME_TAG = 'タグ一覧';
@@ -18,22 +17,22 @@ const PageList = () => {
     <ul className="space-y-2">
       <li>
         <Link href={getTagsPath('')}>
-          <a className={style.linkItem}>{NAME_TAG}</a>
+          <a className="text-white">{NAME_TAG}</a>
         </Link>
       </li>
       <li>
         <Link href={getPagePath(PATH_ABOUT)}>
-          <a className={style.linkItem}>{NAME_ABOUT}</a>
+          <a className="text-white">{NAME_ABOUT}</a>
         </Link>
       </li>
       <li>
         <Link href={getPagePath(PATH_PRIVACY)}>
-          <a className={style.linkItem}>{NAME_PRIVACY}</a>
+          <a className="text-white">{NAME_PRIVACY}</a>
         </Link>
       </li>
       <li>
         <Link href={getPagePath(PATH_CONTACT)}>
-          <a className={style.linkItem}>{NAME_CONTACT}</a>
+          <a className="text-white">{NAME_CONTACT}</a>
         </Link>
       </li>
     </ul>
