@@ -3,8 +3,6 @@ import Image from 'next/image';
 import config from '@components/config';
 import SocialIcon from '@components/socialIcon';
 
-import styles from '@styles/bio.module.scss';
-
 const Bio = () => {
   return (
     <section className="p-2 bg-gray-100 flex flex-col md:flex-row md:space-x-2">
@@ -37,8 +35,8 @@ const Bio = () => {
             ブログでは主にWeb関係の技術について、勉強したことや実際にコーディングしてみた内容を発信していきます。
           </p>
         </section>
-        <section className={styles.socialIcon}>
-          <SocialIcon />
+        <section>
+          <SocialIcon className="flex space-x-2 my-2" />
         </section>
       </div>
     </section>
