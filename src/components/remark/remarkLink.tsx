@@ -9,8 +9,6 @@ type PropsType = JSX.IntrinsicElements['a'];
 const RemarkLink = (props: PropsType) => {
   const isExternalLink =
     props.href?.startsWith('http') || false;
-  const EXTERNAL_REL = 'noopener noreferrer';
-  const EXTERNAL_TARGET = '_blank';
   const isAnchor = props.href?.startsWith('#') || false;
   const isInternalAbsoluteLink =
     props.href?.startsWith(config.url) || false;
@@ -18,9 +16,6 @@ const RemarkLink = (props: PropsType) => {
     <>
       {isExternalLink ? (
         <a
-          href={props.href}
-          rel={EXTERNAL_REL}
-          target={EXTERNAL_TARGET}
           className={
             'inline-block ' + (props.className || '')
           }
