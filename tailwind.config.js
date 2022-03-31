@@ -7,11 +7,11 @@ module.exports = {
     './src/template/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // 'media' or 'class'
   theme: {
     extend: {
       colors: {
-        gray: colors.blueGray,
+        gray: colors.slate,
         theme: {
           DEFAULT: '#d9a62e',
           dark: '#997520',
