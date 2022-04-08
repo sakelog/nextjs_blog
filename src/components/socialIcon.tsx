@@ -19,7 +19,7 @@ const Icon = (props: IconPropsType) => {
       <a
         href={props.path}
         target="_blank"
-        rel="nofollow noopener"
+        rel="nofollow noopener noreferrer"
         className="text-white"
       >
         {props.icon}
