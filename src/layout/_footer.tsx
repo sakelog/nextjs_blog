@@ -23,8 +23,8 @@ const Footer = () => {
         <section className="text-sm">
           <PageList />
         </section>
-        <section>
-          <SocialIcon className="flex justify-center items-center space-x-2" />
+        <section className="flex justify-center">
+          <SocialIcon />
         </section>
       </nav>
       <div className="text-sm text-center">

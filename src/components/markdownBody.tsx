@@ -1,7 +1,4 @@
-import type {
-  JSXElementConstructor,
-  ReactElement,
-} from 'react';
+import type { ReactElement } from 'react';
 
 import { markdownRenderer } from '@lib/markdownRenderer';
 

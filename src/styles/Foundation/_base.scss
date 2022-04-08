@@ -1,6 +1,7 @@
 @layer base {
   body {
     @apply bg-gray-50 text-gray-800 font-sans;
+    scroll-behavior: smooth;
   }
   h1 {
     @apply font-bold text-2xl text-center my-8;

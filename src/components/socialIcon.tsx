@@ -1,33 +1,53 @@
-import { SocialIcon } from 'react-social-icons';
+import { FiGithub, FiTwitter } from 'react-icons/fi';
 
 import config from '@components/config';
 
-type PropsType = {
+type IconPropsType = {
   className?: string;
+  path: string;
+  icon: React.ReactNode;
+  bgcolor?: string;
 };
 
-const RenderSocialIcon = (props: PropsType) => {
+const Icon = (props: IconPropsType) => {
+  return (
+    <div
+      className="flex items-center justify-center text-xl 
+                 rounded-full bg-gray-800 w-8 h-8"
+      style={{ backgroundColor: props.bgcolor }}
+    >
+      <a
+        href={props.path}
+        target="_blank"
+        rel="nofollow noopener"
+        className="text-white"
+      >
+        {props.icon}
+      </a>
+    </div>
+  );
+};
+
+const RenderSocialIcon = () => {
   const githubBase = 'https://github.com/';
   const githubPath = githubBase + config.social.github;
   const twitterBase = 'https://twitter.com/';
   const twitterPath = twitterBase + config.social.twitter;
-
   return (
-    <ul
-      className={
-        'flex space-x-2' + props.className &&
-        ' ' + props.className
-      }
-    >
+    <ul className="flex space-x-2">
       <li key="github">
-        <SocialIcon
-          url={githubPath}
-          fgColor="#ffffff"
-          bgColor="#333333"
+        <Icon
+          className="bg-gray-400"
+          path={githubPath}
+          icon={<FiGithub />}
         />
       </li>
       <li key="twitter">
-        <SocialIcon url={twitterPath} fgColor="#ffffff" />
+        <Icon
+          path={twitterPath}
+          icon={<FiTwitter />}
+          bgcolor="#1DA1F2"
+        />
       </li>
     </ul>
   );

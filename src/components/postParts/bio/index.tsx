@@ -36,7 +36,7 @@ const Bio = () => {
           </p>
         </section>
         <section>
-          <SocialIcon className="flex space-x-2 my-2" />
+          <SocialIcon />
         </section>
       </div>
     </section>
