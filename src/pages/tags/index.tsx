@@ -64,7 +64,7 @@ export default TagsPage;
 export const getStaticProps: GetStaticProps<PageProps> =
   async () => {
     const allTags = await tagsControler.getAllTags();
-    let tagsInfo: {
+    const tagsInfo: {
       name: string;
       path: string;
       totalCount: number;
