@@ -1,8 +1,9 @@
-//import loadable from '@loadable/component';
-// const MarkdownBody = loadable(
-//   () => import('@components/markdownBody')
-// );
-import MarkdownBody from '@components/markdownBody';
+import dynamic from 'next/dynamic';
+
+const MarkdownBody = dynamic(
+  () => import('@components/markdownBody'),
+  { loading: () => <p>...</p> }
+);
 
 import styles from '@styles/Object/Project/_p-article.module.scss';
 

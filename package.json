@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@loadable/component": "^5.14.1",
     "contentful": "^9.0.0",
     "date-fns": "^2.21.1",
     "next": "^12.1.4",
