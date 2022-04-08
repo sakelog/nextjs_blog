@@ -1,7 +1,8 @@
-import loadable from '@loadable/component';
-const MarkdownBody = loadable(
-  () => import('@components/markdownBody')
-);
+//import loadable from '@loadable/component';
+// const MarkdownBody = loadable(
+//   () => import('@components/markdownBody')
+// );
+import MarkdownBody from '@components/markdownBody';
 
 import styles from '@styles/Object/Project/_p-article.module.scss';
 

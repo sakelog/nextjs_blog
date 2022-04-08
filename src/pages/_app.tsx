@@ -5,9 +5,10 @@ import GTMScript from '@components/GTM/script';
 
 import '@styles/global.scss';
 
-const MyApp: React.FC<AppProps> = (props) => {
-  const { Component, pageProps } = props;
-
+const MyApp = ({
+  Component,
+  pageProps,
+}: AppProps): JSX.Element => {
   return (
     <>
       {process.env.NODE_ENV === 'production' && (

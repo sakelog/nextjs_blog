@@ -57,8 +57,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.module.scss",
-    "src/lib/setSitemap.ts",
-    "src/lib/contentful/exportContent/urlSet.js"
+    "src/lib/setSitemap.ts"
   ],
   "exclude": [
     "node_modules"
