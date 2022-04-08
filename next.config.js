@@ -1,4 +1,5 @@
 const withPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache');
 
 const nextConfig = {
   images: {
@@ -6,6 +7,7 @@ const nextConfig = {
   },
   pwa: {
     dest: 'public',
+    runtimeCaching,
   },
 };
 
