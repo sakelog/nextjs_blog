@@ -9,7 +9,7 @@ const nextConfig = {
     dest: 'public',
     runtimeCaching,
   },
-  ignoreBuildErrors: true,
+  reactStrictMode: true,
 };
 
 module.exports = withPWA(nextConfig);
