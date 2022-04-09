@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import type {
   GetStaticProps,
   GetStaticPaths,
@@ -10,7 +11,9 @@ import { toKebabCase } from '@lib/util/toKebabCase';
 
 import CustomHead from '@components/customHead';
 import Layout from '@layout/layout';
-import ArticleBody from '@components/postParts/articleBody';
+const ArticleBody = dynamic(
+  () => import('@components/postParts/articleBody')
+);
 import Bio from '@components/postParts/bio';
 import PostDate from '@components/postDate';
 import TagList from '@components/tagList';

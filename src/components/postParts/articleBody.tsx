@@ -7,10 +7,10 @@ type PropsType = {
 };
 
 const ArticleBody = (props: PropsType) => {
+  const result: JSX.Element =
+    htmlToReact.processSync(props.body)?.result || null;
   return (
-    <section className={styles.root}>
-      {htmlToReact.processSync(props.body).result}
-    </section>
+    <section className={styles.root}>{result}</section>
   );
 };
 

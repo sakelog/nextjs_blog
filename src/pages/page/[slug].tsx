@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import type {
   GetStaticProps,
   GetStaticPaths,
@@ -6,7 +7,9 @@ import type {
 
 import Layout from '@layout/layout';
 import CustomHead from '@components/customHead';
-import ArticleBody from '@components/postParts/articleBody';
+const ArticleBody = dynamic(
+  () => import('@components/postParts/articleBody')
+);
 import BackToTop from '@components/pagination/backToTop';
 
 import { markdownToHtml } from '@lib/markdown/markdownToHtml';

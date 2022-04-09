@@ -12,6 +12,7 @@ import RemarkIframe from '@components/remark/remarkIframe';
 
 export const htmlToReact = unified()
   .use(rehypeParse, { fragment: true })
+  //@ts-ignore
   .use(rehypeReact, {
     createElement: React.createElement,
     components: {
