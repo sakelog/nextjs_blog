@@ -9,11 +9,12 @@ import CustomHead from '@components/customHead';
 import ArticleBody from '@components/postParts/articleBody';
 import BackToTop from '@components/pagination/backToTop';
 
+import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { pageControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 
 type PageProps = {
-  page: Contentful.page | null;
+  page: Contentful.PageOutput | null;
 };
 
 const SinglePage: NextPage<PageProps> = (props) => {
@@ -49,18 +50,34 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<PageProps> =
-  async (context) => {
-    const slug =
-      typeof context.params?.slug === 'string'
-        ? context.params?.slug
-        : '';
+export const getStaticProps: GetStaticProps<
+  PageProps
+> = async (context) => {
+  const slug =
+    typeof context.params?.slug === 'string'
+      ? context.params?.slug
+      : '';
 
-    const page = await pageControler.getPageBySlug(slug);
+  const page = await pageControler.getPageBySlug(slug);
 
-    return {
-      props: {
-        page,
+  const body = page
+    ? await markdownToHtml(page.fields.body)
+    : null;
+  const bodyToString = body?.toString() || null;
+
+  return {
+    props: {
+      page: {
+        sys: page?.sys,
+        fields: {
+          title: page?.fields.title || '',
+          slug: page?.fields.slug || '',
+          description: page?.fields.description || '',
+          date: page?.fields.date || '',
+          update: page?.fields.update || null,
+          body: bodyToString,
+        },
       },
-    };
+    },
   };
+};

@@ -22,6 +22,19 @@ declare namespace Contentful {
       body: string;
     };
   }
+  declare interface PostOutput extends post {
+    sys?: Sys;
+    fields: {
+      title: string;
+      slug: string;
+      date: string;
+      update: string | null;
+      category: category | null;
+      tags: tags[];
+      description: string;
+      body: string | null;
+    };
+  }
 
   declare interface pageCollection extends EntryCollection {
     sys?: Sys;
@@ -39,6 +52,17 @@ declare namespace Contentful {
       date: string;
       update?: string;
       body: string;
+    };
+  }
+  declare interface PageOutput extends page {
+    sys?: Sys;
+    fields: {
+      title: string;
+      slug: string;
+      description: string;
+      date: string;
+      update: string | null;
+      body: string | null;
     };
   }
 

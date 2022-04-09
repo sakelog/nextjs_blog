@@ -7,7 +7,7 @@ import { getFormatDate } from '@lib/util/getFormatDate';
 
 type propsType = {
   postdate: string;
-  update?: string;
+  update: string | null;
 };
 
 const PostDate = (props: propsType) => {
