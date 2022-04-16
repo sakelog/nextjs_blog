@@ -81,17 +81,13 @@ Next.js で Contentful の記事を API 取得してブログサイトに変換�
 
   - 行数の表示
 
-  - title 指定に対応
+  - ~~title 指定に対応~~
 
     ````markdown
-    ​`言語の指定:title=hogehoge ​`
+    ​`言語の指定 ​`
     ````
 
-  - 特定行の強調表示
-
-    ````markdown
-    ​`tsx{2} if (hogehoge) { return fugafuga } ​`
-    ````
+  - ~~特定行の強調表示~~
 
   - インラインコードにも対応(言語指定がなければインラインコードとみなす)
 
@@ -113,23 +109,19 @@ Contentful の Settings->Content Preview で URL を指定します。
 
 参考：<https://github.com/vercel/next.js/tree/canary/examples/cms-contentful>
 
-### Share Button
+~~### Share Button~~
 
-記事をシェアするボタンを入れています。
+~~記事をシェアするボタンを入れています。~~
 
-SNS のシェアボタンは[react-share](https://github.com/nygardk/react-share)で実装。
+~~### 記事のスクロール位置に連動した TOC~~
 
-URL コピーボタンは[react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard)と[Material UI](https://material-ui.com/)で実装
-
-### 記事のスクロール位置に連動した TOC
-
-参考: <https://github.com/Takumon/react-markdown-sync-toc>
+~~参考: <https://github.com/Takumon/react-markdown-sync-toc>~~
 
 ## インストール手順
 
 ### 必要なもの
 
-- node.js(v12.x.+)
+- node.js(v14.x.+)
 - yarn(1.22.5+)
 
 ## 手順
@@ -155,7 +147,14 @@ URL コピーボタンは[react-copy-to-clipboard](https://github.com/nkbt/react
 - CONTENTFUL_PREVIEW_ACCESS_TOKEN=Contentful の Preview Access Token
 - CONTENTFUL_PREVIEW_SECRET=任意の文字列 Contentful の PreviewURL の設定内容と合わせます
 - FORMSPREE_ENDPOINT=FORMSPREE の ENDPOINT(https://～)
-- GTM_ID=Google Tag Manager の ID
+
+## env ファイルの作成
+
+vercelの環境変数と合わせた内容を入れています。
+
+必須なのは下記の環境変数です。
+
+- NEXT_PUBLIC_GTM_ID=Google Tag ManagerのID
 
 #### 参考
 
@@ -168,24 +167,21 @@ URL コピーボタンは[react-copy-to-clipboard](https://github.com/nkbt/react
 `src > components > config.tsx`に設定用のファイルを作成して、設定を読み込んでいます。
 
 ```tsx
-export default {
+const config = {
   title: 'サイトのタイトル：meta情報に設定',
   author: 'プロフィールに表示する名前',
-  description: 'サイトの説明:meta情報に設定',
+  description:
+    'サイトの説明:meta情報に設定',
   url: 'サイトのURL(最後の/を含む)',
   createAt: 'サイト作成日(YYYY-MM-DD形式で設定)',
   social: {
     twitter: 'Twitterアカウント名',
     github: 'githubアカウント名',
   },
-  mediaQuery: {
-    xs: 575,
-    sm: 767,
-    md: 991,
-    lg: 1199,
-  },
   themeColor: 'サイトのテーマカラー',
 };
+
+export default config;
 ```
 
 作成するサイトの情報に合わせて修正してください。
