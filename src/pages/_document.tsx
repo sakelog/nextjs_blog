@@ -5,20 +5,10 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
+import GTMNoScript from '@components/GTM/noScript';
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
-    const GTMNoScript = () => {
-      return process.env.NODE_ENV === 'production' ? (
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?
-            id=${process.env.NEXT_PUBLIC_GTM_ID}"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-          }}
-        />
-      ) : null;
-    };
     return (
       <Html lang="ja">
         <Head>
@@ -46,7 +36,9 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <GTMNoScript />
+          {process.env.NODE_ENV === 'production' && (
+            <GTMNoScript />
+          )}
           <Main />
           <NextScript />
         </body>
