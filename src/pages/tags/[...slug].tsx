@@ -5,7 +5,6 @@ import {
 } from 'next';
 
 import CustomHead from '@components/CustomHead';
-import Layout from '@layout/Layout';
 import IndexList from '@components/IndexList';
 import Pagination from '@components/pagination/Pagination';
 import BackToTop from '@components/pagination/BackToTop';
@@ -34,7 +33,7 @@ const TagsDirectory: NextPage<PageProps> = (props) => {
       ? ':' + props.currentPage + 'ページ目'
       : '');
   return (
-    <Layout>
+    <>
       <CustomHead
         pageTitle={
           pageTitle +
@@ -61,7 +60,7 @@ const TagsDirectory: NextPage<PageProps> = (props) => {
         <span className="text-gray-400">/</span>
         <BackToTop />
       </nav>
-    </Layout>
+    </>
   );
 };
 

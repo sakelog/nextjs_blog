@@ -5,7 +5,6 @@ import type {
   NextPage,
 } from 'next';
 
-import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 const ArticleBody = dynamic(
   () => import('@components/postParts/ArticleBody')
@@ -23,7 +22,7 @@ type PageProps = {
 const SinglePage: NextPage<PageProps> = (props) => {
   const body = props.page?.fields.body || '';
   return (
-    <Layout>
+    <>
       {props.page && (
         <article>
           <CustomHead
@@ -37,7 +36,7 @@ const SinglePage: NextPage<PageProps> = (props) => {
           <BackToTop />
         </article>
       )}
-    </Layout>
+    </>
   );
 };
 

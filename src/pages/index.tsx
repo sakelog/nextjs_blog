@@ -1,6 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
 
-import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
 import Pagination from '@components/pagination/Pagination';
@@ -21,7 +20,7 @@ type PageProps = {
 
 const TopPage: NextPage<PageProps> = (props) => {
   return (
-    <Layout>
+    <>
       <CustomHead description={config.description} />
       <section className="p-2">
         <IndexList posts={props.postIndex.posts} />
@@ -31,7 +30,7 @@ const TopPage: NextPage<PageProps> = (props) => {
           pathBase={props.postIndex.pathBase}
         />
       </section>
-    </Layout>
+    </>
   );
 };
 

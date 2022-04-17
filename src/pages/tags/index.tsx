@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { HiOutlineTag } from 'react-icons/hi';
 
 import CustomHead from '@components/CustomHead';
-import Layout from '@layout/Layout';
 import BackToTop from '@components/pagination/BackToTop';
 
 import { tagsControler } from '@lib/contentful/exportContent';
@@ -28,7 +27,7 @@ const TagsPage: NextPage<PageProps> = (props) => {
   });
 
   return (
-    <Layout>
+    <>
       <CustomHead
         pageTitle={PAGE_TITLE}
         description={DESCRIPTION}
@@ -55,7 +54,7 @@ const TagsPage: NextPage<PageProps> = (props) => {
         </ul>
       </div>
       <BackToTop />
-    </Layout>
+    </>
   );
 };
 

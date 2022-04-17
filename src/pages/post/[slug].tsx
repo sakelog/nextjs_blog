@@ -10,7 +10,6 @@ import { postControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 
 import CustomHead from '@components/CustomHead';
-import Layout from '@layout/Layout';
 const ArticleBody = dynamic(
   () => import('@components/postParts/ArticleBody')
 );
@@ -30,7 +29,7 @@ const SinglePost: NextPage<PropsType> = (props) => {
   const body = props.currentPost?.fields.body || '';
   const pageTitle = props.currentPost?.fields.title || '';
   return (
-    <Layout>
+    <>
       {props.currentPost && (
         <>
           <CustomHead
@@ -70,7 +69,7 @@ const SinglePost: NextPage<PropsType> = (props) => {
           <BackToTop />
         </>
       )}
-    </Layout>
+    </>
   );
 };
 

@@ -6,7 +6,6 @@ import type {
 
 import { postControler } from '@lib/contentful/exportContent';
 
-import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
 import Pagination from '@components/pagination/Pagination';
@@ -28,7 +27,7 @@ const PostIndex: NextPage<PageProps> = (props) => {
     '記事一覧：' + props.postIndex.currentPage + 'ページ目';
   const description = config.title + 'の記事一覧ページです';
   return (
-    <Layout>
+    <>
       <CustomHead
         pageTitle={pageTitle}
         description={description}
@@ -41,7 +40,7 @@ const PostIndex: NextPage<PageProps> = (props) => {
           pathBase={props.postIndex.pathBase}
         />
       </section>
-    </Layout>
+    </>
   );
 };
 

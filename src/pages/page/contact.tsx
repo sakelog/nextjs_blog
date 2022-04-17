@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 
 import config from '@components/config';
 
-import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 import ContactForm from '@components/ContactForm';
 import BackToTop from '@components/pagination/BackToTop';
@@ -13,7 +12,7 @@ const Contact: NextPage = () => {
     config.title + 'についてのお問い合わせページ';
 
   return (
-    <Layout>
+    <>
       <CustomHead
         pageTitle={PAGE_TITLE}
         description={description}
@@ -25,7 +24,7 @@ const Contact: NextPage = () => {
         </div>
       </div>
       <BackToTop />
-    </Layout>
+    </>
   );
 };
 
