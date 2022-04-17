@@ -82,8 +82,9 @@ export const getStaticProps: GetStaticProps<
       const totalCount = targetPosts
         ? targetPosts.length
         : 0;
-      totalCount > 0 &&
+      if (totalCount > 0) {
         tagsInfo.push({ name, path, totalCount });
+      }
     }
   }
   return {

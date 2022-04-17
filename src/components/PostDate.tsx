@@ -5,12 +5,12 @@ import {
 
 import { getFormatDate } from '@lib/util/getFormatDate';
 
-type propsType = {
+type PropsType = {
   postdate: string;
   update: string | null;
 };
 
-const PostDate = (props: propsType) => {
+const PostDate = (props: PropsType) => {
   return (
     <ul className="my-2 text-sm flex flex-col items-center">
       <li className="flex items-center space-x-1">

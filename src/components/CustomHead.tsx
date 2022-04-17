@@ -2,13 +2,13 @@ import Head from 'next/head';
 
 import config from '@components/config';
 
-type propsType = {
+type PropsType = {
   pageTitle?: string | null;
   description?: string;
   imgFLG?: boolean;
 };
 
-const CustomHead = (props: propsType) => {
+const CustomHead = (props: PropsType) => {
   const metaTitle = props.pageTitle
     ? props.pageTitle + ' | ' + config.title
     : config.title;

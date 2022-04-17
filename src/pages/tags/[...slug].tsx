@@ -80,11 +80,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
         await tagsControler.getPostsByTags(
           allTags[index].sys.id
         );
-      targetPosts &&
-        targetPosts.length > 0 &&
-        allSlugs.push([
-          toKebabCase(allTags[index].fields.slug),
-        ]);
+      if (targetPosts) {
+        if (targetPosts.length > 0) {
+          allSlugs.push([
+            toKebabCase(allTags[index].fields.slug),
+          ]);
+        }
+      }
       const lastPage = targetPosts
         ? Math.ceil(targetPosts.length / POST_PER_LISTPAGE)
         : 0;

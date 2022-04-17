@@ -25,9 +25,9 @@ const RemarkImage = (props: PropsType) => {
       layout="fill"
       objectFit="scale-down"
       alt={alt ? alt : ''}
-      onClick={() => {
-        showState === 'show' ? handleHide() : handleShow();
-      }}
+      onClick={() =>
+        showState === 'show' ? handleHide() : handleShow()
+      }
     />
   );
   const ContentfulTitle = isContentfulImg && (

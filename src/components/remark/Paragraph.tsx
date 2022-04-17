@@ -4,34 +4,15 @@ import customBlockStyles from '@styles/Object/Component/_c-customBlock.module.sc
 
 type PropsType = JSX.IntrinsicElements['p'];
 
-const RemarkParagraph = (props: PropsType) => {
-  const newChildren =
-    props.children &&
-    Array.isArray(props.children) &&
-    props.children.map((child, i) => {
-      return typeof child === 'string'
-        ? child.match(/\*\*.*\*\*/)
-          ? convertStrong(child)
-          : child.match(/\[\[/)
-          ? createCustomBlock(child, i)
-          : child
-        : child;
-    });
-  return (
-    <div className={props.className ? props.className : ''}>
-      {newChildren}
-    </div>
-  );
-};
-
-export default RemarkParagraph;
-
+// strongが変換されない問題対応
 const convertStrong = (text: string) => {
   const targetText = text.match(/\*\*(.*)\*\*/);
-  targetText &&
+  if (targetText) {
     React.createElement('strong', [targetText[1]]);
+  }
 };
 
+// CustomBlockの作成
 const createCustomBlock = (text: string, index: number) => {
   const customBlock = text.match(/\[\[(.*)\]\]\n(.*)/);
   const hasTitle =
@@ -41,7 +22,7 @@ const createCustomBlock = (text: string, index: number) => {
       ? customBlock[1].split(' | ')[0]
       : customBlock[1]
     : '';
-  customBlock &&
+  if (customBlock) {
     React.createElement(
       'div',
       {
@@ -77,4 +58,27 @@ const createCustomBlock = (text: string, index: number) => {
           }),
       ]
     );
+  }
 };
+
+const RemarkParagraph = (props: PropsType) => {
+  const newChildren =
+    props.children &&
+    Array.isArray(props.children) &&
+    props.children.map((child, i) => {
+      return typeof child === 'string'
+        ? child.match(/\*\*.*\*\*/)
+          ? convertStrong(child)
+          : child.match(/\[\[/)
+          ? createCustomBlock(child, i)
+          : child
+        : child;
+    });
+  return (
+    <div className={props.className ? props.className : ''}>
+      {newChildren}
+    </div>
+  );
+};
+
+export default RemarkParagraph;
