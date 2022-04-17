@@ -1,5 +1,5 @@
-import Header from '@layout/_header';
-import Footer from '@layout/_footer';
+import Header from '@layout/Header';
+import Footer from '@layout/Footer';
 import { useEffect } from 'react';
 
 const Layout = ({
@@ -25,9 +25,9 @@ const Layout = ({
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
-      <div className="container mx-auto my-2 flex-1">
-        <main>{children}</main>
-      </div>
+      <main className="container mx-auto my-2 flex-1">
+        {children}
+      </main>
       <Footer />
     </div>
   );

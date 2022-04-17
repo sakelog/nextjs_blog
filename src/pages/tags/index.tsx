@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { HiOutlineTag } from 'react-icons/hi';
 
 import CustomHead from '@components/CustomHead';
-import Layout from '@layout/layout';
+import Layout from '@layout/Layout';
 import BackToTop from '@components/pagination/BackToTop';
 
 import { tagsControler } from '@lib/contentful/exportContent';

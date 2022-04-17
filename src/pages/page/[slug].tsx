@@ -5,7 +5,7 @@ import type {
   NextPage,
 } from 'next';
 
-import Layout from '@layout/layout';
+import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 const ArticleBody = dynamic(
   () => import('@components/postParts/ArticleBody')

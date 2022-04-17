@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 
-import Layout from '@layout/layout';
+import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
 import Pagination from '@components/pagination/Pagination';

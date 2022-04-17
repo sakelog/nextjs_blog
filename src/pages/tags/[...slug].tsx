@@ -5,7 +5,7 @@ import {
 } from 'next';
 
 import CustomHead from '@components/CustomHead';
-import Layout from '@layout/layout';
+import Layout from '@layout/Layout';
 import IndexList from '@components/IndexList';
 import Pagination from '@components/pagination/Pagination';
 import BackToTop from '@components/pagination/BackToTop';

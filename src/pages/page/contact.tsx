@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import config from '@components/config';
 
-import Layout from '@layout/layout';
+import Layout from '@layout/Layout';
 import CustomHead from '@components/CustomHead';
 import ContactForm from '@components/ContactForm';
 import BackToTop from '@components/pagination/BackToTop';
