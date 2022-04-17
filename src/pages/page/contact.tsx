@@ -3,9 +3,9 @@ import type { NextPage } from 'next';
 import config from '@components/config';
 
 import Layout from '@layout/layout';
-import CustomHead from '@components/customHead';
-import ContactForm from '@components/contactForm';
-import BackToTop from '@components/pagination/backToTop';
+import CustomHead from '@components/CustomHead';
+import ContactForm from '@components/ContactForm';
+import BackToTop from '@components/pagination/BackToTop';
 
 const Contact: NextPage = () => {
   const PAGE_TITLE = 'お問い合わせ';

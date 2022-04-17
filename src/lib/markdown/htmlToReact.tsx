@@ -4,11 +4,11 @@ import { unified } from 'unified';
 import rehypeParse from 'rehype-parse';
 import rehypeReact from 'rehype-react';
 
-import RemarkParagraph from '@components/remark/remarkParagraph';
-import RemarkLink from '@components/remark/remarkLink';
-import RemarkImage from '@components/remark/remarkImage';
-import RemarkTable from '@components/remark/remarkTable';
-import RemarkIframe from '@components/remark/remarkIframe';
+import RemarkParagraph from '@components/remark/Paragraph';
+import RemarkLink from '@components/remark/Link';
+import RemarkImage from '@components/remark/Image';
+import RemarkTable from '@components/remark/Table';
+import RemarkIframe from '@components/remark/Iframe';
 
 export const htmlToReact = unified()
   .use(rehypeParse, { fragment: true })

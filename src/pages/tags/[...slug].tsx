@@ -4,11 +4,11 @@ import {
   NextPage,
 } from 'next';
 
-import CustomHead from '@components/customHead';
+import CustomHead from '@components/CustomHead';
 import Layout from '@layout/layout';
-import IndexList from '@components/indexList';
-import Pagination from '@components/pagination/pagination';
-import BackToTop from '@components/pagination/backToTop';
+import IndexList from '@components/IndexList';
+import Pagination from '@components/pagination/Pagination';
+import BackToTop from '@components/pagination/BackToTop';
 
 import { tagsControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
@@ -110,37 +110,36 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 //-----------------------------------------------------------------------------
 
-export const getStaticProps: GetStaticProps<PageProps> =
-  async (context) => {
-    const slug = context.params ? context.params.slug : '';
-    const baseSlug = slug ? slug[0] : '';
+export const getStaticProps: GetStaticProps<
+  PageProps
+> = async (context) => {
+  const slug = context.params ? context.params.slug : '';
+  const baseSlug = slug ? slug[0] : '';
 
-    const targetTags = await tagsControler.getTagsBySlug(
-      baseSlug
-    );
-    const targetPosts = targetTags?.sys.id
-      ? await tagsControler.getPostsByTags(
-          targetTags?.sys.id
-        )
-      : null;
-    const lastPage = targetPosts
-      ? Math.ceil(targetPosts.length / POST_PER_LISTPAGE)
-      : 0;
-    const pathBase = getTagsPath(baseSlug);
-    const currentPage = slug
-      ? slug.length > 1
-        ? Number(slug[slug.length - 1])
-        : 1
-      : 0;
+  const targetTags = await tagsControler.getTagsBySlug(
+    baseSlug
+  );
+  const targetPosts = targetTags?.sys.id
+    ? await tagsControler.getPostsByTags(targetTags?.sys.id)
+    : null;
+  const lastPage = targetPosts
+    ? Math.ceil(targetPosts.length / POST_PER_LISTPAGE)
+    : 0;
+  const pathBase = getTagsPath(baseSlug);
+  const currentPage = slug
+    ? slug.length > 1
+      ? Number(slug[slug.length - 1])
+      : 1
+    : 0;
 
-    return {
-      props: {
-        name: targetTags?.fields.name || '',
-        posts: targetPosts,
-        lastPage,
-        totalCount: targetPosts ? targetPosts.length : 0,
-        currentPage,
-        pathBase,
-      },
-    };
+  return {
+    props: {
+      name: targetTags?.fields.name || '',
+      posts: targetPosts,
+      lastPage,
+      totalCount: targetPosts ? targetPosts.length : 0,
+      currentPage,
+      pathBase,
+    },
   };
+};

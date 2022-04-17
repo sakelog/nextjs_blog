@@ -2,9 +2,9 @@ import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { HiOutlineTag } from 'react-icons/hi';
 
-import CustomHead from '@components/customHead';
+import CustomHead from '@components/CustomHead';
 import Layout from '@layout/layout';
-import BackToTop from '@components/pagination/backToTop';
+import BackToTop from '@components/pagination/BackToTop';
 
 import { tagsControler } from '@lib/contentful/exportContent';
 import { getTagsPath } from '@lib/util/getPath';
@@ -61,33 +61,34 @@ const TagsPage: NextPage<PageProps> = (props) => {
 
 export default TagsPage;
 
-export const getStaticProps: GetStaticProps<PageProps> =
-  async () => {
-    const allTags = await tagsControler.getAllTags();
-    const tagsInfo: {
-      name: string;
-      path: string;
-      totalCount: number;
-    }[] = [];
-    if (allTags) {
-      for (let index = 0; index < allTags.length; index++) {
-        const targetTag = allTags[index];
-        const name = targetTag?.fields.name || '';
-        const path = getTagsPath(targetTag?.fields.slug);
-        const targetPosts =
-          await tagsControler.getPostsByTags(
-            targetTag?.sys.id
-          );
-        const totalCount = targetPosts
-          ? targetPosts.length
-          : 0;
-        totalCount > 0 &&
-          tagsInfo.push({ name, path, totalCount });
-      }
+export const getStaticProps: GetStaticProps<
+  PageProps
+> = async () => {
+  const allTags = await tagsControler.getAllTags();
+  const tagsInfo: {
+    name: string;
+    path: string;
+    totalCount: number;
+  }[] = [];
+  if (allTags) {
+    for (let index = 0; index < allTags.length; index++) {
+      const targetTag = allTags[index];
+      const name = targetTag?.fields.name || '';
+      const path = getTagsPath(targetTag?.fields.slug);
+      const targetPosts =
+        await tagsControler.getPostsByTags(
+          targetTag?.sys.id
+        );
+      const totalCount = targetPosts
+        ? targetPosts.length
+        : 0;
+      totalCount > 0 &&
+        tagsInfo.push({ name, path, totalCount });
     }
-    return {
-      props: {
-        tagsInfo,
-      },
-    };
+  }
+  return {
+    props: {
+      tagsInfo,
+    },
   };
+};

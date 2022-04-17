@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
 
 import Layout from '@layout/layout';
-import CustomHead from '@components/customHead';
-import IndexList from '@components/indexList';
-import Pagination from '@components/pagination/pagination';
+import CustomHead from '@components/CustomHead';
+import IndexList from '@components/IndexList';
+import Pagination from '@components/pagination/Pagination';
 import config from '@components/config';
 
 import { postControler } from '@lib/contentful/exportContent';
@@ -37,25 +37,25 @@ const TopPage: NextPage<PageProps> = (props) => {
 
 export default TopPage;
 
-export const getStaticProps: GetStaticProps<PageProps> =
-  async () => {
-    const allPosts = await postControler.getAllPosts();
-    const skip = 0;
-    const targetPosts =
-      allPosts?.slice(skip, skip + POST_PER_LISTPAGE) ||
-      null;
-    const lastPage = allPosts
-      ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
-      : 0;
+export const getStaticProps: GetStaticProps<
+  PageProps
+> = async () => {
+  const allPosts = await postControler.getAllPosts();
+  const skip = 0;
+  const targetPosts =
+    allPosts?.slice(skip, skip + POST_PER_LISTPAGE) || null;
+  const lastPage = allPosts
+    ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
+    : 0;
 
-    return {
-      props: {
-        postIndex: {
-          posts: targetPosts,
-          currentPage: 1,
-          lastPage,
-          pathBase: '/',
-        },
+  return {
+    props: {
+      postIndex: {
+        posts: targetPosts,
+        currentPage: 1,
+        lastPage,
+        pathBase: '/',
       },
-    };
+    },
   };
+};

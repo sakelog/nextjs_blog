@@ -1,6 +1,6 @@
 import config from '@components/config';
-import PageList from '@components/pageList';
-import SocialIcon from '@components/socialIcon';
+import PageList from '@components/PageList';
+import SocialIcon from '@components/SocialIcon';
 
 const Footer = () => {
   const siteTitle = config.title;

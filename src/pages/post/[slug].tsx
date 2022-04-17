@@ -9,16 +9,16 @@ import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { postControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 
-import CustomHead from '@components/customHead';
+import CustomHead from '@components/CustomHead';
 import Layout from '@layout/layout';
 const ArticleBody = dynamic(
-  () => import('@components/postParts/articleBody')
+  () => import('@components/postParts/ArticleBody')
 );
-import Bio from '@components/postParts/bio';
-import PostDate from '@components/postDate';
-import TagList from '@components/tagList';
-import PrevNext from '@components/pagination/prevNext';
-import BackToTop from '@components/pagination/backToTop';
+import Bio from '@components/postParts/Bio';
+import PostDate from '@components/PostDate';
+import TagList from '@components/TagList';
+import PrevNext from '@components/pagination/PrevNext';
+import BackToTop from '@components/pagination/BackToTop';
 
 type PropsType = {
   currentPost?: Contentful.PostOutput | null;

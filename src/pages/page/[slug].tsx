@@ -6,11 +6,11 @@ import type {
 } from 'next';
 
 import Layout from '@layout/layout';
-import CustomHead from '@components/customHead';
+import CustomHead from '@components/CustomHead';
 const ArticleBody = dynamic(
-  () => import('@components/postParts/articleBody')
+  () => import('@components/postParts/ArticleBody')
 );
-import BackToTop from '@components/pagination/backToTop';
+import BackToTop from '@components/pagination/BackToTop';
 
 import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { pageControler } from '@lib/contentful/exportContent';

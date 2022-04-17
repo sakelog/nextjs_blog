@@ -7,9 +7,9 @@ import type {
 import { postControler } from '@lib/contentful/exportContent';
 
 import Layout from '@layout/layout';
-import CustomHead from '@components/customHead';
-import IndexList from '@components/indexList';
-import Pagination from '@components/pagination/pagination';
+import CustomHead from '@components/CustomHead';
+import IndexList from '@components/IndexList';
+import Pagination from '@components/pagination/Pagination';
 import config from '@components/config';
 
 const POST_PER_LISTPAGE = 6;
@@ -68,29 +68,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 //-----------------------------------------------------------------------------
 
-export const getStaticProps: GetStaticProps<PageProps> =
-  async (context) => {
-    const currentPage =
-      typeof context.params?.number === 'string'
-        ? Number(context.params?.number)
-        : 0;
-    const allPosts = await postControler.getAllPosts();
-    const skip = (currentPage - 1) * POST_PER_LISTPAGE;
-    const targetPosts =
-      allPosts?.slice(skip, skip + POST_PER_LISTPAGE) ||
-      null;
-    const lastPage = allPosts
-      ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
+export const getStaticProps: GetStaticProps<
+  PageProps
+> = async (context) => {
+  const currentPage =
+    typeof context.params?.number === 'string'
+      ? Number(context.params?.number)
       : 0;
+  const allPosts = await postControler.getAllPosts();
+  const skip = (currentPage - 1) * POST_PER_LISTPAGE;
+  const targetPosts =
+    allPosts?.slice(skip, skip + POST_PER_LISTPAGE) || null;
+  const lastPage = allPosts
+    ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
+    : 0;
 
-    return {
-      props: {
-        postIndex: {
-          posts: targetPosts,
-          currentPage,
-          lastPage,
-          pathBase: '/',
-        },
+  return {
+    props: {
+      postIndex: {
+        posts: targetPosts,
+        currentPage,
+        lastPage,
+        pathBase: '/',
       },
-    };
+    },
   };
+};
