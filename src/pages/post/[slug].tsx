@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import type {
   GetStaticProps,
   GetStaticPaths,
@@ -10,14 +9,20 @@ import { postControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 
 import CustomHead from '@components/CustomHead';
-const ArticleBody = dynamic(
-  () => import('@components/postParts/ArticleBody')
-);
 import Bio from '@components/postParts/Bio';
 import PostDate from '@components/PostDate';
 import TagList from '@components/TagList';
 import PrevNext from '@components/pagination/PrevNext';
 import BackToTop from '@components/pagination/BackToTop';
+
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+const ArticleBody = dynamic(
+  () => import('@components/postParts/ArticleBody'),
+  {
+    suspense: true,
+  }
+);
 
 type PropsType = {
   currentPost?: Contentful.PostOutput | null;
@@ -58,7 +63,9 @@ const SinglePost: NextPage<PropsType> = (props) => {
                   />
                 </li>
               </ul>
-              <ArticleBody body={body} />
+              <Suspense fallback={'loading'}>
+                <ArticleBody body={body} />
+              </Suspense>
             </section>
             <Bio />
           </article>

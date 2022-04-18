@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import type {
   GetStaticProps,
   GetStaticPaths,
@@ -6,10 +5,16 @@ import type {
 } from 'next';
 
 import CustomHead from '@components/CustomHead';
-const ArticleBody = dynamic(
-  () => import('@components/postParts/ArticleBody')
-);
 import BackToTop from '@components/pagination/BackToTop';
+
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+const ArticleBody = dynamic(
+  () => import('@components/postParts/ArticleBody'),
+  {
+    suspense: true,
+  }
+);
 
 import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { pageControler } from '@lib/contentful/exportContent';
@@ -31,7 +36,9 @@ const SinglePage: NextPage<PageProps> = (props) => {
           />
           <div className="p-4">
             <h1>{props.page.fields.title}</h1>
-            <ArticleBody body={body} />
+            <Suspense fallback={'loading'}>
+              <ArticleBody body={body} />
+            </Suspense>
           </div>
           <BackToTop />
         </article>
