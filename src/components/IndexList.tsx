@@ -6,7 +6,7 @@ import { getPostPath } from '@lib/util/getPath';
 import { getFormatDate } from '@lib/util/getFormatDate';
 
 type PropsType = {
-  posts: Contentful.post[] | null;
+  posts: Contentful.Post[] | null;
 };
 
 const IndexList = (props: PropsType) => {

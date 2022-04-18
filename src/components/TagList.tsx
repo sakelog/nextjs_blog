@@ -5,7 +5,7 @@ import { HiOutlineTag } from 'react-icons/hi';
 import { getTagsPath } from '@lib/util/getPath';
 
 type PropsType = {
-  tags: Contentful.tags[];
+  tags: Contentful.Tags[];
   heading: string;
 };
 

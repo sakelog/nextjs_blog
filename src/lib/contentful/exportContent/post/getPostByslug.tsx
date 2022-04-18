@@ -10,18 +10,28 @@ type PropsType = {
 
 export const getPostBySlug = async (
   props: PropsType
-): Promise<Contentful.post | null> => {
-  const res: Contentful.postCollection | undefined =
-    !props.preview
-      ? await client?.getEntries({
+): Promise<Contentful.Post | null> => {
+  const post = !props.preview
+    ? client
+        ?.getEntries({
           content_type: 'post',
           'fields.slug': props.slug,
         })
-      : await previewClient?.getEntries({
+        .then((res) =>
+          typeof res?.items === 'undefined'
+            ? null
+            : res.items[0]
+        )
+    : previewClient
+        ?.getEntries({
           content_type: 'post',
           'fields.slug': props.slug,
-        });
-  const post =
-    typeof res?.items === 'undefined' ? null : res.items[0];
+        })
+        .then((res) =>
+          typeof res?.items === 'undefined'
+            ? null
+            : res.items[0]
+        );
+
   return post;
 };

@@ -8,8 +8,8 @@ import {
 import { getPostPath } from '@lib/util/getPath';
 
 type PropsType = {
-  prevPost: Contentful.post | null;
-  nextPost: Contentful.post | null;
+  prevPost: Contentful.Post | null;
+  nextPost: Contentful.Post | null;
 };
 
 const PrevNext = (props: PropsType) => {

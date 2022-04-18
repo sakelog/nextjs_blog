@@ -1,6 +1,6 @@
 type PropsType = {
   slug: string;
-  posts: Contentful.post[] | null;
+  posts: Contentful.Post[] | null | undefined;
 };
 
 export const getPostIndex = (props: PropsType): number => {

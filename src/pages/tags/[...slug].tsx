@@ -17,7 +17,7 @@ const POST_PER_LISTPAGE = 10;
 
 type PageProps = {
   name: string;
-  posts: Contentful.post[] | null;
+  posts: Contentful.Post[] | null | undefined;
   totalCount: number;
   currentPage: number;
   lastPage: number;
@@ -66,8 +66,6 @@ const TagsDirectory: NextPage<PageProps> = (props) => {
 
 export default TagsDirectory;
 
-//-----------------------------------------------------------------------------
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const allTags = await tagsControler.getAllTags();
 
@@ -108,8 +106,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
-
-//-----------------------------------------------------------------------------
 
 export const getStaticProps: GetStaticProps<
   PageProps

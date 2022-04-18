@@ -43,13 +43,13 @@ const SinglePage: NextPage<PageProps> = (props) => {
 export default SinglePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPages = await pageControler.getAllPages();
+  return pageControler.getAllPages().then((allPages) => {
+    const paths = allPages?.map((page) => ({
+      params: { slug: toKebabCase(page.fields.slug) },
+    })) || [{ params: { slug: '' } }];
 
-  const paths = allPages?.map((page) => ({
-    params: { slug: toKebabCase(page.fields.slug) },
-  })) || [{ params: { slug: '' } }];
-
-  return { paths, fallback: false };
+    return { paths, fallback: false };
+  });
 };
 
 export const getStaticProps: GetStaticProps<
@@ -60,26 +60,31 @@ export const getStaticProps: GetStaticProps<
       ? context.params?.slug
       : '';
 
-  const page = await pageControler.getPageBySlug(slug);
+  return pageControler
+    .getPageBySlug(slug)
+    .then(async (page) => {
+      const bodyToString = page
+        ? markdownToHtml(page.fields.body).then((body) =>
+            body?.toString()
+          )
+        : null;
 
-  const body = page
-    ? await markdownToHtml(page.fields.body)
-    : null;
-  const bodyToString = body?.toString() || null;
+      const fields = {
+        title: page?.fields.title || '',
+        slug: page?.fields.slug || '',
+        description: page?.fields.description || '',
+        date: page?.fields.date || '',
+        update: page?.fields.update || null,
+        body: await bodyToString?.then((res) => res),
+      };
 
-  return {
-    props: {
-      page: {
-        sys: page?.sys,
-        fields: {
-          title: page?.fields.title || '',
-          slug: page?.fields.slug || '',
-          description: page?.fields.description || '',
-          date: page?.fields.date || '',
-          update: page?.fields.update || null,
-          body: bodyToString,
+      return {
+        props: {
+          page: {
+            sys: page?.sys,
+            fields,
+          },
         },
-      },
-    },
-  };
+      };
+    });
 };

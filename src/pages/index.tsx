@@ -11,7 +11,7 @@ const POST_PER_LISTPAGE = 6;
 
 type PageProps = {
   postIndex: {
-    posts: Contentful.post[] | null;
+    posts: Contentful.Post[] | null;
     currentPage: number;
     lastPage: number;
     pathBase: string;
@@ -39,22 +39,24 @@ export default TopPage;
 export const getStaticProps: GetStaticProps<
   PageProps
 > = async () => {
-  const allPosts = await postControler.getAllPosts();
-  const skip = 0;
-  const targetPosts =
-    allPosts?.slice(skip, skip + POST_PER_LISTPAGE) || null;
-  const lastPage = allPosts
-    ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
-    : 0;
+  return postControler.getAllPosts().then((allPosts) => {
+    const SKIP = 0;
+    const targetPosts =
+      allPosts?.slice(SKIP, SKIP + POST_PER_LISTPAGE) ||
+      null;
+    const lastPage = allPosts
+      ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
+      : 0;
 
-  return {
-    props: {
-      postIndex: {
-        posts: targetPosts,
-        currentPage: 1,
-        lastPage,
-        pathBase: '/',
+    return {
+      props: {
+        postIndex: {
+          posts: targetPosts,
+          currentPage: 1,
+          lastPage,
+          pathBase: '/',
+        },
       },
-    },
-  };
+    };
+  });
 };

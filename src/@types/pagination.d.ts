@@ -1,6 +1,6 @@
-declare namespace pagination {
-  declare namespace pagination {
-    declare type props = {
+declare namespace Pagination {
+  declare namespace Pagination {
+    declare type Props = {
       currentPage: number;
       lastPage: number;
       pathBase: string;

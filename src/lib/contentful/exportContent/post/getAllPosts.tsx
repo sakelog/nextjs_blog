@@ -1,14 +1,16 @@
 import { client } from '@lib/contentful/exportContent/client';
 
 export const getAllPosts = async (): Promise<
-  Contentful.post[] | null
+  Contentful.Post[] | null | undefined
 > => {
-  const res: Contentful.postCollection | undefined =
-    await client?.getEntries({
+  const posts = client
+    ?.getEntries({
       content_type: 'post',
       order: '-fields.date',
-    });
-  const posts =
-    typeof res?.items === 'undefined' ? null : res.items;
+    })
+    .then((res) =>
+      typeof res?.items === 'undefined' ? null : res.items
+    );
+
   return posts;
 };

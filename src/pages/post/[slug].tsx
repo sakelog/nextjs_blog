@@ -21,8 +21,8 @@ import BackToTop from '@components/pagination/BackToTop';
 
 type PropsType = {
   currentPost?: Contentful.PostOutput | null;
-  prevPost: Contentful.post | null;
-  nextPost: Contentful.post | null;
+  prevPost: Contentful.Post | null;
+  nextPost: Contentful.Post | null;
 };
 
 const SinglePost: NextPage<PropsType> = (props) => {
@@ -76,13 +76,13 @@ const SinglePost: NextPage<PropsType> = (props) => {
 export default SinglePost;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await postControler.getAllPosts();
+  return postControler.getAllPosts().then((allPosts) => {
+    const paths = allPosts?.map((post) => ({
+      params: { slug: toKebabCase(post.fields.slug) },
+    })) || [{ params: { slug: '' } }];
 
-  const paths = allPosts?.map((post) => ({
-    params: { slug: toKebabCase(post.fields.slug) },
-  })) || [{ params: { slug: '' } }];
-
-  return { paths, fallback: false };
+    return { paths, fallback: false };
+  });
 };
 
 export const getStaticProps: GetStaticProps<
