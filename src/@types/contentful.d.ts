@@ -1,99 +1,60 @@
 declare namespace Contentful {
-  declare type Sys = {
-    id: string;
+  // Post
+  declare interface PostFields {
+    title: string;
+    slug: string;
+    date: string;
+    update?: string;
+    category: Category;
+    tags: Tags[];
+    description: string;
+    body: string;
   }
-  declare interface postCollection extends EntryCollection {
-    sys?: Sys;
-    total?: number;
-    skip?: number;
-    limit?: number;
-    items?: post[];
-  }
-  declare interface post extends Entry {
-    sys: Sys;
-    fields: {
-      title: string;
-      slug: string;
-      date: string;
-      update?: string;
-      category: category;
-      tags: tags[];
-      description: string;
-      body: string;
-    };
-  }
-  declare interface PostOutput extends post {
-    sys?: Sys;
-    fields: {
-      title: string;
-      slug: string;
-      date: string;
-      update: string | null;
-      category: category | null;
-      tags: tags[];
-      description: string;
-      body: string | null;
-    };
-  }
+  export type Post = Entry<PostFields>;
+  export type PostCollection = EntryCollection<PostFields>;
 
-  declare interface pageCollection extends EntryCollection {
-    sys?: Sys;
-    total?: number;
-    skip?: number;
-    limit?: number;
-    items?: page[];
+  declare interface PostFieldsOutput extends PostFields {
+    update: string | null;
   }
-  declare interface page extends Entry {
-    sys: Sys;
-    fields: {
-      title: string;
-      slug: string;
-      description: string;
-      date: string;
-      update?: string;
-      body: string;
-    };
-  }
-  declare interface PageOutput extends page {
-    sys?: Sys;
-    fields: {
-      title: string;
-      slug: string;
-      description: string;
-      date: string;
-      update: string | null;
-      body: string | null;
-    };
-  }
+  export type PostOutput = Entry<PostFieldsOutput>;
+  export type PostCollectionOutput =
+    EntryCollection<PostFieldsOutput>;
 
-  declare interface categoryCollection extends EntryCollection {
-    sys?: Sys;
-    total?: number;
-    skip?: number;
-    limit?: number;
-    items?: category[];
+  // Page
+  declare interface PageFields {
+    title: string;
+    slug: string;
+    description: string;
+    date: string;
+    update?: string;
+    body: string;
   }
-  declare interface category extends Entry {
-    sys: Sys;
-    fields: {
-      name: string;
-      slug: string;
-    };
+  export type PageCollection = EntryCollection<PageFields>;
+  export type Page = Entry<PageFields>;
+
+  declare interface PageFieldsOutput extends PageFields {
+    update: string | null;
+    body: string | null;
   }
-  declare interface tagsCollection extends EntryCollection {
-    sys?: Sys;
-    total?: number;
-    skip?: number;
-    limit?: number;
-    items?: tags[];
+  export type PageCollectionOutput =
+    EntryCollection<PageFieldsOutput>;
+  export type PageOutput = Entry<PageFieldsOutput>;
+
+  // Category
+  declare interface CategoryFields {
+    name: string;
+    slug: string;
   }
-  declare interface tags extends Entry {
-    sys: Sys;
-    fields: {
-      name: string;
-      slug: string;
-    };
+  export type Category = Entry<CategoryFields>;
+
+  // Tag
+  declare interface TagFields {
+    name: string;
+    slug: string;
   }
+  export type Tags = Entry<TagFields>;
+  export type TagsCollection = EntryCollection<TagFields>;
+
   declare namespace MyLib {
     declare namespace getAllPosts {}
     declare namespace getTargetPosts {
