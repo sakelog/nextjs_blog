@@ -54,48 +54,4 @@ declare namespace Contentful {
   }
   export type Tags = Entry<TagFields>;
   export type TagsCollection = EntryCollection<TagFields>;
-
-  declare namespace MyLib {
-    declare namespace getAllPosts {}
-    declare namespace getTargetPosts {
-      declare type props = {
-        skip: number;
-        limit: number;
-      };
-    }
-    declare namespace getPostBySlug {
-      declare type props = {
-        slug: string | string[];
-        preview?: boolean;
-      };
-    }
-    declare namespace getPostIndex {
-      declare type props = {
-        slug: string | string[];
-        posts: contentful.post[];
-      };
-    }
-    declare namespace getPreviewPostBySlug {
-      declare type props = {
-        slug: string | string[];
-      };
-    }
-    declare namespace getPageBySlug {
-      declare type props = {
-        slug: string | string[];
-      };
-    }
-
-    declare namespace getPostByTag {
-      declare type props = {
-        id: string;
-      };
-    }
-
-    declare namespace getPostByCategory {
-      declare type props = {
-        id: string;
-      };
-    }
-  }
 }
