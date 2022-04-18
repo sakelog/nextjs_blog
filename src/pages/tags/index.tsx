@@ -63,33 +63,39 @@ export default TagsPage;
 export const getStaticProps: GetStaticProps<
   PageProps
 > = async () => {
-  return tagsControler.getAllTags().then((allTags) => {
-    const tagsInfo: {
-      name: string;
-      path: string;
-      totalCount: number;
-    }[] = [];
-    if (allTags) {
-      for (let index = 0; index < allTags.length; index++) {
-        const targetTag = allTags[index];
-        const name = targetTag?.fields.name || '';
-        const path = getTagsPath(targetTag?.fields.slug);
-        tagsControler
-          .getPostsByTags(targetTag?.sys.id)
-          .then((targetPosts) => {
-            const totalCount = targetPosts
-              ? targetPosts.length
-              : 0;
-            if (totalCount > 0) {
-              tagsInfo.push({ name, path, totalCount });
-            }
-          });
+  return tagsControler
+    .getAllTags()
+    .then(async (allTags) => {
+      const tagsInfo: {
+        name: string;
+        path: string;
+        totalCount: number;
+      }[] = [];
+      if (allTags) {
+        for (
+          let index = 0;
+          index < allTags.length;
+          index++
+        ) {
+          const targetTag = allTags[index];
+          const name = targetTag?.fields.name || '';
+          const path = getTagsPath(targetTag?.fields.slug);
+          await tagsControler
+            .getPostsByTags(targetTag?.sys.id)
+            .then((targetPosts) => {
+              const totalCount = targetPosts
+                ? targetPosts.length
+                : 0;
+              if (totalCount > 0) {
+                tagsInfo.push({ name, path, totalCount });
+              }
+            });
+        }
       }
-    }
-    return {
-      props: {
-        tagsInfo,
-      },
-    };
-  });
+      return {
+        props: {
+          tagsInfo,
+        },
+      };
+    });
 };
