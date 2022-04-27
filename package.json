@@ -23,7 +23,7 @@
     "contentful": "^9.1.22",
     "date-fns": "^2.21.1",
     "next": "^12.1.4",
-    "react": "^18.0.0",
+    "react": "^18.1.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.2.0",
     "rehype-external-links": "^1.0.1",
