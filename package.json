@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "contentful": "^9.1.22",
+    "contentful": "^9.1.26",
     "date-fns": "^2.21.1",
     "next": "^12.1.4",
     "react": "^18.0.0",
