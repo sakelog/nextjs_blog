@@ -1,0 +1,21 @@
+.p-pagination {
+  &__root {
+    @apply flex flex-wrap gap-3 justify-center my-4;
+  }
+  &__item {
+    &--able {
+      @apply font-semibold text-theme;
+      @apply hover:underline;
+      @apply flex items-center gap-1;
+    }
+    &--disable {
+      @apply text-gray-400;
+      @apply flex items-center gap-1;
+    }
+    &--current {
+      @apply bg-gray-200 text-sm rounded-full;
+      @apply flex justify-center items-center;
+      @apply w-6 h-6;
+    }
+  }
+}

@@ -6,8 +6,6 @@ import {
   HiOutlineChevronDoubleRight,
 } from 'react-icons/hi';
 
-import style from '@styles/Object/Project/_p-pagination.module.scss';
-
 const Pagination = (props: Pagination.Pagination.Props) => {
   const { currentPage, lastPage, pathBase } = props;
   const isFirst = currentPage === 1;
@@ -28,13 +26,13 @@ const Pagination = (props: Pagination.Pagination.Props) => {
   const TEXT_PREV = '前へ';
   const PrevLink = () =>
     isFirst ? (
-      <span className={style.disabled}>
+      <span className="p-pagination__item--disable">
         <HiOutlineChevronLeft />
         {TEXT_PREV}
       </span>
     ) : (
       <Link href={prevPath}>
-        <a className={style.paginationItem}>
+        <a className="p-pagination__item--able">
           <HiOutlineChevronLeft />
           {TEXT_PREV}
         </a>
@@ -43,13 +41,13 @@ const Pagination = (props: Pagination.Pagination.Props) => {
   const TEXT_NEXT = '次へ';
   const NextLink = () =>
     isLast ? (
-      <span className={style.disabled}>
+      <span className="p-pagination__item--disable">
         {TEXT_NEXT}
         <HiOutlineChevronRight />
       </span>
     ) : (
       <Link href={nextPath}>
-        <a className={style.paginationItem}>
+        <a className="p-pagination__item--able">
           {TEXT_NEXT}
           <HiOutlineChevronRight />
         </a>
@@ -59,13 +57,13 @@ const Pagination = (props: Pagination.Pagination.Props) => {
   const TEXT_FIRST = '1';
   const FirstLink = () =>
     isFirst ? (
-      <span className={style.disabled}>
+      <span className="p-pagination__item--disable">
         <HiOutlineChevronDoubleLeft />
         {TEXT_FIRST}
       </span>
     ) : (
       <Link href={firstPath}>
-        <a className={style.paginationItem}>
+        <a className="p-pagination__item--able">
           <HiOutlineChevronDoubleLeft />
           {TEXT_FIRST}
         </a>
@@ -76,13 +74,13 @@ const Pagination = (props: Pagination.Pagination.Props) => {
   const textLast = lastPage.toString();
   const LastLink = () =>
     isLast ? (
-      <span className={style.disabled}>
+      <span className="p-pagination__item--disable">
         {textLast}
         <HiOutlineChevronDoubleRight />
       </span>
     ) : (
       <Link href={lastPath}>
-        <a className={style.paginationItem}>
+        <a className="p-pagination__item--able">
           {textLast}
           <HiOutlineChevronDoubleRight />
         </a>
@@ -91,18 +89,18 @@ const Pagination = (props: Pagination.Pagination.Props) => {
 
   // 現在ページ
   const CurrentPageComponent = () => (
-    <span className={style.current}>{currentPage}</span>
+    <span className="p-pagination__item--current">
+      {currentPage}
+    </span>
   );
 
   return (
-    <nav className="my-4 flex justify-center items-center">
-      <div className="inline-flex items-center mx-auto space-x-3">
-        <FirstLink />
-        <PrevLink />
-        <CurrentPageComponent />
-        <NextLink />
-        <LastLink />
-      </div>
+    <nav className="p-pagination__root">
+      <FirstLink />
+      <PrevLink />
+      <CurrentPageComponent />
+      <NextLink />
+      <LastLink />
     </nav>
   );
 };

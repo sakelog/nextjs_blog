@@ -12,7 +12,7 @@ type ListItemPropsType = {
 const ListItem = (props: ListItemPropsType) => {
   return (
     <Link href={props.path}>
-      <a className="text-white">{props.text}</a>
+      <a className="text-white p-2">{props.text}</a>
     </Link>
   );
 };
@@ -33,7 +33,7 @@ const PageList = () => {
   };
 
   return (
-    <ul className="space-y-2">
+    <ul className="md:flex md:flex-wrap md:divide-x">
       <li>
         <ListItem path={TAG.path} text={TAG.name} />
       </li>

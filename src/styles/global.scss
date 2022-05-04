@@ -1,6 +1,14 @@
 // Foundation--------------------------------------------------------
 @use './Foundation/base';
 // Object------------------------------------------------------------
+// Component
+@use './Object/Component/c-badge.scss';
+@use './Object/Component/c-circle.scss';
+@use './Object/Component/c-modal.scss';
+// Project
+@use './Object/Project/p-articleBody.scss';
+@use './Object/Project/p-prevNext.scss';
+@use './Object/Project/p-pagination.scss';
 // Utility
 @use './Object/Utility/u-appreach';
 @use './Object/Utility/u-yomereba';

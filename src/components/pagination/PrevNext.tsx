@@ -12,35 +12,26 @@ type PropsType = {
   nextPost: Contentful.Post | null;
 };
 
-const PrevNext = (props: PropsType) => {
-  const { prevPost, nextPost } = props;
-  const prevLink = (
-    <div className="p-1">
-      {prevPost && (
-        <Link href={getPostPath(prevPost.fields.slug)}>
-          <a className="flex items-center space-x-2">
-            <HiOutlineChevronLeft />
-            {prevPost.fields.title}
-          </a>
-        </Link>
-      )}
+const PrevNext = ({ prevPost, nextPost }: PropsType) => {
+  const prevLink = prevPost && (
+    <div className="p-prevnext__item">
+      <HiOutlineChevronLeft className="p-prevnext__icon" />
+      <Link href={getPostPath(prevPost.fields.slug)}>
+        <a>{prevPost.fields.title}</a>
+      </Link>
     </div>
   );
-  const nextLink = (
-    <div className="p-1">
-      {nextPost && (
-        <Link href={getPostPath(nextPost.fields.slug)}>
-          <a className="flex items-center space-x-2 justify-end">
-            {nextPost.fields.title}
-            <HiOutlineChevronRight />
-          </a>
-        </Link>
-      )}
+  const nextLink = nextPost && (
+    <div className="p-prevnext__item p-prevnext__item--next">
+      <Link href={getPostPath(nextPost.fields.slug)}>
+        <a>{nextPost.fields.title}</a>
+      </Link>
+      <HiOutlineChevronRight className="p-prevnext__icon" />
     </div>
   );
   return (
     <nav>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x-2 md:divide-gray-200 text-sm my-2">
+      <div className="p-prevnext__root">
         {prevLink}
         {nextLink}
       </div>

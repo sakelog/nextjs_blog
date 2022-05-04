@@ -7,7 +7,7 @@ $rakuten: #d91414;
 .kaerebalink-box,
 .booklink-box,
 .tomarebalink-box {
-  @apply bg-gray-200 w-full max-w-screen-sm my-4 mx-auto rounded p-4;
+  @apply bg-gray-100 w-full max-w-screen-sm my-4 mx-auto rounded p-4;
   a {
     .externalIcon {
       @apply hidden;
@@ -20,11 +20,6 @@ $rakuten: #d91414;
       @apply w-full h-auto shadow;
       max-width: 200px;
     }
-  }
-  .kaerebalink-name,
-  .booklink-name,
-  .tomarebalink-name {
-    @apply text-lg;
   }
   .kaerebalink-link1,
   .booklink-link2,

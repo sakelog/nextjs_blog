@@ -5,7 +5,6 @@ import remarkRehype from 'remark-rehype';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import slug from 'rehype-slug';
-import toc from '@jsdevtools/rehype-toc';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeStringify from 'rehype-stringify';
 
@@ -17,7 +16,6 @@ export const markdownToHtml = async (markdown: string) =>
     .use(rehypeExternalLinks)
     .use(rehypeHighlight, { ignoreMissing: true })
     .use(slug)
-    .use(toc, { headings: ['h2', 'h3'] })
     .use(rehypeRaw)
     .use(rehypeStringify)
     .processSync(markdown);
