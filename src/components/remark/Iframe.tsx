@@ -1,5 +1,3 @@
-import styles from '@styles/Object/Component/_c-iframe.module.scss';
-
 const RemarkIframe: React.FC<
   JSX.IntrinsicElements['iframe']
 > = (props) => {
@@ -12,7 +10,9 @@ const RemarkIframe: React.FC<
   return (
     <div
       className={
-        isYoutube ? styles.youtube : styles.default
+        isYoutube
+          ? 'p-articleBody__iframe--youtube'
+          : 'p-articleBody__iframe--default'
       }
     >
       <iframe {...props} />

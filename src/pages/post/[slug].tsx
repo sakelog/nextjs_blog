@@ -48,25 +48,24 @@ const SinglePost: NextPage<PropsType> = (props) => {
             prevPost={props.prevPost}
             nextPost={props.nextPost}
           />
-          <article className="p-2">
-            <section className="p-4">
-              <h1>{props.currentPost.fields.title}</h1>
+          <article className="p-4">
+            <h1>{props.currentPost.fields.title}</h1>
+            <div
+              className="flex flex-col justify-center items-center
+              gap-2 my-4"
+            >
               <PostDate
                 postdate={props.currentPost.fields.date}
                 update={props.currentPost.fields.update}
               />
-              <ul className="flex flex-col items-center">
-                <li>
-                  <TagList
-                    tags={props.currentPost.fields.tags}
-                    heading="h6"
-                  />
-                </li>
-              </ul>
-              <Suspense fallback={'loading'}>
-                <ArticleBody body={body} />
-              </Suspense>
-            </section>
+              <TagList
+                tags={props.currentPost.fields.tags}
+                heading="h6"
+              />
+            </div>
+            <Suspense fallback={'loading'}>
+              <ArticleBody body={body} />
+            </Suspense>
             <Bio />
           </article>
           <PrevNext

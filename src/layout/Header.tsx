@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-40">
       <nav className="bg-theme p-2">
-        <span className="font-logo">
+        <span className="font-logo text-2xl">
           <Link href="/">
             <a className="text-white font-normal hover:no-underline">
               {config.title}

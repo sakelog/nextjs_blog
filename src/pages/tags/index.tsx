@@ -1,12 +1,13 @@
 import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
-import { HiOutlineTag } from 'react-icons/hi';
 
-import CustomHead from '@components/CustomHead';
-import BackToTop from '@components/pagination/BackToTop';
-
+// lib
 import { tagsControler } from '@lib/contentful/exportContent';
 import { getTagsPath } from '@lib/util/getPath';
+
+// components
+import CustomHead from '@components/CustomHead';
+import BackToTop from '@components/pagination/BackToTop';
 
 type PageProps = {
   tagsInfo: {
@@ -34,19 +35,15 @@ const TagsPage: NextPage<PageProps> = (props) => {
       />
       <div className="p-4">
         <h1>{PAGE_TITLE}</h1>
-        <ul className="flex flex-wrap">
+        <ul className="flex flex-wrap gap-2">
           {sortedTagsInfo.map((info) => (
-            <li key={info.name} className="m-2">
+            <li key={info.name}>
               <Link href={info.path}>
-                <a
-                  className="space-x-2 bg-gray-200 text-gray-800 hover:bg-gray-600 hover:text-white
-                             hover:no-underline py-1 px-2 rounded-full text-sm flex items-center"
-                >
-                  <HiOutlineTag />
+                <a className="c-badge c-badge--gray flex gap-2 items-center">
                   <span>{info.name}</span>
-                  <span className="text-xs bg-black text-white py-0.5 px-1 rounded-full">
+                  <div className="c-circle c-circle__text">
                     {info.totalCount}
-                  </span>
+                  </div>
                 </a>
               </Link>
             </li>

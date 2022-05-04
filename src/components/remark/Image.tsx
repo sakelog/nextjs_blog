@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import styles from '@styles/Object/Component/_c-image.module.scss';
 
 type PropsType = JSX.IntrinsicElements['img'];
 
@@ -31,22 +30,22 @@ const RemarkImage = (props: PropsType) => {
     />
   );
   const ContentfulTitle = isContentfulImg && (
-    <div className={styles.title}>{props.title}</div>
+    <div className="p-articleBody__image__title">
+      {props.title}
+    </div>
   );
   const customImgTag = isContentfulImg ? (
-    <div className={styles.root}>
+    <div className="p-articleBody__image__wrapper">
       <div
-        className={styles.modal}
+        className="c-modal__wrapper"
         onClick={handleHide}
         style={{
-          width: '100vw',
-          height: '100vh',
           display: showState === 'show' ? 'block' : 'none',
         }}
       >
         {ContentfulImgTag}
       </div>
-      <div className={styles.articleImage}>
+      <div className="p-articleBody__image__articleImage">
         {ContentfulImgTag}
       </div>
       {ContentfulTitle}

@@ -6,8 +6,8 @@ import {
 } from 'react-icons/hi';
 
 import { getPagePath } from '@lib/util/getPath';
-const privacyTag = (
-  <div className="my-2 text-sm">
+const PrivacyTag = () => (
+  <div className="my-4 text-sm">
     <p>
       送信いただいた内容はプライバシーポリシーに沿って対応します。
       <br />
@@ -32,7 +32,7 @@ const FormItem = (props: FormItemPropsType) => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
       <label
         htmlFor={props.name}
-        className="flex items-center space-x-2"
+        className="flex items-center gap-2"
       >
         {props.icon}
         {props.nameJS}
@@ -66,32 +66,33 @@ const ContactForm = () => {
         <FormItem
           name="name"
           nameJS="お名前"
-          icon={<HiOutlineUser />}
+          icon={<HiOutlineUser size="20" />}
           type="text"
           placeholder="サンプル花子"
         />
         <FormItem
           name="email"
           nameJS="メールアドレス"
-          icon={<HiOutlineMail />}
+          icon={<HiOutlineMail size="20" />}
           type="email"
           placeholder="sample@email.com"
         />
         <FormItem
           name="message"
           nameJS="本文"
-          icon={<HiOutlineChat />}
+          icon={<HiOutlineChat size="20" />}
           type="textarea"
         />
       </div>
-      {privacyTag}
-      <button
-        color="secondary"
-        type="submit"
-        className="bg-theme text-white p-2 rounded font-semibold"
-      >
-        送信
-      </button>
+      <PrivacyTag />
+      <div className="text-center">
+        <button
+          type="submit"
+          className="bg-theme text-white p-2 rounded font-semibold"
+        >
+          送信
+        </button>
+      </div>
     </form>
   );
 };
