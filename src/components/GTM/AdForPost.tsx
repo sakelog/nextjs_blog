@@ -5,10 +5,10 @@ const AdForPost = () =>
     <>
       <Script
         async
+        strategy="lazyOnload"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5013956882447566"
         crossOrigin="anonymous"
         id="AdForPost_main"
-        strategy="afterInteractive"
       />
       <ins
         className="adsbygoogle"
