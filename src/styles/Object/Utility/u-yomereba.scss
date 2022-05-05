@@ -24,9 +24,10 @@ $rakuten: #d91414;
   .kaerebalink-link1,
   .booklink-link2,
   .tomarebalink-link1 {
+    @apply md:flex md:gap-2 md:justify-center;
     > div {
-      @apply border-2 border-gray-600 rounded my-1 mx-auto text-center;
-      @apply bg-white w-full max-w-screen-sm;
+      @apply border-2 border-gray-600 rounded text-center;
+      @apply bg-white w-full max-w-screen-sm my-4;
       a {
         @apply block w-full h-full p-2 hover:bg-gray-600 hover:text-white;
       }
@@ -49,7 +50,6 @@ $rakuten: #d91414;
         }
       }
     }
-    @apply md:flex justify-center;
     > div {
       @apply md:m-1;
     }
