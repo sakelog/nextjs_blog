@@ -11,7 +11,7 @@ const imageLoader = (props: ImageLoaderTypes) => {
   const MAX_WIDTH = 640;
   const resizeWidth = width > MAX_WIDTH ? MAX_WIDTH : width;
 
-  return `${src}&w=${resizeWidth}?q=75?fm=webp`;
+  return `${src}?w=${resizeWidth}&q=75&fm=webp`;
 };
 
 type PropTypes = JSX.IntrinsicElements['img'];
