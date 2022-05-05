@@ -10,6 +10,12 @@ const AdForIndexList = () =>
         id="AdForIndexList_main"
         crossOrigin="anonymous"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5013956882447566"
+        onLoad={() => {
+          <Script id="AdForIndexList_sub">
+            (adsbygoogle = window.adsbygoogle || []).push({}
+            );
+          </Script>;
+        }}
       />
       <ins
         className="adsbygoogle"
@@ -17,10 +23,7 @@ const AdForIndexList = () =>
         data-ad-format="autorelaxed"
         data-ad-client="ca-pub-5013956882447566"
         data-ad-slot="8005269879"
-      ></ins>
-      <Script strategy="lazyOnload" id="AdForIndexList_sub">
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </Script>
+      />
     </>
   );
 
