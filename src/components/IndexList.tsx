@@ -6,13 +6,14 @@ import { getPostPath } from '@lib/util/getPath';
 // components
 import PostDate from '@components/PostDate';
 import TagList from '@components/TagList';
+import AdForIndexList from '@components/GTM/AdForIndexList';
 
 type PropsType = {
   posts: Contentful.Post[] | null;
 };
 
-const IndexList = (props: PropsType) => {
-  return (
+const IndexList = (props: PropsType) => (
+  <div>
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {props.posts &&
         props.posts.map((post) => {
@@ -37,7 +38,8 @@ const IndexList = (props: PropsType) => {
           );
         })}
     </ul>
-  );
-};
+    <AdForIndexList />
+  </div>
+);
 
 export default IndexList;
