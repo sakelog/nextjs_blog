@@ -8,6 +8,7 @@ const AdForPost = () =>
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5013956882447566"
         crossOrigin="anonymous"
         id="AdForPost_main"
+        strategy="afterInteractive"
         onLoad={() => (
           <Script id="AdForPost_sub">
             (adsbygoogle = window.adsbygoogle || []).push({}

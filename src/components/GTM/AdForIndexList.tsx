@@ -5,7 +5,7 @@ const AdForIndexList = () =>
     <>
       <Script
         async
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         id="AdForIndexList_main"
         crossOrigin="anonymous"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5013956882447566"
