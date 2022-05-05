@@ -64,5 +64,8 @@
     "defaults",
     "not dead"
   ],
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "peerDependencies": {
+    "eslint-plugin-import": "2.25.3"
+  }
 }
