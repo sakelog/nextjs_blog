@@ -18,4 +18,6 @@ public/sitemap-*
 # Sitemap
 public/sitemap.xml
 
-.vercel
+# yarn
+.yarn/
+!.yarn/releases/*

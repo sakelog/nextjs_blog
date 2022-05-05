@@ -9,7 +9,6 @@
   },
   "author": "sake <sakelog.website@gmail.com> (https://sakeengineer.com/)",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
@@ -64,5 +63,6 @@
   "browserslist": [
     "defaults",
     "not dead"
-  ]
+  ],
+  "packageManager": "yarn@3.0.0"
 }
