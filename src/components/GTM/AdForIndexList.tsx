@@ -1,7 +1,5 @@
 import Script from 'next/script';
 
-console.log(process.env.NODE_ENV);
-
 const AdForIndexList = () =>
   process.env.NODE_ENV === 'production' && (
     <>
