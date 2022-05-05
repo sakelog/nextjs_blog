@@ -9,12 +9,6 @@ const AdForPost = () =>
         crossOrigin="anonymous"
         id="AdForPost_main"
         strategy="afterInteractive"
-        onLoad={() => (
-          <Script id="AdForPost_sub">
-            (adsbygoogle = window.adsbygoogle || []).push({}
-            );
-          </Script>
-        )}
       />
       <ins
         className="adsbygoogle"
