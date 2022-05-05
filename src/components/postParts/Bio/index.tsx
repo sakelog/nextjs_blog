@@ -9,6 +9,7 @@ const Bio = () => {
       <div className="grid gap-2 grid-cols-1 md:grid-cols-4 items-center">
         <div className="text-center p-2">
           <Image
+          loader={({src})=>src}
             src="/img/profile.png"
             alt="プロフィール画像"
             width={100}

@@ -1,9 +1,20 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-type PropsType = JSX.IntrinsicElements['img'];
+type ImageLoaderTypes = {
+  src: string;
+  width: number;
+};
 
-const RemarkImage = (props: PropsType) => {
+const imageLoader = (props: ImageLoaderTypes) => {
+  const { src, width } = props;
+
+  return `${src}&w=${width}&q=75&fm=webp`;
+};
+
+type PropTypes = JSX.IntrinsicElements['img'];
+
+const RemarkImage = (props: PropTypes) => {
   const isContentfulImg = props.src
     ? props.src.startsWith('//images.ctfassets.net')
     : false;
@@ -20,6 +31,7 @@ const RemarkImage = (props: PropsType) => {
 
   const ContentfulImgTag = isContentfulImg && (
     <Image
+      loader={imageLoader}
       src={'https:' + props.src}
       layout="fill"
       objectFit="scale-down"

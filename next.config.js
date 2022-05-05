@@ -5,6 +5,7 @@ const withBundleAnalyzer =
 
 const nextConfig = {
   images: {
+    loader: 'custom',
     domains: ['images.ctfassets.net'],
   },
   reactStrictMode: true,
