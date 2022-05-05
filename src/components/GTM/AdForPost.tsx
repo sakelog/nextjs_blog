@@ -1,31 +1,29 @@
 import Script from 'next/script';
 
-console.log(process.env.NODE_ENV);
-
-const AdForIndexList = () =>
+const AdForPost = () =>
   process.env.NODE_ENV === 'production' && (
     <>
       <Script
         async
-        strategy="lazyOnload"
-        id="AdForIndexList_main"
-        crossOrigin="anonymous"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5013956882447566"
-        onLoad={() => {
-          <Script id="AdForIndexList_sub">
+        crossOrigin="anonymous"
+        id="AdForPost_main"
+        onLoad={() => (
+          <Script id="AdForPost_sub">
             (adsbygoogle = window.adsbygoogle || []).push({}
             );
-          </Script>;
-        }}
+          </Script>
+        )}
       />
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-format="autorelaxed"
+        style={{ display: 'block', textAlign: 'center' }}
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
         data-ad-client="ca-pub-5013956882447566"
-        data-ad-slot="8005269879"
-      />
+        data-ad-slot="1836528915"
+      ></ins>
     </>
   );
 
-export default AdForIndexList;
+export default AdForPost;

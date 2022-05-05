@@ -4,16 +4,19 @@ import type {
   NextPage,
 } from 'next';
 
+// lib
 import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { postControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 
+// components
 import CustomHead from '@components/CustomHead';
 import Bio from '@components/postParts/Bio';
 import PostDate from '@components/PostDate';
 import TagList from '@components/TagList';
 import PrevNext from '@components/pagination/PrevNext';
 import BackToTop from '@components/pagination/BackToTop';
+import AdForPost from '@components/GTM/AdForPost';
 
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
@@ -63,6 +66,7 @@ const SinglePost: NextPage<PropsType> = (props) => {
                 heading="h6"
               />
             </div>
+            <AdForPost />
             <Suspense fallback={'loading'}>
               <ArticleBody body={body} />
             </Suspense>
