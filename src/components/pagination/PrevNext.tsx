@@ -13,28 +13,35 @@ type PropsType = {
 };
 
 const PrevNext = ({ prevPost, nextPost }: PropsType) => {
-  const prevLink = prevPost && (
+  const prevLink = (
     <div className="p-prevnext__item">
-      <HiOutlineChevronLeft className="p-prevnext__icon" />
-      <Link href={getPostPath(prevPost.fields.slug)}>
-        <a>{prevPost.fields.title}</a>
-      </Link>
+      {prevPost && (
+        <>
+          <HiOutlineChevronLeft className="p-prevnext__icon" />
+          <Link href={getPostPath(prevPost.fields.slug)}>
+            <a>{prevPost.fields.title}</a>
+          </Link>
+        </>
+      )}
     </div>
   );
-  const nextLink = nextPost && (
+
+  const nextLink = (
     <div className="p-prevnext__item p-prevnext__item--next">
-      <Link href={getPostPath(nextPost.fields.slug)}>
-        <a>{nextPost.fields.title}</a>
-      </Link>
-      <HiOutlineChevronRight className="p-prevnext__icon" />
+      {nextPost && (
+        <>
+          <Link href={getPostPath(nextPost.fields.slug)}>
+            <a>{nextPost.fields.title}</a>
+          </Link>
+          <HiOutlineChevronRight className="p-prevnext__icon" />
+        </>
+      )}
     </div>
   );
   return (
-    <nav>
-      <div className="p-prevnext__root">
-        {prevLink}
-        {nextLink}
-      </div>
+    <nav className="p-prevnext__root">
+      {prevLink}
+      {nextLink}
     </nav>
   );
 };

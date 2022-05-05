@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import profilePic from './profile.png';
 
+// components
 import config from '@components/config';
 import SocialIcon from '@components/SocialIcon';
 
@@ -9,8 +11,10 @@ const Bio = () => {
       <div className="grid gap-2 grid-cols-1 md:grid-cols-4 items-center">
         <div className="text-center p-2">
           <Image
-          loader={({src})=>src}
-            src="/img/profile.png"
+            loader={({ src, width }) =>
+              `${src}?w=${width}&fm=webP`
+            }
+            src={profilePic}
             alt="プロフィール画像"
             width={100}
             height={100}
