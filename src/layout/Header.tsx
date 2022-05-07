@@ -8,7 +8,7 @@ const Header = () => {
       <nav className="bg-theme p-2">
         <span className="font-logo text-2xl">
           <Link href="/">
-            <a className="text-white font-normal hover:no-underline">
+            <a className="text-white no-underline">
               {config.title}
             </a>
           </Link>

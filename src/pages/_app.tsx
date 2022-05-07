@@ -7,7 +7,7 @@ import Layout from 'layout';
 import GTMScript from '@components/GTM/script';
 
 // style
-import '@styles/global.scss';
+import 'styles/global.scss';
 
 const MyApp = ({
   Component,

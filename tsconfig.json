@@ -6,10 +6,7 @@
       "layout/*": ["layout/*"],
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
-      "@scripts/*": ["scripts/*"],
-      "@template/*": ["template/*"],
-      "@state/*": ["state/*"],
-      "@styles/*": ["styles/*"]
+      "styles/*": ["styles/*"]
     },
     "incremental": true
   },
