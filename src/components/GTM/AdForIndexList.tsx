@@ -7,7 +7,6 @@ const AdForIndexList = () =>
         strategy="afterInteractive"
         id="AdForIndexList_main"
         crossOrigin="anonymous"
-        type="module"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5013956882447566"
       />
       <ins
