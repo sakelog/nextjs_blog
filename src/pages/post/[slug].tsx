@@ -50,7 +50,7 @@ const SinglePost: NextPage<PropsType> = ({
     date,
     update,
     tags,
-  } = currentPost.fields as Contentful.PostFieldsOutput;
+  } = currentPost?.fields as Contentful.PostFieldsOutput;
 
   const pageTitle = title || '';
 

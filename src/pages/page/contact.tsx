@@ -12,19 +12,21 @@ const Contact: NextPage = () => {
     config.title + 'についてのお問い合わせページ';
 
   return (
-    <>
+    <section className="bg-white p-4">
       <CustomHead
         pageTitle={PAGE_TITLE}
         description={description}
       />
+      <h1 className="c-heading--flexCenter text-2xl font-bold">
+        お問い合わせ
+      </h1>
       <div className="p-4">
-        <h1>{PAGE_TITLE}</h1>
         <div className="max-w-screen-sm mx-auto">
           <ContactForm />
         </div>
       </div>
       <BackToTop />
-    </>
+    </section>
   );
 };
 

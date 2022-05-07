@@ -48,21 +48,19 @@ const TagsDirectory: NextPage<PageProps> = (props) => {
       }
       pagination={
         <>
-          {' '}
           <Pagination
             currentPage={props.currentPage}
             lastPage={props.lastPage}
             pathBase={props.pathBase}
           />
-          <nav className="flex items-center space-x-2">
+          <nav className="flex items-center space-x-4">
             <BackToTop slug="tags" title="タグ一覧" />
-            <span className="text-gray-400">/</span>
             <BackToTop />
           </nav>
         </>
       }
     >
-      <h1>{pageTitle}</h1>
+      <h1 className="font-bold text-2xl">{pageTitle}</h1>
       <p className="my-2 text-sm">
         投稿：{props.totalCount}件
       </p>

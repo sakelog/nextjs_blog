@@ -5,14 +5,12 @@ type PropsType = {
   title?: string;
 };
 
-const BackToTop = (props: PropsType) => {
+const BackToTop = ({ slug, title }: PropsType) => {
   return (
-    <div className="my-4 space-x-1 text-sm text-gray-600">
-      <span>{'['}</span>
-      <Link href={'/' + (props.slug || '')}>
-        {props.title || 'Topへ戻る'}
+    <div className="c-button c-button--gray">
+      <Link href={'/' + (slug || '')}>
+        {title || 'Topへ戻る'}
       </Link>
-      <span>{']'}</span>
     </div>
   );
 };
