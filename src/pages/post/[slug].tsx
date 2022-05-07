@@ -28,43 +28,41 @@ const ArticleBody = dynamic(
 );
 
 type PropsType = {
-  currentPost?: Contentful.PostOutput | null;
-  prevPost: Contentful.Post | null;
-  nextPost: Contentful.Post | null;
+  currentPost?: Contentful.PostOutput;
+  prevPost: Contentful.PostPrevNextItem | null;
+  nextPost: Contentful.PostPrevNextItem | null;
 };
 
-const SinglePost: NextPage<PropsType> = (props) => {
-  const body = props.currentPost?.fields.body || '';
-  const pageTitle = props.currentPost?.fields.title || '';
+const SinglePost: NextPage<PropsType> = ({
+  currentPost,
+  prevPost,
+  nextPost,
+}) => {
+  const body = currentPost?.fields.body || '';
+  const pageTitle = currentPost?.fields.title || '';
+  const { description, title, date, update, tags } =
+    currentPost.fields as Contentful.PostFieldsOutput;
   return (
     <>
-      {props.currentPost && (
+      {currentPost && (
         <>
           <CustomHead
             pageTitle={pageTitle}
-            description={
-              props.currentPost.fields.description
-            }
+            description={description}
             imgFLG={true}
           />
           <PrevNext
-            prevPost={props.prevPost}
-            nextPost={props.nextPost}
+            prevPost={prevPost}
+            nextPost={nextPost}
           />
           <article className="p-4">
-            <h1>{props.currentPost.fields.title}</h1>
+            <h1>{title}</h1>
             <div
               className="flex flex-col justify-center items-center
               gap-2 my-4"
             >
-              <PostDate
-                postdate={props.currentPost.fields.date}
-                update={props.currentPost.fields.update}
-              />
-              <TagList
-                tags={props.currentPost.fields.tags}
-                heading="h6"
-              />
+              <PostDate postdate={date} update={update} />
+              <TagList tags={tags} heading="h6" />
             </div>
             <AdForPost />
             <Suspense fallback={'loading'}>
@@ -73,8 +71,8 @@ const SinglePost: NextPage<PropsType> = (props) => {
             <Bio />
           </article>
           <PrevNext
-            prevPost={props.prevPost}
-            nextPost={props.nextPost}
+            prevPost={prevPost}
+            nextPost={nextPost}
           />
           <BackToTop />
         </>
@@ -104,17 +102,18 @@ export const getStaticProps: GetStaticProps<
       : '';
 
   const allPosts = await postControler.getAllPosts();
-  const currentPost = await postControler.getPostBySlug({
-    slug,
-  });
+  const currentPost: Contentful.Post =
+    await postControler.getPostBySlug({
+      slug,
+    });
   const currentSlug = currentPost?.fields.slug;
-  const prevPost =
+  const prevPost: Contentful.Post =
     allPosts && currentSlug
       ? await postControler.getPrevPost({
           slug: currentSlug,
         })
       : null;
-  const nextPost =
+  const nextPost: Contentful.Post =
     allPosts && currentSlug
       ? await postControler.getNextPost({
           slug: currentSlug,
@@ -129,21 +128,24 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       currentPost: {
-        sys: currentPost?.sys,
+        ...currentPost,
         fields: {
-          title: currentPost?.fields.title || '',
-          slug: currentPost?.fields.slug || '',
-          date: currentPost?.fields.date || '',
-          update: currentPost?.fields.update || null,
-          category: currentPost?.fields.category || null,
-          tags: currentPost?.fields.tags || [],
-          description:
-            currentPost?.fields.description || '',
+          ...currentPost.fields,
           body: currentBodyString,
         },
       },
-      prevPost,
-      nextPost,
+      prevPost:
+        (prevPost && {
+          slug: prevPost.fields.slug,
+          title: prevPost.fields.title,
+        }) ||
+        null,
+      nextPost:
+        (nextPost && {
+          slug: nextPost?.fields.slug,
+          title: nextPost?.fields.title,
+        }) ||
+        null,
     },
   };
 };

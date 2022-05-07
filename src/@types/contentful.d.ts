@@ -20,6 +20,11 @@ declare namespace Contentful {
   export type PostCollectionOutput =
     EntryCollection<PostFieldsOutput>;
 
+  export type PostPrevNextItem = {
+    slug: string;
+    title: string;
+  };
+
   // Page
   declare interface PageFields {
     title: string;

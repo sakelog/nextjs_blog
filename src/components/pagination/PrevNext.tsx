@@ -8,8 +8,8 @@ import {
 import { getPostPath } from '@lib/util/getPath';
 
 type PropsType = {
-  prevPost: Contentful.Post | null;
-  nextPost: Contentful.Post | null;
+  prevPost: Contentful.PostPrevNextItem | null;
+  nextPost: Contentful.PostPrevNextItem | null;
 };
 
 const PrevNext = ({ prevPost, nextPost }: PropsType) => {
@@ -18,8 +18,8 @@ const PrevNext = ({ prevPost, nextPost }: PropsType) => {
       {prevPost && (
         <>
           <HiOutlineChevronLeft className="p-prevnext__icon" />
-          <Link href={getPostPath(prevPost.fields.slug)}>
-            <a>{prevPost.fields.title}</a>
+          <Link href={getPostPath(prevPost.slug)}>
+            <a>{prevPost.title}</a>
           </Link>
         </>
       )}
@@ -30,8 +30,8 @@ const PrevNext = ({ prevPost, nextPost }: PropsType) => {
     <div className="p-prevnext__item p-prevnext__item--next">
       {nextPost && (
         <>
-          <Link href={getPostPath(nextPost.fields.slug)}>
-            <a>{nextPost.fields.title}</a>
+          <Link href={getPostPath(nextPost.slug)}>
+            <a>{nextPost.title}</a>
           </Link>
           <HiOutlineChevronRight className="p-prevnext__icon" />
         </>
