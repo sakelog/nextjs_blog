@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/next/tsconfig.json",
   "compilerOptions": {
+    "target": "ES2022",
     "baseUrl": "./src",
     "paths": {
       "layout/*": ["layout/*"],
