@@ -4,7 +4,6 @@ const AdForIndexList = () =>
   process.env.NODE_ENV === 'production' && (
     <>
       <Script
-        async
         strategy="afterInteractive"
         id="AdForIndexList_main"
         crossOrigin="anonymous"
