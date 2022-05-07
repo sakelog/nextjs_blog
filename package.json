@@ -24,6 +24,7 @@
     "date-fns": "^2.21.1",
     "next": "^12.1.4",
     "next-pwa": "^5.5.2",
+    "playwright": "^1.21.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.2.0",
