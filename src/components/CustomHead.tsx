@@ -50,28 +50,43 @@ const CustomHead = ({
         content={config.themeColor}
       />
       <link
+        rel="shortcut icon"
+        type="image/vnd.microsoft.icon"
+        href="/favicon.ico"
+      />
+      <link
         rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/img/icons/favicon-32x32.png"
+        type="image/vnd.microsoft.icon"
+        href="/favicon.ico"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="57x57"
+        href="/img/icon/apple-touch-icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/img/icons/favicon-16x16.png"
+        href="/img/icon/favicon-16x16.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/img/icon/favicon-32x32.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="192x192"
-        href="/img/icons/android-chrome-192x192.png"
+        href="/img/icon/android-chrome-192x192.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="512x512"
-        href="/img/icons/android-chrome-512x512.png"
+        href="/img/icon/android-chrome-512x512.png"
       />
       <link rel="manifest" href="/manifest.json" />
     </Head>
