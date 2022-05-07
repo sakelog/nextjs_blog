@@ -14,8 +14,6 @@ const AdForIndexList = () =>
         className="adsbygoogle"
         style={{
           display: 'block',
-          marginLeft: 'auto',
-          marginRight: 'auto',
         }}
         data-ad-format="autorelaxed"
         data-ad-client="ca-pub-5013956882447566"
