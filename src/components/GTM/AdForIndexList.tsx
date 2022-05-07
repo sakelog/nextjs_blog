@@ -2,7 +2,7 @@ import Script from 'next/script';
 
 const AdForIndexList = () =>
   process.env.NODE_ENV === 'production' && (
-    <>
+    <div className="flex justify-center">
       <Script
         async
         strategy="afterInteractive"
@@ -17,7 +17,7 @@ const AdForIndexList = () =>
         data-ad-client="ca-pub-5013956882447566"
         data-ad-slot="8005269879"
       />
-    </>
+    </div>
   );
 
 export default AdForIndexList;
