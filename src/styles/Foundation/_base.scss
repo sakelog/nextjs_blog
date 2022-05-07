@@ -1,7 +1,11 @@
 @layer base {
   html {
+    font-size: 100%;
     @apply bg-gray-50 text-gray-800 font-sans;
     scroll-behavior: smooth;
+  }
+  body {
+    @apply text-base;
   }
   h1 {
     @apply font-bold text-2xl text-center my-8;
