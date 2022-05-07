@@ -8,6 +8,7 @@ import Pagination from '@components/Pagination';
 import config from '@components/config';
 
 import { postControler } from '@lib/contentful/exportContent';
+import { createOGImage } from '@lib/util/createOGImage';
 
 const POST_PER_LISTPAGE = 6;
 
@@ -52,6 +53,7 @@ export const getStaticProps: GetStaticProps<
     const lastPage = allPosts
       ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
       : 0;
+    createOGImage(null, 'top');
 
     return {
       props: {

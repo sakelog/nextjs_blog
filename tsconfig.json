@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/next/tsconfig.json",
   "compilerOptions": {
+    "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
       "layout/*": ["layout/*"],
@@ -12,10 +13,8 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/lib/setSitemap.ts",
-    "src/layout/IndexLayout"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
