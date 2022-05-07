@@ -1,26 +1,26 @@
 import Head from 'next/head';
 
-import config from '@components/config';
+import siteMeta from '@components/config';
 
 type PropsType = {
   pageTitle?: string | null;
   description?: string;
-  imgFLG?: boolean;
+  ogImagePath?: string;
 };
 
-const CustomHead = (props: PropsType) => {
-  const metaTitle = props.pageTitle
-    ? props.pageTitle + ' | ' + config.title
-    : config.title;
-  const metaDiscription = props.description
-    ? props.description
-    : config.description;
-  const ogpImageSrc = props.imgFLG
-    ? 'https://res.cloudinary.com/cl1sakelog/image/upload/co_rgb:ffffff,c_fit,w_700,' +
-      'l_text:Sawarabi%20Gothic_50_bold:' +
-      props.pageTitle +
-      '/v1611679454/sakelog/postOGP.png'
-    : 'https://res.cloudinary.com/cl1sakelog/image/upload/v1611678550/sakelog/defaultOGP.png';
+const CustomHead = ({
+  pageTitle,
+  description,
+  ogImagePath,
+}: PropsType) => {
+  const metaTitle = pageTitle
+    ? pageTitle + ' | ' + siteMeta.title
+    : siteMeta.title;
+  const metaDiscription = description
+    ? description
+    : siteMeta.description;
+  const ogpImageSrc =
+    ogImagePath ?? `${siteMeta.url}/img/og/top.png`;
   return (
     <Head>
       <title>{metaTitle}</title>
@@ -43,7 +43,7 @@ const CustomHead = (props: PropsType) => {
       />
       <meta
         name="theme-color"
-        content={config.themeColor}
+        content={siteMeta.themeColor}
       />
       <link
         rel="preconnect"
