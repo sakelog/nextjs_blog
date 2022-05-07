@@ -19,8 +19,6 @@ import PrevNext from '@components/Pagination/PrevNext';
 import BackToTop from '@components/Pagination/BackToTop';
 import AdForPost from '@components/GTM/AdForPost';
 
-import ReactMarkdown from 'react-markdown';
-
 import dynamic from 'next/dynamic';
 import React, { Suspense } from 'react';
 const ArticleBody = dynamic(
@@ -29,6 +27,9 @@ const ArticleBody = dynamic(
     suspense: true,
   }
 );
+const TOC = dynamic(() => import('@components/Post/TOC'), {
+  suspense: true,
+});
 
 type PropsType = {
   currentPost: Contentful.PostOutput | null;
@@ -92,50 +93,13 @@ const SinglePost: NextPage<PropsType> = ({
     </section>
   );
 
-  const TocItem = ({
-    children,
-    depth,
-  }: {
-    children: React.ReactNode;
-    depth: number;
-  }) => (
-    <div
-      className="my-2"
-      style={{ marginLeft: depth * 10 }}
-    >
-      <a href={`#${children[0].toString()}`}>
-        {children[0]}
-      </a>
-    </div>
-  );
-
-  const TOC = () => (
-    <div className="text-sm overflow-hidden">
-      <h2 className="text-lg text-center bg-gray-200">
-        目次
-      </h2>
-      <div className="h-72 overflow-x-hidden overflow-y-scroll border-2 border-gray-200">
-        <ReactMarkdown
-          allowedElements={['h2', 'h3']}
-          skipHtml
-          components={{
-            h2: ({ children }) =>
-              TocItem({ children, depth: 2 }),
-            h3: ({ children }) =>
-              TocItem({ children, depth: 3 }),
-          }}
-        >
-          {rowBody}
-        </ReactMarkdown>
-      </div>
-    </div>
-  );
-
   const Side = () => (
     <aside className="bg-white p-2 space-y-4">
       <Bio />
       <div className="bg-white lg:sticky lg:top-4">
-        <TOC />
+        <Suspense fallback={'loading'}>
+          <TOC rowBody={rowBody} />
+        </Suspense>
       </div>
     </aside>
   );
