@@ -21,7 +21,7 @@ const MyApp = ({
         {}
       );
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }, [asPath]);
 
