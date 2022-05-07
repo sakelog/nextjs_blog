@@ -7,7 +7,7 @@ import {
 
 import { getPagePath } from '@lib/util/getPath';
 const PrivacyTag = () => (
-  <div className="my-4 text-sm">
+  <div className="my-4 text-sm text-center">
     <p>
       送信いただいた内容はプライバシーポリシーに沿って対応します。
       <br />
@@ -88,7 +88,7 @@ const ContactForm = () => {
       <div className="text-center">
         <button
           type="submit"
-          className="bg-theme text-white p-2 rounded font-semibold"
+          className="c-button bg-theme-dark"
         >
           送信
         </button>

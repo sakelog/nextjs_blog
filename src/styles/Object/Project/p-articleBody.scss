@@ -2,7 +2,7 @@
 
 .p-articleBody {
   &__root {
-    @apply leading-loose;
+    @apply leading-loose p-4;
     > div > div {
       @apply my-4;
     }

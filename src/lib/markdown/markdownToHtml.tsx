@@ -8,8 +8,8 @@ import slug from 'rehype-slug';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeStringify from 'rehype-stringify';
 
-export const markdownToHtml = async (markdown: string) =>
-  unified()
+export const markdownToHtml = async (markdown: string) => {
+  const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -17,5 +17,11 @@ export const markdownToHtml = async (markdown: string) =>
     .use(rehypeHighlight, { ignoreMissing: true })
     .use(slug)
     .use(rehypeRaw)
-    .use(rehypeStringify)
-    .processSync(markdown);
+    .use(rehypeStringify);
+
+  const result = processor.processSync(markdown);
+
+  return result?.toString() || null;
+};
+
+export default markdownToHtml;

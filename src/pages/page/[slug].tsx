@@ -5,12 +5,12 @@ import type {
 } from 'next';
 
 import CustomHead from '@components/CustomHead';
-import BackToTop from '@components/pagination/BackToTop';
+import BackToTop from '@components/Pagination/BackToTop';
 
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 const ArticleBody = dynamic(
-  () => import('@components/postParts/ArticleBody'),
+  () => import('@components/ArticleBody'),
   {
     suspense: true,
   }
@@ -24,26 +24,29 @@ type PageProps = {
   page: Contentful.PageOutput | null;
 };
 
-const SinglePage: NextPage<PageProps> = (props) => {
-  const body = props.page?.fields.body || '';
+const SinglePage: NextPage<PageProps> = ({ page }) => {
+  const { title, description, body } =
+    page?.fields as Contentful.PageOutput;
   return (
-    <>
-      {props.page && (
-        <article>
+    page && (
+      <>
+        <article className="bg-white p-4">
           <CustomHead
-            pageTitle={props.page.fields.title}
-            description={props.page.fields.description}
+            pageTitle={title}
+            description={description}
           />
           <div className="p-4">
-            <h1>{props.page.fields.title}</h1>
+            <h1 className="c-heading--flexCenter font-bold text-2xl">
+              {title}
+            </h1>
             <Suspense fallback={'loading'}>
               <ArticleBody body={body} />
             </Suspense>
           </div>
           <BackToTop />
         </article>
-      )}
-    </>
+      </>
+    )
   );
 };
 

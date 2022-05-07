@@ -15,6 +15,7 @@ declare namespace Contentful {
 
   declare interface PostFieldsOutput extends PostFields {
     update: string | null;
+    rowBody: string;
   }
   export type PostOutput = Entry<PostFieldsOutput>;
   export type PostCollectionOutput =

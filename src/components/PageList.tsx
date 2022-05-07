@@ -33,7 +33,7 @@ const PageList = () => {
   };
 
   return (
-    <ul className="md:flex md:flex-wrap md:divide-x">
+    <ul className="md:flex md:flex-wrap md:divide-x md:justify-center">
       <li>
         <ListItem path={TAG.path} text={TAG.name} />
       </li>

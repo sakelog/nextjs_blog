@@ -15,12 +15,17 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link
             rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
             href="https://fonts.googleapis.com"
             crossOrigin="anonymous"
           />
           <link
             rel="preconnect"
-            href="https://fonts.gstatic.com"
+            href="https://www.googletagmanager.com"
             crossOrigin="anonymous"
           />
           <link

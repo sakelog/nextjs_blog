@@ -1,6 +1,6 @@
 import React from 'react';
 
-import customBlockStyles from '@styles/Object/Component/_c-customBlock.module.scss';
+import customBlockStyles from 'styles/Object/Component/_c-customBlock.module.scss';
 
 type PropsType = JSX.IntrinsicElements['p'];
 

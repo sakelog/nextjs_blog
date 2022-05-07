@@ -8,17 +8,21 @@ type PropsType = {
   imgFLG?: boolean;
 };
 
-const CustomHead = (props: PropsType) => {
-  const metaTitle = props.pageTitle
-    ? props.pageTitle + ' | ' + config.title
+const CustomHead = ({
+  pageTitle,
+  description,
+  imgFLG,
+}: PropsType) => {
+  const metaTitle = pageTitle
+    ? pageTitle + ' | ' + config.title
     : config.title;
-  const metaDiscription = props.description
-    ? props.description
+  const metaDiscription = description
+    ? description
     : config.description;
-  const ogpImageSrc = props.imgFLG
+  const ogpImageSrc = imgFLG
     ? 'https://res.cloudinary.com/cl1sakelog/image/upload/co_rgb:ffffff,c_fit,w_700,' +
       'l_text:Sawarabi%20Gothic_50_bold:' +
-      props.pageTitle +
+      pageTitle +
       '/v1611679454/sakelog/postOGP.png'
     : 'https://res.cloudinary.com/cl1sakelog/image/upload/v1611678550/sakelog/defaultOGP.png';
   return (
@@ -46,36 +50,43 @@ const CustomHead = (props: PropsType) => {
         content={config.themeColor}
       />
       <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preconnect"
-        href="https://www.googletagmanager.com"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/img/icons/apple-touch-icon.png"
+        rel="shortcut icon"
+        type="image/vnd.microsoft.icon"
+        href="/favicon.ico"
       />
       <link
         rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/img/icons/favicon-32x32.png"
+        type="image/vnd.microsoft.icon"
+        href="/favicon.ico"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="57x57"
+        href="/img/icon/apple-touch-icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/img/icons/favicon-16x16.png"
+        href="/img/icon/favicon-16x16.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/img/icon/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/img/icon/android-chrome-192x192.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="/img/icon/android-chrome-512x512.png"
       />
       <link rel="manifest" href="/manifest.json" />
     </Head>

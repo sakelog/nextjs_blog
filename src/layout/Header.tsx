@@ -4,11 +4,11 @@ import config from '@components/config';
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-40">
+    <header>
       <nav className="bg-theme p-2">
         <span className="font-logo text-2xl">
           <Link href="/">
-            <a className="text-white font-normal hover:no-underline">
+            <a className="text-current no-underline">
               {config.title}
             </a>
           </Link>

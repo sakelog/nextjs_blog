@@ -26,7 +26,7 @@ const Footer = () => {
     );
   };
   return (
-    <footer className="bg-gray-600 text-white p-2 mt-auto">
+    <footer className="bg-gray-600 text-white p-2">
       <nav>
         <PageList />
       </nav>
