@@ -1,0 +1,16 @@
+.c-heading {
+  &--flexCenter {
+    @apply flex items-center font-bold my-2;
+    &::before,
+    &::after {
+      content: '';
+      @apply flex-auto border-b-4 border-gray-400 border-double;
+    }
+    &::before {
+      @apply mr-4;
+    }
+    &::after {
+      @apply ml-4;
+    }
+  }
+}

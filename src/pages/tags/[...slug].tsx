@@ -4,16 +4,17 @@ import {
   NextPage,
 } from 'next';
 
-import CustomHead from '@components/CustomHead';
-import IndexList from '@components/IndexList';
-import Pagination from '@components/pagination/Pagination';
-import BackToTop from '@components/pagination/BackToTop';
-
+// lib
 import { tagsControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 import { getTagsPath } from '@lib/util/getPath';
 
-const POST_PER_LISTPAGE = 10;
+// components
+import IndexLayout from 'layout/IndexLayout';
+import CustomHead from '@components/CustomHead';
+import IndexList from '@components/IndexList';
+import Pagination from '@components/Pagination';
+import BackToTop from '@components/Pagination/BackToTop';
 
 type PageProps = {
   name: string;
@@ -33,38 +34,44 @@ const TagsDirectory: NextPage<PageProps> = (props) => {
       ? ':' + props.currentPage + 'ページ目'
       : '');
   return (
-    <>
-      <CustomHead
-        pageTitle={
-          pageTitle +
-          (props.currentPage > 1
-            ? '(' + props.currentPage + ')'
-            : '')
-        }
-        description={description}
-      />
-      <section>
-        <h1>{pageTitle}</h1>
-        <p className="my-2 text-sm">
-          投稿：{props.totalCount}件
-        </p>
-        {props.posts && <IndexList posts={props.posts} />}
-      </section>
-      <Pagination
-        currentPage={props.currentPage}
-        lastPage={props.lastPage}
-        pathBase={props.pathBase}
-      />
-      <nav className="flex items-center space-x-2">
-        <BackToTop slug="tags" title="タグ一覧" />
-        <span className="text-gray-400">/</span>
-        <BackToTop />
-      </nav>
-    </>
+    <IndexLayout
+      head={
+        <CustomHead
+          pageTitle={
+            pageTitle +
+            (props.currentPage > 1
+              ? '(' + props.currentPage + ')'
+              : '')
+          }
+          description={description}
+        />
+      }
+      pagination={
+        <>
+          <Pagination
+            currentPage={props.currentPage}
+            lastPage={props.lastPage}
+            pathBase={props.pathBase}
+          />
+          <nav className="flex items-center space-x-4">
+            <BackToTop slug="tags" title="タグ一覧" />
+            <BackToTop />
+          </nav>
+        </>
+      }
+    >
+      <h1 className="font-bold text-2xl">{pageTitle}</h1>
+      <p className="my-2 text-sm">
+        投稿：{props.totalCount}件
+      </p>
+      {props.posts && <IndexList posts={props.posts} />}
+    </IndexLayout>
   );
 };
 
 export default TagsDirectory;
+
+const POST_PER_LISTPAGE = 10;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allTags = await tagsControler.getAllTags();

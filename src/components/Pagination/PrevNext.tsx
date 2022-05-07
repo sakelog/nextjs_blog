@@ -19,7 +19,7 @@ const PrevNext = ({ prevPost, nextPost }: PropsType) => {
         <>
           <HiOutlineChevronLeft className="p-prevnext__icon" />
           <Link href={getPostPath(prevPost.slug)}>
-            <a>{prevPost.title}</a>
+            <a className="truncate">{prevPost.title}</a>
           </Link>
         </>
       )}
@@ -31,7 +31,7 @@ const PrevNext = ({ prevPost, nextPost }: PropsType) => {
       {nextPost && (
         <>
           <Link href={getPostPath(nextPost.slug)}>
-            <a>{nextPost.title}</a>
+            <a className="truncate">{nextPost.title}</a>
           </Link>
           <HiOutlineChevronRight className="p-prevnext__icon" />
         </>

@@ -4,16 +4,14 @@
   }
   &__item {
     &--able {
-      @apply font-semibold text-theme;
-      @apply hover:underline;
       @apply flex items-center gap-1;
     }
     &--disable {
-      @apply text-gray-400;
+      @apply text-gray-600;
       @apply flex items-center gap-1;
     }
     &--current {
-      @apply bg-gray-200 text-sm rounded-full;
+      @apply bg-accent text-white text-sm rounded-full;
       @apply flex justify-center items-center;
       @apply w-6 h-6;
     }

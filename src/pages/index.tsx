@@ -1,11 +1,14 @@
 import { GetStaticProps, NextPage } from 'next';
 
+// components
+import IndexLayout from 'layout/IndexLayout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
-import Pagination from '@components/pagination/Pagination';
+import Pagination from '@components/Pagination';
 import config from '@components/config';
 
 import { postControler } from '@lib/contentful/exportContent';
+import { createOGImage } from '@lib/util/createOGImage';
 
 const POST_PER_LISTPAGE = 6;
 
@@ -18,19 +21,22 @@ type PageProps = {
   };
 };
 
-const TopPage: NextPage<PageProps> = (props) => {
+const TopPage: NextPage<PageProps> = ({ postIndex }) => {
+  const { currentPage, lastPage, pathBase, posts } =
+    postIndex;
   return (
-    <>
-      <CustomHead description={config.description} />
-      <section className="p-2">
-        <IndexList posts={props.postIndex.posts} />
+    <IndexLayout
+      head={<CustomHead description={config.description} />}
+      pagination={
         <Pagination
-          currentPage={props.postIndex.currentPage}
-          lastPage={props.postIndex.lastPage}
-          pathBase={props.postIndex.pathBase}
+          currentPage={currentPage}
+          lastPage={lastPage}
+          pathBase={pathBase}
         />
-      </section>
-    </>
+      }
+    >
+      <IndexList posts={posts} />
+    </IndexLayout>
   );
 };
 
@@ -47,6 +53,7 @@ export const getStaticProps: GetStaticProps<
     const lastPage = allPosts
       ? Math.ceil(allPosts.length / POST_PER_LISTPAGE)
       : 0;
+    createOGImage(null, 'top');
 
     return {
       props: {

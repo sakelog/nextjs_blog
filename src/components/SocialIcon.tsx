@@ -2,27 +2,33 @@ import { FiGithub, FiTwitter } from 'react-icons/fi';
 
 import config from '@components/config';
 
-type IconPropsType = {
-  className?: string;
+type IconPropTypes = {
   path: string;
   icon: React.ReactNode;
   bgcolor?: string;
+  name: string;
 };
 
-const Icon = (props: IconPropsType) => {
+const Icon = ({
+  bgcolor,
+  path,
+  icon,
+  name,
+}: IconPropTypes) => {
   return (
     <div
       className="flex items-center justify-center text-xl 
                  rounded-full bg-gray-800 w-8 h-8"
-      style={{ backgroundColor: props.bgcolor }}
+      style={{ backgroundColor: bgcolor }}
     >
       <a
-        href={props.path}
+        href={path}
         target="_blank"
         rel="nofollow noopener noreferrer"
         className="text-white"
+        aria-label={`icon_${name}`}
       >
-        {props.icon}
+        {icon}
       </a>
     </div>
   );
@@ -37,9 +43,9 @@ const RenderSocialIcon = () => {
     <ul className="flex space-x-2">
       <li key="github">
         <Icon
-          className="bg-gray-400"
           path={githubPath}
           icon={<FiGithub />}
+          name="github"
         />
       </li>
       <li key="twitter">
@@ -47,6 +53,7 @@ const RenderSocialIcon = () => {
           path={twitterPath}
           icon={<FiTwitter />}
           bgcolor="#1DA1F2"
+          name="twitter"
         />
       </li>
     </ul>

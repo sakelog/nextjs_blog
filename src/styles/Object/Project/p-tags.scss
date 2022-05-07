@@ -1,0 +1,7 @@
+.p-tags {
+  &__count {
+    @apply rounded-full w-6 h-6;
+    @apply text-xs font-bold;
+    @apply flex items-center justify-center;
+  }
+}

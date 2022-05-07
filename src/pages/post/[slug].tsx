@@ -8,75 +8,116 @@ import type {
 import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { postControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
+import { getYMDObject } from '@lib/util/getFormatDate';
+import { createOGImage } from '@lib/util/createOGImage';
 
 // components
 import CustomHead from '@components/CustomHead';
-import Bio from '@components/postParts/Bio';
-import PostDate from '@components/PostDate';
+import DateDisplay from '@components/DateDisplay';
+import Bio from '@components/Bio';
 import TagList from '@components/TagList';
-import PrevNext from '@components/pagination/PrevNext';
-import BackToTop from '@components/pagination/BackToTop';
+import PrevNext from '@components/Pagination/PrevNext';
+import BackToTop from '@components/Pagination/BackToTop';
 import AdForPost from '@components/GTM/AdForPost';
 
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 const ArticleBody = dynamic(
-  () => import('@components/postParts/ArticleBody'),
+  () => import('@components/ArticleBody'),
   {
     suspense: true,
   }
 );
+const TOC = dynamic(() => import('@components/Post/TOC'), {
+  suspense: true,
+});
 
 type PropsType = {
-  currentPost?: Contentful.PostOutput;
+  currentPost: Contentful.PostOutput | null;
   prevPost: Contentful.PostPrevNextItem | null;
   nextPost: Contentful.PostPrevNextItem | null;
+  ogImagePath: string;
 };
 
 const SinglePost: NextPage<PropsType> = ({
   currentPost,
   prevPost,
   nextPost,
+  ogImagePath,
 }) => {
-  const body = currentPost?.fields.body || '';
-  const pageTitle = currentPost?.fields.title || '';
-  const { description, title, date, update, tags } =
-    currentPost.fields as Contentful.PostFieldsOutput;
+  const {
+    description,
+    title,
+    body,
+    rowBody,
+    date,
+    update,
+    tags,
+  } = currentPost?.fields as Contentful.PostFieldsOutput;
+
+  const pageTitle = title || '';
+
+  const Date = () =>
+    update ? (
+      <DateDisplay {...getYMDObject(update)} />
+    ) : (
+      <DateDisplay {...getYMDObject(date)} />
+    );
+
+  const Article = () => (
+    <section className="lg:col-span-3 bg-white">
+      <PrevNext prevPost={prevPost} nextPost={nextPost} />
+      <article className="p-4">
+        <div className="max-w-screen-sm mx-auto">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center">
+            <div className="flex-none">
+              <Date />
+            </div>
+            <div className="flex-1">
+              <h1 className="font-bold text-2xl">
+                {title}
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center
+      gap-2 my-4"
+        >
+          <TagList tags={tags} heading="h2" />
+        </div>
+        <AdForPost />
+        <Suspense fallback={'loading'}>
+          <ArticleBody body={body} />
+        </Suspense>
+      </article>
+      <PrevNext prevPost={prevPost} nextPost={nextPost} />
+      <BackToTop />
+    </section>
+  );
+
+  const Side = () => (
+    <aside className="bg-white p-2 space-y-4">
+      <Bio />
+      <div className="bg-white lg:sticky lg:top-4">
+        <Suspense fallback={'loading'}>
+          <TOC rowBody={rowBody} />
+        </Suspense>
+      </div>
+    </aside>
+  );
+
   return (
     <>
-      {currentPost && (
-        <>
-          <CustomHead
-            pageTitle={pageTitle}
-            description={description}
-            imgFLG={true}
-          />
-          <PrevNext
-            prevPost={prevPost}
-            nextPost={nextPost}
-          />
-          <article className="p-4">
-            <h1>{title}</h1>
-            <div
-              className="flex flex-col justify-center items-center
-              gap-2 my-4"
-            >
-              <PostDate postdate={date} update={update} />
-              <TagList tags={tags} heading="h6" />
-            </div>
-            <AdForPost />
-            <Suspense fallback={'loading'}>
-              <ArticleBody body={body} />
-            </Suspense>
-            <Bio />
-          </article>
-          <PrevNext
-            prevPost={prevPost}
-            nextPost={nextPost}
-          />
-          <BackToTop />
-        </>
-      )}
+      <CustomHead
+        pageTitle={pageTitle}
+        description={description}
+        ogImagePath={ogImagePath}
+      />
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        {currentPost && <Article />}
+        <Side />
+      </div>
     </>
   );
 };
@@ -103,9 +144,10 @@ export const getStaticProps: GetStaticProps<
 
   const allPosts = await postControler.getAllPosts();
   const currentPost: Contentful.Post =
-    await postControler.getPostBySlug({
+    (await postControler.getPostBySlug({
       slug,
-    });
+    })) || null;
+
   const currentSlug = currentPost?.fields.slug;
   const prevPost: Contentful.Post =
     allPosts && currentSlug
@@ -123,7 +165,11 @@ export const getStaticProps: GetStaticProps<
   const currentBody = currentPost
     ? await markdownToHtml(currentPost.fields.body)
     : null;
-  const currentBodyString = currentBody?.toString() || null;
+
+  const ogImagePath = await createOGImage(
+    currentPost.fields.title,
+    slug
+  );
 
   return {
     props: {
@@ -131,7 +177,8 @@ export const getStaticProps: GetStaticProps<
         ...currentPost,
         fields: {
           ...currentPost.fields,
-          body: currentBodyString,
+          body: currentBody,
+          rowBody: currentPost.fields.body,
         },
       },
       prevPost:
@@ -146,6 +193,7 @@ export const getStaticProps: GetStaticProps<
           title: nextPost?.fields.title,
         }) ||
         null,
+      ogImagePath,
     },
   };
 };

@@ -1,26 +1,20 @@
 {
   "extends": "@tsconfig/next/tsconfig.json",
   "compilerOptions": {
+    "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "@layout/*": ["layout/*"],
+      "layout/*": ["layout/*"],
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
-      "@scripts/*": ["scripts/*"],
-      "@template/*": ["template/*"],
-      "@state/*": ["state/*"],
-      "@styles/*": ["styles/*"],
-      "@styles/layout/*": ["styles/Layout/*"],
-      "@styles/project/*": ["styles/Object/Project/*"],
-      "@styles/component/*": ["styles/Object/Component/*"]
+      "styles/*": ["styles/*"]
     },
     "incremental": true
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/lib/setSitemap.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
