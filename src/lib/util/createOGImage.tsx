@@ -29,14 +29,14 @@ export const createOGImage = async (
       localOgImageDir,
       ogImageFileName
     );
-    const publicPath = `${siteMeta.url}img/ogp/${ogImageFileName}`;
+    const publicPath = `${siteMeta.url}img/og/${ogImageFileName}`;
 
     try {
       fs.statSync(localPath);
       return publicPath;
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(`ogp image create for : ${title}`);
+      console.log(`og image create for : ${title}`);
     }
 
     const browser = await chromium.launch({
