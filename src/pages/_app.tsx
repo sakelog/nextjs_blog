@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
 // components
-import Layout from '@layout/Layout';
+import Layout from 'layout';
 import GTMScript from '@components/GTM/script';
 
 // style

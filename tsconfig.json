@@ -3,16 +3,13 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@layout/*": ["layout/*"],
+      "layout/*": ["layout/*"],
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
       "@scripts/*": ["scripts/*"],
       "@template/*": ["template/*"],
       "@state/*": ["state/*"],
-      "@styles/*": ["styles/*"],
-      "@styles/layout/*": ["styles/Layout/*"],
-      "@styles/project/*": ["styles/Object/Project/*"],
-      "@styles/component/*": ["styles/Object/Component/*"]
+      "@styles/*": ["styles/*"]
     },
     "incremental": true
   },
@@ -20,7 +17,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/lib/setSitemap.ts"
+    "src/lib/setSitemap.ts",
+    "src/layout/IndexLayout"
   ],
   "exclude": ["node_modules"]
 }
