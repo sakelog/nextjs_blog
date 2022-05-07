@@ -4,7 +4,7 @@ import { GetStaticProps, NextPage } from 'next';
 import IndexLayout from 'layout/IndexLayout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
-import Pagination from '@components/pagination/Pagination';
+import Pagination from '@components/Pagination';
 import config from '@components/config';
 
 import { postControler } from '@lib/contentful/exportContent';
@@ -34,9 +34,7 @@ const TopPage: NextPage<PageProps> = ({ postIndex }) => {
         />
       }
     >
-      <section className="p-2">
-        <IndexList posts={posts} />
-      </section>
+      <IndexList posts={posts} />
     </IndexLayout>
   );
 };

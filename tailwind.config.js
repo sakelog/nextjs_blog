@@ -8,9 +8,12 @@ module.exports = {
       colors: {
         gray: colors.slate,
         theme: {
-          DEFAULT: '#d9a62e',
-          dark: '#997520',
+          DEFAULT: '#99ccff',
+          light: '#cce6ff',
+          dark: '#3399ff',
         },
+        accent: '#ff9999',
+        link: '#007acc',
       },
       fontFamily: {
         sans: [

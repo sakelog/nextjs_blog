@@ -13,8 +13,8 @@ import { getTagsPath } from '@lib/util/getPath';
 import IndexLayout from 'layout/IndexLayout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
-import Pagination from '@components/pagination/Pagination';
-import BackToTop from '@components/pagination/BackToTop';
+import Pagination from '@components/Pagination';
+import BackToTop from '@components/Pagination/BackToTop';
 
 type PageProps = {
   name: string;

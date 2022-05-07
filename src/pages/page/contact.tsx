@@ -4,7 +4,7 @@ import config from '@components/config';
 
 import CustomHead from '@components/CustomHead';
 import ContactForm from '@components/ContactForm';
-import BackToTop from '@components/pagination/BackToTop';
+import BackToTop from '@components/Pagination/BackToTop';
 
 const Contact: NextPage = () => {
   const PAGE_TITLE = 'お問い合わせ';

@@ -7,7 +7,7 @@ import { getTagsPath } from '@lib/util/getPath';
 
 // components
 import CustomHead from '@components/CustomHead';
-import BackToTop from '@components/pagination/BackToTop';
+import BackToTop from '@components/Pagination/BackToTop';
 
 type PageProps = {
   tagsInfo: {

@@ -10,7 +10,7 @@ import { postControler } from '@lib/contentful/exportContent';
 import IndexLayout from 'layout/IndexLayout';
 import CustomHead from '@components/CustomHead';
 import IndexList from '@components/IndexList';
-import Pagination from '@components/pagination/Pagination';
+import Pagination from '@components/Pagination';
 import config from '@components/config';
 
 const POST_PER_LISTPAGE = 6;

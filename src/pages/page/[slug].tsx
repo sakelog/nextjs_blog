@@ -5,12 +5,12 @@ import type {
 } from 'next';
 
 import CustomHead from '@components/CustomHead';
-import BackToTop from '@components/pagination/BackToTop';
+import BackToTop from '@components/Pagination/BackToTop';
 
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 const ArticleBody = dynamic(
-  () => import('@components/postParts/ArticleBody'),
+  () => import('@components/ArticleBody'),
   {
     suspense: true,
   }

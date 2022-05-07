@@ -7,9 +7,9 @@ const Layout = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-white overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-gray-100 visible">
       <Header />
-      <main className="container mx-auto my-2 flex-1 p-2 flex items-stretch">
+      <main className="container mx-auto flex-1 flex items-stretch visible">
         <div className="w-full">{children}</div>
       </main>
       <Footer />

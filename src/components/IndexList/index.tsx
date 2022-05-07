@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getPostPath } from '@lib/util/getPath';
 
 // components
-import PostDate from '@components/PostDate';
+import PostDate from '@components/IndexList/PostDate';
 import TagList from '@components/TagList';
 import AdForIndexList from '@components/GTM/AdForIndexList';
 
@@ -41,7 +41,7 @@ const IndexList = ({ posts }: PropsType) => (
                 <div className="pt-2">
                   <TagList
                     tags={post.fields.tags}
-                    heading="h4"
+                    heading="h3"
                   />
                 </div>
               </div>
