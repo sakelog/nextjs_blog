@@ -13,7 +13,7 @@ const OgPage: NextPageWithLayout = () => {
   const router = useRouter();
   const { title } = router.query;
 
-  return (
+  return title ? (
     <div
       style={{ width: 1200, height: 630 }}
       className="bg-white p-8 flex flex-col"
@@ -30,6 +30,18 @@ const OgPage: NextPageWithLayout = () => {
           {siteMeta.title}
         </div>
         <div className="text-2xl">{siteMeta.url}</div>
+      </div>
+    </div>
+  ) : (
+    <div
+      style={{ width: 1200, height: 630 }}
+      className="bg-white p-8 flex flex-col"
+    >
+      <div className="bg-theme rounded-md flex-1 p-8 flex flex-col gap-2 items-center justify-center">
+        <p className="text-6xl font-logo">
+          {siteMeta.title}
+        </p>
+        <p className="text-2xl">{siteMeta.url}</p>
       </div>
     </div>
   );

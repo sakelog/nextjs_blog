@@ -5,13 +5,13 @@ import config from '@components/config';
 type PropsType = {
   pageTitle?: string | null;
   description?: string;
-  imgFLG?: boolean;
+  ogImagePath?: string;
 };
 
 const CustomHead = ({
   pageTitle,
   description,
-  imgFLG,
+  ogImagePath,
 }: PropsType) => {
   const metaTitle = pageTitle
     ? pageTitle + ' | ' + config.title
@@ -19,12 +19,9 @@ const CustomHead = ({
   const metaDiscription = description
     ? description
     : config.description;
-  const ogpImageSrc = imgFLG
-    ? 'https://res.cloudinary.com/cl1sakelog/image/upload/co_rgb:ffffff,c_fit,w_700,' +
-      'l_text:Sawarabi%20Gothic_50_bold:' +
-      pageTitle +
-      '/v1611679454/sakelog/postOGP.png'
-    : 'https://res.cloudinary.com/cl1sakelog/image/upload/v1611678550/sakelog/defaultOGP.png';
+  const ogpImageSrc =
+    ogImagePath ??
+    'https://res.cloudinary.com/cl1sakelog/image/upload/v1611678550/sakelog/defaultOGP.png';
   return (
     <Head>
       <title>{metaTitle}</title>

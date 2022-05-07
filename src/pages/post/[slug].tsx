@@ -9,6 +9,7 @@ import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { postControler } from '@lib/contentful/exportContent';
 import { toKebabCase } from '@lib/util/toKebabCase';
 import { getYMDObject } from '@lib/util/getFormatDate';
+import { createOGImage } from '@lib/util/createOGImage';
 
 // components
 import CustomHead from '@components/CustomHead';
@@ -35,12 +36,14 @@ type PropsType = {
   currentPost: Contentful.PostOutput | null;
   prevPost: Contentful.PostPrevNextItem | null;
   nextPost: Contentful.PostPrevNextItem | null;
+  ogImagePath: string;
 };
 
 const SinglePost: NextPage<PropsType> = ({
   currentPost,
   prevPost,
   nextPost,
+  ogImagePath,
 }) => {
   const {
     description,
@@ -109,7 +112,7 @@ const SinglePost: NextPage<PropsType> = ({
       <CustomHead
         pageTitle={pageTitle}
         description={description}
-        imgFLG={true}
+        ogImagePath={ogImagePath}
       />
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {currentPost && <Article />}
@@ -144,6 +147,7 @@ export const getStaticProps: GetStaticProps<
     (await postControler.getPostBySlug({
       slug,
     })) || null;
+
   const currentSlug = currentPost?.fields.slug;
   const prevPost: Contentful.Post =
     allPosts && currentSlug
@@ -161,6 +165,11 @@ export const getStaticProps: GetStaticProps<
   const currentBody = currentPost
     ? await markdownToHtml(currentPost.fields.body)
     : null;
+
+  const ogImagePath = await createOGImage(
+    currentPost.fields.title,
+    slug
+  );
 
   return {
     props: {
@@ -184,6 +193,7 @@ export const getStaticProps: GetStaticProps<
           title: nextPost?.fields.title,
         }) ||
         null,
+      ogImagePath,
     },
   };
 };
