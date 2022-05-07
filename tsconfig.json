@@ -11,12 +11,6 @@
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/lib/setSitemap.ts",
-    "src/layout/IndexLayout"
-  ],
+  "include": ["next-env.d.ts", "src/**/*.{ts,tsx}"],
   "exclude": ["node_modules"]
 }
