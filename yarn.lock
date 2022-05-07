@@ -5675,9 +5675,7 @@ __metadata:
     typescript: ^4.4.2
     unified: ^10.1.0
   peerDependencies:
-    "@babel/core": "*"
     eslint-plugin-import: 2.25.3
-    wepack: 4.0.0
   languageName: unknown
   linkType: soft
 
