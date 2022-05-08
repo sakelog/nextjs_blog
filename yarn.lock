@@ -2000,6 +2000,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uiball/loaders@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "@uiball/loaders@npm:1.2.6"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: f5222ab2b9ca8eb255b88dd9f40e6d9de91e4beabbe92083132ecdf2eb2977e2b8dbe7a879c7cb50c3368faed55568c7d1cfa2f978fab6c85e6d04a8c6718268
+  languageName: node
+  linkType: hard
+
 "@wessberg/stringutil@npm:^1.0.19":
   version: 1.0.19
   resolution: "@wessberg/stringutil@npm:1.0.19"
@@ -6033,6 +6043,7 @@ __metadata:
     "@types/react-dom": ^18.0.3
     "@typescript-eslint/eslint-plugin": ^5.22.0
     "@typescript-eslint/parser": ^5.22.0
+    "@uiball/loaders": ^1.2.6
     autoprefixer: ^10.4.7
     contentful: ^10.0.0-beta-v10.6
     cross-env: ^7.0.3

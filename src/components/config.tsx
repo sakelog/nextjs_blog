@@ -9,7 +9,7 @@ const config = {
     twitter: 'sake_engineer',
     github: 'sakelog',
   },
-  themeColor: '#5b7e91',
+  themeColor: '#99ccff',
 };
 
 export default config;

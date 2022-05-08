@@ -18,7 +18,6 @@ import Bio from '@components/Bio';
 import TagList from '@components/TagList';
 import PrevNext from '@components/Pagination/PrevNext';
 import BackToTop from '@components/Pagination/BackToTop';
-import AdForPost from '@components/GTM/AdForPost';
 
 import dynamic from 'next/dynamic';
 import React, { Suspense } from 'react';
@@ -31,6 +30,11 @@ const ArticleBody = dynamic(
 const TOC = dynamic(() => import('@components/Post/TOC'), {
   suspense: true,
 });
+import Loader from '@components/Loader';
+
+// ad
+import AdForPostArticle from '@components/GTM/AdForPostArticle';
+import AdForPostSide from '@components/GTM/AdForPostSide';
 
 type PropsType = {
   currentPost: Contentful.PostOutput | null;
@@ -65,7 +69,7 @@ const SinglePost: NextPage<PropsType> = ({
     );
 
   const Article = () => (
-    <section className="lg:col-span-3 bg-white">
+    <section className="lg:col-span-3 bg-white p-4">
       <PrevNext prevPost={prevPost} nextPost={nextPost} />
       <article className="p-4">
         <div className="max-w-screen-sm mx-auto">
@@ -86,8 +90,8 @@ const SinglePost: NextPage<PropsType> = ({
         >
           <TagList tags={tags} heading="h2" />
         </div>
-        <AdForPost />
-        <Suspense fallback={'loading'}>
+        <AdForPostArticle />
+        <Suspense fallback={<Loader />}>
           <ArticleBody body={body} />
         </Suspense>
       </article>
@@ -99,8 +103,9 @@ const SinglePost: NextPage<PropsType> = ({
   const Side = () => (
     <aside className="bg-white p-2 space-y-4">
       <Bio />
+      <AdForPostSide />
       <div className="bg-white lg:sticky lg:top-4">
-        <Suspense fallback={'loading'}>
+        <Suspense fallback={<Loader />}>
           <TOC rowBody={rowBody} />
         </Suspense>
       </div>
