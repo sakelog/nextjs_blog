@@ -103,12 +103,12 @@ const SinglePost: NextPage<PropsType> = ({
   const Side = () => (
     <aside className="bg-white p-2 space-y-4">
       <Bio />
-      <AdForPostSide />
       <div className="bg-white lg:sticky lg:top-4">
         <Suspense fallback={<Loader />}>
           <TOC rowBody={rowBody} />
         </Suspense>
       </div>
+      <AdForPostSide />
     </aside>
   );
 

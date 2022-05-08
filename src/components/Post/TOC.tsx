@@ -17,7 +17,7 @@ const TOC = ({ rowBody }: { rowBody: string }) => (
     <h2 className="text-lg text-center bg-gray-200">
       目次
     </h2>
-    <div className="h-72 overflow-x-hidden overflow-y-scroll border-2 border-gray-200">
+    <div className="md:h-72 overflow-x-hidden md:overflow-y-scroll border-2 border-gray-200 u-scrollbar">
       <ReactMarkdown
         allowedElements={['h2', 'h3']}
         skipHtml
