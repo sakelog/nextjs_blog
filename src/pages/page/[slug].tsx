@@ -15,6 +15,7 @@ const ArticleBody = dynamic(
     suspense: true,
   }
 );
+import Loader from '@components/Loader';
 
 import { markdownToHtml } from '@lib/markdown/markdownToHtml';
 import { pageControler } from '@lib/contentful/exportContent';
@@ -39,7 +40,7 @@ const SinglePage: NextPage<PageProps> = ({ page }) => {
             <h1 className="c-heading--flexCenter font-bold text-2xl">
               {title}
             </h1>
-            <Suspense fallback={'loading'}>
+            <Suspense fallback={<Loader />}>
               <ArticleBody body={body} />
             </Suspense>
           </div>
