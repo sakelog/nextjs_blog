@@ -11,11 +11,6 @@ const AdForIndexList = () => {
     } catch (err) {
       console.log(err);
     }
-    return () => {
-      document
-        .getElementById('__next')
-        .removeAttribute('style');
-    };
   }, [asPath]);
   return (
     <div

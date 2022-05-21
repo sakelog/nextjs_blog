@@ -22,7 +22,6 @@ const AdForPostArticle = () => {
         style={{
           display: 'block',
           textAlign: 'center',
-          fontSize: '100%',
         }}
         data-adtest={
           process.env.NODE_ENV === 'production'
