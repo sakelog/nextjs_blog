@@ -15,13 +15,14 @@ const AdForIndexList = () => {
   return (
     <div
       key={`ad-for-indexList-${asPath}`}
-      className="uk-margin"
+      className="uk-margin uk-text-center"
     >
       <ins
         className="adsbygoogle"
         style={{
           display: 'block',
           margin: 'auto',
+          fontSize: '100%',
         }}
         data-adtest={
           process.env.NODE_ENV === 'production'

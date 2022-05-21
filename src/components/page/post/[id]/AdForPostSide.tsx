@@ -19,7 +19,7 @@ const AdForPostSide = () => {
     >
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', fontSize: '100%' }}
         data-adtest={
           process.env.NODE_ENV === 'production'
             ? 'off'

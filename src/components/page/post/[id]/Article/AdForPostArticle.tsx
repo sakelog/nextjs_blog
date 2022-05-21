@@ -19,7 +19,11 @@ const AdForPostArticle = () => {
     >
       <ins
         className="adsbygoogle"
-        style={{ display: 'block', textAlign: 'center' }}
+        style={{
+          display: 'block',
+          textAlign: 'center',
+          fontSize: '100%',
+        }}
         data-adtest={
           process.env.NODE_ENV === 'production'
             ? 'off'
