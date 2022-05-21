@@ -1,10 +1,18 @@
-@layer base {
-  html {
-    font-size: 100%;
-    @apply bg-gray-50 text-gray-800 font-sans;
-    scroll-behavior: smooth;
+html {
+  h2[id] {
+    &::before {
+      display: block;
+      height: 6rem;
+      margin-top: -6rem;
+      content: '';
+    }
   }
-  a {
-    @apply text-link underline hover:no-underline;
+  h3[id] {
+    &::before {
+      display: block;
+      height: 6rem;
+      margin-top: -6rem;
+      content: '';
+    }
   }
 }

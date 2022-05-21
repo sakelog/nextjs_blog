@@ -1,29 +1,36 @@
 .appreach {
-  @apply bg-gray-200 w-full max-w-screen-sm rounded p-4 my-4 mx-auto;
-  @apply flex flex-col items-center gap-2;
+  background: $global-muted-background;
+  max-width: $breakpoint-small;
+  margin: $margin-margin auto;
+  padding: $padding-padding;
+  border-radius: $border-rounded-border-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
   a {
-    @apply inline-block #{!important};
-    .externalIcon {
-      @apply hidden;
-    }
+    display: inline-block;
   }
   .appreach__name {
-    @apply text-xl;
+    font-size: $global-xlarge-font-size;
   }
   .appreach__price {
-    @apply mx-1;
+    margin: auto $margin-small-margin;
   }
   .appreach__posted {
-    @apply ml-1;
+    margin-left: $margin-small-margin;
   }
   .appreach__icon {
-    @apply w-full h-auto rounded-xl;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
     max-width: 120px;
   }
   .appreach__links {
     .appreach__aslink,
     .appreach__gplink {
-      @apply m-1 inline-block;
+      margin: $margin-small-margin;
+      display: inline-block;
     }
     .appreach__aslink {
       img {
@@ -37,6 +44,9 @@
         width: 134.5px;
       }
     }
-    @apply md:flex md:items-center;
+    @media (min-width: $breakpoint-medium) {
+      display: flex;
+      align-items: center;
+    }
   }
 }

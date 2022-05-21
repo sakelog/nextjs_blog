@@ -15,7 +15,6 @@ const nextConfig = withPWA({
   },
   images: {
     loader: 'custom',
-    domains: ['images.ctfassets.net'],
   },
   reactStrictMode: true,
 });

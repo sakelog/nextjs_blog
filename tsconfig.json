@@ -4,10 +4,7 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "layout/*": ["layout/*"],
-      "@components/*": ["components/*"],
-      "@lib/*": ["lib/*"],
-      "styles/*": ["styles/*"]
+      "@/*": ["./*"]
     },
     "incremental": true
   },

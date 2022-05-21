@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
 
 // components
-import siteMeta from 'components/config';
+import { config } from '@/config';
 
 type NextPageWithLayout = NextPage & {
   LP?: (page: React.ReactElement) => React.ReactNode;
@@ -15,33 +15,66 @@ const OgPage: NextPageWithLayout = () => {
 
   return title ? (
     <div
-      style={{ width: 1200, height: 630 }}
-      className="bg-white p-8 flex flex-col"
+      style={{
+        width: 1200,
+        height: 630,
+        background: '#ffffff',
+      }}
+      className="uk-padding-large uk-flex uk-flex-column"
     >
-      <div className="bg-theme rounded-md flex-1 p-8 flex items-center justify-center">
-        <div className="bg-white w-full py-2">
-          <div className="border-b-4 border-t-4 border-accent p-2">
-            <p className="text-6xl z-50">{title}</p>
-          </div>
+      <div
+        className="uk-background-primary uk-flex-1 uk-padding-large
+       uk-flex uk-flex-middle uk-flex-center"
+        style={{ borderRadius: '10px' }}
+      >
+        <div
+          className="uk-width-1-1 uk-height-1-1 uk-padding-small"
+          style={{ background: '#ffffff' }}
+        >
+          <p
+            className="uk-position-z-index"
+            style={{ fontSize: '6rem' }}
+          >
+            {title}
+          </p>
         </div>
       </div>
-      <div className="flex justify-between items-center">
-        <div className="font-logo text-theme-dark">
-          {siteMeta.title}
+      <div className="uk-flex uk-flex-between uk-flex-middle">
+        <div className="uk-logo uk-text-primary">
+          {config.title}
         </div>
-        <div className="text-2xl">{siteMeta.url}</div>
+        <div className="uk-text-large">{config.url}</div>
       </div>
     </div>
   ) : (
     <div
-      style={{ width: 1200, height: 630 }}
-      className="bg-white p-8 flex flex-col"
+      style={{
+        width: 1200,
+        height: 630,
+        background: '#ffffff',
+      }}
+      className="uk-padding-large uk-flex uk-flex-column"
     >
-      <div className="bg-theme rounded-md flex-1 p-8 flex flex-col gap-2 items-center justify-center">
-        <p className="text-6xl font-logo">
-          {siteMeta.title}
+      <div
+        className="uk-background-primary uk-flex-1
+      uk-padding-large uk-flex uk-flex-col uk-flex-center uk-flex-middle"
+        style={{
+          gap: '0.4rem',
+          borderRadius: '10px',
+        }}
+      >
+        <p
+          className="uk-logo"
+          style={{ fontSize: '6rem', color: '#ffffff' }}
+        >
+          {config.title}
         </p>
-        <p className="text-2xl">{siteMeta.url}</p>
+        <p
+          className="uk-text-large"
+          style={{ color: '#ffffff' }}
+        >
+          {config.url}
+        </p>
       </div>
     </div>
   );

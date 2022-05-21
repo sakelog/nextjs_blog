@@ -4,98 +4,79 @@ import type {
   NextPage,
 } from 'next';
 
-import CustomHead from '@components/CustomHead';
-import BackToTop from '@components/Pagination/BackToTop';
+// libs
+import {
+  getAllPages,
+  getPageBySlug,
+} from '@/libs/localContent/getContent';
+import markdownToHtml from '@/libs/localContent/markdownToHtml';
 
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-const ArticleBody = dynamic(
-  () => import('@components/ArticleBody'),
-  {
-    suspense: true,
-  }
-);
-import Loader from '@components/Loader';
-
-import { markdownToHtml } from '@lib/markdown/markdownToHtml';
-import { pageControler } from '@lib/contentful/exportContent';
-import { toKebabCase } from '@lib/util/toKebabCase';
+// components
+import Link from 'next/link';
+import CustomHead from '@/components/CustomHead';
 
 type PageProps = {
-  page: Contentful.PageOutput | null;
+  page: Content.Page;
 };
 
-const SinglePage: NextPage<PageProps> = ({ page }) => {
-  const { title, description, body } =
-    page?.fields as Contentful.PageOutput;
-  return (
-    page && (
-      <>
-        <article className="bg-white p-4">
-          <CustomHead
-            pageTitle={title}
-            description={description}
-          />
-          <div className="p-4">
-            <h1 className="c-heading--flexCenter font-bold text-2xl">
-              {title}
-            </h1>
-            <Suspense fallback={<Loader />}>
-              <ArticleBody body={body} />
-            </Suspense>
-          </div>
-          <BackToTop />
-        </article>
-      </>
-    )
-  );
-};
+export const getStaticPaths: GetStaticPaths = () => {
+  const allPages = getAllPages();
 
-export default SinglePage;
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return pageControler.getAllPages().then((allPages) => {
-    const paths = allPages?.map((page) => ({
-      params: { slug: toKebabCase(page.fields.slug) },
-    })) || [{ params: { slug: '' } }];
-
-    return { paths, fallback: false };
-  });
+  return {
+    paths: allPages.map((page) => {
+      return {
+        params: {
+          slug: page.slug,
+        },
+      };
+    }),
+    fallback: false,
+  };
 };
 
 export const getStaticProps: GetStaticProps<
-  PageProps
+  PageProps,
+  { slug: string }
 > = async (context) => {
-  const slug =
-    typeof context.params?.slug === 'string'
-      ? context.params?.slug
-      : '';
+  const page = getPageBySlug(context.params?.slug, [
+    'title',
+    'slug',
+    'content',
+  ]) as Content.Page;
 
-  return pageControler
-    .getPageBySlug(slug)
-    .then(async (page) => {
-      const bodyToString = page
-        ? markdownToHtml(page.fields.body).then((body) =>
-            body?.toString()
-          )
-        : null;
+  const content = await markdownToHtml(page.content || '');
 
-      const fields = {
-        title: page?.fields.title || '',
-        slug: page?.fields.slug || '',
-        description: page?.fields.description || '',
-        date: page?.fields.date || '',
-        update: page?.fields.update || null,
-        body: await bodyToString?.then((res) => res),
-      };
-
-      return {
-        props: {
-          page: {
-            sys: page?.sys,
-            fields,
-          },
-        },
-      };
-    });
+  return {
+    props: {
+      page: {
+        ...page,
+        content,
+      },
+    },
+  };
 };
+
+const SinglePage: NextPage<PageProps> = ({ page }) => (
+  <>
+    <CustomHead
+      pageTitle={page.title}
+      description={page.description}
+    />
+    <ul className="uk-breadcrumb">
+      <li>
+        <Link href="/">Home</Link>
+      </li>
+      <li>
+        <span>{page.title}</span>
+      </li>
+    </ul>
+    <article className="uk-article">
+      <h1 className="uk-article-title">{page.title}</h1>
+      <div
+        dangerouslySetInnerHTML={{ __html: page.content }}
+      />
+    </article>
+  </>
+);
+
+export default SinglePage;

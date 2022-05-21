@@ -1,12 +1,13 @@
 import React from 'react';
+// import GTMNoScript from '@components/GTM/noScript';
+
+// components
 import Document, {
   Html,
   Head,
   Main,
   NextScript,
 } from 'next/document';
-import GTMNoScript from '@components/GTM/noScript';
-
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
@@ -42,9 +43,9 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          {process.env.NODE_ENV === 'production' && (
+          {/* {process.env.NODE_ENV === 'production' && (
             <GTMNoScript />
-          )}
+          )} */}
           <Main />
           <NextScript />
         </body>

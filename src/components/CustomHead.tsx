@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import siteMeta from '@components/config';
+import { config } from 'config';
 
 type PropsType = {
   pageTitle?: string | null;
@@ -14,13 +14,13 @@ const CustomHead = ({
   ogImagePath,
 }: PropsType) => {
   const metaTitle = pageTitle
-    ? pageTitle + ' | ' + siteMeta.title
-    : siteMeta.title;
+    ? pageTitle + ' | ' + config.title
+    : config.title;
   const metaDiscription = description
     ? description
-    : siteMeta.description;
-  const ogpImageSrc =
-    ogImagePath ?? `${siteMeta.url}/img/og/top.png`;
+    : config.description;
+  const ogImageSrc =
+    ogImagePath ?? `${config.url}/img/og/top.png`;
   return (
     <Head>
       <title>{metaTitle}</title>
@@ -31,7 +31,7 @@ const CustomHead = ({
         content={metaDiscription}
       />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={ogpImageSrc} />
+      <meta property="og:image" content={ogImageSrc} />
       <meta
         property="twitter:card"
         content="summary_large_image"
@@ -43,7 +43,7 @@ const CustomHead = ({
       />
       <meta
         name="theme-color"
-        content={siteMeta.themeColor}
+        content={config.themeColor}
       />
       <link
         rel="shortcut icon"

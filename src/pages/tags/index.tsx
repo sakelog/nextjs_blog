@@ -1,96 +1,90 @@
 import { GetStaticProps, NextPage } from 'next';
-import Link from 'next/link';
 
-// lib
-import { tagsControler } from '@lib/contentful/exportContent';
-import { getTagsPath } from '@lib/util/getPath';
+// libs
+import {
+  getAllTags,
+  getPostsByTagID,
+} from '@/libs/microcms/getContent';
 
 // components
-import CustomHead from '@components/CustomHead';
-import BackToTop from '@components/Pagination/BackToTop';
+import Link from 'next/link';
+import CustomHead from '@/components/CustomHead';
 
-type PageProps = {
-  tagsInfo: {
-    name: string;
-    path: string;
+type TagsInfo = Array<
+  Content.Tag & {
     totalCount: number;
-  }[];
+  }
+>;
+type PageProps = {
+  tagsInfo: TagsInfo;
+};
+
+export const getStaticProps: GetStaticProps<
+  PageProps
+> = async () => {
+  const allTags = await getAllTags({});
+
+  const tagsInfo: TagsInfo = [];
+
+  await Promise.all(
+    allTags.contents.map(async (tag) => {
+      const targetPosts = await getPostsByTagID({
+        targetID: tag.id,
+      });
+      const totalCount = targetPosts.totalCount;
+
+      tagsInfo.push({
+        id: tag.id,
+        title: tag.title,
+        totalCount,
+      });
+    })
+  );
+
+  const sortedTagsInfo = tagsInfo.sort(function (a, b) {
+    return b.totalCount - a.totalCount;
+  });
+
+  return { props: { tagsInfo: sortedTagsInfo } };
 };
 
 const TagsPage: NextPage<PageProps> = ({ tagsInfo }) => {
   const PAGE_TITLE = 'タグ一覧';
   const DESCRIPTION = '全タグの一覧ページです';
-  const sortedTagsInfo = tagsInfo.sort(function (a, b) {
-    return b.totalCount - a.totalCount;
-  });
 
   return (
-    <section className="bg-white p-4">
+    <>
       <CustomHead
         pageTitle={PAGE_TITLE}
         description={DESCRIPTION}
       />
-      <div className="p-4">
-        <h1 className="c-heading--flexCenter text-2xl font-bold">
-          {PAGE_TITLE}
-        </h1>
-        <ul className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {sortedTagsInfo.map((info) => (
-            <li
-              key={info.name}
-              className="flex items-center gap-2"
-            >
-              <div className="p-tags__count bg-accent text-white">
-                {info.totalCount}
-              </div>
-              <Link href={info.path}>{info.name}</Link>
-            </li>
-          ))}
-        </ul>
+      <ul className="uk-breadcrumb">
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <span>{PAGE_TITLE}</span>
+        </li>
+      </ul>
+      <h1>{PAGE_TITLE}</h1>
+      <div className="uk-grid" data-uk-grid>
+        {tagsInfo.map((tag) => (
+          <div
+            key={`tag-list-item-${tag.id}`}
+            className="uk-flex uk-flex-middle"
+            style={{ gap: '0.4rem' }}
+          >
+            <Link href={`/tags/${tag.id}`}>
+              {tag.title}
+            </Link>
+            <span className="uk-badge">
+              {tag.totalCount}
+            </span>
+          </div>
+        ))}
       </div>
-      <BackToTop />
-    </section>
+    </>
   );
 };
 
 export default TagsPage;
-
-export const getStaticProps: GetStaticProps<
-  PageProps
-> = async () => {
-  return tagsControler
-    .getAllTags()
-    .then(async (allTags) => {
-      const tagsInfo: {
-        name: string;
-        path: string;
-        totalCount: number;
-      }[] = [];
-      if (allTags) {
-        for (
-          let index = 0;
-          index < allTags.length;
-          index++
-        ) {
-          const targetTag = allTags[index];
-          const name = targetTag?.fields.name || '';
-          const path = getTagsPath(targetTag?.fields.slug);
-          await tagsControler
-            .getPostsByTags(targetTag?.sys.id)
-            .then((targetPosts) => {
-              const totalCount = targetPosts
-                ? targetPosts.length
-                : 0;
-              if (totalCount > 0) {
-                tagsInfo.push({ name, path, totalCount });
-              }
-            });
-        }
-      }
-      return {
-        props: {
-          tagsInfo,
-        },
-      };
-    });
-};

@@ -12,17 +12,19 @@
   "packageManager": "yarn@3.2.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "postbuild": "next-sitemap --config sitemap.config.js",
+    "build": "next build",
+    "postbuild": "next-sitemap --config sitemap.config.js && next export",
     "start": "next start",
     "lint": "next lint",
     "analyze": "cross-env \"ANALYZE=true\" next build"
   },
   "dependencies": {
-    "@jsdevtools/rehype-toc": "^3.0.2",
     "@uiball/loaders": "^1.2.6",
-    "contentful": "^10.0.0-beta-v10.6",
+    "cheerio": "^1.0.0-rc.11",
     "date-fns": "^2.28.0",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.5.1",
+    "microcms-js-sdk": "^2.0.0",
     "next": "^12.1.6",
     "next-pwa": "^5.5.2",
     "playwright": "^1.21.1",
@@ -30,28 +32,18 @@
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
     "react-markdown": "^8.0.3",
-    "rehype-external-links": "^1.0.1",
-    "rehype-highlight": "^5.0.2",
-    "rehype-parse": "^8.0.4",
-    "rehype-raw": "^6.1.1",
-    "rehype-react": "^7.1.1",
-    "rehype-slug": "^5.0.1",
-    "rehype-stringify": "^9.0.3",
-    "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.1",
-    "remark-rehype": "^10.1.0",
-    "unified": "^10.1.2"
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1",
+    "uikit": "^3.14.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.6",
-    "@tailwindcss/forms": "^0.5.1",
     "@tsconfig/next": "^1.0.2",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
-    "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
     "eslint": "^8.15.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -59,17 +51,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "next-sitemap": "^2.5.20",
-    "postcss": "^8.4.13",
     "prettier": "^2.6.2",
-    "sass": "^1.51.0",
-    "tailwindcss": "^3.0.24",
+    "sass": "^1.52.1",
     "typescript": "^4.6.4"
-  },
-  "browserslist": [
-    "defaults",
-    "not dead"
-  ],
-  "peerDependencies": {
-    "eslint-plugin-import": "2.25.3"
   }
 }

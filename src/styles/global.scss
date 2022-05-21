@@ -1,22 +1,26 @@
 // Foundation--------------------------------------------------------
-@use './Foundation/base';
-// Object------------------------------------------------------------
-// Component
-@use './Object/Component/c-badge.scss';
-@use './Object/Component/c-button.scss';
-@use './Object/Component/c-modal.scss';
-@use './Object/Component/c-heading.scss';
-// Project
-@use './Object/Project/p-articleBody.scss';
-@use './Object/Project/p-prevNext.scss';
-@use './Object/Project/p-pagination.scss';
-@use './Object/Project/p-tags.scss';
+@import './Foundation/variables';
+@import './Foundation/mixin';
+@import 'uikit/src/scss/uikit-theme.scss';
+@import './Foundation/base';
+// // Object------------------------------------------------------------
+// // Component
+// @use './Object/Component/c-badge.scss';
+// @use './Object/Component/c-button.scss';
+// @use './Object/Component/c-modal.scss';
+// @use './Object/Component/c-heading.scss';
+// // Project
+// @use './Object/Project/p-articleBody.scss';
+// @use './Object/Project/p-prevNext.scss';
+// @use './Object/Project/p-pagination.scss';
+// @use './Object/Project/p-tags.scss';
+
 // Utility
-@use './Object/Utility/u-appreach';
-@use './Object/Utility/u-yomereba';
+@import './Object/Utility/u-appreach';
+@import './Object/Utility/u-yomereba';
 @import './Object/Utility/u-highlight.scss';
 @import './Object/Utility/u-scrollbar.scss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;

@@ -7,29 +7,52 @@ $rakuten: #d91414;
 .kaerebalink-box,
 .booklink-box,
 .tomarebalink-box {
-  @apply bg-gray-100 w-full max-w-screen-sm my-4 mx-auto rounded p-4;
+  background: $global-muted-background;
+  max-width: $breakpoint-small;
+  margin: $margin-margin auto;
+  padding: $padding-padding;
+  border-radius: $border-rounded-border-radius;
+
   a {
     .externalIcon {
-      @apply hidden;
+      display: none;
     }
   }
   .kaerebalink-image,
   .booklink-image {
+    max-width: $breakpoint-small;
+    margin: auto;
+    text-align: center;
     @apply w-full max-w-screen-sm m-auto text-center;
     img {
-      @apply w-full h-auto shadow;
+      width: 100%;
+      height: auto;
       max-width: 200px;
     }
   }
   .kaerebalink-link1,
   .booklink-link2,
   .tomarebalink-link1 {
-    @apply md:flex md:gap-2 md:justify-center;
+    @media (min-width: $breakpoint-medium) {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
     > div {
-      @apply border-2 border-gray-600 rounded text-center;
-      @apply bg-white w-full max-w-screen-sm my-4;
+      border: 2px #666666 solid;
+      border-radius: $border-rounded-border-radius;
+      text-align: center;
+      background: #ffffff;
+      width: 100%;
+      max-width: $breakpoint-small;
+      margin: $margin-margin 0;
       a {
-        @apply block w-full h-full p-2 hover:bg-gray-600 hover:text-white;
+        display: block;
+        padding: $padding-small-padding;
+        &:hover {
+          background: #666666;
+          color: #ffffff;
+        }
       }
     }
     .shoplinkrakuten {
@@ -51,7 +74,9 @@ $rakuten: #d91414;
       }
     }
     > div {
-      @apply md:m-1;
+      @media (min-width: $breakpoint-medium) {
+        margin: $margin-small-margin;
+      }
     }
   }
 }

@@ -2,6 +2,6 @@ interface Window {
   adsbygoogle?: { [key: string]: unknown }[];
 }
 
-global {
-  var window: Window;
+declare global {
+  const window: Window;
 }
