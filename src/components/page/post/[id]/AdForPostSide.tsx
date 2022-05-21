@@ -1,6 +1,22 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 const AdForPostSide = () => {
+  const { asPath } = useRouter();
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push(
+        {}
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }, [asPath]);
   return (
-    <div key="ad-for-post-side" className="uk-margin">
+    <div
+      key={`ad-for-post-side-${asPath}`}
+      className="uk-margin"
+    >
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}

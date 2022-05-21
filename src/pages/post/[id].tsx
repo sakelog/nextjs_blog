@@ -1,6 +1,3 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-
 import type {
   GetStaticProps,
   GetStaticPaths,
@@ -70,10 +67,10 @@ export const getStaticProps: GetStaticProps<
 
   const tocItems = renderTOC(richEditorHTML);
 
-  const ogImagePath = await createOGImage(
-    currentPost.title,
-    targetID
-  );
+  const ogImagePath = await createOGImage({
+    title: currentPost.title,
+    filename: targetID,
+  });
 
   return {
     props: {
@@ -93,17 +90,6 @@ const PostPage: NextPage<PageProps> = ({
   tocItems,
   ogImagePath,
 }) => {
-  const { asPath } = useRouter();
-  useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push(
-        {}
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  }, [asPath]);
-
   const { title, description } = currentPost;
 
   return (
@@ -113,7 +99,7 @@ const PostPage: NextPage<PageProps> = ({
         description={description}
         ogImagePath={ogImagePath}
       />
-      <div key={asPath} data-uk-grid>
+      <div data-uk-grid>
         <div className="uk-width-3-4@m">
           <Article
             currentPost={currentPost}

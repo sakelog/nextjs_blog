@@ -1,6 +1,22 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 const AdForIndexList = () => {
+  const { asPath } = useRouter();
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push(
+        {}
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }, [asPath]);
   return (
-    <div key="ad-for-indexList" className="uk-margin">
+    <div
+      key={`ad-for-indexList-${asPath}`}
+      className="uk-margin"
+    >
       <ins
         className="adsbygoogle"
         style={{

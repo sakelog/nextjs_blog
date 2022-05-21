@@ -5,10 +5,15 @@ import { chromium } from 'playwright';
 // config
 import { config } from '@/config';
 
-export const createOGImage = async (
-  title: string,
-  filename: string
-) => {
+type PropTypes = {
+  title?: string;
+  filename: string;
+};
+
+export const createOGImage = async ({
+  title,
+  filename,
+}: PropTypes) => {
   if (process.env.NODE_ENV === 'production') {
     const basePagePath = `${config.url}og`;
     const ogPagePath = title

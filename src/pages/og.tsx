@@ -28,7 +28,7 @@ const OgPage: NextPageWithLayout = () => {
         style={{ borderRadius: '10px' }}
       >
         <div
-          className="uk-width-1-1 uk-height-1-1 uk-padding-small"
+          className="uk-padding-small"
           style={{ background: '#ffffff' }}
         >
           <p

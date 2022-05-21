@@ -16,4 +16,7 @@ public/workbox-*
 public/sitemap-*
 
 # Sitemap
-public/sitemap.xml
+public/sitemap*
+
+# OGImage
+public/img/og/
