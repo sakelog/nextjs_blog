@@ -11,6 +11,11 @@ const AdForIndexList = () => {
     } catch (err) {
       console.log(err);
     }
+    return () => {
+      document
+        .getElementById('__next')
+        .removeAttribute('style');
+    };
   }, [asPath]);
   return (
     <div
@@ -22,7 +27,6 @@ const AdForIndexList = () => {
         style={{
           display: 'block',
           margin: 'auto',
-          fontSize: '100%',
         }}
         data-adtest={
           process.env.NODE_ENV === 'production'
